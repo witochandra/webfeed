@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+    <channel>
+        <title>News - Foo bar News</title>
+        <link>https://foo.bar.news/</link>
+        <description>Foo bar News and Updates feed provided by Foo bar, Inc.</description>
+        <image>
+            <url>https://foo.bar.news/logo.gif</url>
+            <title>Foo bar News</title>
+            <link>https://foo.bar.news/</link>
+        </image>
+        <language>en-US</language>
+        <lastBuildDate>Mon, 26 Mar 2018 14:00:00 PDT</lastBuildDate>
+        <generator>Custom</generator>
+        <copyright>Copyright 2018, Foo bar Inc.</copyright>
+        <item>
+            <title>The standard Lorem Ipsum passage, used since the 1500s</title>
+            <link>https://foo.bar.news/1</link>
+            <guid>https://foo.bar.news/1?guid</guid>
+            <description>Lorem ipsum dolor sit amet, consectetur adipiscing elit</description>
+            <pubDate>Mon, 26 Mar 2018 14:00:00 PDT</pubDate>
+        </item>
+        <item>
+            <title>Section 1.10.32 of "de Finibus Bonorum et Malorum", written by Cicero in 45 BC</title>
+            <link>https://foo.bar.news/2</link>
+            <guid>https://foo.bar.news/2?guid</guid>
+            <description>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium</description>
+            <pubDate>Tue, 20 Mar 2018 10:00:00 PDT</pubDate>
+        </item>
+    </channel>
+</rss>
