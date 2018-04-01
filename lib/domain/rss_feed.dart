@@ -1,12 +1,11 @@
 import 'dart:core';
 
-import 'package:webfeedclient/domain/rss_category.dart';
-import 'package:webfeedclient/domain/rss_cloud.dart';
-import 'package:webfeedclient/domain/rss_item.dart';
-import 'package:webfeedclient/util/helpers.dart';
+import 'package:webfeed/domain/rss_category.dart';
+import 'package:webfeed/domain/rss_cloud.dart';
+import 'package:webfeed/domain/rss_image.dart';
+import 'package:webfeed/domain/rss_item.dart';
+import 'package:webfeed/util/helpers.dart';
 import 'package:xml/xml.dart';
-
-import 'package:webfeedclient/domain/rss_image.dart';
 
 class RssFeed {
   final String title;

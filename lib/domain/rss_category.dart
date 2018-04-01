@@ -1,7 +1,6 @@
 import 'package:xml/xml.dart';
 
 class RssCategory {
-
   String domain;
   String value;
 

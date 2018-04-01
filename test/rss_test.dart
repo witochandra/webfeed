@@ -1,8 +1,7 @@
 import 'dart:io';
 import 'dart:core';
 import 'package:test/test.dart';
-import 'package:webfeedclient/domain/rss_feed.dart';
-import 'package:xml/xml.dart' as xml;
+import 'package:webfeed/domain/rss_feed.dart';
 
 void main() {
   test("parsing Invalid.xml", () {

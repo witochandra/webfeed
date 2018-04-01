@@ -1,13 +1,13 @@
 import 'dart:async';
 
 import 'package:http/http.dart' as http;
-import 'package:webfeedclient/domain/rss_feed.dart';
+import 'package:webfeed/domain/rss_feed.dart';
 
 class WebFeedClient {
   http.Client client;
 
-  WebFeedClient() {
-    client = new http.Client();
+  WebFeedClient(http.Client httpClient) {
+    client = httpClient;
   }
 
   Future<RssFeed> fetch(String url) {

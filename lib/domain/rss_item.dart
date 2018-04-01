@@ -1,6 +1,6 @@
-import 'package:webfeedclient/domain/rss_category.dart';
-import 'package:webfeedclient/domain/rss_source.dart';
-import 'package:webfeedclient/util/helpers.dart';
+import 'package:webfeed/domain/rss_category.dart';
+import 'package:webfeed/domain/rss_source.dart';
+import 'package:webfeed/util/helpers.dart';
 import 'package:xml/xml.dart';
 
 class RssItem {
