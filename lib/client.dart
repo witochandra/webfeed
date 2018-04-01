@@ -2,7 +2,6 @@ import 'dart:async';
 
 import 'package:http/http.dart' as http;
 import 'package:webfeedclient/domain/rss_feed.dart';
-import 'package:xml/xml.dart' as xml;
 
 class WebFeedClient {
   http.Client client;
@@ -17,8 +16,7 @@ class WebFeedClient {
       print("Response Body: ${response.body}");
       return response.body;
     }).then((bodyString) {
-      var document = xml.parse(bodyString);
-      var channel = new RssFeed.parse(document);
+      var channel = new RssFeed.parse(bodyString);
       return channel;
     });
   }

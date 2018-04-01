@@ -7,18 +7,16 @@ import 'package:xml/xml.dart' as xml;
 void main() {
   test("parsing Invalid.xml", () {
     var xmlString = new File("test/xml/Invalid.xml").readAsStringSync();
-    var doc = xml.parse(xmlString);
 
     try {
-      new RssFeed.parse(doc);
+      new RssFeed.parse(xmlString);
       fail("Should throw Argument Error");
     } on ArgumentError {}
   });
   test("parsing RSS.xml", () {
     var xmlString = new File("test/xml/RSS.xml").readAsStringSync();
-    var doc = xml.parse(xmlString);
 
-    var feed = new RssFeed.parse(doc);
+    var feed = new RssFeed.parse(xmlString);
 
     expect(feed.title, "News - Foo bar News");
     expect(feed.description, "Foo bar News and Updates feed provided by Foo bar, Inc.");

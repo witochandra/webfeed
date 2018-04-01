@@ -45,7 +45,8 @@ class RssFeed {
       this.webMaster,
       this.ttl});
 
-  factory RssFeed.parse(XmlDocument document) {
+  factory RssFeed.parse(String xmlString) {
+    XmlDocument document = parse(xmlString);
     XmlElement channelElement;
     try {
       channelElement = document.findAllElements("channel").first;
