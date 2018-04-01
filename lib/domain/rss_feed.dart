@@ -1,6 +1,7 @@
 import 'dart:core';
 
 import 'package:webfeedclient/domain/rss_category.dart';
+import 'package:webfeedclient/domain/rss_cloud.dart';
 import 'package:webfeedclient/domain/rss_item.dart';
 import 'package:webfeedclient/util/helpers.dart';
 import 'package:xml/xml.dart';
@@ -14,6 +15,7 @@ class RssFeed {
   final List<RssItem> items;
 
   final RssImage image;
+  final RssCloud cloud;
   final List<RssCategory> categories;
   final String lastBuildDate;
   final String language;
@@ -21,7 +23,7 @@ class RssFeed {
   final String copyright;
 
   RssFeed(this.title, this.description, this.link, this.items,
-      {this.image, this.categories, this.lastBuildDate, this.language, this.generator, this.copyright});
+      {this.image, this.cloud, this.categories, this.lastBuildDate, this.language, this.generator, this.copyright});
 
   factory RssFeed.parse(XmlDocument document) {
     XmlElement channelElement;
@@ -43,6 +45,11 @@ class RssFeed {
       image = new RssImage.parse(channelElement.findElements("image").first);
     } on StateError {}
 
+    RssCloud cloud;
+    try {
+      cloud = new RssCloud.parse(channelElement.findElements("cloud").first);
+    } on StateError {}
+
     List<RssCategory> categories = channelElement.findElements("category").map((element) {
       return new RssCategory.parse(element);
     }).toList();
@@ -54,6 +61,7 @@ class RssFeed {
 
     return new RssFeed(title, description, link, feeds,
         image: image,
+        cloud: cloud,
         categories: categories,
         lastBuildDate: lastBuildDate,
         language: language,

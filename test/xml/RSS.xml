@@ -9,6 +9,8 @@
             <title>Foo bar News</title>
             <link>https://foo.bar.news/</link>
         </image>
+        <cloud domain="radio.foo.bar.news" port="80" path="/RPC2" registerProcedure="foo.bar.rssPleaseNotify"
+               protocol="xml-rpc"/>
         <category>Ipsum</category>
         <category domain="news">Lorem Ipsum</category>
         <language>en-US</language>
@@ -27,7 +29,9 @@
             <title>Section 1.10.32 of "de Finibus Bonorum et Malorum", written by Cicero in 45 BC</title>
             <link>https://foo.bar.news/2</link>
             <guid>https://foo.bar.news/2?guid</guid>
-            <description>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium</description>
+            <description>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
+                laudantium
+            </description>
             <category domain="auto">Ipsum</category>
             <pubDate>Tue, 20 Mar 2018 10:00:00 PDT</pubDate>
         </item>

@@ -32,6 +32,12 @@ void main() {
     expect(feed.image.url, "https://foo.bar.news/logo.gif");
     expect(feed.image.link, "https://foo.bar.news/");
 
+    expect(feed.cloud.domain, "radio.foo.bar.news");
+    expect(feed.cloud.port, "80");
+    expect(feed.cloud.path, "/RPC2");
+    expect(feed.cloud.registerProcedure, "foo.bar.rssPleaseNotify");
+    expect(feed.cloud.protocol, "xml-rpc");
+
     expect(feed.categories.length, 2);
     expect(feed.categories[0].domain, null);
     expect(feed.categories[0].value, "Ipsum");
