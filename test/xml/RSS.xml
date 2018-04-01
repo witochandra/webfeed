@@ -9,6 +9,8 @@
             <title>Foo bar News</title>
             <link>https://foo.bar.news/</link>
         </image>
+        <category>Ipsum</category>
+        <category domain="news">Lorem Ipsum</category>
         <language>en-US</language>
         <lastBuildDate>Mon, 26 Mar 2018 14:00:00 PDT</lastBuildDate>
         <generator>Custom</generator>
@@ -18,6 +20,7 @@
             <link>https://foo.bar.news/1</link>
             <guid>https://foo.bar.news/1?guid</guid>
             <description>Lorem ipsum dolor sit amet, consectetur adipiscing elit</description>
+            <category domain="news">Lorem</category>
             <pubDate>Mon, 26 Mar 2018 14:00:00 PDT</pubDate>
         </item>
         <item>
@@ -25,6 +28,7 @@
             <link>https://foo.bar.news/2</link>
             <guid>https://foo.bar.news/2?guid</guid>
             <description>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium</description>
+            <category domain="auto">Ipsum</category>
             <pubDate>Tue, 20 Mar 2018 10:00:00 PDT</pubDate>
         </item>
     </channel>

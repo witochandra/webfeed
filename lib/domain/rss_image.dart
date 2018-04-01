@@ -1,19 +1,19 @@
 import 'package:webfeedclient/util/helpers.dart';
 import 'package:xml/xml.dart';
 
-class Image {
+class RssImage {
   final String title;
   final String url;
   final String link;
 
-  Image(this.title, this.url, this.link);
+  RssImage(this.title, this.url, this.link);
 
-  factory Image.parse(XmlElement element) {
+  factory RssImage.parse(XmlElement element) {
     var title = xmlGetString(element, "title", strict: false);
     var url = xmlGetString(element, "url", strict: false);
     var link = xmlGetString(element, "link", strict: false);
 
-    return new Image(title, url, link);
+    return new RssImage(title, url, link);
   }
 
   @override

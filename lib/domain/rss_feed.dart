@@ -1,32 +1,32 @@
 import 'dart:core';
 
-import 'package:webfeedclient/domain/item.dart';
+import 'package:webfeedclient/domain/rss_category.dart';
+import 'package:webfeedclient/domain/rss_item.dart';
 import 'package:webfeedclient/util/helpers.dart';
 import 'package:xml/xml.dart';
 
-import 'image.dart';
+import 'package:webfeedclient/domain/rss_image.dart';
 
-class Channel {
+class RssFeed {
   final String title;
   final String description;
   final String link;
-  final List<Item> items;
+  final List<RssItem> items;
 
-  final Image image;
+  final RssImage image;
+  final List<RssCategory> categories;
   final String lastBuildDate;
   final String language;
   final String generator;
   final String copyright;
 
-  Channel(this.title, this.description, this.link, this.items,
-      {this.image, this.lastBuildDate, this.language, this.generator, this.copyright});
+  RssFeed(this.title, this.description, this.link, this.items,
+      {this.image, this.categories, this.lastBuildDate, this.language, this.generator, this.copyright});
 
-  factory Channel.parse(XmlDocument document) {
+  factory RssFeed.parse(XmlDocument document) {
     XmlElement channelElement;
     try {
-      channelElement = document
-          .findAllElements("channel")
-          .first;
+      channelElement = document.findAllElements("channel").first;
     } on StateError {
       throw new ArgumentError("channel not found");
     }
@@ -34,23 +34,27 @@ class Channel {
     var description = xmlGetString(channelElement, "description");
     var link = xmlGetString(channelElement, "link");
 
-    var feeds = channelElement.findAllElements("item").map((XmlElement element) {
-      return new Item.parse(element);
+    List<RssItem> feeds = channelElement.findElements("item").map((element) {
+      return new RssItem.parse(element);
     }).toList();
 
-    Image image;
+    RssImage image;
     try {
-      image = new Image.parse(channelElement
-          .findElements("image")
-          .first);
+      image = new RssImage.parse(channelElement.findElements("image").first);
     } on StateError {}
+
+    List<RssCategory> categories = channelElement.findElements("category").map((element) {
+      return new RssCategory.parse(element);
+    }).toList();
 
     var lastBuildDate = xmlGetString(channelElement, "lastBuildDate", strict: false);
     var language = xmlGetString(channelElement, "language", strict: false);
     var generator = xmlGetString(channelElement, "generator", strict: false);
     var copyright = xmlGetString(channelElement, "copyright", strict: false);
 
-    return new Channel(title, description, link, feeds, image: image,
+    return new RssFeed(title, description, link, feeds,
+        image: image,
+        categories: categories,
         lastBuildDate: lastBuildDate,
         language: language,
         generator: generator,
