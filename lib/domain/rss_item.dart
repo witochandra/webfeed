@@ -1,4 +1,5 @@
 import 'package:webfeedclient/domain/rss_category.dart';
+import 'package:webfeedclient/domain/rss_source.dart';
 import 'package:webfeedclient/util/helpers.dart';
 import 'package:xml/xml.dart';
 
@@ -10,8 +11,12 @@ class RssItem {
   final List<RssCategory> categories;
   final String guid;
   final String pubDate;
+  final String author;
+  final String comments;
+  final RssSource source;
 
-  RssItem(this.title, this.description, this.link, {this.categories, this.guid, this.pubDate});
+  RssItem(this.title, this.description, this.link,
+      {this.categories, this.guid, this.pubDate, this.author, this.comments, this.source});
 
   factory RssItem.parse(XmlElement element) {
     var title = xmlGetString(element, "title");
@@ -24,8 +29,16 @@ class RssItem {
 
     var guid = xmlGetString(element, "guid", strict: false);
     var pubDate = xmlGetString(element, "pubDate", strict: false);
+    var author = xmlGetString(element, "author", strict: false);
+    var comments = xmlGetString(element, "comments", strict: false);
 
-    return new RssItem(title, description, link, categories: categories, guid: guid, pubDate: pubDate);
+    RssSource source;
+    try {
+      source = new RssSource.parse(element.findElements("source").first);
+    } on StateError {}
+
+    return new RssItem(title, description, link,
+        categories: categories, guid: guid, pubDate: pubDate, author: author, comments: comments, source: source);
   }
 
   @override
@@ -34,7 +47,11 @@ class RssItem {
       title: $title
       description: $description
       link: $link
+      guid: $guid
       pubDate: $pubDate
+      author: $author
+      comments: $comments
+      source: $source
     ''';
   }
 }

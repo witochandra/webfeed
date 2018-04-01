@@ -68,5 +68,9 @@ void main() {
     expect(feed.items.first.pubDate, "Mon, 26 Mar 2018 14:00:00 PDT");
     expect(feed.items.first.categories.first.domain, "news");
     expect(feed.items.first.categories.first.value, "Lorem");
+    expect(feed.items.first.author, "alice@foo.bar.news");
+    expect(feed.items.first.source.url, "https://foo.bar.news/1?source");
+    expect(feed.items.first.source.value, "Foo Bar");
+    expect(feed.items.first.comments, "https://foo.bar.news/1/comments");
   });
 }

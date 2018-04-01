@@ -41,6 +41,9 @@
             <description>Lorem ipsum dolor sit amet, consectetur adipiscing elit</description>
             <category domain="news">Lorem</category>
             <pubDate>Mon, 26 Mar 2018 14:00:00 PDT</pubDate>
+            <author>alice@foo.bar.news</author>
+            <source url="https://foo.bar.news/1?source">Foo Bar</source>
+            <comments>https://foo.bar.news/1/comments</comments>
         </item>
         <item>
             <title>Section 1.10.32 of "de Finibus Bonorum et Malorum", written by Cicero in 45 BC</title>
@@ -51,6 +54,9 @@
             </description>
             <category domain="auto">Ipsum</category>
             <pubDate>Tue, 20 Mar 2018 10:00:00 PDT</pubDate>
+            <author>bob@foo.bar.news</author>
+            <source url="https://foo.bar.news/2?source">Lorem Ipsum</source>
+            <comments>https://foo.bar.news/2/comments</comments>
         </item>
     </channel>
 </rss>
