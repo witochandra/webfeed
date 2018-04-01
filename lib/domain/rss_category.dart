@@ -13,4 +13,12 @@ class RssCategory {
 
     return new RssCategory(domain, value);
   }
+
+  @override
+  String toString() {
+    return '''
+      domain: $domain
+      value: $value
+    ''';
+  }
 }

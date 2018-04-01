@@ -17,13 +17,33 @@ class RssFeed {
   final RssImage image;
   final RssCloud cloud;
   final List<RssCategory> categories;
+  final List<String> skipDays;
+  final List<int> skipHours;
   final String lastBuildDate;
   final String language;
   final String generator;
   final String copyright;
+  final String docs;
+  final String managingEditor;
+  final String rating;
+  final String webMaster;
+  final int ttl;
 
   RssFeed(this.title, this.description, this.link, this.items,
-      {this.image, this.cloud, this.categories, this.lastBuildDate, this.language, this.generator, this.copyright});
+      {this.image,
+      this.cloud,
+      this.categories,
+      this.skipDays,
+      this.skipHours,
+      this.lastBuildDate,
+      this.language,
+      this.generator,
+      this.copyright,
+      this.docs,
+      this.managingEditor,
+      this.rating,
+      this.webMaster,
+      this.ttl});
 
   factory RssFeed.parse(XmlDocument document) {
     XmlElement channelElement;
@@ -54,19 +74,50 @@ class RssFeed {
       return new RssCategory.parse(element);
     }).toList();
 
+    List<String> skipDays = new List<String>();
+    var skipDaysNodes = channelElement.findElements("skipDays");
+    if (skipDaysNodes.isNotEmpty) {
+      skipDays = skipDaysNodes.first.findAllElements("day").map((element) {
+        return element.text;
+      }).toList();
+    }
+    List<int> skipHours = new List<int>();
+    var skipHoursNodes = channelElement.findElements("skipHours");
+    if (skipHoursNodes.isNotEmpty) {
+      skipHours = skipHoursNodes.first.findAllElements("hour").map((element) {
+        try {
+          return int.parse(element.text);
+        } on FormatException {
+          return null;
+        }
+      }).toList();
+    }
+
     var lastBuildDate = xmlGetString(channelElement, "lastBuildDate", strict: false);
     var language = xmlGetString(channelElement, "language", strict: false);
     var generator = xmlGetString(channelElement, "generator", strict: false);
     var copyright = xmlGetString(channelElement, "copyright", strict: false);
+    var docs = xmlGetString(channelElement, "docs", strict: false);
+    var managingEditor = xmlGetString(channelElement, "managingEditor", strict: false);
+    var rating = xmlGetString(channelElement, "rating", strict: false);
+    var webMaster = xmlGetString(channelElement, "webMaster", strict: false);
+    var ttl = xmlGetInt(channelElement, "ttl", strict: false);
 
     return new RssFeed(title, description, link, feeds,
         image: image,
         cloud: cloud,
         categories: categories,
+        skipDays: skipDays,
+        skipHours: skipHours,
         lastBuildDate: lastBuildDate,
         language: language,
         generator: generator,
-        copyright: copyright);
+        copyright: copyright,
+        docs: docs,
+        managingEditor: managingEditor,
+        rating: rating,
+        webMaster: webMaster,
+        ttl: ttl);
   }
 
   @override
@@ -75,8 +126,21 @@ class RssFeed {
       title: $title
       description: $description
       link: $link
-      lastBuildDate: $lastBuildDate
       items: $items
+      image: $image
+      cloud: $cloud
+      categories: $categories
+      skipDays: $skipDays
+      skipHours: $skipHours
+      lastBuildDate: $lastBuildDate
+      language: $language
+      generator: $generator
+      copyright: $copyright
+      docs: $docs
+      managingEditor: $managingEditor
+      rating: $rating
+      webMaster: $webMaster
+      ttl: $ttl
     ''';
   }
 }

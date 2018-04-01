@@ -17,6 +17,23 @@
         <lastBuildDate>Mon, 26 Mar 2018 14:00:00 PDT</lastBuildDate>
         <generator>Custom</generator>
         <copyright>Copyright 2018, Foo bar Inc.</copyright>
+        <docs>https://foo.bar.news/docs</docs>
+        <managingEditor>alice@foo.bar.news</managingEditor>
+        <rating>The PICS rating of the feed</rating>
+        <webMaster>webmaster@foo.bar.news</webMaster>
+        <ttl>60</ttl>
+        <skipDays>
+            <day>Monday</day>
+            <day>Tuesday</day>
+            <day>Sunday</day>
+        </skipDays>
+        <skipHours>
+            <hour>0</hour>
+            <hour>1</hour>
+            <hour>2</hour>
+            <hour>3</hour>
+            <hour>4</hour>
+        </skipHours>
         <item>
             <title>The standard Lorem Ipsum passage, used since the 1500s</title>
             <link>https://foo.bar.news/1</link>

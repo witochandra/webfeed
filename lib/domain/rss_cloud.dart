@@ -17,4 +17,15 @@ class RssCloud {
     var protocol = node.getAttribute("protocol");
     return new RssCloud(domain, port, path, registerProcedure, protocol);
   }
+
+  @override
+  String toString() {
+    return '''
+      domain: $domain
+      port: $port
+      path: $path
+      registerProcedure: $registerProcedure
+      protocol: $protocol
+    ''';
+  }
 }

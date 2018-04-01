@@ -27,6 +27,11 @@ void main() {
     expect(feed.lastBuildDate, "Mon, 26 Mar 2018 14:00:00 PDT");
     expect(feed.generator, "Custom");
     expect(feed.copyright, "Copyright 2018, Foo bar Inc.");
+    expect(feed.docs, "https://foo.bar.news/docs");
+    expect(feed.managingEditor, "alice@foo.bar.news");
+    expect(feed.rating, "The PICS rating of the feed");
+    expect(feed.webMaster, "webmaster@foo.bar.news");
+    expect(feed.ttl, 60);
 
     expect(feed.image.title, "Foo bar News");
     expect(feed.image.url, "https://foo.bar.news/logo.gif");
@@ -43,6 +48,18 @@ void main() {
     expect(feed.categories[0].value, "Ipsum");
     expect(feed.categories[1].domain, "news");
     expect(feed.categories[1].value, "Lorem Ipsum");
+
+    expect(feed.skipDays.length, 3);
+    expect(feed.skipDays.contains("Monday"), true);
+    expect(feed.skipDays.contains("Tuesday"), true);
+    expect(feed.skipDays.contains("Sunday"), true);
+
+    expect(feed.skipHours.length, 5);
+    expect(feed.skipHours.contains(0), true);
+    expect(feed.skipHours.contains(1), true);
+    expect(feed.skipHours.contains(2), true);
+    expect(feed.skipHours.contains(3), true);
+    expect(feed.skipHours.contains(4), true);
 
     expect(feed.items.length, 2);
 
