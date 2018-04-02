@@ -12,10 +12,9 @@ A dart package for parsing RSS feed.
 
 ### Installing
 
-Add these lines into your `pubspec.yaml`
+Add this line into your `pubspec.yaml`
 ```
-webfeed:
-  git: git@github.com:witochandra/webfeed.git
+webfeed: ^0.1.0
 ```
 
 Import the package into your dart code using:
