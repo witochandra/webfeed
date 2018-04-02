@@ -1,4 +1,7 @@
 name: webfeed
+version: 0.1.0
+description: A dart package for parsing web feed.
+author: Wito Chandra <wito.c.91@gmail.com>
 dependencies:
   xml: "^3.0.0"
 dev_dependencies:
