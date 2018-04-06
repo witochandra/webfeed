@@ -7,8 +7,8 @@ class RssCategory {
   RssCategory(this.domain, this.value);
 
   factory RssCategory.parse(XmlElement node) {
-    String domain = node.getAttribute("domain");
-    String value = node.text;
+    var domain = node.getAttribute("domain");
+    var value = node.text;
 
     return new RssCategory(domain, value);
   }

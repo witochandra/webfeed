@@ -3,8 +3,8 @@ import 'package:webfeed/domain/atom_generator.dart';
 import 'package:webfeed/domain/atom_item.dart';
 import 'package:webfeed/domain/atom_link.dart';
 import 'package:webfeed/domain/atom_person.dart';
-import 'package:xml/xml.dart';
 import 'package:webfeed/util/helpers.dart';
+import 'package:xml/xml.dart';
 
 class AtomFeed {
   String id;
@@ -23,7 +23,15 @@ class AtomFeed {
   String subtitle;
 
   AtomFeed(this.id, this.title, this.updated, this.items,
-      {this.links, this.authors, this.contributors, this.categories, this.generator, this.icon, this.logo, this.rights, this.subtitle});
+      {this.links,
+      this.authors,
+      this.contributors,
+      this.categories,
+      this.generator,
+      this.icon,
+      this.logo,
+      this.rights,
+      this.subtitle});
 
   factory AtomFeed.parse(String xmlString) {
     var document = parse(xmlString);
@@ -36,7 +44,7 @@ class AtomFeed {
     var id = xmlGetString(feedElement, "id");
     var title = xmlGetString(feedElement, "title");
     var updated = xmlGetString(feedElement, "updated");
-    
+
     var items = feedElement.findElements("entry").map((element) {
       return new AtomItem.parse(element);
     }).toList();

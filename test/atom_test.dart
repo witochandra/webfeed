@@ -1,7 +1,8 @@
-import 'dart:io';
 import 'dart:core';
+import 'dart:io';
+
 import 'package:test/test.dart';
-import 'package:webfeed/domain/atom_feed.dart';
+import 'package:webfeed/webfeed.dart';
 
 void main() {
   test("parsing Invalid.xml", () {
@@ -12,7 +13,7 @@ void main() {
       fail("Should throw Argument Error");
     } on ArgumentError {}
   });
-  
+
   test("parsing Atom.xml", () {
     var xmlString = new File("test/xml/Atom.xml").readAsStringSync();
 
@@ -71,7 +72,7 @@ void main() {
     expect(item.links.first.href, "http://foo.bar.news/entry");
     expect(item.links.first.title, "Foo bar news html");
     expect(item.links.first.length, 1000);
-    
+
     expect(item.categories.length, 2);
     expect(item.categories.first.term, "foo entry category");
     expect(item.categories.first.scheme, "this-is-foo-entry-scheme");

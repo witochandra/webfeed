@@ -45,7 +45,7 @@ class RssFeed {
       this.ttl});
 
   factory RssFeed.parse(String xmlString) {
-    XmlDocument document = parse(xmlString);
+    var document = parse(xmlString);
     XmlElement channelElement;
     try {
       channelElement = document.findAllElements("channel").first;
@@ -56,7 +56,7 @@ class RssFeed {
     var description = xmlGetString(channelElement, "description");
     var link = xmlGetString(channelElement, "link");
 
-    List<RssItem> feeds = channelElement.findElements("item").map((element) {
+    var feeds = channelElement.findElements("item").map((element) {
       return new RssItem.parse(element);
     }).toList();
 
@@ -70,18 +70,18 @@ class RssFeed {
       cloud = new RssCloud.parse(channelElement.findElements("cloud").first);
     } on StateError {}
 
-    List<RssCategory> categories = channelElement.findElements("category").map((element) {
+    var categories = channelElement.findElements("category").map((element) {
       return new RssCategory.parse(element);
     }).toList();
 
-    List<String> skipDays = new List<String>();
+    var skipDays = new List<String>();
     var skipDaysNodes = channelElement.findElements("skipDays");
     if (skipDaysNodes.isNotEmpty) {
       skipDays = skipDaysNodes.first.findAllElements("day").map((element) {
         return element.text;
       }).toList();
     }
-    List<int> skipHours = new List<int>();
+    var skipHours = new List<int>();
     var skipHoursNodes = channelElement.findElements("skipHours");
     if (skipHoursNodes.isNotEmpty) {
       skipHours = skipHoursNodes.first.findAllElements("hour").map((element) {

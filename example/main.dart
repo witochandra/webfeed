@@ -1,6 +1,5 @@
 import 'package:http/http.dart' as http;
-import 'package:webfeed/domain/atom_feed.dart';
-import 'package:webfeed/domain/rss_feed.dart';
+import 'package:webfeed/webfeed.dart';
 
 void main() {
   var client = new http.Client();

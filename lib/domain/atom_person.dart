@@ -1,5 +1,5 @@
-import 'package:xml/xml.dart';
 import 'package:webfeed/util/helpers.dart';
+import 'package:xml/xml.dart';
 
 class AtomPerson {
   String name;

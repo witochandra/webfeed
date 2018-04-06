@@ -23,7 +23,7 @@ class RssItem {
     var description = xmlGetString(element, "description");
     var link = xmlGetString(element, "link");
 
-    List<RssCategory> categories = element.findElements("category").map((element) {
+    var categories = element.findElements("category").map((element) {
       return new RssCategory.parse(element);
     }).toList();
 
