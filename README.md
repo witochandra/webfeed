@@ -2,12 +2,12 @@
 
 [![Build Status](https://travis-ci.org/witochandra/webfeed.svg?branch=master)](https://travis-ci.org/witochandra/webfeed)
 
-A dart package for parsing RSS feed.
+A dart package for parsing RSS and Atom feed.
 
 ### Features
 
 - [x] RSS
-- [ ] Atom
+- [x] Atom
 - [ ] JSON
 
 ### Installing
@@ -19,14 +19,16 @@ webfeed: ^0.1.0
 
 Import the package into your dart code using:
 ```
-import 'package:webfeed/domain/rss_feed.dart';
+import 'package:webfeed/domain/rss_feed.dart'; // for parsing RSS feed
+import 'package:webfeed/domain/atom_feed.dart'; // for parsing Atom feed
 ```
 
 ### Example
 
 To parse string into `RssFeed` object use:
 ```
-new RssFeed.parse(xmlString);
+var rssFeed = new RssFeed.parse(xmlString); // for parsing RSS feed
+var atomFeed = new AtomFeed.parse(xmlString); // for parsing Atom feed
 ```
 
 ### Preview
@@ -62,6 +64,37 @@ item.pubDate
 item.author
 item.comments
 item.source
+```
+
+**Atom**
+```
+feed.id
+feed.title
+feed.updated
+feed.items
+feed.links
+feed.authors
+feed.contributors
+feed.categories
+feed.generator
+feed.icon
+feed.logo
+feed.rights
+feed.subtitle
+
+AtomItem item = feed.items.first;
+item.id
+item.title
+item.updated
+item.authors
+item.links
+item.categories
+item.contributors
+item.source
+item.published
+item.content
+item.summary
+item.rights
 ```
 
 ## License
