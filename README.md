@@ -15,13 +15,12 @@ A dart package for parsing RSS and Atom feed.
 
 Add this line into your `pubspec.yaml`
 ```
-webfeed: ^0.2.0
+webfeed: ^0.2.1
 ```
 
 Import the package into your dart code using:
 ```
-import 'package:webfeed/domain/rss_feed.dart'; // for parsing RSS feed
-import 'package:webfeed/domain/atom_feed.dart'; // for parsing Atom feed
+import 'package:webfeed/webfeed.dart';
 ```
 
 ### Example
