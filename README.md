@@ -1,6 +1,7 @@
 # WebFeed
 
 [![Build Status](https://travis-ci.org/witochandra/webfeed.svg?branch=master)](https://travis-ci.org/witochandra/webfeed)
+[![Pub](https://img.shields.io/pub/v/webfeed.svg)](https://pub.dartlang.org/packages/webfeed)
 
 A dart package for parsing RSS and Atom feed.
 
@@ -14,7 +15,7 @@ A dart package for parsing RSS and Atom feed.
 
 Add this line into your `pubspec.yaml`
 ```
-webfeed: ^0.1.0
+webfeed: ^0.2.0
 ```
 
 Import the package into your dart code using:
