@@ -13,4 +13,13 @@ class AtomCategory {
     var label = element.getAttribute("label");
     return new AtomCategory(term, scheme, label);
   }
+
+  @override
+  String toString() {
+    return '''
+      term: $term
+      scheme: $scheme
+      label: $label
+    ''';
+  }
 }

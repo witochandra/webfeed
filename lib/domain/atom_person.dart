@@ -14,4 +14,13 @@ class AtomPerson {
     var email = xmlGetString(element, "email", strict: false);
     return new AtomPerson(name, uri, email);
   }
+
+  @override
+  String toString() {
+    return '''
+      name: $name
+      uri: $uri
+      email: $email
+    ''';
+  }
 }

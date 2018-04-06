@@ -15,4 +15,13 @@ class AtomSource {
 
     return new AtomSource(id, title, updated);
   }
+
+  @override
+  String toString() {
+    return '''
+      id: $id
+      title: $title
+      updated: $updated
+    ''';
+  }
 }

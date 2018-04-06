@@ -78,4 +78,23 @@ class AtomFeed {
         rights: rights,
         subtitle: subtitle);
   }
+
+  @override
+  String toString() {
+    return '''
+      id: $id
+      title: $title
+      updated: $updated
+      items: $items
+      links: $links
+      authors: $authors
+      contributors: $contributors
+      categories: $categories
+      generator: $generator
+      icon: $icon
+      logo: $logo
+      rights: $rights
+      subtitle: $subtitle
+    ''';
+  }
 }
