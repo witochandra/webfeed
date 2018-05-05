@@ -72,5 +72,8 @@ void main() {
     expect(feed.items.first.source.url, "https://foo.bar.news/1?source");
     expect(feed.items.first.source.value, "Foo Bar");
     expect(feed.items.first.comments, "https://foo.bar.news/1/comments");
+
+    expect(feed.items.first.content.value, "<img width=\"1000\" height=\"690\" src=\"https://test.com/image_link\"/> Test content<br />");
+    expect(feed.items.first.content.images.first, "https://test.com/image_link");
   });
 }
