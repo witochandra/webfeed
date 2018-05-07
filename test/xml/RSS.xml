@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<rss version="2.0">
+<rss version="2.0"
+     xmlns:content="http://purl.org/rss/1.0/modules/content/">
+
     <channel>
         <title>News - Foo bar News</title>
         <link>https://foo.bar.news/</link>
@@ -44,6 +46,7 @@
             <author>alice@foo.bar.news</author>
             <source url="https://foo.bar.news/1?source">Foo Bar</source>
             <comments>https://foo.bar.news/1/comments</comments>
+            <content:encoded><![CDATA[<img width="1000" height="690" src="https://test.com/image_link"/> Test content<br />]]></content:encoded>
         </item>
         <item>
             <title>Section 1.10.32 of "de Finibus Bonorum et Malorum", written by Cicero in 45 BC</title>
