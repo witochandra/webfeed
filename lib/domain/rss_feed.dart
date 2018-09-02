@@ -53,8 +53,8 @@ class RssFeed {
       throw new ArgumentError("channel not found");
     }
     var title = xmlGetString(channelElement, "title");
-    var description = xmlGetString(channelElement, "description");
-    var link = xmlGetString(channelElement, "link");
+    var description = xmlGetString(channelElement, "description", strict: false);
+    var link = xmlGetString(channelElement, "link", strict: false);
 
     var feeds = channelElement.findElements("item").map((element) {
       return new RssItem.parse(element);

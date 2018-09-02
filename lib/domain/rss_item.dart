@@ -32,8 +32,8 @@ class RssItem {
 
   factory RssItem.parse(XmlElement element) {
     var title = xmlGetString(element, "title");
-    var description = xmlGetString(element, "description");
-    var link = xmlGetString(element, "link");
+    var description = xmlGetString(element, "description", strict: false);
+    var link = xmlGetString(element, "link", strict: false);
 
     var categories = element.findElements("category").map((element) {
       return new RssCategory.parse(element);
