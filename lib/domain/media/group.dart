@@ -1,31 +1,28 @@
 import 'package:webfeed/domain/media/category.dart';
 import 'package:webfeed/domain/media/content.dart';
 import 'package:webfeed/domain/media/credit.dart';
-import 'package:webfeed/domain/media/group.dart';
 import 'package:webfeed/domain/media/rating.dart';
 import 'package:webfeed/util/helpers.dart';
 import 'package:xml/xml.dart';
 
-class Media {
-  final Group group;
+class Group {
   final List<Content> contents;
   final List<Credit> credits;
   final Category category;
   final Rating rating;
 
-  Media({
-    this.group,
+  Group({
     this.contents,
     this.credits,
     this.category,
     this.rating,
   });
 
-  factory Media.parse(XmlElement element) {
-    return new Media(
-      group: new Group.parse(
-        findElementOrNull(element, "media:group"),
-      ),
+  factory Group.parse(XmlElement element) {
+    if (element == null) {
+      return null;
+    }
+    return new Group(
       contents: element.findElements("media:content").map((e) {
         return new Content.parse(e);
       }).toList(),

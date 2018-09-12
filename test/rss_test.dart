@@ -90,6 +90,11 @@ void main() {
     expect(item.link, "http://www.foo.com");
     expect(item.pubDate, "Mon, 27 Aug 2001 16:08:56 PST");
 
+    expect(item.media.group.contents.length, 5);
+    expect(item.media.group.credits.length, 2);
+    expect(item.media.group.category.value, "music/artist name/album/song");
+    expect(item.media.group.rating.value, "nonadult");
+
     expect(item.media.contents.length, 2);
     var mediaContent = item.media.contents.first;
     expect(mediaContent.url, "http://www.foo.com/video.mov");
@@ -102,5 +107,18 @@ void main() {
     expect(mediaContent.framerate, 25);
     expect(mediaContent.samplingrate, 44.1);
     expect(mediaContent.channels, 2);
+
+    expect(item.media.credits.length, 2);
+    var mediaCredit = item.media.credits.first;
+    expect(mediaCredit.role, "owner1");
+    expect(mediaCredit.scheme, "urn:yvs");
+    expect(mediaCredit.value, "copyright holder of the entity");
+
+    expect(item.media.category.scheme, "http://search.yahoo.com/mrss/category_ schema");
+    expect(item.media.category.label, "Music");
+    expect(item.media.category.value, "music/artist/album/song");
+
+    expect(item.media.rating.scheme, "urn:simple");
+    expect(item.media.rating.value, "adult");
   });
 }

@@ -10,6 +10,30 @@
       <pubDate>Mon, 27 Aug 2001 16:08:56 PST</pubDate>
       <media:content url="http://www.foo.com/video.mov" fileSize="2000" medium="video" isDefault="true" expression="full" bitrate="128" framerate="25" samplingrate="44.1" channels="2" type="video/quicktime" />
       <media:content url="http://www.foo.com/video2.mov" fileSize="2000" bitrate="128" type="video/quicktime" expression="full" />
+      <media:credit role="owner1" scheme="urn:yvs">copyright holder of the entity</media:credit>
+      <media:credit role="owner2" scheme="urn:yvs">copyright holder of the entity</media:credit>
+      <media:category scheme="http://search.yahoo.com/mrss/category_ schema" label="Music">music/artist/album/song</media:category>
+      <media:rating scheme="urn:simple">adult</media:rating>
+      <media:group>
+        <media:content url="http://www.foo.com/song64kbps.mp3"
+          fileSize="1000" bitrate="64" type="audio/mpeg"
+          isDefault="true" expression="full" />
+        <media:content url="http://www.foo.com/song128kbps.mp3"
+          fileSize="2000" bitrate="128" type="audio/mpeg"
+          expression="full" />
+        <media:content url="http://www.foo.com/song256kbps.mp3"
+          fileSize="4000" bitrate="256" type="audio/mpeg"
+          expression="full" />
+        <media:content url="http://www.foo.com/song512kbps.mp3.torrent"
+          fileSize="8000" type="application/x-bittorrent;enclosed=audio/mpeg"
+          expression="full" />
+        <media:content url="http://www.foo.com/song.wav"
+          fileSize="16000" type="audio/x-wav" expression="full" />
+        <media:credit role="musician">band member 1</media:credit>
+        <media:credit role="musician">band member 2</media:credit>
+        <media:category>music/artist name/album/song</media:category>
+        <media:rating>nonadult</media:rating>
+      </media:group>
       <media:community>
         <media:starRating average="3.5" count="20" min="1" max="10" />
         <media:statistics views="5" favorites="5" />

@@ -2,6 +2,14 @@ import 'dart:core';
 
 import 'package:xml/xml.dart';
 
+XmlElement findElementOrNull(XmlElement element, String name) {
+  try {
+    return element.findAllElements(name).first;
+  } on StateError {
+    return null;
+  }
+}
+
 String xmlGetString(XmlElement element, String name, {strict: true}) {
   try {
     return element.findElements(name).first.text;
