@@ -67,7 +67,8 @@ class AtomFeed {
 
     AtomGenerator generator;
     try {
-      generator = new AtomGenerator.parse(feedElement.findElements("generator").first);
+      generator =
+          new AtomGenerator.parse(feedElement.findElements("generator").first);
     } on StateError {}
 
     var icon = xmlGetString(feedElement, "icon", strict: false);

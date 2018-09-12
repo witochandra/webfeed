@@ -8,7 +8,14 @@ class AtomLink {
   String title;
   int length;
 
-  AtomLink(this.href, this.rel, this.type, this.hreflang, this.title, this.length);
+  AtomLink(
+    this.href,
+    this.rel,
+    this.type,
+    this.hreflang,
+    this.title,
+    this.length,
+  );
 
   factory AtomLink.parse(XmlElement element) {
     var href = element.getAttribute("href");

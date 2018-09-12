@@ -7,7 +7,13 @@ class RssCloud {
   String registerProcedure;
   String protocol;
 
-  RssCloud(this.domain, this.port, this.path, this.registerProcedure, this.protocol);
+  RssCloud(
+    this.domain,
+    this.port,
+    this.path,
+    this.registerProcedure,
+    this.protocol,
+  );
 
   factory RssCloud.parse(XmlElement node) {
     var domain = node.getAttribute("domain");

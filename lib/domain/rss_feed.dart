@@ -53,7 +53,8 @@ class RssFeed {
       throw new ArgumentError("channel not found");
     }
     var title = xmlGetString(channelElement, "title");
-    var description = xmlGetString(channelElement, "description", strict: false);
+    var description =
+        xmlGetString(channelElement, "description", strict: false);
     var link = xmlGetString(channelElement, "link", strict: false);
 
     var feeds = channelElement.findElements("item").map((element) {
@@ -93,12 +94,14 @@ class RssFeed {
       }).toList();
     }
 
-    var lastBuildDate = xmlGetString(channelElement, "lastBuildDate", strict: false);
+    var lastBuildDate =
+        xmlGetString(channelElement, "lastBuildDate", strict: false);
     var language = xmlGetString(channelElement, "language", strict: false);
     var generator = xmlGetString(channelElement, "generator", strict: false);
     var copyright = xmlGetString(channelElement, "copyright", strict: false);
     var docs = xmlGetString(channelElement, "docs", strict: false);
-    var managingEditor = xmlGetString(channelElement, "managingEditor", strict: false);
+    var managingEditor =
+        xmlGetString(channelElement, "managingEditor", strict: false);
     var rating = xmlGetString(channelElement, "rating", strict: false);
     var webMaster = xmlGetString(channelElement, "webMaster", strict: false);
     var ttl = xmlGetInt(channelElement, "ttl", strict: false);

@@ -51,7 +51,8 @@ class RssItem {
 
     RssContent content;
     try {
-      content = new RssContent.parse(element.findElements("content:encoded").first);
+      content =
+          new RssContent.parse(element.findElements("content:encoded").first);
     } on StateError {}
 
     return new RssItem(
