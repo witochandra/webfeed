@@ -76,4 +76,31 @@ void main() {
     expect(feed.items.first.content.value, "<img width=\"1000\" height=\"690\" src=\"https://test.com/image_link\"/> Test content<br />");
     expect(feed.items.first.content.images.first, "https://test.com/image_link");
   });
+  test("parsing RSS-Media.xml", (){
+    var xmlString = new File("test/xml/RSS-Media.xml").readAsStringSync();
+
+    var feed = new RssFeed.parse(xmlString);
+    expect(feed.title, "Song Site");
+    expect(feed.description, "Media RSS example with new fields added in v1.5.0");
+
+    expect(feed.items.length, 1);
+    
+    var item = feed.items.first;
+    expect(item.title, null);
+    expect(item.link, "http://www.foo.com");
+    expect(item.pubDate, "Mon, 27 Aug 2001 16:08:56 PST");
+
+    expect(item.media.contents.length, 2);
+    var mediaContent = item.media.contents.first;
+    expect(mediaContent.url, "http://www.foo.com/video.mov");
+    expect(mediaContent.type, "video/quicktime");
+    expect(mediaContent.fileSize, 2000);
+    expect(mediaContent.medium, "video");
+    expect(mediaContent.isDefault, true);
+    expect(mediaContent.expression, "full");
+    expect(mediaContent.bitrate, 128);
+    expect(mediaContent.framerate, 25);
+    expect(mediaContent.samplingrate, 44.1);
+    expect(mediaContent.channels, 2);
+  });
 }

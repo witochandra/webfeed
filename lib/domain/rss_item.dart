@@ -1,3 +1,4 @@
+import 'package:webfeed/domain/media/media.dart';
 import 'package:webfeed/domain/rss_category.dart';
 import 'package:webfeed/domain/rss_content.dart';
 import 'package:webfeed/domain/rss_source.dart';
@@ -16,11 +17,12 @@ class RssItem {
   final String comments;
   final RssSource source;
   final RssContent content;
+  final Media media;
 
-  RssItem(
+  RssItem({
     this.title,
     this.description,
-    this.link, {
+    this.link,
     this.categories,
     this.guid,
     this.pubDate,
@@ -28,10 +30,11 @@ class RssItem {
     this.comments,
     this.source,
     this.content,
+    this.media,
   });
 
   factory RssItem.parse(XmlElement element) {
-    var title = xmlGetString(element, "title");
+    var title = xmlGetString(element, "title", strict: false);
     var description = xmlGetString(element, "description", strict: false);
     var link = xmlGetString(element, "link", strict: false);
 
@@ -56,9 +59,9 @@ class RssItem {
     } on StateError {}
 
     return new RssItem(
-      title,
-      description,
-      link,
+      title: title,
+      description: description,
+      link: link,
       categories: categories,
       guid: guid,
       pubDate: pubDate,
@@ -66,6 +69,7 @@ class RssItem {
       comments: comments,
       source: source,
       content: content,
+      media: Media.parse(element),
     );
   }
 
