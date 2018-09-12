@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>foo-bar-id</id>
+    <title type="text">Foo bar news</title>
+    <updated>2018-04-06T13:02:46Z</updated>
+    <link rel="foo" type="text/html" hreflang="en" href="http://foo.bar.news/" title="Foo bar news html" length="1000"/>
+    <link rel="bar" type="application/atom+xml" hreflang="pt" href="http://foo.bar.news/feed.atom" title="Foo bar news atom" length="100"/>
+    <author>
+        <name>Alice</name>
+        <uri>http://foo.bar.news/people/alice</uri>
+        <email>alice@foo.bar.news</email>
+    </author>
+    <author>
+        <name>Bob</name>
+        <uri>http://foo.bar.news/people/bob</uri>
+        <email>bob@foo.bar.news</email>
+    </author>
+    <contributor>
+        <name>Charlie</name>
+        <uri>http://foo.bar.news/people/charlie</uri>
+        <email>charlie@foo.bar.news</email>
+    </contributor>
+    <contributor>
+        <name>David</name>
+        <uri>http://foo.bar.news/people/david</uri>
+        <email>david@foo.bar.news</email>
+    </contributor>
+    <category term="foo category" scheme="this-is-foo-scheme" label="this is foo label"/>
+    <category term="bar category" scheme="this-is-bar-scheme" label="this is bar label"/>
+    <generator uri="http://foo.bar.news/generator" version="1.0">Foo bar generator</generator>
+    <icon>http://foo.bar.news/icon.png</icon>
+    <logo>http://foo.bar.news/logo.png</logo>
+    <subtitle>This is subtitle</subtitle>
+    <entry>
+        <id>foo-bar-entry-id-1</id>
+        <title>Foo bar item 1</title>
+        <media:content url="http://www.foo.com/video.mov" fileSize="2000" medium="video" isDefault="true" expression="full" bitrate="128" framerate="25" samplingrate="44.1" channels="2" type="video/quicktime" />
+        <media:content url="http://www.foo.com/video2.mov" fileSize="2000" bitrate="128" type="video/quicktime" expression="full" />
+        <media:credit role="owner1" scheme="urn:yvs">copyright holder of the entity</media:credit>
+        <media:credit role="owner2" scheme="urn:yvs">copyright holder of the entity</media:credit>
+        <media:category scheme="http://search.yahoo.com/mrss/category_ schema" label="Music">music/artist/album/song</media:category>
+        <media:rating scheme="urn:simple">adult</media:rating>
+        <media:group>
+            <media:content url="http://www.foo.com/song64kbps.mp3" fileSize="1000" bitrate="64" type="audio/mpeg" isDefault="true" expression="full" />
+            <media:content url="http://www.foo.com/song128kbps.mp3" fileSize="2000" bitrate="128" type="audio/mpeg" expression="full" />
+            <media:content url="http://www.foo.com/song256kbps.mp3" fileSize="4000" bitrate="256" type="audio/mpeg" expression="full" />
+            <media:content url="http://www.foo.com/song512kbps.mp3.torrent" fileSize="8000" type="application/x-bittorrent;enclosed=audio/mpeg" expression="full" />
+            <media:content url="http://www.foo.com/song.wav" fileSize="16000" type="audio/x-wav" expression="full" />
+            <media:credit role="musician">band member 1</media:credit>
+            <media:credit role="musician">band member 2</media:credit>
+            <media:category>music/artist name/album/song</media:category>
+            <media:rating>nonadult</media:rating>
+        </media:group>
+        <media:title type="plain">The Judy's -- The Moo Song</media:title>
+        <media:description type="plain">This was some really bizarre band I listened to as a young lad.</media:description>
+        <media:keywords>kitty, cat, big dog, yarn, fluffy</media:keywords>
+        <media:thumbnail url="http://www.foo.com/keyframe1.jpg" width="75" height="50" time="12:05:01.123" />
+        <media:thumbnail url="http://www.foo.com/keyframe2.jpg" width="150" height="100" time="12:05:01.125" />
+        <media:hash algo="md5">dfdec888b72151965a34b4b59031290a</media:hash>
+        <media:player url="http://www.foo.com/player?id=1111" height="200" width="400" />
+        <media:copyright url="http://blah.com/additional-info.html">2005 FooBar Media</media:copyright>
+        <media:text type="plain" lang="en" start="00:00:03.000" end="00:00:10.000"> Oh, say, can you see</media:text>
+        <media:restriction relationship="allow" type="country">au us</media:restriction>
+        <media:community>
+            <media:starRating average="3.5" count="20" min="1" max="10" />
+            <media:statistics views="5" favorites="4" />
+            <media:tags>news: 5, abc:3</media:tags>
+        </media:community>
+        <media:comments>
+            <media:comment>comment1</media:comment>
+            <media:comment>comment2</media:comment>
+        </media:comments>
+        <media:embed url="http://www.foo.com/player.swf" width="512" height="323">
+            <media:param name="type">application/x-shockwave-flash</media:param>
+            <media:param name="width">512</media:param>
+            <media:param name="height">323</media:param>
+            <media:param name="allowFullScreen">true</media:param>
+            <media:param name="flashVars"> id=12345&amp;vid=678912i&amp;lang=en-us&amp;intl=us&amp;thumbUrl=http://www.foo.com/thumbnail.jpg
+            </media:param>
+        </media:embed>
+        <media:responses>
+            <media:response>http://www.response1.com</media:response>
+            <media:response>http://www.response2.com</media:response>
+        </media:responses>
+        <media:backLinks>
+            <media:backLink>http://www.backlink1.com</media:backLink>
+            <media:backLink>http://www.backlink2.com</media:backLink>
+        </media:backLinks>
+        <media:status state="active" />
+        <media:price type="rent" price="19.99" info="http://www.dummy.jp/package_info.html" currency="EUR" />
+        <media:price type="buy" price="39.99" currency="EUR" />
+        <media:license type="text/html" href="http://www.licensehost.com/license"> Sample license for a video</media:license>
+        <media:subTitle type="application/smil" lang="en-us" href="http://www.foo.org/subtitle.smil" />
+        <media:peerLink type="application/x-bittorrent" href="http://www.foo.org/sampleFile.torrent" />
+        <media:location description="My house" start="00:01" end="01:00">
+            <georss:where>
+                <gml:Point>
+                    <gml:pos>35.669998 139.770004</gml:pos>
+                </gml:Point>
+            </georss:where>
+        </media:location>
+        <media:rights status="official" />
+        <media:scenes>
+            <media:scene>
+                <sceneTitle>sceneTitle1</sceneTitle>
+                <sceneDescription>sceneDesc1</sceneDescription>
+                <sceneStartTime>00:15</sceneStartTime>
+                <sceneEndTime>00:45</sceneEndTime>
+            </media:scene>
+            <media:scene>
+                <sceneTitle>sceneTitle2</sceneTitle>
+                <sceneDescription>sceneDesc2</sceneDescription>
+                <sceneStartTime>00:15</sceneStartTime>
+                <sceneEndTime>00:55</sceneEndTime>
+            </media:scene>
+        </media:scenes>
+    </entry>
+</feed>

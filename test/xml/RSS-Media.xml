@@ -1,5 +1,6 @@
-<rss version="2.0" xmlns:media="http://search.yahoo.com/mrss/"
-  xmlns:georss="http://www.georss.org/georss"
+<rss version="2.0" 
+  xmlns:media="http://search.yahoo.com/mrss/" 
+  xmlns:georss="http://www.georss.org/georss" 
   xmlns:gml="http://www.opengis.net/gml">
 
   <channel>
@@ -15,28 +16,29 @@
       <media:category scheme="http://search.yahoo.com/mrss/category_ schema" label="Music">music/artist/album/song</media:category>
       <media:rating scheme="urn:simple">adult</media:rating>
       <media:group>
-        <media:content url="http://www.foo.com/song64kbps.mp3"
-          fileSize="1000" bitrate="64" type="audio/mpeg"
-          isDefault="true" expression="full" />
-        <media:content url="http://www.foo.com/song128kbps.mp3"
-          fileSize="2000" bitrate="128" type="audio/mpeg"
-          expression="full" />
-        <media:content url="http://www.foo.com/song256kbps.mp3"
-          fileSize="4000" bitrate="256" type="audio/mpeg"
-          expression="full" />
-        <media:content url="http://www.foo.com/song512kbps.mp3.torrent"
-          fileSize="8000" type="application/x-bittorrent;enclosed=audio/mpeg"
-          expression="full" />
-        <media:content url="http://www.foo.com/song.wav"
-          fileSize="16000" type="audio/x-wav" expression="full" />
+        <media:content url="http://www.foo.com/song64kbps.mp3" fileSize="1000" bitrate="64" type="audio/mpeg" isDefault="true" expression="full" />
+        <media:content url="http://www.foo.com/song128kbps.mp3" fileSize="2000" bitrate="128" type="audio/mpeg" expression="full" />
+        <media:content url="http://www.foo.com/song256kbps.mp3" fileSize="4000" bitrate="256" type="audio/mpeg" expression="full" />
+        <media:content url="http://www.foo.com/song512kbps.mp3.torrent" fileSize="8000" type="application/x-bittorrent;enclosed=audio/mpeg" expression="full" />
+        <media:content url="http://www.foo.com/song.wav" fileSize="16000" type="audio/x-wav" expression="full" />
         <media:credit role="musician">band member 1</media:credit>
         <media:credit role="musician">band member 2</media:credit>
         <media:category>music/artist name/album/song</media:category>
         <media:rating>nonadult</media:rating>
       </media:group>
+      <media:title type="plain">The Judy's -- The Moo Song</media:title>
+      <media:description type="plain">This was some really bizarre band I listened to as a young lad.</media:description>
+      <media:keywords>kitty, cat, big dog, yarn, fluffy</media:keywords>
+      <media:thumbnail url="http://www.foo.com/keyframe1.jpg" width="75" height="50" time="12:05:01.123" />
+      <media:thumbnail url="http://www.foo.com/keyframe2.jpg" width="150" height="100" time="12:05:01.125" />
+      <media:hash algo="md5">dfdec888b72151965a34b4b59031290a</media:hash>
+      <media:player url="http://www.foo.com/player?id=1111" height="200" width="400" />
+      <media:copyright url="http://blah.com/additional-info.html">2005 FooBar Media</media:copyright>
+      <media:text type="plain" lang="en" start="00:00:03.000" end="00:00:10.000"> Oh, say, can you see</media:text>
+      <media:restriction relationship="allow" type="country">au us</media:restriction>
       <media:community>
         <media:starRating average="3.5" count="20" min="1" max="10" />
-        <media:statistics views="5" favorites="5" />
+        <media:statistics views="5" favorites="4" />
         <media:tags>news: 5, abc:3</media:tags>
       </media:community>
       <media:comments>
@@ -48,8 +50,7 @@
         <media:param name="width">512</media:param>
         <media:param name="height">323</media:param>
         <media:param name="allowFullScreen">true</media:param>
-        <media:param name="flashVars">
-          id=12345&amp;vid=678912i&amp;lang=en-us&amp;intl=us&amp;thumbUrl=http://www.foo.com/thumbnail.jpg
+        <media:param name="flashVars"> id=12345&amp;vid=678912i&amp;lang=en-us&amp;intl=us&amp;thumbUrl=http://www.foo.com/thumbnail.jpg
         </media:param>
       </media:embed>
       <media:responses>
@@ -61,24 +62,31 @@
         <media:backLink>http://www.backlink2.com</media:backLink>
       </media:backLinks>
       <media:status state="active" />
-      <media:price type="rent" price="19.99" currency="EUR" />
+      <media:price type="rent" price="19.99" info="http://www.dummy.jp/package_info.html" currency="EUR" />
+      <media:price type="buy" price="39.99" currency="EUR" />
       <media:license type="text/html" href="http://www.licensehost.com/license"> Sample license for a video</media:license>
       <media:subTitle type="application/smil" lang="en-us" href="http://www.foo.org/subtitle.smil" />
-      <media:peerLink type="application/x-bittorrent " href="http://www.foo.org/sampleFile.torrent" />
+      <media:peerLink type="application/x-bittorrent" href="http://www.foo.org/sampleFile.torrent" />
       <media:location description="My house" start="00:01" end="01:00">
         <georss:where>
           <gml:Point>
-          <gml:pos>35.669998 139.770004</gml:pos>
+            <gml:pos>35.669998 139.770004</gml:pos>
           </gml:Point>
         </georss:where>
       </media:location>
-      <media:restriction type="sharing" relationship="deny" />
+      <media:rights status="official" />
       <media:scenes>
         <media:scene>
           <sceneTitle>sceneTitle1</sceneTitle>
           <sceneDescription>sceneDesc1</sceneDescription>
           <sceneStartTime>00:15</sceneStartTime>
           <sceneEndTime>00:45</sceneEndTime>
+        </media:scene>
+        <media:scene>
+          <sceneTitle>sceneTitle2</sceneTitle>
+          <sceneDescription>sceneDesc2</sceneDescription>
+          <sceneStartTime>00:15</sceneStartTime>
+          <sceneEndTime>00:55</sceneEndTime>
         </media:scene>
       </media:scenes>
     </item>

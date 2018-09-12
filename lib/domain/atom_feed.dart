@@ -22,16 +22,21 @@ class AtomFeed {
   String rights;
   String subtitle;
 
-  AtomFeed(this.id, this.title, this.updated, this.items,
-      {this.links,
-      this.authors,
-      this.contributors,
-      this.categories,
-      this.generator,
-      this.icon,
-      this.logo,
-      this.rights,
-      this.subtitle});
+  AtomFeed({
+    this.id,
+    this.title,
+    this.updated,
+    this.items,
+    this.links,
+    this.authors,
+    this.contributors,
+    this.categories,
+    this.generator,
+    this.icon,
+    this.logo,
+    this.rights,
+    this.subtitle,
+  });
 
   factory AtomFeed.parse(String xmlString) {
     var document = parse(xmlString);
@@ -41,9 +46,9 @@ class AtomFeed {
     } on StateError {
       throw new ArgumentError("feed not found");
     }
-    var id = xmlGetString(feedElement, "id");
-    var title = xmlGetString(feedElement, "title");
-    var updated = xmlGetString(feedElement, "updated");
+    var id = xmlGetString(feedElement, "id", strict: false);
+    var title = xmlGetString(feedElement, "title", strict: false);
+    var updated = xmlGetString(feedElement, "updated", strict: false);
 
     var items = feedElement.findElements("entry").map((element) {
       return new AtomItem.parse(element);
@@ -76,7 +81,11 @@ class AtomFeed {
     var rights = xmlGetString(feedElement, "rights", strict: false);
     var subtitle = xmlGetString(feedElement, "subtitle", strict: false);
 
-    return new AtomFeed(id, title, updated, items,
+    return new AtomFeed(
+        id: id,
+        title: title,
+        updated: updated,
+        items: items,
         links: links,
         authors: authors,
         contributors: contributors,

@@ -2,39 +2,46 @@ import 'package:webfeed/domain/atom_category.dart';
 import 'package:webfeed/domain/atom_link.dart';
 import 'package:webfeed/domain/atom_person.dart';
 import 'package:webfeed/domain/atom_source.dart';
+import 'package:webfeed/domain/media/media.dart';
 import 'package:webfeed/util/helpers.dart';
 import 'package:xml/xml.dart';
 
 class AtomItem {
-  String id;
-  String title;
-  String updated;
+  final String id;
+  final String title;
+  final String updated;
 
-  List<AtomPerson> authors;
-  List<AtomLink> links;
-  List<AtomCategory> categories;
-  List<AtomPerson> contributors;
-  AtomSource source;
-  String published;
-  String content;
-  String summary;
-  String rights;
+  final List<AtomPerson> authors;
+  final List<AtomLink> links;
+  final List<AtomCategory> categories;
+  final List<AtomPerson> contributors;
+  final AtomSource source;
+  final String published;
+  final String content;
+  final String summary;
+  final String rights;
+  final Media media;
 
-  AtomItem(this.id, this.title, this.updated,
-      {this.authors,
-      this.links,
-      this.categories,
-      this.contributors,
-      this.source,
-      this.published,
-      this.content,
-      this.summary,
-      this.rights});
+  AtomItem({
+    this.id,
+    this.title,
+    this.updated,
+    this.authors,
+    this.links,
+    this.categories,
+    this.contributors,
+    this.source,
+    this.published,
+    this.content,
+    this.summary,
+    this.rights,
+    this.media,
+  });
 
   factory AtomItem.parse(XmlElement element) {
-    var id = xmlGetString(element, "id");
-    var title = xmlGetString(element, "title");
-    var updated = xmlGetString(element, "updated");
+    var id = xmlGetString(element, "id", strict: false);
+    var title = xmlGetString(element, "title", strict: false);
+    var updated = xmlGetString(element, "updated", strict: false);
 
     var authors = element.findElements("author").map((element) {
       return new AtomPerson.parse(element);
@@ -62,16 +69,21 @@ class AtomItem {
     var summary = xmlGetString(element, "summary", strict: false);
     var rights = xmlGetString(element, "rights", strict: false);
 
-    return new AtomItem(id, title, updated,
-        authors: authors,
-        links: links,
-        categories: categories,
-        contributors: contributors,
-        source: source,
-        published: published,
-        content: content,
-        summary: summary,
-        rights: rights);
+    return new AtomItem(
+      id: id,
+      title: title,
+      updated: updated,
+      authors: authors,
+      links: links,
+      categories: categories,
+      contributors: contributors,
+      source: source,
+      published: published,
+      content: content,
+      summary: summary,
+      rights: rights,
+      media: new Media.parse(element),
+    );
   }
 
   @override

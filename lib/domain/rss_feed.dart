@@ -28,21 +28,26 @@ class RssFeed {
   final String webMaster;
   final int ttl;
 
-  RssFeed(this.title, this.description, this.link, this.items,
-      {this.image,
-      this.cloud,
-      this.categories,
-      this.skipDays,
-      this.skipHours,
-      this.lastBuildDate,
-      this.language,
-      this.generator,
-      this.copyright,
-      this.docs,
-      this.managingEditor,
-      this.rating,
-      this.webMaster,
-      this.ttl});
+  RssFeed({
+    this.title,
+    this.description,
+    this.link,
+    this.items,
+    this.image,
+    this.cloud,
+    this.categories,
+    this.skipDays,
+    this.skipHours,
+    this.lastBuildDate,
+    this.language,
+    this.generator,
+    this.copyright,
+    this.docs,
+    this.managingEditor,
+    this.rating,
+    this.webMaster,
+    this.ttl,
+  });
 
   factory RssFeed.parse(String xmlString) {
     var document = parse(xmlString);
@@ -52,7 +57,7 @@ class RssFeed {
     } on StateError {
       throw new ArgumentError("channel not found");
     }
-    var title = xmlGetString(channelElement, "title");
+    var title = xmlGetString(channelElement, "title", strict: false);
     var description =
         xmlGetString(channelElement, "description", strict: false);
     var link = xmlGetString(channelElement, "link", strict: false);
@@ -106,21 +111,26 @@ class RssFeed {
     var webMaster = xmlGetString(channelElement, "webMaster", strict: false);
     var ttl = xmlGetInt(channelElement, "ttl", strict: false);
 
-    return new RssFeed(title, description, link, feeds,
-        image: image,
-        cloud: cloud,
-        categories: categories,
-        skipDays: skipDays,
-        skipHours: skipHours,
-        lastBuildDate: lastBuildDate,
-        language: language,
-        generator: generator,
-        copyright: copyright,
-        docs: docs,
-        managingEditor: managingEditor,
-        rating: rating,
-        webMaster: webMaster,
-        ttl: ttl);
+    return new RssFeed(
+      title: title,
+      description: description,
+      link: link,
+      items: feeds,
+      image: image,
+      cloud: cloud,
+      categories: categories,
+      skipDays: skipDays,
+      skipHours: skipHours,
+      lastBuildDate: lastBuildDate,
+      language: language,
+      generator: generator,
+      copyright: copyright,
+      docs: docs,
+      managingEditor: managingEditor,
+      rating: rating,
+      webMaster: webMaster,
+      ttl: ttl,
+    );
   }
 
   @override
