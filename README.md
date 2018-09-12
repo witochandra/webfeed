@@ -9,13 +9,13 @@ A dart package for parsing RSS and Atom feed.
 
 - [x] RSS
 - [x] Atom
-- [ ] JSON
+- [x] Media RSS
 
 ### Installing
 
 Add this line into your `pubspec.yaml`
 ```
-webfeed: ^0.2.3
+webfeed: ^0.3.0
 ```
 
 Import the package into your dart code using:
@@ -64,6 +64,7 @@ item.pubDate
 item.author
 item.comments
 item.source
+item.media
 ```
 
 **Atom**
@@ -95,6 +96,7 @@ item.published
 item.content
 item.summary
 item.rights
+item.media
 ```
 
 ## License
