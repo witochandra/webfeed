@@ -3,19 +3,21 @@
 [![Build Status](https://travis-ci.org/witochandra/webfeed.svg?branch=master)](https://travis-ci.org/witochandra/webfeed)
 [![Pub](https://img.shields.io/pub/v/webfeed.svg)](https://pub.dartlang.org/packages/webfeed)
 
-A dart package for parsing RSS and Atom feed.
+A dart package for parsing RSS and Atom feed. Supporting
 
 ### Features
 
 - [x] RSS
 - [x] Atom
-- [x] Media RSS
+- [x] Namespaces
+    - [x] Media RSS
+    - [x] Dublin Core
 
 ### Installing
 
 Add this line into your `pubspec.yaml`
 ```
-webfeed: ^0.3.0
+webfeed: ^0.4.0
 ```
 
 Import the package into your dart code using:
@@ -53,6 +55,7 @@ feed.managingEditor
 feed.rating
 feed.webMaster
 feed.ttl
+feed.dc
 
 RssItem item = feed.items.first;
 item.title
@@ -65,6 +68,8 @@ item.author
 item.comments
 item.source
 item.media
+item.enclosure
+item.dc
 ```
 
 **Atom**

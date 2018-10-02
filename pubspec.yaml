@@ -1,5 +1,5 @@
 name: webfeed
-version: 0.3.0
+version: 0.4.0
 description: webfeed is a dart package for parsing RSS and Atom feeds.
 author: Wito Chandra <wito.c.91@gmail.com>
 homepage: https://github.com/witochandra/webfeed
