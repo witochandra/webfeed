@@ -6,18 +6,13 @@ class RssSource {
 
   RssSource(this.url, this.value);
 
-  factory RssSource.parse(XmlElement node) {
-    var url = node.getAttribute("url");
-    var value = node.text;
+  factory RssSource.parse(XmlElement element) {
+    if (element == null) {
+      return null;
+    }
+    var url = element.getAttribute("url");
+    var value = element.text;
 
     return new RssSource(url, value);
-  }
-
-  @override
-  String toString() {
-    return '''
-      url: $url
-      value: $value
-    ''';
   }
 }

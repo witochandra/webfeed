@@ -1,23 +1,18 @@
 import 'package:xml/xml.dart';
 
 class RssCategory {
-  String domain;
-  String value;
+  final String domain;
+  final String value;
 
   RssCategory(this.domain, this.value);
 
-  factory RssCategory.parse(XmlElement node) {
-    var domain = node.getAttribute("domain");
-    var value = node.text;
+  factory RssCategory.parse(XmlElement element) {
+    if (element == null) {
+      return null;
+    }
+    var domain = element.getAttribute("domain");
+    var value = element.text;
 
     return new RssCategory(domain, value);
-  }
-
-  @override
-  String toString() {
-    return '''
-      domain: $domain
-      value: $value
-    ''';
   }
 }
