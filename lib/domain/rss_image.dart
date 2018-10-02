@@ -12,19 +12,10 @@ class RssImage {
     if (element == null) {
       return null;
     }
-    var title = xmlGetString(element, "title", strict: false);
-    var url = xmlGetString(element, "url", strict: false);
-    var link = xmlGetString(element, "link", strict: false);
+    var title = findElementOrNull(element, "title")?.text;
+    var url = findElementOrNull(element, "url")?.text;
+    var link = findElementOrNull(element, "link")?.text;
 
-    return new RssImage(title, url, link);
-  }
-
-  @override
-  String toString() {
-    return '''
-      title: $title
-      url: $url
-      link: $link
-    ''';
+    return RssImage(title, url, link);
   }
 }

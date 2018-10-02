@@ -250,4 +250,48 @@ void main() {
     expect(feed.items.first.dc.coverage, "coverage");
     expect(feed.items.first.dc.rights, "rights");
   });
+
+  test("parse RSS-Empty.xml", () {
+    var xmlString = File("test/xml/RSS-Empty.xml").readAsStringSync();
+
+    var feed = RssFeed.parse(xmlString);
+    
+    expect(feed.title, null);
+    expect(feed.description, null);
+    expect(feed.link, null);
+    expect(feed.language, null);
+    expect(feed.lastBuildDate, null);
+    expect(feed.generator, null);
+    expect(feed.copyright, null);
+    expect(feed.docs, null);
+    expect(feed.managingEditor, null);
+    expect(feed.rating, null);
+    expect(feed.webMaster, null);
+    expect(feed.ttl, 0);
+
+    expect(feed.image, null);
+
+    expect(feed.cloud, null);
+
+    expect(feed.categories.length, 0);
+
+    expect(feed.skipDays.length, 0);
+
+    expect(feed.skipHours.length, 0);
+
+    expect(feed.items.length, 1);
+
+    expect(feed.items.first.title, null);
+    expect(feed.items.first.description, null);
+    expect(feed.items.first.link, null);
+    expect(feed.items.first.guid, null);
+    expect(feed.items.first.pubDate, null);
+    expect(feed.items.first.categories.length, 0);
+    expect(feed.items.first.author, null);
+    expect(feed.items.first.source, null);
+    expect(feed.items.first.comments, null);
+    expect(feed.items.first.enclosure, null);
+
+    expect(feed.items.first.content, null);
+  });
 }

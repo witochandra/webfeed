@@ -6,7 +6,6 @@ import 'package:webfeed/domain/rss_enclosure.dart';
 import 'package:webfeed/domain/rss_source.dart';
 import 'package:webfeed/util/helpers.dart';
 import 'package:xml/xml.dart';
-import 'package:webfeed/util/helpers.dart';
 
 class RssItem {
   final String title;

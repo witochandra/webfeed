@@ -7,20 +7,20 @@ import 'package:webfeed/util/helpers.dart';
 import 'package:xml/xml.dart';
 
 class AtomFeed {
-  String id;
-  String title;
-  String updated;
-  List<AtomItem> items;
+  final String id;
+  final String title;
+  final String updated;
+  final List<AtomItem> items;
 
-  List<AtomLink> links;
-  List<AtomPerson> authors;
-  List<AtomPerson> contributors;
-  List<AtomCategory> categories;
-  AtomGenerator generator;
-  String icon;
-  String logo;
-  String rights;
-  String subtitle;
+  final List<AtomLink> links;
+  final List<AtomPerson> authors;
+  final List<AtomPerson> contributors;
+  final List<AtomCategory> categories;
+  final AtomGenerator generator;
+  final String icon;
+  final String logo;
+  final String rights;
+  final String subtitle;
 
   AtomFeed({
     this.id,
@@ -46,73 +46,32 @@ class AtomFeed {
     } on StateError {
       throw new ArgumentError("feed not found");
     }
-    var id = xmlGetString(feedElement, "id", strict: false);
-    var title = xmlGetString(feedElement, "title", strict: false);
-    var updated = xmlGetString(feedElement, "updated", strict: false);
 
-    var items = feedElement.findElements("entry").map((element) {
-      return new AtomItem.parse(element);
-    }).toList();
-
-    var links = feedElement.findElements("link").map((element) {
-      return new AtomLink.parse(element);
-    }).toList();
-
-    var authors = feedElement.findElements("author").map((element) {
-      return new AtomPerson.parse(element);
-    }).toList();
-
-    var contributors = feedElement.findElements("contributor").map((element) {
-      return new AtomPerson.parse(element);
-    }).toList();
-
-    var categories = feedElement.findElements("category").map((element) {
-      return new AtomCategory.parse(element);
-    }).toList();
-
-    AtomGenerator generator;
-    try {
-      generator =
-          new AtomGenerator.parse(feedElement.findElements("generator").first);
-    } on StateError {}
-
-    var icon = xmlGetString(feedElement, "icon", strict: false);
-    var logo = xmlGetString(feedElement, "logo", strict: false);
-    var rights = xmlGetString(feedElement, "rights", strict: false);
-    var subtitle = xmlGetString(feedElement, "subtitle", strict: false);
-
-    return new AtomFeed(
-        id: id,
-        title: title,
-        updated: updated,
-        items: items,
-        links: links,
-        authors: authors,
-        contributors: contributors,
-        categories: categories,
-        generator: generator,
-        icon: icon,
-        logo: logo,
-        rights: rights,
-        subtitle: subtitle);
-  }
-
-  @override
-  String toString() {
-    return '''
-      id: $id
-      title: $title
-      updated: $updated
-      items: $items
-      links: $links
-      authors: $authors
-      contributors: $contributors
-      categories: $categories
-      generator: $generator
-      icon: $icon
-      logo: $logo
-      rights: $rights
-      subtitle: $subtitle
-    ''';
+    return AtomFeed(
+      id: findElementOrNull(feedElement, "id")?.text,
+      title: findElementOrNull(feedElement, "title")?.text,
+      updated: findElementOrNull(feedElement, "updated")?.text,
+      items: feedElement.findElements("entry").map((element) {
+        return AtomItem.parse(element);
+      }).toList(),
+      links: feedElement.findElements("link").map((element) {
+        return AtomLink.parse(element);
+      }).toList(),
+      authors: feedElement.findElements("author").map((element) {
+        return AtomPerson.parse(element);
+      }).toList(),
+      contributors: feedElement.findElements("contributor").map((element) {
+        return AtomPerson.parse(element);
+      }).toList(),
+      categories: feedElement.findElements("category").map((element) {
+        return AtomCategory.parse(element);
+      }).toList(),
+      generator:
+          AtomGenerator.parse(findElementOrNull(feedElement, "generator")),
+      icon: findElementOrNull(feedElement, "icon")?.text,
+      logo: findElementOrNull(feedElement, "logo")?.text,
+      rights: findElementOrNull(feedElement, "rights")?.text,
+      subtitle: findElementOrNull(feedElement, "subtitle")?.text,
+    );
   }
 }

@@ -13,6 +13,6 @@ class RssCategory {
     var domain = element.getAttribute("domain");
     var value = element.text;
 
-    return new RssCategory(domain, value);
+    return RssCategory(domain, value);
   }
 }

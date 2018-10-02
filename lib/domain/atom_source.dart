@@ -2,26 +2,20 @@ import 'package:webfeed/util/helpers.dart';
 import 'package:xml/xml.dart';
 
 class AtomSource {
-  String id;
-  String title;
-  String updated;
+  final String id;
+  final String title;
+  final String updated;
 
   AtomSource(this.id, this.title, this.updated);
 
   factory AtomSource.parse(XmlElement element) {
-    var id = xmlGetString(element, "id", strict: false);
-    var title = xmlGetString(element, "title", strict: false);
-    var updated = xmlGetString(element, "updated", strict: false);
+    if (element == null) {
+      return null;
+    }
+    var id = findElementOrNull(element, "id")?.text;
+    var title = findElementOrNull(element, "title")?.text;
+    var updated = findElementOrNull(element, "updated")?.text;
 
-    return new AtomSource(id, title, updated);
-  }
-
-  @override
-  String toString() {
-    return '''
-      id: $id
-      title: $title
-      updated: $updated
-    ''';
+    return AtomSource(id, title, updated);
   }
 }

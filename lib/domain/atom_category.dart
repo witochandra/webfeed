@@ -1,9 +1,9 @@
 import 'package:xml/xml.dart';
 
 class AtomCategory {
-  String term;
-  String scheme;
-  String label;
+  final String term;
+  final String scheme;
+  final String label;
 
   AtomCategory(this.term, this.scheme, this.label);
 
@@ -11,15 +11,6 @@ class AtomCategory {
     var term = element.getAttribute("term");
     var scheme = element.getAttribute("scheme");
     var label = element.getAttribute("label");
-    return new AtomCategory(term, scheme, label);
-  }
-
-  @override
-  String toString() {
-    return '''
-      term: $term
-      scheme: $scheme
-      label: $label
-    ''';
+    return AtomCategory(term, scheme, label);
   }
 }

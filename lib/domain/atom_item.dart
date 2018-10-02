@@ -39,68 +39,28 @@ class AtomItem {
   });
 
   factory AtomItem.parse(XmlElement element) {
-    var id = xmlGetString(element, "id", strict: false);
-    var title = xmlGetString(element, "title", strict: false);
-    var updated = xmlGetString(element, "updated", strict: false);
-
-    var authors = element.findElements("author").map((element) {
-      return new AtomPerson.parse(element);
-    }).toList();
-
-    var links = element.findElements("link").map((element) {
-      return new AtomLink.parse(element);
-    }).toList();
-
-    var categories = element.findElements("category").map((element) {
-      return new AtomCategory.parse(element);
-    }).toList();
-
-    var contributors = element.findElements("contributor").map((element) {
-      return new AtomPerson.parse(element);
-    }).toList();
-
-    AtomSource source;
-    try {
-      source = new AtomSource.parse(element.findElements("source").first);
-    } on StateError {}
-
-    var published = xmlGetString(element, "published", strict: false);
-    var content = xmlGetString(element, "content", strict: false);
-    var summary = xmlGetString(element, "summary", strict: false);
-    var rights = xmlGetString(element, "rights", strict: false);
-
-    return new AtomItem(
-      id: id,
-      title: title,
-      updated: updated,
-      authors: authors,
-      links: links,
-      categories: categories,
-      contributors: contributors,
-      source: source,
-      published: published,
-      content: content,
-      summary: summary,
-      rights: rights,
-      media: new Media.parse(element),
+    return AtomItem(
+      id: findElementOrNull(element, "id")?.text,
+      title: findElementOrNull(element, "title")?.text,
+      updated: findElementOrNull(element, "updated")?.text,
+      authors: element.findElements("author").map((element) {
+        return AtomPerson.parse(element);
+      }).toList(),
+      links: element.findElements("link").map((element) {
+        return AtomLink.parse(element);
+      }).toList(),
+      categories: element.findElements("category").map((element) {
+        return AtomCategory.parse(element);
+      }).toList(),
+      contributors: element.findElements("contributor").map((element) {
+        return AtomPerson.parse(element);
+      }).toList(),
+      source: AtomSource.parse(findElementOrNull(element, "source")),
+      published: findElementOrNull(element, "published")?.text,
+      content: findElementOrNull(element, "content")?.text,
+      summary: findElementOrNull(element, "summary")?.text,
+      rights: findElementOrNull(element, "rights")?.text,
+      media: Media.parse(element),
     );
-  }
-
-  @override
-  String toString() {
-    return '''
-      id: $id
-      title: $title
-      updated: $updated
-      authors: $authors
-      links: $links
-      categories: $categories
-      contributors: $contributors
-      source: $source
-      published: $published
-      content: $content
-      summary: $summary
-      rights: $rights
-    ''';
   }
 }

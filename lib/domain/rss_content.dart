@@ -25,14 +25,6 @@ class RssContent {
     _imagesRegExp.allMatches(content).forEach((match) {
       images.add(match.group(1));
     });
-    return new RssContent(content, images);
-  }
-
-  @override
-  String toString() {
-    return '''
-      content: $value
-      images: $images
-    ''';
+    return RssContent(content, images);
   }
 }

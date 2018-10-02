@@ -219,4 +219,38 @@ void main() {
     expect(item.media.scenes.first.startTime, "00:15");
     expect(item.media.scenes.first.endTime, "00:45");
   });
+
+  test("parse Atom-Empty.xml", () {
+    var xmlString = File("test/xml/Atom-Empty.xml").readAsStringSync();
+
+    var feed = AtomFeed.parse(xmlString);
+
+    expect(feed.id, null);
+    expect(feed.title, null);
+    expect(feed.updated, null);
+    expect(feed.links.length, 0);
+    expect(feed.authors.length, 0);
+    expect(feed.contributors.length, 0);
+    expect(feed.categories.length, 0);
+    expect(feed.generator, null);
+    expect(feed.icon, null);
+    expect(feed.logo, null);
+    expect(feed.subtitle, null);
+
+    expect(feed.items.length, 1);
+    var item = feed.items.first;
+
+    expect(item.authors.length, 0);
+
+    expect(item.links.length, 0);
+
+    expect(item.categories.length, 0);
+
+    expect(item.contributors.length, 0);
+
+    expect(item.published, null);
+    expect(item.summary, null);
+    expect(item.content, null);
+    expect(item.rights, null);
+  });
 }

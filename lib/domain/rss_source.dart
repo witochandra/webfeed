@@ -1,8 +1,8 @@
 import 'package:xml/xml/nodes/element.dart';
 
 class RssSource {
-  String url;
-  String value;
+  final String url;
+  final String value;
 
   RssSource(this.url, this.value);
 
@@ -13,6 +13,6 @@ class RssSource {
     var url = element.getAttribute("url");
     var value = element.text;
 
-    return new RssSource(url, value);
+    return RssSource(url, value);
   }
 }

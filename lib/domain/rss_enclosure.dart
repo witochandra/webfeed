@@ -14,6 +14,6 @@ class RssEnclosure {
     var url = element.getAttribute("url");
     var type = element.getAttribute("type");
     var length = int.tryParse(element.getAttribute("length") ?? "0");
-    return new RssEnclosure(url, type, length);
+    return RssEnclosure(url, type, length);
   }
 }

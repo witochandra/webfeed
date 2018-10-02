@@ -1,12 +1,12 @@
 import 'package:xml/xml.dart';
 
 class AtomLink {
-  String href;
-  String rel;
-  String type;
-  String hreflang;
-  String title;
-  int length;
+  final String href;
+  final String rel;
+  final String type;
+  final String hreflang;
+  final String title;
+  final int length;
 
   AtomLink(
     this.href,
@@ -27,18 +27,6 @@ class AtomLink {
     if (element.getAttribute("length") != null) {
       length = int.parse(element.getAttribute("length"));
     }
-    return new AtomLink(href, rel, type, hreflang, title, length);
-  }
-
-  @override
-  String toString() {
-    return '''
-      href: $href
-      rel: $rel
-      type: $type
-      hreflang: $hreflang
-      title: $title
-      length: $length
-    ''';
+    return AtomLink(href, rel, type, hreflang, title, length);
   }
 }
