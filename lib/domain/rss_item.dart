@@ -1,3 +1,4 @@
+import 'package:webfeed/domain/dublin_core/dublin_core.dart';
 import 'package:webfeed/domain/media/media.dart';
 import 'package:webfeed/domain/rss_category.dart';
 import 'package:webfeed/domain/rss_content.dart';
@@ -21,6 +22,7 @@ class RssItem {
   final RssContent content;
   final Media media;
   final RssEnclosure enclosure;
+  final DublinCore dc;
 
   RssItem({
     this.title,
@@ -35,15 +37,16 @@ class RssItem {
     this.content,
     this.media,
     this.enclosure,
+    this.dc,
   });
 
   factory RssItem.parse(XmlElement element) {
-    return new RssItem(
+    return RssItem(
       title: findElementOrNull(element, "title")?.text,
       description: findElementOrNull(element, "description")?.text,
       link: findElementOrNull(element, "link")?.text,
       categories: element.findElements("category").map((element) {
-        return new RssCategory.parse(element);
+        return RssCategory.parse(element);
       }).toList(),
       guid: findElementOrNull(element, "guid")?.text,
       pubDate: findElementOrNull(element, "pubDate")?.text,
@@ -53,21 +56,7 @@ class RssItem {
       content: RssContent.parse(findElementOrNull(element, "content:encoded")),
       media: Media.parse(element),
       enclosure: RssEnclosure.parse(findElementOrNull(element, "enclosure")),
+      dc: DublinCore.parse(element),
     );
-  }
-
-  @override
-  String toString() {
-    return '''
-      title: $title
-      description: $description
-      link: $link
-      guid: $guid
-      pubDate: $pubDate
-      author: $author
-      comments: $comments
-      source: $source
-      content: $content
-    ''';
   }
 }

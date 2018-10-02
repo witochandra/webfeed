@@ -1,5 +1,6 @@
 import 'dart:core';
 
+import 'package:webfeed/domain/dublin_core/dublin_core.dart';
 import 'package:webfeed/domain/rss_category.dart';
 import 'package:webfeed/domain/rss_cloud.dart';
 import 'package:webfeed/domain/rss_image.dart';
@@ -27,6 +28,7 @@ class RssFeed {
   final String rating;
   final String webMaster;
   final int ttl;
+  final DublinCore dc;
 
   RssFeed({
     this.title,
@@ -47,6 +49,7 @@ class RssFeed {
     this.rating,
     this.webMaster,
     this.ttl,
+    this.dc,
   });
 
   factory RssFeed.parse(String xmlString) {
@@ -55,105 +58,41 @@ class RssFeed {
     try {
       channelElement = document.findAllElements("channel").first;
     } on StateError {
-      throw new ArgumentError("channel not found");
+      throw ArgumentError("channel not found");
     }
-    var title = xmlGetString(channelElement, "title", strict: false);
-    var description =
-        xmlGetString(channelElement, "description", strict: false);
-    var link = xmlGetString(channelElement, "link", strict: false);
 
-    var feeds = channelElement.findElements("item").map((element) {
-      return new RssItem.parse(element);
-    }).toList();
-
-    RssImage image;
-    try {
-      image = new RssImage.parse(channelElement.findElements("image").first);
-    } on StateError {}
-
-    RssCloud cloud;
-    try {
-      cloud = new RssCloud.parse(channelElement.findElements("cloud").first);
-    } on StateError {}
-
-    var categories = channelElement.findElements("category").map((element) {
-      return new RssCategory.parse(element);
-    }).toList();
-
-    var skipDays = new List<String>();
-    var skipDaysNodes = channelElement.findElements("skipDays");
-    if (skipDaysNodes.isNotEmpty) {
-      skipDays = skipDaysNodes.first.findAllElements("day").map((element) {
+    return RssFeed(
+      title: findElementOrNull(channelElement, "title")?.text,
+      description: findElementOrNull(channelElement, "description")?.text,
+      link: findElementOrNull(channelElement, "link")?.text,
+      items: channelElement.findElements("item").map((element) {
+        return RssItem.parse(element);
+      }).toList(),
+      image: RssImage.parse(findElementOrNull(channelElement, "image")),
+      cloud: RssCloud.parse(findElementOrNull(channelElement, "cloud")),
+      categories: channelElement.findElements("category").map((element) {
+        return RssCategory.parse(element);
+      }).toList(),
+      skipDays: findElementOrNull(channelElement, "skipDays")
+          ?.findAllElements("day")
+          ?.map((element) {
         return element.text;
-      }).toList();
-    }
-    var skipHours = new List<int>();
-    var skipHoursNodes = channelElement.findElements("skipHours");
-    if (skipHoursNodes.isNotEmpty) {
-      skipHours = skipHoursNodes.first.findAllElements("hour").map((element) {
-        try {
-          return int.parse(element.text);
-        } on FormatException {
-          return null;
-        }
-      }).toList();
-    }
-
-    var lastBuildDate =
-        xmlGetString(channelElement, "lastBuildDate", strict: false);
-    var language = xmlGetString(channelElement, "language", strict: false);
-    var generator = xmlGetString(channelElement, "generator", strict: false);
-    var copyright = xmlGetString(channelElement, "copyright", strict: false);
-    var docs = xmlGetString(channelElement, "docs", strict: false);
-    var managingEditor =
-        xmlGetString(channelElement, "managingEditor", strict: false);
-    var rating = xmlGetString(channelElement, "rating", strict: false);
-    var webMaster = xmlGetString(channelElement, "webMaster", strict: false);
-    var ttl = xmlGetInt(channelElement, "ttl", strict: false);
-
-    return new RssFeed(
-      title: title,
-      description: description,
-      link: link,
-      items: feeds,
-      image: image,
-      cloud: cloud,
-      categories: categories,
-      skipDays: skipDays,
-      skipHours: skipHours,
-      lastBuildDate: lastBuildDate,
-      language: language,
-      generator: generator,
-      copyright: copyright,
-      docs: docs,
-      managingEditor: managingEditor,
-      rating: rating,
-      webMaster: webMaster,
-      ttl: ttl,
+      })?.toList(),
+      skipHours: findElementOrNull(channelElement, "skipHours")
+          ?.findAllElements("hour")
+          ?.map((element) {
+        return int.tryParse(element.text ?? "0");
+      })?.toList(),
+      lastBuildDate: findElementOrNull(channelElement, "lastBuildDate")?.text,
+      language: findElementOrNull(channelElement, "language")?.text,
+      generator: findElementOrNull(channelElement, "generator")?.text,
+      copyright: findElementOrNull(channelElement, "copyright")?.text,
+      docs: findElementOrNull(channelElement, "docs")?.text,
+      managingEditor: findElementOrNull(channelElement, "managingEditor")?.text,
+      rating: findElementOrNull(channelElement, "rating")?.text,
+      webMaster: findElementOrNull(channelElement, "webMaster")?.text,
+      ttl: int.tryParse(findElementOrNull(channelElement, "ttl")?.text ?? "0"),
+      dc: DublinCore.parse(channelElement),
     );
-  }
-
-  @override
-  String toString() {
-    return '''
-      title: $title
-      description: $description
-      link: $link
-      items: $items
-      image: $image
-      cloud: $cloud
-      categories: $categories
-      skipDays: $skipDays
-      skipHours: $skipHours
-      lastBuildDate: $lastBuildDate
-      language: $language
-      generator: $generator
-      copyright: $copyright
-      docs: $docs
-      managingEditor: $managingEditor
-      rating: $rating
-      webMaster: $webMaster
-      ttl: $ttl
-    ''';
   }
 }

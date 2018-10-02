@@ -213,4 +213,41 @@ void main() {
     expect(item.media.scenes.first.startTime, "00:15");
     expect(item.media.scenes.first.endTime, "00:45");
   });
+  test("parse RSS-DC.xml", (){
+    var xmlString = File("test/xml/RSS-DC.xml").readAsStringSync();
+
+    var feed = RssFeed.parse(xmlString);
+
+    expect(feed.dc.title, "title");
+    expect(feed.dc.creator, "creator");
+    expect(feed.dc.subject, "subject");
+    expect(feed.dc.description, "description");
+    expect(feed.dc.publisher, "publisher");
+    expect(feed.dc.contributor, "contributor");
+    expect(feed.dc.date, "2000-01-01T12:00+00:00");
+    expect(feed.dc.type, "type");
+    expect(feed.dc.format, "format");
+    expect(feed.dc.identifier, "identifier");
+    expect(feed.dc.source, "source");
+    expect(feed.dc.language, "language");
+    expect(feed.dc.relation, "relation");
+    expect(feed.dc.coverage, "coverage");
+    expect(feed.dc.rights, "rights");
+
+    expect(feed.items.first.dc.title, "title");
+    expect(feed.items.first.dc.creator, "creator");
+    expect(feed.items.first.dc.subject, "subject");
+    expect(feed.items.first.dc.description, "description");
+    expect(feed.items.first.dc.publisher, "publisher");
+    expect(feed.items.first.dc.contributor, "contributor");
+    expect(feed.items.first.dc.date, "2000-01-01T12:00+00:00");
+    expect(feed.items.first.dc.type, "type");
+    expect(feed.items.first.dc.format, "format");
+    expect(feed.items.first.dc.identifier, "identifier");
+    expect(feed.items.first.dc.source, "source");
+    expect(feed.items.first.dc.language, "language");
+    expect(feed.items.first.dc.relation, "relation");
+    expect(feed.items.first.dc.coverage, "coverage");
+    expect(feed.items.first.dc.rights, "rights");
+  });
 }

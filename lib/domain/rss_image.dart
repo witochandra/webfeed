@@ -9,6 +9,9 @@ class RssImage {
   RssImage(this.title, this.url, this.link);
 
   factory RssImage.parse(XmlElement element) {
+    if (element == null) {
+      return null;
+    }
     var title = xmlGetString(element, "title", strict: false);
     var url = xmlGetString(element, "url", strict: false);
     var link = xmlGetString(element, "link", strict: false);
