@@ -10,6 +10,7 @@ import 'package:xml/xml.dart';
 
 class RssFeed {
   final String title;
+  final String author;
   final String description;
   final String link;
   final List<RssItem> items;
@@ -32,6 +33,7 @@ class RssFeed {
 
   RssFeed({
     this.title,
+    this.author,
     this.description,
     this.link,
     this.items,
@@ -63,6 +65,7 @@ class RssFeed {
 
     return RssFeed(
       title: findElementOrNull(channelElement, "title")?.text,
+      author: findElementOrNull(channelElement, "author")?.text,
       description: findElementOrNull(channelElement, "description")?.text,
       link: findElementOrNull(channelElement, "link")?.text,
       items: channelElement.findElements("item").map((element) {
