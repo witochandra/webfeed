@@ -1,4 +1,7 @@
 # Changelog
+## [0.4.0](https://pub.dartlang.org/packages/webfeed/versions/0.4.1)
+### Added
+- Support `author` in RssFeed
 ## [0.4.0](https://pub.dartlang.org/packages/webfeed/versions/0.4.0)
 ### Added
 - Support for dublin core namespace
