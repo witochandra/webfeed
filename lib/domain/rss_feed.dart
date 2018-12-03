@@ -77,15 +77,17 @@ class RssFeed {
         return RssCategory.parse(element);
       }).toList(),
       skipDays: findElementOrNull(channelElement, "skipDays")
-          ?.findAllElements("day")
-          ?.map((element) {
-        return element.text;
-      })?.toList() ?? [],
+              ?.findAllElements("day")
+              ?.map((element) {
+            return element.text;
+          })?.toList() ??
+          [],
       skipHours: findElementOrNull(channelElement, "skipHours")
-          ?.findAllElements("hour")
-          ?.map((element) {
-        return int.tryParse(element.text ?? "0");
-      })?.toList() ?? [],
+              ?.findAllElements("hour")
+              ?.map((element) {
+            return int.tryParse(element.text ?? "0");
+          })?.toList() ??
+          [],
       lastBuildDate: findElementOrNull(channelElement, "lastBuildDate")?.text,
       language: findElementOrNull(channelElement, "language")?.text,
       generator: findElementOrNull(channelElement, "generator")?.text,
