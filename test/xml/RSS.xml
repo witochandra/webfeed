@@ -5,6 +5,7 @@
     <channel>
         <title>News - Foo bar News</title>
         <link>https://foo.bar.news/</link>
+        <author>hello@world.net</author>
         <description>Foo bar News and Updates feed provided by Foo bar, Inc.</description>
         <image>
             <url>https://foo.bar.news/logo.gif</url>
