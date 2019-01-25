@@ -1,4 +1,4 @@
-import 'package:xml/xml/nodes/element.dart';
+import 'package:xml/xml.dart';
 
 class RssSource {
   final String url;

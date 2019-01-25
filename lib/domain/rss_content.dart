@@ -1,4 +1,4 @@
-import 'package:xml/xml/nodes/element.dart';
+import 'package:xml/xml.dart';
 
 final _imagesRegExp = new RegExp(
   "<img\\s.*?src=(?:'|\")([^'\">]+)(?:'|\")",
