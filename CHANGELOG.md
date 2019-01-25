@@ -1,5 +1,8 @@
 # Changelog
-## [0.4.0](https://pub.dartlang.org/packages/webfeed/versions/0.4.1)
+## [0.4.2](https://pub.dartlang.org/packages/webfeed/versions/0.4.2)
+### Fixed
+- Bad import in `rss_content.dart` & `rss_source.dart`
+## [0.4.1](https://pub.dartlang.org/packages/webfeed/versions/0.4.1)
 ### Added
 - Support `author` in RssFeed
 ## [0.4.0](https://pub.dartlang.org/packages/webfeed/versions/0.4.0)

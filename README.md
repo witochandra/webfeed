@@ -17,7 +17,7 @@ A dart package for parsing RSS and Atom feed.
 
 Add this line into your `pubspec.yaml`
 ```
-webfeed: ^0.4.1
+webfeed: ^0.4.2
 ```
 
 Import the package into your dart code using:
