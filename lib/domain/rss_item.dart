@@ -7,6 +7,8 @@ import 'package:webfeed/domain/rss_source.dart';
 import 'package:webfeed/util/helpers.dart';
 import 'package:xml/xml.dart';
 
+import 'rss_item_itunes.dart';
+
 class RssItem {
   final String title;
   final String description;
@@ -22,6 +24,7 @@ class RssItem {
   final Media media;
   final RssEnclosure enclosure;
   final DublinCore dc;
+  final RssItemItunes itunes;
 
   RssItem({
     this.title,
@@ -37,6 +40,7 @@ class RssItem {
     this.media,
     this.enclosure,
     this.dc,
+    this.itunes,
   });
 
   factory RssItem.parse(XmlElement element) {
@@ -56,6 +60,7 @@ class RssItem {
       media: Media.parse(element),
       enclosure: RssEnclosure.parse(findElementOrNull(element, "enclosure")),
       dc: DublinCore.parse(element),
+      itunes: RssItemItunes.parse(element),
     );
   }
 }

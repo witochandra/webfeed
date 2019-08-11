@@ -295,4 +295,31 @@ void main() {
 
     expect(feed.items.first.content, null);
   });
+
+  test("parse RSS-Itunes.xml", () {
+    var xmlString = File("test/xml/RSS-Itunes.xml").readAsStringSync();
+
+    var feed = RssFeed.parse(xmlString);
+
+    expect(feed.itunes.author, "Changelog Media");
+    expect(feed.itunes.summary, "Foo");
+    expect(feed.itunes.explicit, false);
+    expect(feed.itunes.image.href, "https://cdn.changelog.com/uploads/covers/go-time-original.png?v=63725770357");
+    expect(feed.itunes.keywords, "go,golang,open source,software,development".split(","));
+    expect(feed.itunes.owner.name, "Changelog Media");
+    expect(feed.itunes.owner.email, "editors@changelog.com");
+    expect(feed.itunes.category.category, "Technology");
+    expect(feed.itunes.category.subCategories, ["Software How-To", "Tech News"]);
+
+    var item = feed.items[0];
+    expect(item.itunes.episodeType, "full");
+    expect(item.itunes.episode, 1);
+    expect(item.itunes.image.href, "https://cdn.changelog.com/uploads/covers/go-time-original.png?v=63725770357");
+    expect(item.itunes.duration, Duration(minutes: 32, seconds: 30));
+    expect(item.itunes.explicit, false);
+    expect(item.itunes.keywords, "go,golang,open source,software,development".split(","));
+    expect(item.itunes.subtitle, "with Erik, Carlisia, and Brian");
+    expect(item.itunes.summary, "Foo");
+    expect(item.itunes.author, "Erik St. Martin, Carlisia Pinto, and Brian Ketelsen");
+  });
 }

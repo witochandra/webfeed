@@ -8,6 +8,8 @@ import 'package:webfeed/domain/rss_item.dart';
 import 'package:webfeed/util/helpers.dart';
 import 'package:xml/xml.dart';
 
+import 'rss_itunes.dart';
+
 class RssFeed {
   final String title;
   final String author;
@@ -30,6 +32,7 @@ class RssFeed {
   final String webMaster;
   final int ttl;
   final DublinCore dc;
+  final RssItunes itunes;
 
   RssFeed({
     this.title,
@@ -52,6 +55,7 @@ class RssFeed {
     this.webMaster,
     this.ttl,
     this.dc,
+    this.itunes,
   });
 
   factory RssFeed.parse(String xmlString) {
@@ -98,6 +102,7 @@ class RssFeed {
       webMaster: findElementOrNull(channelElement, "webMaster")?.text,
       ttl: int.tryParse(findElementOrNull(channelElement, "ttl")?.text ?? "0"),
       dc: DublinCore.parse(channelElement),
+      itunes: RssItunes.parse(channelElement),
     );
   }
 }
