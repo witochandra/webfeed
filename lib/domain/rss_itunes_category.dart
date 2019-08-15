@@ -11,7 +11,7 @@ class RssItunesCategory {
 
     Iterable<XmlElement> subCategories;
     try {
-      subCategories = element.findAllElements("itunes:category");
+      subCategories = element.findElements("itunes:category");
     } on StateError {
       subCategories = null;
     }
