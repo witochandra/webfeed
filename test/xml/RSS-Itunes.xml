@@ -1,0 +1,56 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" version="2.0" nighteye="disabled">
+    <channel>
+        <title>Go Time</title>
+        <itunes:title>Go Time</itunes:title>
+        <itunes:type>serial</itunes:type>
+        <itunes:block>Yes</itunes:block>
+        <itunes:complete>TRUE</itunes:complete>
+        <itunes:new-feed-url>wubawuba</itunes:new-feed-url>
+        <copyright>All rights reserved</copyright>
+        <link>https://changelog.com/gotime</link>
+        <atom:link href="https://changelog.com/gotime/feed" rel="self" type="application/rss+xml"/>
+        <atom:link href="https://changelog.com/gotime/feed" rel="first" type="application/rss+xml"/>
+        <atom:link href="https://changelog.com/gotime/feed?page=1" rel="last" type="application/rss+xml"/>
+        <atom:link href="https://changelog.com/gotime" rel="alternate" type="text/html"/>
+        <language>en-us</language>
+        <description>
+            A diverse panel and special guests discuss cloud infrastructure, distributed systems, microservices, Kubernetes, Docker…oh and also Go! This show records LIVE every Thursday at 3pm US Eastern. A diverse panel and special guests discuss cloud infrastructure, distributed systems, microservices, Kubernetes, Docker…oh and also Go!
+        </description>
+        <itunes:author>Changelog Media</itunes:author>
+        <itunes:summary>Foo</itunes:summary>
+        <itunes:explicit>no</itunes:explicit>
+        <itunes:image href="https://cdn.changelog.com/uploads/covers/go-time-original.png?v=63725770357"/>
+        <itunes:keywords>go, golang, open source, software, development</itunes:keywords>
+        <itunes:owner>
+            <itunes:name>Changelog Media</itunes:name>
+            <itunes:email>editors@changelog.com</itunes:email>
+        </itunes:owner>
+        <itunes:category text="Technology">
+            <itunes:category text="Software How-To"/>
+            <itunes:category text="Tech News"/>
+        </itunes:category>
+        <itunes:category text="Foo">
+            <itunes:category text="Bar"/>
+            <itunes:category text="Baz"/>
+        </itunes:category>
+        <item>
+            <itunes:title>awesome title</itunes:title>
+            <itunes:episodeType>full</itunes:episodeType>
+            <itunes:episode>1</itunes:episode>
+            <itunes:season>1</itunes:season>
+            <itunes:block>xxx</itunes:block>
+            <itunes:image href="https://cdn.changelog.com/uploads/covers/go-time-original.png?v=63725770357"/>
+            <itunes:duration>32:30</itunes:duration>
+            <itunes:explicit>no</itunes:explicit>
+            <itunes:keywords>go, golang, open source, software, development</itunes:keywords>
+            <itunes:subtitle>with Erik, Carlisia, and Brian</itunes:subtitle>
+            <itunes:summary>Foo</itunes:summary>
+            <dc:creator>
+                Erik St. Martin, Carlisia Pinto, and Brian Ketelsen
+            </dc:creator>
+            <itunes:author>
+                Erik St. Martin, Carlisia Pinto, and Brian Ketelsen
+            </itunes:author>
+        </item>
+    </channel>
+</rss>
