@@ -72,7 +72,7 @@ void main() {
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit");
     expect(feed.items.first.link, "https://foo.bar.news/1");
     expect(feed.items.first.guid, "https://foo.bar.news/1?guid");
-    expect(feed.items.first.pubDate, "Mon, 26 Mar 2018 14:00:00 PDT");
+    expect(feed.items.first.pubDate, DateTime(2018, 03, 26, 14)); //Mon, 26 Mar 2018 14:00:00 PDT
     expect(feed.items.first.categories.first.domain, "news");
     expect(feed.items.first.categories.first.value, "Lorem");
     expect(feed.items.first.author, "alice@foo.bar.news");
@@ -102,7 +102,7 @@ void main() {
     var item = feed.items.first;
     expect(item.title, null);
     expect(item.link, "http://www.foo.com");
-    expect(item.pubDate, "Mon, 27 Aug 2001 16:08:56 PST");
+    expect(item.pubDate, DateTime(2001, 08, 27, 16, 08, 56)); //Mon, 27 Aug 2001 16:08:56 PST
 
     expect(item.media.group.contents.length, 5);
     expect(item.media.group.credits.length, 2);
