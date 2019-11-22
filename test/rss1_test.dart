@@ -110,5 +110,9 @@ void main() {
     expect(firstItem.link, 'http://b.hatena.ne.jp/guide/staff_bookmark_03');
     expect(firstItem.dc.creator, 'sample');
     expect(firstItem.dc.date, '2009-04-10T09:44:20Z');
+    expect(firstItem.dc.subject, 'はてな');
+    expect(firstItem.dc.subjects[0], 'はてな');
+    expect(firstItem.dc.subjects[1], 'インタビュー');
+    expect(firstItem.dc.subjects[2], 'はてなブックマーク');
   });
 }

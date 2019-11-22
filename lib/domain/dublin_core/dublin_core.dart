@@ -6,6 +6,7 @@ class DublinCore {
   final String description;
   final String creator;
   final String subject;
+  final List<String> subjects;
   final String publisher;
   final String contributor;
   final String date;
@@ -23,6 +24,7 @@ class DublinCore {
     this.description,
     this.creator,
     this.subject,
+    this.subjects,
     this.publisher,
     this.contributor,
     this.date,
@@ -45,6 +47,9 @@ class DublinCore {
       description: findElementOrNull(element, "dc:description")?.text,
       creator: findElementOrNull(element, "dc:creator")?.text,
       subject: findElementOrNull(element, "dc:subject")?.text,
+      subjects: findAllDirectElementsOrNull(element, 'dc:subject')
+          .map((subjectElement) => subjectElement.text)
+          .toList(),
       publisher: findElementOrNull(element, "dc:publisher")?.text,
       contributor: findElementOrNull(element, "dc:contributor")?.text,
       date: findElementOrNull(element, "dc:date")?.text,
