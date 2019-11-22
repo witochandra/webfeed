@@ -8,6 +8,7 @@ class Rss1Feed {
   final String title;
   final String description;
   final String link;
+  final String image;
   final List<Rss1Item> items;
 
   Rss1Feed({
@@ -15,6 +16,7 @@ class Rss1Feed {
     this.description,
     this.link,
     this.items,
+    this.image,
   });
 
   factory Rss1Feed.parse(String xmlString) {
@@ -33,6 +35,8 @@ class Rss1Feed {
       items: rdfElement.findElements("item").map((element) {
         return Rss1Item.parse(element);
       }).toList(),
+      image:
+          findElementOrNull(rdfElement, 'image')?.getAttribute('rdf:resource'),
     );
   }
 }
