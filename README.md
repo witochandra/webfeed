@@ -7,11 +7,12 @@ A dart package for parsing RSS and Atom feed.
 
 ### Features
 
-- [x] RSS
+- [x] RSS 2.0
 - [x] Atom
 - [x] Namespaces
     - [x] Media RSS
     - [x] Dublin Core
+- [x] RSS 1.0
 
 ### Installing
 
@@ -29,8 +30,9 @@ import 'package:webfeed/webfeed.dart';
 
 To parse string into `RssFeed` object use:
 ```
-var rssFeed = new RssFeed.parse(xmlString); // for parsing RSS feed
+var rssFeed = new RssFeed.parse(xmlString); // for parsing RSS 2.0 feed
 var atomFeed = new AtomFeed.parse(xmlString); // for parsing Atom feed
+var rss1Feed = new RssFeed.parse(xmlString); // for parsing RSS 1.0 feed
 ```
 
 ### Preview
@@ -103,6 +105,26 @@ item.content
 item.summary
 item.rights
 item.media
+```
+
+**RSS 1.0**
+```
+feed.title
+feed.description
+feed.link
+feed.items
+feed.image
+feed.updatePeriod
+feed.updateFrequency
+feed.updateBase
+feed.dc
+
+RssItem item = feed.items.first;
+item.title
+item.description
+item.link
+item.dc
+item.content
 ```
 
 ## License
