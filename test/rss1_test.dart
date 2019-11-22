@@ -25,6 +25,35 @@ void main() {
     expect(firstItem.description,
         'Processing document inclusions with general XML tools can be problematic. This article proposes a way of preserving inclusion information through SAX-based processing.');
   });
+  test('parse RSS1 with dublin core module', () {
+    final xmlString =
+        File('test/xml/RSS1-with-dublin-core-module.xml').readAsStringSync();
+    final feed = new Rss1Feed.parse(xmlString);
+
+    expect(feed.title, 'Meerkat');
+    expect(feed.link, 'http://meerkat.oreillynet.com');
+    expect(feed.description, 'Meerkat: An Open Wire Service');
+
+    expect(feed.dc.publisher, 'The O\'Reilly Network');
+    expect(feed.dc.creator, 'Rael Dornfest (mailto:rael@oreilly.com)');
+    expect(feed.dc.rights, 'Copyright © 2000 O\'Reilly & Associates, Inc.');
+    expect(feed.dc.date, DateTime.parse('2000-01-01T12:00+00:00'));
+
+    final firstItem = feed.items.first;
+    expect(
+      firstItem.dc.description,
+      'XML is placing increasingly heavy loads on the existing technical infrastructure of the Internet.',
+    );
+    expect(firstItem.dc.publisher, 'The O\'Reilly Network');
+    expect(
+      firstItem.dc.creator,
+      'Simon St.Laurent (mailto:simonstl@simonstl.com)',
+    );
+    expect(
+        firstItem.dc.rights, 'Copyright © 2000 O\'Reilly & Associates, Inc.');
+    expect(firstItem.dc.subject, 'XML');
+  });
+
   test("parse RSS1.xml", () {
     var xmlString = new File("test/xml/RSS1.xml").readAsStringSync();
 

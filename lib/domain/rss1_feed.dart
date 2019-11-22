@@ -1,5 +1,6 @@
 import 'dart:core';
 
+import 'package:webfeed/domain/dublin_core/dublin_core.dart';
 import 'package:webfeed/domain/rss1_item.dart';
 import 'package:webfeed/util/helpers.dart';
 import 'package:xml/xml.dart';
@@ -10,6 +11,7 @@ class Rss1Feed {
   final String link;
   final String image;
   final List<Rss1Item> items;
+  final DublinCore dc;
 
   Rss1Feed({
     this.title,
@@ -17,6 +19,7 @@ class Rss1Feed {
     this.link,
     this.items,
     this.image,
+    this.dc,
   });
 
   factory Rss1Feed.parse(String xmlString) {
@@ -37,6 +40,7 @@ class Rss1Feed {
       }).toList(),
       image:
           findElementOrNull(rdfElement, 'image')?.getAttribute('rdf:resource'),
+      dc: DublinCore.parse(rdfElement.findElements('channel').first),
     );
   }
 }

@@ -8,7 +8,7 @@ class DublinCore {
   final String subject;
   final String publisher;
   final String contributor;
-  final String date;
+  final DateTime date;
   final String type;
   final String format;
   final String identifier;
@@ -47,7 +47,7 @@ class DublinCore {
       subject: findElementOrNull(element, "dc:subject")?.text,
       publisher: findElementOrNull(element, "dc:publisher")?.text,
       contributor: findElementOrNull(element, "dc:contributor")?.text,
-      date: findElementOrNull(element, "dc:date")?.text,
+      date: parseDateTime(findElementOrNull(element, "dc:date")?.text),
       type: findElementOrNull(element, "dc:type")?.text,
       format: findElementOrNull(element, "dc:format")?.text,
       identifier: findElementOrNull(element, "dc:identifier")?.text,
