@@ -27,4 +27,15 @@ class RssContent {
     });
     return RssContent(content, images);
   }
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is RssContent &&
+          runtimeType == other.runtimeType &&
+          value == other.value &&
+          images == other.images;
+
+  @override
+  int get hashCode => value.hashCode ^ images.hashCode;
 }

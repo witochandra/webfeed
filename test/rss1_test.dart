@@ -69,6 +69,26 @@ void main() {
     expect(firstItem.dc.subject, 'XML');
   });
 
+  test('parse RSS1 with content module', () {
+    final xmlString =
+        File('test/xml/RSS1-with-content-module.xml').readAsStringSync();
+    final feed = new Rss1Feed.parse(xmlString);
+
+    expect(feed.title, 'Example Feed');
+    expect(feed.link, 'http://www.example.org');
+    expect(feed.description, 'Simply for the purpose of demonstration.');
+
+    final firstItem = feed.items.first;
+    expect(
+      firstItem.content.value,
+      '<p>What a <em>beautiful</em> day!</p>',
+    );
+    expect(
+      firstItem.content.images,
+      Iterable.empty(),
+    );
+  });
+
   test("parse RSS1.xml", () {
     var xmlString = new File("test/xml/RSS1.xml").readAsStringSync();
 

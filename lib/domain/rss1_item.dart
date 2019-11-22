@@ -1,3 +1,4 @@
+import 'package:webfeed/domain/rss_content.dart';
 import 'package:webfeed/util/helpers.dart';
 import 'package:xml/xml.dart';
 
@@ -11,6 +12,7 @@ class Rss1Item {
   final String creator;
   final DateTime date;
   final DublinCore dc;
+  final RssContent content;
 
   Rss1Item({
     this.title,
@@ -20,6 +22,7 @@ class Rss1Item {
     this.creator,
     this.date,
     this.dc,
+    this.content,
   });
 
   static DateTime _dateTimeBuilder(String dateTimeStringOrNull) {
@@ -41,6 +44,7 @@ class Rss1Item {
       creator: findElementOrNull(element, 'dc:creator')?.text,
       date: _dateTimeBuilder(findElementOrNull(element, 'dc:date')?.text),
       dc: DublinCore.parse(element),
+      content: RssContent.parse(findElementOrNull(element, "content:encoded")),
     );
   }
 }
