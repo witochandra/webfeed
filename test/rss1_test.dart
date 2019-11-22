@@ -108,11 +108,7 @@ void main() {
     expect(firstItem.description, '');
     expect(firstItem.title, 'はてなスタッフのブックマーク拝見！ - 営業マン編「仕事の様々なシーンでフル活用」');
     expect(firstItem.link, 'http://b.hatena.ne.jp/guide/staff_bookmark_03');
-    expect(firstItem.creator, 'sample');
-    expect(firstItem.date, DateTime.parse('2009-04-10T09:44:20Z'));
-    expect(firstItem.subjects[0], 'はてな');
-    expect(firstItem.subjects[1], 'インタビュー');
-    expect(firstItem.subjects[2], 'はてなブックマーク');
+    expect(firstItem.dc.creator, 'sample');
     expect(firstItem.dc.date, '2009-04-10T09:44:20Z');
   });
 }

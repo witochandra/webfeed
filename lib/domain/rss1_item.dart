@@ -8,9 +8,6 @@ class Rss1Item {
   final String title;
   final String description;
   final String link;
-  final List<String> subjects;
-  final String creator;
-  final DateTime date;
   final DublinCore dc;
   final RssContent content;
 
@@ -18,9 +15,6 @@ class Rss1Item {
     this.title,
     this.description,
     this.link,
-    this.subjects,
-    this.creator,
-    this.date,
     this.dc,
     this.content,
   });
@@ -37,12 +31,6 @@ class Rss1Item {
       title: findElementOrNull(element, "title")?.text,
       description: findElementOrNull(element, "description")?.text,
       link: findElementOrNull(element, "link")?.text,
-      subjects: element
-          .findAllElements('dc:subject')
-          .map((subject) => subject.text)
-          .toList(),
-      creator: findElementOrNull(element, 'dc:creator')?.text,
-      date: _dateTimeBuilder(findElementOrNull(element, 'dc:date')?.text),
       dc: DublinCore.parse(element),
       content: RssContent.parse(findElementOrNull(element, "content:encoded")),
     );
