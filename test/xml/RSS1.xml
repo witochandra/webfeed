@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns="http://purl.org/rss/1.0/" xmlns:admin="http://webns.net/mvcb/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:hatena="http://www.hatena.ne.jp/info/xmlns#" xmlns:syn="http://purl.org/rss/1.0/modules/syndication/" xmlns:taxo="http://purl.org/rss/1.0/modules/taxonomy/">
+
+    <channel rdf:about="https://b.hatena.ne.jp/sample/bookmark">
+        <title>sampleのはてなブックマーク</title>
+        <link>https://b.hatena.ne.jp/sample/bookmark</link>
+        <description>sampleのはてなブックマーク (17)</description>
+        <items>
+            <rdf:Seq>
+                <rdf:li rdf:resource="https://b.hatena.ne.jp/sample/20090410#bookmark-12884905"/>
+                <rdf:li rdf:resource="https://b.hatena.ne.jp/sample/20090410#bookmark-12780234"/>
+                <rdf:li rdf:resource="https://b.hatena.ne.jp/sample/20090116#bookmark-14056451"/>
+                <rdf:li rdf:resource="https://b.hatena.ne.jp/sample/20071124#bookmark-40863"/>
+                <rdf:li rdf:resource="https://b.hatena.ne.jp/sample/20070227#bookmark-2633056"/>
+                <rdf:li rdf:resource="https://b.hatena.ne.jp/sample/20050819#bookmark-374786"/>
+                <rdf:li rdf:resource="https://b.hatena.ne.jp/sample/20050819#bookmark-502542"/>
+                <rdf:li rdf:resource="https://b.hatena.ne.jp/sample/20050819#bookmark-577511"/>
+                <rdf:li rdf:resource="https://b.hatena.ne.jp/sample/20050819#bookmark-577505"/>
+                <rdf:li rdf:resource="https://b.hatena.ne.jp/sample/20050819#bookmark-360760"/>
+                <rdf:li rdf:resource="https://b.hatena.ne.jp/sample/20050819#bookmark-384896"/>
+                <rdf:li rdf:resource="https://b.hatena.ne.jp/sample/20050819#bookmark-508165"/>
+                <rdf:li rdf:resource="https://b.hatena.ne.jp/sample/20050819#bookmark-557020"/>
+                <rdf:li rdf:resource="https://b.hatena.ne.jp/sample/20050819#bookmark-844694"/>
+                <rdf:li rdf:resource="https://b.hatena.ne.jp/sample/20050819#bookmark-574190"/>
+                <rdf:li rdf:resource="https://b.hatena.ne.jp/sample/20050819#bookmark-573841"/>
+                <rdf:li rdf:resource="https://b.hatena.ne.jp/sample/20050707#bookmark-361733"/>
+            </rdf:Seq>
+        </items>
+    </channel>
+    <item rdf:about="https://b.hatena.ne.jp/sample/20090410#bookmark-12884905">
+        <title>はてなスタッフのブックマーク拝見！ - 営業マン編「仕事の様々なシーンでフル活用」</title>
+        <link>http://b.hatena.ne.jp/guide/staff_bookmark_03</link>
+        <description/>
+        <dc:creator>sample</dc:creator>
+        <dc:date>2009-04-10T09:44:20Z</dc:date>
+        <dc:subject>はてな</dc:subject>
+        <dc:subject>インタビュー</dc:subject>
+        <dc:subject>はてなブックマーク</dc:subject>
+        <taxo:topics>
+            <rdf:Bag>
+                <rdf:li resource="https://b.hatena.ne.jp/search/tag?q=%E3%81%AF%E3%81%A6%E3%81%AA"/>
+                <rdf:li resource="https://b.hatena.ne.jp/search/tag?q=%E3%82%A4%E3%83%B3%E3%82%BF%E3%83%93%E3%83%A5%E3%83%BC"/>
+                <rdf:li resource="https://b.hatena.ne.jp/search/tag?q=%E3%81%AF%E3%81%A6%E3%81%AA%E3%83%96%E3%83%83%E3%82%AF%E3%83%9E%E3%83%BC%E3%82%AF"/>
+            </rdf:Bag>
+        </taxo:topics>
+        <content:encoded>
+            &lt;blockquote cite="http://b.hatena.ne.jp/guide/staff_bookmark_03" title="はてなスタッフのブックマーク拝見！ - 営業マン編「仕事の様々なシーンでフル活用」"&gt;&lt;cite&gt;&lt;img src="https://cdn-ak2.favicon.st-hatena.com/?url=http%3A%2F%2Fb.hatena.ne.jp%2Fguide%2Fstaff_bookmark_03" alt="" /&gt; &lt;a href="http://b.hatena.ne.jp/guide/staff_bookmark_03"&gt;はてなスタッフのブックマーク拝見！ - 営業マン編「仕事の様々なシーンでフル活用」&lt;/a&gt;&lt;/cite&gt;&lt;p&gt;&lt;a href="http://b.hatena.ne.jp/guide/staff_bookmark_03"&gt;&lt;img src="" alt="はてなスタッフのブックマーク拝見！ - 営業マン編「仕事の様々なシーンでフル活用」" title="はてなスタッフのブックマーク拝見！ - 営業マン編「仕事の様々なシーンでフル活用」" class="entry-image" /&gt;&lt;/a&gt;&lt;/p&gt;&lt;p&gt;オフィスのほか、様々な場所へ移動する機会が多い営業チームのkawasakiさんとyosukeさんは、PC・携帯電話を駆使してはてなブックマークを活用している様子。そんなお二人のはてなブックマークを拝見！ 2009.04.09 掲載 どんな時に、どんなタイミングではてなブックマークを見ていますか？ kawasakiさん「いつも見ていま...&lt;/p&gt;&lt;p&gt;&lt;a href="https://b.hatena.ne.jp/entry/b.hatena.ne.jp/guide/staff_bookmark_03"&gt;&lt;img src="https://b.hatena.ne.jp/entry/image/http://b.hatena.ne.jp/guide/staff_bookmark_03" alt="はてなブックマーク - はてなスタッフのブックマーク拝見！ - 営業マン編「仕事の様々なシーンでフル活用」" title="はてなブックマーク - はてなスタッフのブックマーク拝見！ - 営業マン編「仕事の様々なシーンでフル活用」" border="0" style="border: none" /&gt;&lt;/a&gt; &lt;a href="https://b.hatena.ne.jp/entry/b.hatena.ne.jp/guide/staff_bookmark_03"&gt;&lt;img src="https://b.st-hatena.com/images/append.gif" border="0" alt="はてなブックマークに追加" title="はてなブックマークに追加" /&gt;&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;</content:encoded>
+        <hatena:bookmarkcount>71</hatena:bookmarkcount>
+    </item>
+    <item rdf:about="https://b.hatena.ne.jp/sample/20090410#bookmark-12780234">
+        <title>うごメモはてな</title>
+        <link>http://ugomemo.hatena.ne.jp/special/guestbook_07</link>
+        <description/>
+        <dc:creator>sample</dc:creator>
+        <dc:date>2009-04-10T09:44:10Z</dc:date>
+        <dc:subject>はてな</dc:subject>
+        <dc:subject>うごメモ</dc:subject>
+        <dc:subject>インタビュー</dc:subject>
+        <dc:subject>しなもん</dc:subject>
+        <taxo:topics>
+            <rdf:Bag>
+                <rdf:li resource="https://b.hatena.ne.jp/search/tag?q=%E3%81%AF%E3%81%A6%E3%81%AA"/>
+                <rdf:li resource="https://b.hatena.ne.jp/search/tag?q=%E3%81%86%E3%81%94%E3%83%A1%E3%83%A2"/>
+                <rdf:li resource="https://b.hatena.ne.jp/search/tag?q=%E3%82%A4%E3%83%B3%E3%82%BF%E3%83%93%E3%83%A5%E3%83%BC"/>
+                <rdf:li resource="https://b.hatena.ne.jp/search/tag?q=%E3%81%97%E3%81%AA%E3%82%82%E3%82%93"/>
+            </rdf:Bag>
+        </taxo:topics>
+        <content:encoded>
+            &lt;blockquote cite="http://ugomemo.hatena.ne.jp/special/guestbook_07" title="うごメモはてな"&gt;&lt;cite&gt;&lt;img src="https://cdn-ak2.favicon.st-hatena.com/?url=http%3A%2F%2Fugomemo.hatena.ne.jp%2Fspecial%2Fguestbook_07" alt="" /&gt; &lt;a href="http://ugomemo.hatena.ne.jp/special/guestbook_07"&gt;うごメモはてな&lt;/a&gt;&lt;/cite&gt;&lt;p&gt;&lt;a href="http://ugomemo.hatena.ne.jp/special/guestbook_07"&gt;&lt;img src="" alt="うごメモはてな" title="うごメモはてな" class="entry-image" /&gt;&lt;/a&gt;&lt;/p&gt;&lt;p&gt;うごメモはてな サービス終了のお知らせ 「うごメモシアター」と「うごメモはてな」は、2013年5月31日24:00をもちまして、サービスを終了させていただきました。 2008年12月から今まで生まれた素晴らしい作品は、どれも皆様の心に深く残っていることと思います。ご利用いただいた全てのユーザー様に心よりお礼申し上げま...&lt;/p&gt;&lt;p&gt;&lt;a href="https://b.hatena.ne.jp/entry/ugomemo.hatena.ne.jp/special/guestbook_07"&gt;&lt;img src="https://b.hatena.ne.jp/entry/image/http://ugomemo.hatena.ne.jp/special/guestbook_07" alt="はてなブックマーク - うごメモはてな" title="はてなブックマーク - うごメモはてな" border="0" style="border: none" /&gt;&lt;/a&gt; &lt;a href="https://b.hatena.ne.jp/entry/ugomemo.hatena.ne.jp/special/guestbook_07"&gt;&lt;img src="https://b.st-hatena.com/images/append.gif" border="0" alt="はてなブックマークに追加" title="はてなブックマークに追加" /&gt;&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;</content:encoded>
+        <hatena:bookmarkcount>169</hatena:bookmarkcount>
+    </item>
+    <item rdf:about="https://b.hatena.ne.jp/sample/20090116#bookmark-14056451">
+        <title>はてな</title>
+        <link>http://www.hatena.ne.jp/</link>
+        <description>はてなのトップページ。</description>
+        <dc:creator>sample</dc:creator>
+        <dc:date>2009-01-16T06:50:52Z</dc:date>
+        <dc:subject>情報収集</dc:subject>
+        <dc:subject>webサービス</dc:subject>
+        <taxo:topics>
+            <rdf:Bag>
+                <rdf:li resource="https://b.hatena.ne.jp/search/tag?q=%E6%83%85%E5%A0%B1%E5%8F%8E%E9%9B%86"/>
+                <rdf:li resource="https://b.hatena.ne.jp/search/tag?q=web%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9"/>
+            </rdf:Bag>
+        </taxo:topics>
+        <content:encoded>
+            &lt;blockquote cite="http://www.hatena.ne.jp/" title="はてな"&gt;&lt;cite&gt;&lt;img src="https://cdn-ak2.favicon.st-hatena.com/?url=http%3A%2F%2Fwww.hatena.ne.jp%2F" alt="" /&gt; &lt;a href="http://www.hatena.ne.jp/"&gt;はてな&lt;/a&gt;&lt;/cite&gt;&lt;p&gt;&lt;a href="http://www.hatena.ne.jp/"&gt;&lt;img src="https://cdn-ak-scissors.b.st-hatena.com/image/square/d4564a156ef3493df97d8b579ba1411ced6b1c37/height=90;version=1;width=120/http%3A%2F%2Fimg.b.hatena.ne.jp%2Fentryimage%2Farticles%2F23426-1427704044.jpg" alt="はてな" title="はてな" class="entry-image" /&gt;&lt;/a&gt;&lt;/p&gt;&lt;p&gt;はてなが運営するポータルサイト。ブログもウェブアルバムもニュースも、はてながあればネットがさらに便利になります。&lt;/p&gt;&lt;p&gt;&lt;a href="https://b.hatena.ne.jp/entry/www.hatena.ne.jp/"&gt;&lt;img src="https://b.hatena.ne.jp/entry/image/http://www.hatena.ne.jp/" alt="はてなブックマーク - はてな" title="はてなブックマーク - はてな" border="0" style="border: none" /&gt;&lt;/a&gt; &lt;a href="https://b.hatena.ne.jp/entry/www.hatena.ne.jp/"&gt;&lt;img src="https://b.st-hatena.com/images/append.gif" border="0" alt="はてなブックマークに追加" title="はてなブックマークに追加" /&gt;&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;</content:encoded>
+        <hatena:bookmarkcount>5581</hatena:bookmarkcount>
+    </item>
+    <item rdf:about="https://b.hatena.ne.jp/sample/20071124#bookmark-40863">
+        <title>はてなの日記 - 機能変更、お知らせなど</title>
+        <link>http://hatena.g.hatena.ne.jp/hatena/</link>
+        <description>id:hatenaさんの日記</description>
+        <dc:creator>sample</dc:creator>
+        <dc:date>2007-11-24T09:18:18Z</dc:date>
+        <dc:subject>hatena</dc:subject>
+        <taxo:topics>
+            <rdf:Bag>
+                <rdf:li resource="https://b.hatena.ne.jp/search/tag?q=hatena"/>
+            </rdf:Bag>
+        </taxo:topics>
+        <content:encoded>
+            &lt;blockquote cite="http://hatena.g.hatena.ne.jp/hatena/" title="はてなの日記 - 機能変更、お知らせなど"&gt;&lt;cite&gt;&lt;img src="https://cdn-ak2.favicon.st-hatena.com/?url=http%3A%2F%2Fhatena.g.hatena.ne.jp%2Fhatena%2F" alt="" /&gt; &lt;a href="http://hatena.g.hatena.ne.jp/hatena/"&gt;はてなの日記 - 機能変更、お知らせなど&lt;/a&gt;&lt;/cite&gt;&lt;p&gt;&lt;a href="http://hatena.g.hatena.ne.jp/hatena/"&gt;&lt;img src="" alt="はてなの日記 - 機能変更、お知らせなど" title="はてなの日記 - 機能変更、お知らせなど" class="entry-image" /&gt;&lt;/a&gt;&lt;/p&gt;&lt;p&gt;2019年9月4日をもって、「はてな検索」のサービス提供を終了いたしました 16:45 いつもはてなをご利用いただきありがとうございます。 2019年9月4日をもちまして、「はてな検索」のサービス提供を終了いたしました。これは、はてな検索公開当時とのはてなのサービス構成の違いや、システムの更新、ご利用状況を鑑みたも...&lt;/p&gt;&lt;p&gt;&lt;a href="https://b.hatena.ne.jp/entry/hatena.g.hatena.ne.jp/hatena/"&gt;&lt;img src="https://b.hatena.ne.jp/entry/image/http://hatena.g.hatena.ne.jp/hatena/" alt="はてなブックマーク - はてなの日記 - 機能変更、お知らせなど" title="はてなブックマーク - はてなの日記 - 機能変更、お知らせなど" border="0" style="border: none" /&gt;&lt;/a&gt; &lt;a href="https://b.hatena.ne.jp/entry/hatena.g.hatena.ne.jp/hatena/"&gt;&lt;img src="https://b.st-hatena.com/images/append.gif" border="0" alt="はてなブックマークに追加" title="はてなブックマークに追加" /&gt;&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;</content:encoded>
+        <hatena:bookmarkcount>16</hatena:bookmarkcount>
+    </item>
+    <item rdf:about="https://b.hatena.ne.jp/sample/20070227#bookmark-2633056">
+        <title>Cinnamon meets Jack</title>
+        <link>https://www.youtube.com/watch?v=e9-L68H0AHU</link>
+        <description>しなもんとジャック</description>
+        <dc:creator>sample</dc:creator>
+        <dc:date>2007-02-27T04:03:30Z</dc:date>
+        <dc:subject>youtube</dc:subject>
+        <dc:subject>hatena</dc:subject>
+        <dc:subject>dog</dc:subject>
+        <taxo:topics>
+            <rdf:Bag>
+                <rdf:li resource="https://b.hatena.ne.jp/search/tag?q=youtube"/>
+                <rdf:li resource="https://b.hatena.ne.jp/search/tag?q=hatena"/>
+                <rdf:li resource="https://b.hatena.ne.jp/search/tag?q=dog"/>
+            </rdf:Bag>
+        </taxo:topics>
+        <content:encoded>
+            &lt;blockquote cite="https://www.youtube.com/watch?v=e9-L68H0AHU" title="Cinnamon meets Jack"&gt;&lt;cite&gt;&lt;img src="https://cdn-ak2.favicon.st-hatena.com/?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3De9-L68H0AHU" alt="" /&gt; &lt;a href="https://www.youtube.com/watch?v=e9-L68H0AHU"&gt;Cinnamon meets Jack&lt;/a&gt;&lt;/cite&gt;&lt;p&gt;&lt;a href="https://www.youtube.com/watch?v=e9-L68H0AHU"&gt;&lt;img src="https://cdn-ak-scissors.b.st-hatena.com/image/square/c74273093208875694a719ba36f5b970f26629b2/height=90;version=1;width=120/https%3A%2F%2Fi.ytimg.com%2Fvi%2Fe9-L68H0AHU%2Fhqdefault.jpg" alt="Cinnamon meets Jack" title="Cinnamon meets Jack" class="entry-image" /&gt;&lt;/a&gt;&lt;/p&gt;&lt;p&gt;Cinnamon met Jack and played with him at Umeda-san&amp;#39;s House.&lt;/p&gt;&lt;p&gt;&lt;a href="https://b.hatena.ne.jp/entry/s/www.youtube.com/watch?v=e9-L68H0AHU"&gt;&lt;img src="https://b.hatena.ne.jp/entry/image/https://www.youtube.com/watch?v=e9-L68H0AHU" alt="はてなブックマーク - Cinnamon meets Jack" title="はてなブックマーク - Cinnamon meets Jack" border="0" style="border: none" /&gt;&lt;/a&gt; &lt;a href="https://b.hatena.ne.jp/entry/s/www.youtube.com/watch?v=e9-L68H0AHU"&gt;&lt;img src="https://b.st-hatena.com/images/append.gif" border="0" alt="はてなブックマークに追加" title="はてなブックマークに追加" /&gt;&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;</content:encoded>
+        <hatena:bookmarkcount>54</hatena:bookmarkcount>
+    </item>
+    <item rdf:about="https://b.hatena.ne.jp/sample/20050819#bookmark-374786">
+        <title>千と千尋の神隠し</title>
+        <link>https://www.amazon.co.jp/gp/product/B00005S8LI</link>
+        <description/>
+        <dc:creator>sample</dc:creator>
+        <dc:date>2005-08-19T05:45:59Z</dc:date>
+        <dc:subject>anime</dc:subject>
+        <taxo:topics>
+            <rdf:Bag>
+                <rdf:li resource="https://b.hatena.ne.jp/search/tag?q=anime"/>
+            </rdf:Bag>
+        </taxo:topics>
+        <content:encoded>
+            &lt;blockquote cite="https://www.amazon.co.jp/gp/product/B00005S8LI" title="千と千尋の神隠し"&gt;&lt;cite&gt;&lt;img src="https://cdn-ak2.favicon.st-hatena.com/?url=https%3A%2F%2Fwww.amazon.co.jp%2Fgp%2Fproduct%2FB00005S8LI" alt="" /&gt; &lt;a href="https://www.amazon.co.jp/gp/product/B00005S8LI"&gt;千と千尋の神隠し&lt;/a&gt;&lt;/cite&gt;&lt;p&gt;&lt;a href="https://www.amazon.co.jp/gp/product/B00005S8LI"&gt;&lt;img src="https://cdn-ak-scissors.b.st-hatena.com/image/square/00f48c7c2cf586d00d150e668ab77eb28a7c863c/height=90;version=1;width=120/https%3A%2F%2Fimages-fe.ssl-images-amazon.com%2Fimages%2FI%2F51QNjf%252BqXWL.jpg" alt="千と千尋の神隠し" title="千と千尋の神隠し" class="entry-image" /&gt;&lt;/a&gt;&lt;/p&gt;&lt;p&gt;ご覧いただきまして、ありがとうございます。★【国内正規品】【中古良品】【映像特典付き】です。★当店はAmazon以外で併売していない Amazon専用在庫です。ご注文いただきましたら、Amazonより、【即日発送】致します。★当店では、商品全体を除菌用アルコールで消毒し、清潔な状態でお届けするためにクリーニングをして...&lt;/p&gt;&lt;p&gt;&lt;a href="https://b.hatena.ne.jp/entry/s/www.amazon.co.jp/gp/product/B00005S8LI"&gt;&lt;img src="https://b.hatena.ne.jp/entry/image/https://www.amazon.co.jp/gp/product/B00005S8LI" alt="はてなブックマーク - 千と千尋の神隠し" title="はてなブックマーク - 千と千尋の神隠し" border="0" style="border: none" /&gt;&lt;/a&gt; &lt;a href="https://b.hatena.ne.jp/entry/s/www.amazon.co.jp/gp/product/B00005S8LI"&gt;&lt;img src="https://b.st-hatena.com/images/append.gif" border="0" alt="はてなブックマークに追加" title="はてなブックマークに追加" /&gt;&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;</content:encoded>
+        <hatena:bookmarkcount>10</hatena:bookmarkcount>
+    </item>
+    <item rdf:about="https://b.hatena.ne.jp/sample/20050819#bookmark-502542">
+        <title>ファインディング・ニモ</title>
+        <link>https://www.amazon.co.jp/gp/product/B0007VZBM4</link>
+        <description/>
+        <dc:creator>sample</dc:creator>
+        <dc:date>2005-08-19T05:45:22Z</dc:date>
+        <dc:subject>nimo</dc:subject>
+        <taxo:topics>
+            <rdf:Bag>
+                <rdf:li resource="https://b.hatena.ne.jp/search/tag?q=nimo"/>
+            </rdf:Bag>
+        </taxo:topics>
+        <content:encoded>
+            &lt;blockquote cite="https://www.amazon.co.jp/gp/product/B0007VZBM4" title="ファインディング・ニモ"&gt;&lt;cite&gt;&lt;img src="https://cdn-ak2.favicon.st-hatena.com/?url=https%3A%2F%2Fwww.amazon.co.jp%2Fgp%2Fproduct%2FB0007VZBM4" alt="" /&gt; &lt;a href="https://www.amazon.co.jp/gp/product/B0007VZBM4"&gt;ファインディング・ニモ&lt;/a&gt;&lt;/cite&gt;&lt;p&gt;&lt;a href="https://www.amazon.co.jp/gp/product/B0007VZBM4"&gt;&lt;img src="https://cdn-ak-scissors.b.st-hatena.com/image/square/ff7e54c9c3e394e5bb90c1c3485a0e038436996c/height=90;version=1;width=120/https%3A%2F%2Fimages-fe.ssl-images-amazon.com%2Fimages%2FI%2F51VBFQPCP5L.jpg" alt="ファインディング・ニモ" title="ファインディング・ニモ" class="entry-image" /&gt;&lt;/a&gt;&lt;/p&gt;&lt;p&gt;ご覧いただきまして、ありがとうございます。 【国内正規(セル)品】【中古良品】【リバーシブルジャケット・ブックレット付き】です。 ご注文頂きましたら、できるだけ速やかに発送致します。 ★当店はAmazon以外で併売していない Amazon専用在庫です。 ★当店では、商品全体を除菌用アルコールで消毒し、清潔な状態でお届...&lt;/p&gt;&lt;p&gt;&lt;a href="https://b.hatena.ne.jp/entry/s/www.amazon.co.jp/gp/product/B0007VZBM4"&gt;&lt;img src="https://b.hatena.ne.jp/entry/image/https://www.amazon.co.jp/gp/product/B0007VZBM4" alt="はてなブックマーク - ファインディング・ニモ" title="はてなブックマーク - ファインディング・ニモ" border="0" style="border: none" /&gt;&lt;/a&gt; &lt;a href="https://b.hatena.ne.jp/entry/s/www.amazon.co.jp/gp/product/B0007VZBM4"&gt;&lt;img src="https://b.st-hatena.com/images/append.gif" border="0" alt="はてなブックマークに追加" title="はてなブックマークに追加" /&gt;&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;</content:encoded>
+        <hatena:bookmarkcount>6</hatena:bookmarkcount>
+    </item>
+    <item rdf:about="https://b.hatena.ne.jp/sample/20050819#bookmark-577511">
+        <title>Amazon.co.jp: Cat Naps 2006 Calendar: Books</title>
+        <link>https://www.amazon.co.jp/gp/product/1416210105</link>
+        <description/>
+        <dc:creator>sample</dc:creator>
+        <dc:date>2005-08-19T05:42:05Z</dc:date>
+        <dc:subject>cat</dc:subject>
+        <taxo:topics>
+            <rdf:Bag>
+                <rdf:li resource="https://b.hatena.ne.jp/search/tag?q=cat"/>
+            </rdf:Bag>
+        </taxo:topics>
+        <content:encoded>
+            &lt;blockquote cite="https://www.amazon.co.jp/gp/product/1416210105" title="Amazon.co.jp: Cat Naps 2006 Calendar: Books"&gt;&lt;cite&gt;&lt;img src="https://cdn-ak2.favicon.st-hatena.com/?url=https%3A%2F%2Fwww.amazon.co.jp%2Fgp%2Fproduct%2F1416210105" alt="" /&gt; &lt;a href="https://www.amazon.co.jp/gp/product/1416210105"&gt;Amazon.co.jp: Cat Naps 2006 Calendar: Books&lt;/a&gt;&lt;/cite&gt;&lt;p&gt;&lt;a href="https://www.amazon.co.jp/gp/product/1416210105"&gt;&lt;img src="https://cdn-ak-scissors.b.st-hatena.com/image/square/ce4e02ac70364ed8bdef933ff95aa462d1a4031a/height=90;version=1;width=120/https%3A%2F%2Fimages-fe.ssl-images-amazon.com%2Fimages%2FI%2F51H2TQWV7BL.jpg" alt="Amazon.co.jp: Cat Naps 2006 Calendar: Books" title="Amazon.co.jp: Cat Naps 2006 Calendar: Books" class="entry-image" /&gt;&lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;&lt;a href="https://b.hatena.ne.jp/entry/s/www.amazon.co.jp/gp/product/1416210105"&gt;&lt;img src="https://b.hatena.ne.jp/entry/image/https://www.amazon.co.jp/gp/product/1416210105" alt="はてなブックマーク - Amazon.co.jp: Cat Naps 2006 Calendar: Books" title="はてなブックマーク - Amazon.co.jp: Cat Naps 2006 Calendar: Books" border="0" style="border: none" /&gt;&lt;/a&gt; &lt;a href="https://b.hatena.ne.jp/entry/s/www.amazon.co.jp/gp/product/1416210105"&gt;&lt;img src="https://b.st-hatena.com/images/append.gif" border="0" alt="はてなブックマークに追加" title="はてなブックマークに追加" /&gt;&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;</content:encoded>
+        <hatena:bookmarkcount>1</hatena:bookmarkcount>
+    </item>
+    <item rdf:about="https://b.hatena.ne.jp/sample/20050819#bookmark-577505">
+        <title>Amazon.co.jp: Doga: Yoga For Dogs: Jennifer Brilliant, William Berloni: Books</title>
+        <link>https://www.amazon.co.jp/gp/product/0811841677</link>
+        <description/>
+        <dc:creator>sample</dc:creator>
+        <dc:date>2005-08-19T05:38:46Z</dc:date>
+        <dc:subject>dog</dc:subject>
+        <taxo:topics>
+            <rdf:Bag>
+                <rdf:li resource="https://b.hatena.ne.jp/search/tag?q=dog"/>
+            </rdf:Bag>
+        </taxo:topics>
+        <content:encoded>
+            &lt;blockquote cite="https://www.amazon.co.jp/gp/product/0811841677" title="Amazon.co.jp: Doga: Yoga For Dogs: Jennifer Brilliant, William Berloni: Books"&gt;&lt;cite&gt;&lt;img src="https://cdn-ak2.favicon.st-hatena.com/?url=https%3A%2F%2Fwww.amazon.co.jp%2Fgp%2Fproduct%2F0811841677" alt="" /&gt; &lt;a href="https://www.amazon.co.jp/gp/product/0811841677"&gt;Amazon.co.jp: Doga: Yoga For Dogs: Jennifer Brilliant, William Berloni: Books&lt;/a&gt;&lt;/cite&gt;&lt;p&gt;&lt;a href="https://www.amazon.co.jp/gp/product/0811841677"&gt;&lt;img src="" alt="Amazon.co.jp: Doga: Yoga For Dogs: Jennifer Brilliant, William Berloni: Books" title="Amazon.co.jp: Doga: Yoga For Dogs: Jennifer Brilliant, William Berloni: Books" class="entry-image" /&gt;&lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;&lt;a href="https://b.hatena.ne.jp/entry/s/www.amazon.co.jp/gp/product/0811841677"&gt;&lt;img src="https://b.hatena.ne.jp/entry/image/https://www.amazon.co.jp/gp/product/0811841677" alt="はてなブックマーク - Amazon.co.jp: Doga: Yoga For Dogs: Jennifer Brilliant, William Berloni: Books" title="はてなブックマーク - Amazon.co.jp: Doga: Yoga For Dogs: Jennifer Brilliant, William Berloni: Books" border="0" style="border: none" /&gt;&lt;/a&gt; &lt;a href="https://b.hatena.ne.jp/entry/s/www.amazon.co.jp/gp/product/0811841677"&gt;&lt;img src="https://b.st-hatena.com/images/append.gif" border="0" alt="はてなブックマークに追加" title="はてなブックマークに追加" /&gt;&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;</content:encoded>
+        <hatena:bookmarkcount>1</hatena:bookmarkcount>
+    </item>
+    <item rdf:about="https://b.hatena.ne.jp/sample/20050819#bookmark-360760">
+        <title>はてなの本 (NT2X) - はてなキーワード</title>
+        <link>http://d.hatena.ne.jp/asin/4798107042</link>
+        <description/>
+        <dc:creator>sample</dc:creator>
+        <dc:date>2005-08-19T05:36:55Z</dc:date>
+        <dc:subject>book</dc:subject>
+        <dc:subject>hatena</dc:subject>
+        <taxo:topics>
+            <rdf:Bag>
+                <rdf:li resource="https://b.hatena.ne.jp/search/tag?q=book"/>
+                <rdf:li resource="https://b.hatena.ne.jp/search/tag?q=hatena"/>
+            </rdf:Bag>
+        </taxo:topics>
+        <content:encoded>
+            &lt;blockquote cite="http://d.hatena.ne.jp/asin/4798107042" title="はてなの本 (NT2X) - はてなキーワード"&gt;&lt;cite&gt;&lt;img src="https://cdn-ak2.favicon.st-hatena.com/?url=http%3A%2F%2Fd.hatena.ne.jp%2Fasin%2F4798107042" alt="" /&gt; &lt;a href="http://d.hatena.ne.jp/asin/4798107042"&gt;はてなの本 (NT2X) - はてなキーワード&lt;/a&gt;&lt;/cite&gt;&lt;p&gt;&lt;a href="http://d.hatena.ne.jp/asin/4798107042"&gt;&lt;img src="" alt="はてなの本 (NT2X) - はてなキーワード" title="はてなの本 (NT2X) - はてなキーワード" class="entry-image" /&gt;&lt;/a&gt;&lt;/p&gt;&lt;p&gt;「はてなの本 (NT2X)」を含む新着ブログ(455) この商品についてブログを書く 備忘録 kazu003142013/01/23 kiyoshiroのBAUMな日記 kiyoshiro_fb2012/12/02 シンプルに日記 dtbe2012/09/08 Future Rocket Coaster to-yu-ta2011/06/16 akisanの日記 akisan04132011/02/22 そっとチラ裏 mame-tanuki2011/02/21 ブログの資料 ...&lt;/p&gt;&lt;p&gt;&lt;a href="https://b.hatena.ne.jp/entry/d.hatena.ne.jp/asin/4798107042"&gt;&lt;img src="https://b.hatena.ne.jp/entry/image/http://d.hatena.ne.jp/asin/4798107042" alt="はてなブックマーク - はてなの本 (NT2X) - はてなキーワード" title="はてなブックマーク - はてなの本 (NT2X) - はてなキーワード" border="0" style="border: none" /&gt;&lt;/a&gt; &lt;a href="https://b.hatena.ne.jp/entry/d.hatena.ne.jp/asin/4798107042"&gt;&lt;img src="https://b.st-hatena.com/images/append.gif" border="0" alt="はてなブックマークに追加" title="はてなブックマークに追加" /&gt;&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;</content:encoded>
+        <hatena:bookmarkcount>4</hatena:bookmarkcount>
+    </item>
+    <item rdf:about="https://b.hatena.ne.jp/sample/20050819#bookmark-384896">
+        <title>はてなダイアリーガイドブック―ウェブログでつながる新しいコミュニティ - はてなキーワード</title>
+        <link>http://d.hatena.ne.jp/asin/4839914982</link>
+        <description/>
+        <dc:creator>sample</dc:creator>
+        <dc:date>2005-08-19T05:36:05Z</dc:date>
+        <dc:subject>diary</dc:subject>
+        <dc:subject>hatena</dc:subject>
+        <dc:subject>sample</dc:subject>
+        <taxo:topics>
+            <rdf:Bag>
+                <rdf:li resource="https://b.hatena.ne.jp/search/tag?q=diary"/>
+                <rdf:li resource="https://b.hatena.ne.jp/search/tag?q=hatena"/>
+                <rdf:li resource="https://b.hatena.ne.jp/search/tag?q=sample"/>
+            </rdf:Bag>
+        </taxo:topics>
+        <content:encoded>
+            &lt;blockquote cite="http://d.hatena.ne.jp/asin/4839914982" title="はてなダイアリーガイドブック―ウェブログでつながる新しいコミュニティ - はてなキーワード"&gt;&lt;cite&gt;&lt;img src="https://cdn-ak2.favicon.st-hatena.com/?url=http%3A%2F%2Fd.hatena.ne.jp%2Fasin%2F4839914982" alt="" /&gt; &lt;a href="http://d.hatena.ne.jp/asin/4839914982"&gt;はてなダイアリーガイドブック―ウェブログでつながる新しいコミュニティ - はてなキーワード&lt;/a&gt;&lt;/cite&gt;&lt;p&gt;&lt;a href="http://d.hatena.ne.jp/asin/4839914982"&gt;&lt;img src="" alt="はてなダイアリーガイドブック―ウェブログでつながる新しいコミュニティ - はてなキーワード" title="はてなダイアリーガイドブック―ウェブログでつながる新しいコミュニティ - はてなキーワード" class="entry-image" /&gt;&lt;/a&gt;&lt;/p&gt;&lt;p&gt;「はてなダイアリーガイドブック―ウェブログでつながる...」を含む新着ブログ(410) この商品についてブログを書く シンプルに日記 dtbe2015/11/11 シンプルに日記 dtbe2014/02/14 akisanの日記 akisan04132013/02/17 K’z ROOM...NAKED kzroom2013/01/20 シンプルに日記 dtbe2013/01/08 akisanの日記 akisan04132012/09/0...&lt;/p&gt;&lt;p&gt;&lt;a href="https://b.hatena.ne.jp/entry/d.hatena.ne.jp/asin/4839914982"&gt;&lt;img src="https://b.hatena.ne.jp/entry/image/http://d.hatena.ne.jp/asin/4839914982" alt="はてなブックマーク - はてなダイアリーガイドブック―ウェブログでつながる新しいコミュニティ - はてなキーワード" title="はてなブックマーク - はてなダイアリーガイドブック―ウェブログでつながる新しいコミュニティ - はてなキーワード" border="0" style="border: none" /&gt;&lt;/a&gt; &lt;a href="https://b.hatena.ne.jp/entry/d.hatena.ne.jp/asin/4839914982"&gt;&lt;img src="https://b.st-hatena.com/images/append.gif" border="0" alt="はてなブックマークに追加" title="はてなブックマークに追加" /&gt;&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;</content:encoded>
+        <hatena:bookmarkcount>3</hatena:bookmarkcount>
+    </item>
+    <item rdf:about="https://b.hatena.ne.jp/sample/20050819#bookmark-508165">
+        <title>「はてな」ではじめるブログ生活―はてな公式ハンドブック - はてなキーワード</title>
+        <link>http://d.hatena.ne.jp/asin/4886487319</link>
+        <description/>
+        <dc:creator>sample</dc:creator>
+        <dc:date>2005-08-19T05:35:19Z</dc:date>
+        <dc:subject>book</dc:subject>
+        <taxo:topics>
+            <rdf:Bag>
+                <rdf:li resource="https://b.hatena.ne.jp/search/tag?q=book"/>
+            </rdf:Bag>
+        </taxo:topics>
+        <content:encoded>
+            &lt;blockquote cite="http://d.hatena.ne.jp/asin/4886487319" title="「はてな」ではじめるブログ生活―はてな公式ハンドブック - はてなキーワード"&gt;&lt;cite&gt;&lt;img src="https://cdn-ak2.favicon.st-hatena.com/?url=http%3A%2F%2Fd.hatena.ne.jp%2Fasin%2F4886487319" alt="" /&gt; &lt;a href="http://d.hatena.ne.jp/asin/4886487319"&gt;「はてな」ではじめるブログ生活―はてな公式ハンドブック - はてなキーワード&lt;/a&gt;&lt;/cite&gt;&lt;p&gt;&lt;a href="http://d.hatena.ne.jp/asin/4886487319"&gt;&lt;img src="" alt="「はてな」ではじめるブログ生活―はてな公式ハンドブック - はてなキーワード" title="「はてな」ではじめるブログ生活―はてな公式ハンドブック - はてなキーワード" class="entry-image" /&gt;&lt;/a&gt;&lt;/p&gt;&lt;p&gt;「「はてな」ではじめるブログ生活―はてな公式ハンドブ...」を含む新着ブログ(275) この商品についてブログを書く シンプルに日記 dtbe2015/02/11 心のパンツは脱げるのか？ narushima19772013/11/11 TOKIOは一日にして成らず tkfuji2013/08/29 YAMDAS現更新履歴 yomoyomo2013/07/07 ガラリアさん好き好き病更新履歴 gar...&lt;/p&gt;&lt;p&gt;&lt;a href="https://b.hatena.ne.jp/entry/d.hatena.ne.jp/asin/4886487319"&gt;&lt;img src="https://b.hatena.ne.jp/entry/image/http://d.hatena.ne.jp/asin/4886487319" alt="はてなブックマーク - 「はてな」ではじめるブログ生活―はてな公式ハンドブック - はてなキーワード" title="はてなブックマーク - 「はてな」ではじめるブログ生活―はてな公式ハンドブック - はてなキーワード" border="0" style="border: none" /&gt;&lt;/a&gt; &lt;a href="https://b.hatena.ne.jp/entry/d.hatena.ne.jp/asin/4886487319"&gt;&lt;img src="https://b.st-hatena.com/images/append.gif" border="0" alt="はてなブックマークに追加" title="はてなブックマークに追加" /&gt;&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;</content:encoded>
+        <hatena:bookmarkcount>4</hatena:bookmarkcount>
+    </item>
+    <item rdf:about="https://b.hatena.ne.jp/sample/20050819#bookmark-557020">
+        <title>CNETブログ - jkondoのはてなブログ</title>
+        <link>http://jkondo.hatenablog.com/entry/20050811/1123715357</link>
+        <description> jkondo の日記が更新</description>
+        <dc:creator>sample</dc:creator>
+        <dc:date>2005-08-19T05:33:07Z</dc:date>
+        <dc:subject>sample</dc:subject>
+        <taxo:topics>
+            <rdf:Bag>
+                <rdf:li resource="https://b.hatena.ne.jp/search/tag?q=sample"/>
+            </rdf:Bag>
+        </taxo:topics>
+        <content:encoded>
+            &lt;blockquote cite="http://jkondo.hatenablog.com/entry/20050811/1123715357" title="CNETブログ - jkondoのはてなブログ"&gt;&lt;cite&gt;&lt;img src="https://cdn-ak2.favicon.st-hatena.com/?url=http%3A%2F%2Fjkondo.hatenablog.com%2Fentry%2F20050811%2F1123715357" alt="" /&gt; &lt;a href="http://jkondo.hatenablog.com/entry/20050811/1123715357"&gt;CNETブログ - jkondoのはてなブログ&lt;/a&gt;&lt;/cite&gt;&lt;p&gt;&lt;a href="http://jkondo.hatenablog.com/entry/20050811/1123715357"&gt;&lt;img src="https://cdn-ak-scissors.b.st-hatena.com/image/square/1db2a014bdea7ae25967aced483f3e5eca394182/height=90;version=1;width=120/https%3A%2F%2Fcdn.blog.st-hatena.com%2Fimages%2Ftheme%2Fog-image-1500.png" alt="CNETブログ - jkondoのはてなブログ" title="CNETブログ - jkondoのはてなブログ" class="entry-image" /&gt;&lt;/a&gt;&lt;/p&gt;&lt;p&gt;CNETのブログを更新しました。 合宿の話が出たところで今回は少し脱線して柔らかいゲームの話題に触れたいと思います。（そろそろお盆休みですしね） 僕は「大富豪」というゲームが好きで、合宿に行くとよくこれで遊びます。大富豪（大貧民）はご存知の方が多いと思いますがカードゲームの名前です。持ち札を順番に切っ...&lt;/p&gt;&lt;p&gt;&lt;a href="https://b.hatena.ne.jp/entry/jkondo.hatenablog.com/entry/20050811/1123715357"&gt;&lt;img src="https://b.hatena.ne.jp/entry/image/http://jkondo.hatenablog.com/entry/20050811/1123715357" alt="はてなブックマーク - CNETブログ - jkondoのはてなブログ" title="はてなブックマーク - CNETブログ - jkondoのはてなブログ" border="0" style="border: none" /&gt;&lt;/a&gt; &lt;a href="https://b.hatena.ne.jp/entry/jkondo.hatenablog.com/entry/20050811/1123715357"&gt;&lt;img src="https://b.st-hatena.com/images/append.gif" border="0" alt="はてなブックマークに追加" title="はてなブックマークに追加" /&gt;&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;</content:encoded>
+        <hatena:bookmarkcount>1</hatena:bookmarkcount>
+    </item>
+    <item rdf:about="https://b.hatena.ne.jp/sample/20050819#bookmark-844694">
+        <title>はてなマップ</title>
+        <link>http://map.hatena.ne.jp/</link>
+        <description> はてなの地図サービス</description>
+        <dc:creator>sample</dc:creator>
+        <dc:date>2005-08-19T05:32:15Z</dc:date>
+        <dc:subject>map</dc:subject>
+        <dc:subject>hatena</dc:subject>
+        <taxo:topics>
+            <rdf:Bag>
+                <rdf:li resource="https://b.hatena.ne.jp/search/tag?q=map"/>
+                <rdf:li resource="https://b.hatena.ne.jp/search/tag?q=hatena"/>
+            </rdf:Bag>
+        </taxo:topics>
+        <content:encoded>
+            &lt;blockquote cite="http://map.hatena.ne.jp/" title="はてなマップ"&gt;&lt;cite&gt;&lt;img src="https://cdn-ak2.favicon.st-hatena.com/?url=http%3A%2F%2Fmap.hatena.ne.jp%2F" alt="" /&gt; &lt;a href="http://map.hatena.ne.jp/"&gt;はてなマップ&lt;/a&gt;&lt;/cite&gt;&lt;p&gt;&lt;a href="http://map.hatena.ne.jp/"&gt;&lt;img src="" alt="はてなマップ" title="はてなマップ" class="entry-image" /&gt;&lt;/a&gt;&lt;/p&gt;&lt;p&gt;はてなマップはサービス終了しました はてなマップは、Google Maps APIをいち早く取り入れ、フォトライフやキーワードなどのコンテンツを地図上にマッピングできるツールとして提供を行ってきましたが、Googleマップ側のバージョンアップにより一通りの役割を終えたと判断し、2008年3月末日をもって提供を終了いたしまし...&lt;/p&gt;&lt;p&gt;&lt;a href="https://b.hatena.ne.jp/entry/map.hatena.ne.jp/"&gt;&lt;img src="https://b.hatena.ne.jp/entry/image/http://map.hatena.ne.jp/" alt="はてなブックマーク - はてなマップ" title="はてなブックマーク - はてなマップ" border="0" style="border: none" /&gt;&lt;/a&gt; &lt;a href="https://b.hatena.ne.jp/entry/map.hatena.ne.jp/"&gt;&lt;img src="https://b.st-hatena.com/images/append.gif" border="0" alt="はてなブックマークに追加" title="はてなブックマークに追加" /&gt;&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;</content:encoded>
+        <hatena:bookmarkcount>217</hatena:bookmarkcount>
+    </item>
+    <item rdf:about="https://b.hatena.ne.jp/sample/20050819#bookmark-574190">
+        <title>ありがとうございます - tapestry</title>
+        <link>http://d.hatena.ne.jp/reikon/20050818/1124356586</link>
+        <description> ありがとうございます</description>
+        <dc:creator>sample</dc:creator>
+        <dc:date>2005-08-19T05:31:04Z</dc:date>
+        <dc:subject>hatena</dc:subject>
+        <dc:subject>sample</dc:subject>
+        <taxo:topics>
+            <rdf:Bag>
+                <rdf:li resource="https://b.hatena.ne.jp/search/tag?q=hatena"/>
+                <rdf:li resource="https://b.hatena.ne.jp/search/tag?q=sample"/>
+            </rdf:Bag>
+        </taxo:topics>
+        <content:encoded>
+            &lt;blockquote cite="http://d.hatena.ne.jp/reikon/20050818/1124356586" title="ありがとうございます - tapestry"&gt;&lt;cite&gt;&lt;img src="https://cdn-ak2.favicon.st-hatena.com/?url=http%3A%2F%2Fd.hatena.ne.jp%2Freikon%2F20050818%2F1124356586" alt="" /&gt; &lt;a href="http://d.hatena.ne.jp/reikon/20050818/1124356586"&gt;ありがとうございます - tapestry&lt;/a&gt;&lt;/cite&gt;&lt;p&gt;&lt;a href="http://d.hatena.ne.jp/reikon/20050818/1124356586"&gt;&lt;img src="" alt="ありがとうございます - tapestry" title="ありがとうございます - tapestry" class="entry-image" /&gt;&lt;/a&gt;&lt;/p&gt;&lt;p&gt;ユーザー数の増加、サービスの増加に伴って、たくさんのメールがはてなに届くようになりました。また、はてな質問箱、はてな各機能変更のお知らせのコメント欄、アイデアなどでユーザーの皆さんからご意見や情報提供をいただけるようになりました。メールや書き込みの内容の多くは使い方に関するお問い合わせですが、一...&lt;/p&gt;&lt;p&gt;&lt;a href="https://b.hatena.ne.jp/entry/d.hatena.ne.jp/reikon/20050818/1124356586"&gt;&lt;img src="https://b.hatena.ne.jp/entry/image/http://d.hatena.ne.jp/reikon/20050818/1124356586" alt="はてなブックマーク - ありがとうございます - tapestry" title="はてなブックマーク - ありがとうございます - tapestry" border="0" style="border: none" /&gt;&lt;/a&gt; &lt;a href="https://b.hatena.ne.jp/entry/d.hatena.ne.jp/reikon/20050818/1124356586"&gt;&lt;img src="https://b.st-hatena.com/images/append.gif" border="0" alt="はてなブックマークに追加" title="はてなブックマークに追加" /&gt;&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;</content:encoded>
+        <hatena:bookmarkcount>11</hatena:bookmarkcount>
+    </item>
+    <item rdf:about="https://b.hatena.ne.jp/sample/20050819#bookmark-573841">
+        <title>有料オプション利用時の Google AdSense の表示変更について - はてなダイアリー日記</title>
+        <link>https://diary.hatenastaff.com/entry/20050818/1124348293</link>
+        <description> Google AdSense の表示変更</description>
+        <dc:creator>sample</dc:creator>
+        <dc:date>2005-08-19T05:30:27Z</dc:date>
+        <dc:subject>hatena</dc:subject>
+        <dc:subject>diary</dc:subject>
+        <taxo:topics>
+            <rdf:Bag>
+                <rdf:li resource="https://b.hatena.ne.jp/search/tag?q=hatena"/>
+                <rdf:li resource="https://b.hatena.ne.jp/search/tag?q=diary"/>
+            </rdf:Bag>
+        </taxo:topics>
+        <content:encoded>
+            &lt;blockquote cite="https://diary.hatenastaff.com/entry/20050818/1124348293" title="有料オプション利用時の Google AdSense の表示変更について - はてなダイアリー日記"&gt;&lt;cite&gt;&lt;img src="https://cdn-ak2.favicon.st-hatena.com/?url=https%3A%2F%2Fdiary.hatenastaff.com%2Fentry%2F20050818%2F1124348293" alt="" /&gt; &lt;a href="https://diary.hatenastaff.com/entry/20050818/1124348293"&gt;有料オプション利用時の Google AdSense の表示変更について - はてなダイアリー日記&lt;/a&gt;&lt;/cite&gt;&lt;p&gt;&lt;a href="https://diary.hatenastaff.com/entry/20050818/1124348293"&gt;&lt;img src="https://cdn-ak-scissors.b.st-hatena.com/image/square/341fabbf626c9a8438f4dcf6b94ccace196f08e6/height=90;version=1;width=120/https%3A%2F%2Fogimage.blog.st-hatena.com%2F26006613375978453%2F26006613375999732%2F1563768365" alt="有料オプション利用時の Google AdSense の表示変更について - はてなダイアリー日記" title="有料オプション利用時の Google AdSense の表示変更について - はてなダイアリー日記" class="entry-image" /&gt;&lt;/a&gt;&lt;/p&gt;&lt;p&gt;有料オプションをお使いの場合はご自身の Google AdSense アカウントを設定し、広告を表示していただくことで、ご自身のアカウントに Google AdSense 広告掲載料を受け取ることができます。 その際、一定の確率で、ユーザーアカウントとはてなアカウントで切り替え、広告掲載料の一部がはてなに、それ以外がユーザーに支...&lt;/p&gt;&lt;p&gt;&lt;a href="https://b.hatena.ne.jp/entry/s/diary.hatenastaff.com/entry/20050818/1124348293"&gt;&lt;img src="https://b.hatena.ne.jp/entry/image/https://diary.hatenastaff.com/entry/20050818/1124348293" alt="はてなブックマーク - 有料オプション利用時の Google AdSense の表示変更について - はてなダイアリー日記" title="はてなブックマーク - 有料オプション利用時の Google AdSense の表示変更について - はてなダイアリー日記" border="0" style="border: none" /&gt;&lt;/a&gt; &lt;a href="https://b.hatena.ne.jp/entry/s/diary.hatenastaff.com/entry/20050818/1124348293"&gt;&lt;img src="https://b.st-hatena.com/images/append.gif" border="0" alt="はてなブックマークに追加" title="はてなブックマークに追加" /&gt;&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;</content:encoded>
+        <hatena:bookmarkcount>3</hatena:bookmarkcount>
+    </item>
+    <item rdf:about="https://b.hatena.ne.jp/sample/20050707#bookmark-361733">
+        <title>スター・ウォーズ トリロジー DVD-BOX - はてなキーワード</title>
+        <link>http://d.hatena.ne.jp/asin/B0001X9BMY</link>
+        <description/>
+        <dc:creator>sample</dc:creator>
+        <dc:date>2005-07-07T09:40:10Z</dc:date>
+        <content:encoded>
+            &lt;blockquote cite="http://d.hatena.ne.jp/asin/B0001X9BMY" title="スター・ウォーズ トリロジー DVD-BOX - はてなキーワード"&gt;&lt;cite&gt;&lt;img src="https://cdn-ak2.favicon.st-hatena.com/?url=http%3A%2F%2Fd.hatena.ne.jp%2Fasin%2FB0001X9BMY" alt="" /&gt; &lt;a href="http://d.hatena.ne.jp/asin/B0001X9BMY"&gt;スター・ウォーズ トリロジー DVD-BOX - はてなキーワード&lt;/a&gt;&lt;/cite&gt;&lt;p&gt;&lt;a href="http://d.hatena.ne.jp/asin/B0001X9BMY"&gt;&lt;img src="" alt="スター・ウォーズ トリロジー DVD-BOX - はてなキーワード" title="スター・ウォーズ トリロジー DVD-BOX - はてなキーワード" class="entry-image" /&gt;&lt;/a&gt;&lt;/p&gt;&lt;p&gt;スター・ウォーズ プリクエル・トリロジー ... 4ブログ ￥ 2,817 スター・ウォーズ エピソード3 / シスの復... 656ブログ ￥ 1,921 スター・ウォーズ　エピソードI　ファント... 248ブログ ￥ 2,280 スター・ウォーズ エピソード2 クローンの... 286ブログ ￥ 1,300 スター・ウォーズ/フォースの覚醒 MovieNEX... 13ブロ...&lt;/p&gt;&lt;p&gt;&lt;a href="https://b.hatena.ne.jp/entry/d.hatena.ne.jp/asin/B0001X9BMY"&gt;&lt;img src="https://b.hatena.ne.jp/entry/image/http://d.hatena.ne.jp/asin/B0001X9BMY" alt="はてなブックマーク - スター・ウォーズ トリロジー DVD-BOX - はてなキーワード" title="はてなブックマーク - スター・ウォーズ トリロジー DVD-BOX - はてなキーワード" border="0" style="border: none" /&gt;&lt;/a&gt; &lt;a href="https://b.hatena.ne.jp/entry/d.hatena.ne.jp/asin/B0001X9BMY"&gt;&lt;img src="https://b.st-hatena.com/images/append.gif" border="0" alt="はてなブックマークに追加" title="はてなブックマークに追加" /&gt;&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;</content:encoded>
+        <hatena:bookmarkcount>10</hatena:bookmarkcount>
+    </item>
+</rdf:RDF>

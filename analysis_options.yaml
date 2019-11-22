@@ -1,7 +1,5 @@
 analyzer:
   language:
-    enablePreviewDart2: true
-  strong-mode: true
   errors:
     unused_import: error
     unused_local_variable: error
