@@ -89,8 +89,11 @@ void main() {
     );
   });
 
-  test("parse RSS1.xml", () {
-    var xmlString = new File("test/xml/RSS1.xml").readAsStringSync();
+  // Japanese Social Bookmark Service "Hatena Bookmark" is still using RSS1.0!
+  // As I don't know english service using RSS 1.0, I use Japanese service for test case.
+  test("parse production RSS1.0", () {
+    var xmlString =
+        new File("test/xml/RSS1-production_hatena.xml").readAsStringSync();
 
     var feed = new Rss1Feed.parse(xmlString);
 
@@ -110,5 +113,6 @@ void main() {
     expect(firstItem.subjects[0], 'はてな');
     expect(firstItem.subjects[1], 'インタビュー');
     expect(firstItem.subjects[2], 'はてなブックマーク');
+    expect(firstItem.dc.date, DateTime.parse('2009-04-10T09:44:20Z'));
   });
 }
