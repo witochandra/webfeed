@@ -52,7 +52,7 @@ void main() {
     expect(feed.dc.publisher, 'The O\'Reilly Network');
     expect(feed.dc.creator, 'Rael Dornfest (mailto:rael@oreilly.com)');
     expect(feed.dc.rights, 'Copyright © 2000 O\'Reilly & Associates, Inc.');
-    expect(feed.dc.date, DateTime.parse('2000-01-01T12:00+00:00'));
+    expect(feed.dc.date, '2000-01-01T12:00+00:00');
 
     final firstItem = feed.items.first;
     expect(
@@ -113,6 +113,6 @@ void main() {
     expect(firstItem.subjects[0], 'はてな');
     expect(firstItem.subjects[1], 'インタビュー');
     expect(firstItem.subjects[2], 'はてなブックマーク');
-    expect(firstItem.dc.date, DateTime.parse('2009-04-10T09:44:20Z'));
+    expect(firstItem.dc.date, '2009-04-10T09:44:20Z');
   });
 }

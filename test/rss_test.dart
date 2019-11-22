@@ -239,7 +239,7 @@ void main() {
     expect(feed.dc.description, "description");
     expect(feed.dc.publisher, "publisher");
     expect(feed.dc.contributor, "contributor");
-    expect(feed.dc.date, DateTime.parse("2000-01-01T12:00+00:00"));
+    expect(feed.dc.date, "2000-01-01T12:00+00:00");
     expect(feed.dc.type, "type");
     expect(feed.dc.format, "format");
     expect(feed.dc.identifier, "identifier");
@@ -255,7 +255,7 @@ void main() {
     expect(feed.items.first.dc.description, "description");
     expect(feed.items.first.dc.publisher, "publisher");
     expect(feed.items.first.dc.contributor, "contributor");
-    expect(feed.items.first.dc.date, DateTime.parse("2000-01-01T12:00+00:00"));
+    expect(feed.items.first.dc.date, "2000-01-01T12:00+00:00");
     expect(feed.items.first.dc.type, "type");
     expect(feed.items.first.dc.format, "format");
     expect(feed.items.first.dc.identifier, "identifier");
