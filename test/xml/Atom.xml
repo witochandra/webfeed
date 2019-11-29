@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>foo-bar-id</id>
-    <title type="text">Foo bar news</title>
-    <updated>2018-04-06T13:02:46Z</updated>
+    <title>Foo bar news</title>
+    <updated>2018-04-06T13:02:46.000Z</updated>
     <link rel="foo" type="text/html" hreflang="en" href="http://foo.bar.news/" title="Foo bar news html" length="1000"/>
     <link rel="bar" type="application/atom+xml" hreflang="pt" href="http://foo.bar.news/feed.atom"
           title="Foo bar news atom" length="100"/>

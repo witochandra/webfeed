@@ -80,8 +80,8 @@ class AtomFeed {
     var doc = parse('<?xml version="1.0" encoding="UTF-8"?><feed xmlns="http://www.w3.org/2005/Atom"></feed>');
 
     var b = XmlBuilder();
-    b.element('title');
     b.element('id', nest: () => b.text(id));
+    b.element('title', nest: () => title == null ? null : b.text(title));
     b.element('updated', nest: () => b.text(updated.toUtc().toIso8601String()));
 
     var feed = doc.findAllElements('feed').first;
