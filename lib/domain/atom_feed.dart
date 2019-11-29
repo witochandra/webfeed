@@ -66,12 +66,16 @@ class AtomFeed {
       categories: feedElement.findElements("category").map((element) {
         return AtomCategory.parse(element);
       }).toList(),
-      generator:
-          AtomGenerator.parse(findElementOrNull(feedElement, "generator")),
+      generator: AtomGenerator.parse(findElementOrNull(feedElement, "generator")),
       icon: findElementOrNull(feedElement, "icon")?.text,
       logo: findElementOrNull(feedElement, "logo")?.text,
       rights: findElementOrNull(feedElement, "rights")?.text,
       subtitle: findElementOrNull(feedElement, "subtitle")?.text,
     );
+  }
+
+  XmlDocument toXml() {
+    var doc = parse('<?xml version="1.0" encoding="UTF-8"?><feed xmlns="http://www.w3.org/2005/Atom"></feed>');
+    return doc;
   }
 }

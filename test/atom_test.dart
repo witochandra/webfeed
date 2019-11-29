@@ -237,21 +237,7 @@ void main() {
     expect(feed.logo, null);
     expect(feed.subtitle, null);
 
-    expect(feed.items.length, 1);
-    var item = feed.items.first;
-
-    expect(item.authors.length, 0);
-
-    expect(item.links.length, 0);
-
-    expect(item.categories.length, 0);
-
-    expect(item.contributors.length, 0);
-
-    expect(item.published, null);
-    expect(item.summary, null);
-    expect(item.content, null);
-    expect(item.rights, null);
+    expect(feed.items.length, 0);
   });
 
   // RFC 5005: Feed Paging and Archiving
@@ -284,5 +270,13 @@ void main() {
     expect(previousPage.href, 'http://example.org/index.atom?page=2');
     expect(nextPage, null);
     expect(lastPage.href, 'http://example.org/index.atom?page=2');
+  });
+
+  test("generate Atom-Empty.xml", () {
+    var xmlString = File("test/xml/Atom-Empty.xml").readAsStringSync();
+    var feed = AtomFeed();
+    var xml = feed.toXml();
+    var xmlString2 = xml.toXmlString(pretty: true, indent: '    ');
+    expect(xmlString2, xmlString);
   });
 }
