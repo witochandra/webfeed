@@ -1,7 +1,7 @@
 import 'package:xml/xml.dart';
 
 class Thumbnail {
-  final String url;
+  final Uri url;
   final String width;
   final String height;
   final String time;
@@ -14,8 +14,9 @@ class Thumbnail {
   });
 
   factory Thumbnail.parse(XmlElement element) {
-    return new Thumbnail(
-      url: element.getAttribute("url"),
+    var url = element.getAttribute("url");
+    return Thumbnail(
+      url: url == null ? null : Uri.parse(url),
       width: element.getAttribute("width"),
       height: element.getAttribute("height"),
       time: element.getAttribute("time"),

@@ -19,7 +19,7 @@ void main() {
 
     var feed = new AtomFeed.parse(xmlString);
 
-    expect(feed.id, "foo-bar-id");
+    expect(feed.id, Uri.parse("foo-bar-id"));
     expect(feed.title, "Foo bar news");
     expect(feed.updated, DateTime.parse("2018-04-06T13:02:46Z"));
 
@@ -27,18 +27,18 @@ void main() {
     expect(feed.links.first.rel, "foo");
     expect(feed.links.first.type, "text/html");
     expect(feed.links.first.hreflang, "en");
-    expect(feed.links.first.href, "http://foo.bar.news/");
+    expect(feed.links.first.href, Uri.parse("http://foo.bar.news/"));
     expect(feed.links.first.title, "Foo bar news html");
     expect(feed.links.first.length, 1000);
 
     expect(feed.authors.length, 2);
     expect(feed.authors.first.name, "Alice");
-    expect(feed.authors.first.uri, "http://foo.bar.news/people/alice");
+    expect(feed.authors.first.uri, Uri.parse("http://foo.bar.news/people/alice"));
     expect(feed.authors.first.email, "alice@foo.bar.news");
 
     expect(feed.contributors.length, 2);
     expect(feed.contributors.first.name, "Charlie");
-    expect(feed.contributors.first.uri, "http://foo.bar.news/people/charlie");
+    expect(feed.contributors.first.uri, Uri.parse("http://foo.bar.news/people/charlie"));
     expect(feed.contributors.first.email, "charlie@foo.bar.news");
 
     expect(feed.categories.length, 2);
@@ -46,12 +46,12 @@ void main() {
     expect(feed.categories.first.scheme, "this-is-foo-scheme");
     expect(feed.categories.first.label, "this is foo label");
 
-    expect(feed.generator.uri, "http://foo.bar.news/generator");
+    expect(feed.generator.uri, Uri.parse("http://foo.bar.news/generator"));
     expect(feed.generator.version, "1.0");
     expect(feed.generator.value, "Foo bar generator");
 
-    expect(feed.icon, "http://foo.bar.news/icon.png");
-    expect(feed.logo, "http://foo.bar.news/logo.png");
+    expect(feed.icon, Uri.parse("http://foo.bar.news/icon.png"));
+    expect(feed.logo, Uri.parse("http://foo.bar.news/logo.png"));
     expect(feed.subtitle, "This is subtitle");
 
     expect(feed.items.length, 2);
@@ -62,14 +62,14 @@ void main() {
 
     expect(item.authors.length, 2);
     expect(item.authors.first.name, "Ellie");
-    expect(item.authors.first.uri, "http://foo.bar.news/people/ellie");
+    expect(item.authors.first.uri, Uri.parse("http://foo.bar.news/people/ellie"));
     expect(item.authors.first.email, "ellie@foo.bar.news");
 
     expect(item.links.length, 2);
     expect(item.links.first.rel, "foo entry");
     expect(item.links.first.type, "text/html");
     expect(item.links.first.hreflang, "en");
-    expect(item.links.first.href, "http://foo.bar.news/entry");
+    expect(item.links.first.href, Uri.parse("http://foo.bar.news/entry"));
     expect(item.links.first.title, "Foo bar news html");
     expect(item.links.first.length, 1000);
 
@@ -80,7 +80,7 @@ void main() {
 
     expect(item.contributors.length, 2);
     expect(item.contributors.first.name, "Gin");
-    expect(item.contributors.first.uri, "http://foo.bar.news/people/gin");
+    expect(item.contributors.first.uri, Uri.parse("http://foo.bar.news/people/gin"));
     expect(item.contributors.first.email, "gin@foo.bar.news");
 
     expect(item.published, "2018-04-06T13:02:49Z");
@@ -88,11 +88,12 @@ void main() {
     expect(item.content, "This is content 1");
     expect(item.rights, "This is rights 1");
   });
+
   test("parse Atom-Media.xml", () {
     var xmlString = new File("test/xml/Atom-Media.xml").readAsStringSync();
 
-    var feed = new AtomFeed.parse(xmlString);
-    expect(feed.id, "foo-bar-id");
+    var feed = AtomFeed.parse(xmlString);
+    expect(feed.id, Uri.parse("foo-bar-id"));
     expect(feed.title, "Foo bar news");
     expect(feed.updated, DateTime.parse("2018-04-06T13:02:46Z"));
 
@@ -106,7 +107,7 @@ void main() {
 
     expect(item.media.contents.length, 2);
     var mediaContent = item.media.contents.first;
-    expect(mediaContent.url, "http://www.foo.com/video.mov");
+    expect(mediaContent.url, Uri.parse("http://www.foo.com/video.mov"));
     expect(mediaContent.type, "video/quicktime");
     expect(mediaContent.fileSize, 2000);
     expect(mediaContent.medium, "video");
@@ -140,7 +141,7 @@ void main() {
 
     expect(item.media.thumbnails.length, 2);
     var mediaThumbnail = item.media.thumbnails.first;
-    expect(mediaThumbnail.url, "http://www.foo.com/keyframe1.jpg");
+    expect(mediaThumbnail.url, Uri.parse("http://www.foo.com/keyframe1.jpg"));
     expect(mediaThumbnail.width, "75");
     expect(mediaThumbnail.height, "50");
     expect(mediaThumbnail.time, "12:05:01.123");
@@ -148,12 +149,12 @@ void main() {
     expect(item.media.hash.algo, "md5");
     expect(item.media.hash.value, "dfdec888b72151965a34b4b59031290a");
 
-    expect(item.media.player.url, "http://www.foo.com/player?id=1111");
+    expect(item.media.player.url, Uri.parse("http://www.foo.com/player?id=1111"));
     expect(item.media.player.width, 400);
     expect(item.media.player.height, 200);
     expect(item.media.player.value, "");
 
-    expect(item.media.copyright.url, "http://blah.com/additional-info.html");
+    expect(item.media.copyright.url, Uri.parse("http://blah.com/additional-info.html"));
     expect(item.media.copyright.value, "2005 FooBar Media");
 
     expect(item.media.text.type, "plain");
@@ -179,7 +180,7 @@ void main() {
     expect(item.media.comments.first, "comment1");
     expect(item.media.comments.last, "comment2");
 
-    expect(item.media.embed.url, "http://www.foo.com/player.swf");
+    expect(item.media.embed.url, Uri.parse("http://www.foo.com/player.swf"));
     expect(item.media.embed.width, 512);
     expect(item.media.embed.height, 323);
     expect(item.media.embed.params.length, 5);
@@ -191,8 +192,8 @@ void main() {
     expect(item.media.responses.last, "http://www.response2.com");
 
     expect(item.media.backLinks.length, 2);
-    expect(item.media.backLinks.first, "http://www.backlink1.com");
-    expect(item.media.backLinks.last, "http://www.backlink2.com");
+    expect(item.media.backLinks.first, Uri.parse("http://www.backlink1.com"));
+    expect(item.media.backLinks.last, Uri.parse("http://www.backlink2.com"));
 
     expect(item.media.status.state, "active");
     expect(item.media.status.reason, null);
@@ -200,15 +201,15 @@ void main() {
     expect(item.media.prices.length, 2);
     expect(item.media.prices.first.price, 19.99);
     expect(item.media.prices.first.type, "rent");
-    expect(item.media.prices.first.info, "http://www.dummy.jp/package_info.html");
+    expect(item.media.prices.first.info, Uri.parse("http://www.dummy.jp/package_info.html"));
     expect(item.media.prices.first.currency, "EUR");
 
     expect(item.media.license.type, "text/html");
-    expect(item.media.license.href, "http://www.licensehost.com/license");
+    expect(item.media.license.href, Uri.parse("http://www.licensehost.com/license"));
     expect(item.media.license.value, " Sample license for a video");
 
     expect(item.media.peerLink.type, "application/x-bittorrent");
-    expect(item.media.peerLink.href, "http://www.foo.org/sampleFile.torrent");
+    expect(item.media.peerLink.href, Uri.parse("http://www.foo.org/sampleFile.torrent"));
     expect(item.media.peerLink.value, "");
 
     expect(item.media.rights.status, "official");
@@ -225,8 +226,8 @@ void main() {
 
     var feed = AtomFeed.parse(xmlString);
 
-    expect(feed.id, 'https://example.com');
-    expect(feed.title, '');
+    expect(feed.id, Uri.parse('https://example.com'));
+    expect(feed.title, null);
     expect(feed.updated, DateTime.parse('1970-01-01T00:00:00-00:00'));
     expect(feed.links.length, 0);
     expect(feed.authors.length, 0);
@@ -250,10 +251,10 @@ void main() {
     var nextPage = feed.links.firstWhere((l) => l.rel == 'next', orElse: () => null);
     var lastPage = feed.links.firstWhere((l) => l.rel == 'last', orElse: () => null);
 
-    expect(firstPage.href, 'http://example.org/index.atom');
+    expect(firstPage.href, Uri.parse('http://example.org/index.atom'));
     expect(previousPage, null);
-    expect(nextPage.href, 'http://example.org/index.atom?page=2');
-    expect(lastPage.href, 'http://example.org/index.atom?page=2');
+    expect(nextPage.href, Uri.parse('http://example.org/index.atom?page=2'));
+    expect(lastPage.href, Uri.parse('http://example.org/index.atom?page=2'));
   });
 
   // RFC 5005: Feed Paging and Archiving
@@ -266,42 +267,36 @@ void main() {
     var nextPage = feed.links.firstWhere((l) => l.rel == 'next', orElse: () => null);
     var lastPage = feed.links.firstWhere((l) => l.rel == 'last', orElse: () => null);
 
-    expect(firstPage.href, 'http://example.org/index.atom');
-    expect(previousPage.href, 'http://example.org/index.atom?page=2');
+    expect(firstPage.href, Uri.parse('http://example.org/index.atom'));
+    expect(previousPage.href, Uri.parse('http://example.org/index.atom?page=2'));
     expect(nextPage, null);
-    expect(lastPage.href, 'http://example.org/index.atom?page=2');
+    expect(lastPage.href, Uri.parse('http://example.org/index.atom?page=2'));
   });
 
   test("generate Atom-Empty.xml", () {
     var xmlString = File("test/xml/Atom-Empty.xml").readAsStringSync();
-    var feed = AtomFeed(id: 'https://example.com', updated: DateTime.parse('1970-01-01T00:00:00-00:00'));
+    var feed = AtomFeed(id: Uri.parse('https://example.com'), updated: DateTime.parse('1970-01-01T00:00:00-00:00'));
     var xmlString2 = feed.toXml().toXmlString(pretty: true, indent: '    ');
     expect(xmlString2, xmlString);
   });
 
   test("generate Atom.xml", () {
     var xmlString = File("test/xml/Atom.xml").readAsStringSync();
-    var feed = AtomFeed(id: 'foo-bar-id', title: 'Foo bar news', updated: DateTime.parse('2018-04-06T13:02:46Z'));
+    var feed = AtomFeed(id: Uri.parse('foo-bar-id'), title: 'Foo bar news', updated: DateTime.parse('2018-04-06T13:02:46Z'), links: [
+      AtomLink(rel: 'foo', type: 'text/html', hreflang: 'en', href: Uri.parse('http://foo.bar.news/'), title: 'Foo bar news html', length: 1000),
+      AtomLink(rel: 'bar', type: 'application/atom+xml', hreflang: 'pt', href: Uri.parse('http://foo.bar.news/feed.atom'), title: 'Foo bar news atom', length: 100),
+    ], authors: [
+      AtomPerson(name: 'Alice', uri: Uri.parse('http://foo.bar.news/people/alice'), email: 'alice@foo.bar.news'),
+      AtomPerson(name: 'Bob', uri: Uri.parse('http://foo.bar.news/people/bob'), email: 'bob@foo.bar.news'),
+    ], contributors: [
+      AtomPerson(name: 'Charlie', uri: Uri.parse('http://foo.bar.news/people/charlie'), email: 'charlie@foo.bar.news'),
+      AtomPerson(name: 'David', uri: Uri.parse('http://foo.bar.news/people/david'), email: 'david@foo.bar.news'),
+    ], categories: [
+      AtomCategory(),
+    ]);
+
     var xmlString2 = feed.toXml().toXmlString(pretty: true, indent: '    ');
     expect(xmlString2, xmlString);
-
-    // expect(feed.links.length, 2);
-    // expect(feed.links.first.rel, "foo");
-    // expect(feed.links.first.type, "text/html");
-    // expect(feed.links.first.hreflang, "en");
-    // expect(feed.links.first.href, "http://foo.bar.news/");
-    // expect(feed.links.first.title, "Foo bar news html");
-    // expect(feed.links.first.length, 1000);
-
-    // expect(feed.authors.length, 2);
-    // expect(feed.authors.first.name, "Alice");
-    // expect(feed.authors.first.uri, "http://foo.bar.news/people/alice");
-    // expect(feed.authors.first.email, "alice@foo.bar.news");
-
-    // expect(feed.contributors.length, 2);
-    // expect(feed.contributors.first.name, "Charlie");
-    // expect(feed.contributors.first.uri, "http://foo.bar.news/people/charlie");
-    // expect(feed.contributors.first.email, "charlie@foo.bar.news");
 
     // expect(feed.categories.length, 2);
     // expect(feed.categories.first.term, "foo category");

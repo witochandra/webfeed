@@ -2,7 +2,7 @@ import 'package:xml/xml.dart';
 
 class PeerLink {
   final String type;
-  final String href;
+  final Uri href;
   final String value;
 
   PeerLink({
@@ -12,12 +12,11 @@ class PeerLink {
   });
 
   factory PeerLink.parse(XmlElement element) {
-    if (element == null) {
-      return null;
-    }
-    return new PeerLink(
+    if (element == null) return null;
+    var href = element.getAttribute("href");
+    return PeerLink(
       type: element.getAttribute("type"),
-      href: element.getAttribute("href"),
+      href: href == null ? null : Uri.parse(href),
       value: element.text,
     );
   }

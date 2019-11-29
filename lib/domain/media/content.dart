@@ -1,7 +1,7 @@
 import 'package:xml/xml.dart';
 
 class Content {
-  final String url;
+  final Uri url;
   final String type;
   final int fileSize;
   final String medium;
@@ -34,8 +34,9 @@ class Content {
   });
 
   factory Content.parse(XmlElement element) {
-    return new Content(
-      url: element.getAttribute("url"),
+    var url = element.getAttribute("url");
+    return Content(
+      url: url == null ? null : Uri.parse(url),
       type: element.getAttribute("type"),
       fileSize: int.tryParse(element.getAttribute("fileSize") ?? "0"),
       medium: element.getAttribute("medium"),
