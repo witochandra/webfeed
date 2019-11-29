@@ -225,9 +225,9 @@ void main() {
 
     var feed = AtomFeed.parse(xmlString);
 
-    expect(feed.id, null);
-    expect(feed.title, null);
-    expect(feed.updated, null);
+    expect(feed.id, 'https://example.com');
+    expect(feed.title, '');
+    expect(feed.updated, DateTime.parse('1970-01-01T00:00:00-00:00'));
     expect(feed.links.length, 0);
     expect(feed.authors.length, 0);
     expect(feed.contributors.length, 0);
@@ -274,7 +274,7 @@ void main() {
 
   test("generate Atom-Empty.xml", () {
     var xmlString = File("test/xml/Atom-Empty.xml").readAsStringSync();
-    var feed = AtomFeed();
+    var feed = AtomFeed(id: 'https://example.com', updated: DateTime.parse('1970-01-01T00:00:00-00:00'));
     var xml = feed.toXml();
     var xmlString2 = xml.toXmlString(pretty: true, indent: '    ');
     expect(xmlString2, xmlString);

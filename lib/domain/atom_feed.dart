@@ -9,7 +9,7 @@ import 'package:xml/xml.dart';
 class AtomFeed {
   final String id;
   final String title;
-  final String updated;
+  final DateTime updated;
   final List<AtomItem> items;
 
   final List<AtomLink> links;
@@ -47,10 +47,12 @@ class AtomFeed {
       throw new ArgumentError("feed not found");
     }
 
+    var updated = findElementOrNull(feedElement, "updated")?.text;
+
     return AtomFeed(
       id: findElementOrNull(feedElement, "id")?.text,
       title: findElementOrNull(feedElement, "title")?.text,
-      updated: findElementOrNull(feedElement, "updated")?.text,
+      updated: updated == null ? null : DateTime.parse(updated),
       items: feedElement.findElements("entry").map((element) {
         return AtomItem.parse(element);
       }).toList(),
@@ -76,6 +78,15 @@ class AtomFeed {
 
   XmlDocument toXml() {
     var doc = parse('<?xml version="1.0" encoding="UTF-8"?><feed xmlns="http://www.w3.org/2005/Atom"></feed>');
+
+    var b = XmlBuilder();
+    b.element('title');
+    b.element('id', nest: () => b.text(id));
+    b.element('updated', nest: () => b.text(updated.toUtc().toIso8601String()));
+
+    var feed = doc.findAllElements('feed').first;
+    b.build().children.forEach((c) => feed.children.add(c.copy()));
+
     return doc;
   }
 }
