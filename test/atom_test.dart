@@ -88,7 +88,7 @@ void main() {
     expect(item.content, "This is content 1");
     expect(item.rights, "This is rights 1");
   });
-  test("parse Atom-Media.xml", (){
+  test("parse Atom-Media.xml", () {
     var xmlString = new File("test/xml/Atom-Media.xml").readAsStringSync();
 
     var feed = new AtomFeed.parse(xmlString);
@@ -97,7 +97,7 @@ void main() {
     expect(feed.updated, "2018-04-06T13:02:46Z");
 
     expect(feed.items.length, 1);
-    
+
     var item = feed.items.first;
     expect(item.media.group.contents.length, 5);
     expect(item.media.group.credits.length, 2);
@@ -135,9 +135,9 @@ void main() {
 
     expect(item.media.description.type, "plain");
     expect(item.media.description.value, "This was some really bizarre band I listened to as a young lad.");
-    
+
     expect(item.media.keywords, "kitty, cat, big dog, yarn, fluffy");
-  
+
     expect(item.media.thumbnails.length, 2);
     var mediaThumbnail = item.media.thumbnails.first;
     expect(mediaThumbnail.url, "http://www.foo.com/keyframe1.jpg");
@@ -252,5 +252,37 @@ void main() {
     expect(item.summary, null);
     expect(item.content, null);
     expect(item.rights, null);
+  });
+
+  // RFC 5005: Feed Paging and Archiving
+  test("parse Atom-Page1.xml", () {
+    var xmlString = File("test/xml/Atom-Page1.xml").readAsStringSync();
+
+    var feed = AtomFeed.parse(xmlString);
+    var firstPage = feed.links.firstWhere((l) => l.rel == 'first', orElse: () => null);
+    var previousPage = feed.links.firstWhere((l) => l.rel == 'previous', orElse: () => null);
+    var nextPage = feed.links.firstWhere((l) => l.rel == 'next', orElse: () => null);
+    var lastPage = feed.links.firstWhere((l) => l.rel == 'last', orElse: () => null);
+
+    expect(firstPage.href, 'http://example.org/index.atom');
+    expect(previousPage, null);
+    expect(nextPage.href, 'http://example.org/index.atom?page=2');
+    expect(lastPage.href, 'http://example.org/index.atom?page=2');
+  });
+
+  // RFC 5005: Feed Paging and Archiving
+  test("parse Atom-Page2.xml", () {
+    var xmlString = File("test/xml/Atom-Page2.xml").readAsStringSync();
+
+    var feed = AtomFeed.parse(xmlString);
+    var firstPage = feed.links.firstWhere((l) => l.rel == 'first', orElse: () => null);
+    var previousPage = feed.links.firstWhere((l) => l.rel == 'previous', orElse: () => null);
+    var nextPage = feed.links.firstWhere((l) => l.rel == 'next', orElse: () => null);
+    var lastPage = feed.links.firstWhere((l) => l.rel == 'last', orElse: () => null);
+
+    expect(firstPage.href, 'http://example.org/index.atom');
+    expect(previousPage.href, 'http://example.org/index.atom?page=2');
+    expect(nextPage, null);
+    expect(lastPage.href, 'http://example.org/index.atom?page=2');
   });
 }
