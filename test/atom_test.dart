@@ -58,7 +58,7 @@ void main() {
     var item = feed.items.first;
     expect(item.id, "foo-bar-entry-id-1");
     expect(item.title, "Foo bar item 1");
-    expect(item.updated, "2018-04-06T13:02:47Z");
+    expect(item.updated, DateTime.parse("2018-04-06T13:02:47Z"));
 
     expect(item.authors.length, 2);
     expect(item.authors.first.name, "Ellie");
@@ -286,6 +286,9 @@ void main() {
       id: Uri.parse('foo-bar-id'),
       title: 'Foo bar news',
       updated: DateTime.parse('2018-04-06T13:02:46Z'),
+      icon: Uri.parse('http://foo.bar.news/icon.png'),
+      logo: Uri.parse('http://foo.bar.news/logo.png'),
+      subtitle: 'This is subtitle',
       links: [
         AtomLink(rel: 'foo', type: 'text/html', hreflang: 'en', href: Uri.parse('http://foo.bar.news/'), title: 'Foo bar news html', length: 1000),
         AtomLink(rel: 'bar', type: 'application/atom+xml', hreflang: 'pt', href: Uri.parse('http://foo.bar.news/feed.atom'), title: 'Foo bar news atom', length: 100),
@@ -303,56 +306,44 @@ void main() {
         AtomCategory(term: 'bar category', scheme: 'this-is-bar-scheme', label: 'this is bar label'),
       ],
       generator: AtomGenerator(uri: Uri.parse('http://foo.bar.news/generator'), version: '1.0', value: 'Foo bar generator'),
-      icon: Uri.parse('http://foo.bar.news/icon.png'),
-      logo: Uri.parse('http://foo.bar.news/logo.png'),
-      subtitle: 'This is subtitle',
+      items: [
+        AtomItem(
+          id: 'foo-bar-entry-id-1',
+          title: 'Foo bar item 1',
+          updated: DateTime.parse('2018-04-06T13:02:47Z'),
+          published: DateTime.parse('2018-04-06T13:02:49Z'),
+          summary: 'This is summary 1',
+          content: 'This is content 1',
+          rights: 'This is rights 1',
+          authors: [
+            AtomPerson(name: 'Ellie', uri: Uri.parse('http://foo.bar.news/people/ellie'), email: 'ellie@foo.bar.news'),
+            AtomPerson(name: 'Franz', uri: Uri.parse('http://foo.bar.news/people/franz'), email: 'franz@foo.bar.news'),
+          ],
+          links: [
+            AtomLink(rel: 'foo entry', type: 'text/html', hreflang: 'en', href: Uri.parse('http://foo.bar.news/entry'), title: 'Foo bar news html', length: 1000),
+            AtomLink(rel: 'bar entry', type: 'application/atom+xml', hreflang: 'pt', href: Uri.parse('http://foo.bar.news/entry/feed.atom'), title: 'Foo bar entry atom', length: 100),
+          ],
+          categories: [
+            AtomCategory(term: 'foo entry category', scheme: 'this-is-foo-entry-scheme', label: 'this is foo entry label'),
+            AtomCategory(term: 'bar entry category', scheme: 'this-is-bar-entry-scheme', label: 'this is bar entry label'),
+          ],
+          contributors: [
+            AtomPerson(name: 'Gin', uri: Uri.parse('http://foo.bar.news/people/gin'), email: 'gin@foo.bar.news'),
+            AtomPerson(name: 'Hanz', uri: Uri.parse('http://foo.bar.news/people/hanz'), email: 'hanz@foo.bar.news'),
+          ],
+          source: AtomSource(
+            id: Uri.parse('http://foo.bar.news/source'),
+            title: 'Foo bar source',
+            updated: DateTime.parse('2018-04-06T13:02:48Z'),
+          ),
+        ),
+      ],
     );
 
     var xmlString2 = feed.toXml().toXmlString(pretty: true, indent: '    ');
     expect(xmlString2, xmlString);
 
     /*
-    <entry>
-        <id>foo-bar-entry-id-1</id>
-        <title>Foo bar item 1</title>
-        <updated>2018-04-06T13:02:47Z</updated>
-        <author>
-            <name>Ellie</name>
-            <uri>http://foo.bar.news/people/ellie</uri>
-            <email>ellie@foo.bar.news</email>
-        </author>
-        <author>
-            <name>Franz</name>
-            <uri>http://foo.bar.news/people/franz</uri>
-            <email>franz@foo.bar.news</email>
-        </author>
-        <link rel="foo entry" type="text/html" hreflang="en" href="http://foo.bar.news/entry" title="Foo bar news html"
-              length="1000"/>
-        <link rel="bar entry" type="application/atom+xml" hreflang="pt" href="http://foo.bar.news/entry/feed.atom"
-              title="Foo bar entry atom" length="100"/>
-        <category term="foo entry category" scheme="this-is-foo-entry-scheme" label="this is foo entry label"/>
-        <category term="bar entry category" scheme="this-is-bar-entry-scheme" label="this is bar entry label"/>
-        <contributor>
-            <name>Gin</name>
-            <uri>http://foo.bar.news/people/gin</uri>
-            <email>gin@foo.bar.news</email>
-        </contributor>
-        <contributor>
-            <name>Hanz</name>
-            <uri>http://foo.bar.news/people/hanz</uri>
-            <email>hanz@foo.bar.news</email>
-        </contributor>
-        <source>
-            <id>http://foo.bar.news/source</id>
-            <title>Foo bar source</title>
-            <updated>2018-04-06T13:02:48Z</updated>
-        </source>
-
-        <published>2018-04-06T13:02:49Z</published>
-        <summary type="text">This is summary 1</summary>
-        <content>This is content 1</content>
-        <rights>This is rights 1</rights>
-    </entry>
     <entry>
         <id>foo-bar-entry-id-2</id>
         <title>Foo bar item 2</title>

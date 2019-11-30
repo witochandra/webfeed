@@ -34,7 +34,7 @@
     <entry>
         <id>foo-bar-entry-id-1</id>
         <title>Foo bar item 1</title>
-        <updated>2018-04-06T13:02:47Z</updated>
+        <updated>2018-04-06T13:02:47.000Z</updated>
         <author>
             <name>Ellie</name>
             <uri>http://foo.bar.news/people/ellie</uri>
@@ -45,10 +45,8 @@
             <uri>http://foo.bar.news/people/franz</uri>
             <email>franz@foo.bar.news</email>
         </author>
-        <link rel="foo entry" type="text/html" hreflang="en" href="http://foo.bar.news/entry" title="Foo bar news html"
-              length="1000"/>
-        <link rel="bar entry" type="application/atom+xml" hreflang="pt" href="http://foo.bar.news/entry/feed.atom"
-              title="Foo bar entry atom" length="100"/>
+        <link rel="foo entry" type="text/html" hreflang="en" href="http://foo.bar.news/entry" title="Foo bar news html" length="1000"/>
+        <link rel="bar entry" type="application/atom+xml" hreflang="pt" href="http://foo.bar.news/entry/feed.atom" title="Foo bar entry atom" length="100"/>
         <category term="foo entry category" scheme="this-is-foo-entry-scheme" label="this is foo entry label"/>
         <category term="bar entry category" scheme="this-is-bar-entry-scheme" label="this is bar entry label"/>
         <contributor>
@@ -64,11 +62,10 @@
         <source>
             <id>http://foo.bar.news/source</id>
             <title>Foo bar source</title>
-            <updated>2018-04-06T13:02:48Z</updated>
+            <updated>2018-04-06T13:02:48.000Z</updated>
         </source>
-
-        <published>2018-04-06T13:02:49Z</published>
-        <summary type="text">This is summary 1</summary>
+        <published>2018-04-06T13:02:49.000Z</published>
+        <summary>This is summary 1</summary>
         <content>This is content 1</content>
         <rights>This is rights 1</rights>
     </entry>

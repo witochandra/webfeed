@@ -6,11 +6,11 @@ void main() async {
 
   // RSS feed
   var rssresp = await client.get("https://developer.apple.com/news/releases/rss/releases.rss");
-  var channel = new RssFeed.parse(rssresp.body);
+  var channel = RssFeed.parse(rssresp.body);
   print(channel);
 
   // Atom feed
   var atomresp = await client.get("https://www.theverge.com/rss/index.xml");
-  var feed = new AtomFeed.parse(atomresp.body);
-  print(feed);
+  var feed = AtomFeed.parse(atomresp.body);
+  print(feed.toXml().toXmlString(pretty: true, indent: '  '));
 }

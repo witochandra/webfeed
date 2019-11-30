@@ -89,5 +89,7 @@ class AtomFeed {
     if (icon != null) b.element('icon', nest: () => b.text(icon));
     if (logo != null) b.element('logo', nest: () => b.text(logo));
     if (subtitle != null) b.element('subtitle', nest: () => b.text(subtitle));
+
+    if (items != null) items.forEach((i) => i.build(b));
   }
 }
