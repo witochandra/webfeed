@@ -312,9 +312,6 @@ void main() {
     expect(xmlString2, xmlString);
 
     /*
-    <icon>http://foo.bar.news/icon.png</icon>
-    <logo>http://foo.bar.news/logo.png</logo>
-    <subtitle>This is subtitle</subtitle>
     <entry>
         <id>foo-bar-entry-id-1</id>
         <title>Foo bar item 1</title>
