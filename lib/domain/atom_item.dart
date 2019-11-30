@@ -18,7 +18,7 @@ class AtomItem {
   final AtomSource source;
   final DateTime published;
   final AtomContent content;
-  final String summary;
+  final AtomContent summary;
   final String rights;
   final Media media;
 
@@ -49,7 +49,7 @@ class AtomItem {
         source: AtomSource.parse(findElementOrNull(element, "source")),
         published: parseDateTimeLiteral(element, "published"),
         content: AtomContent.parse(findElementOrNull(element, "content")),
-        summary: parseTextLiteral(element, "summary"),
+        summary: AtomContent.parse(findElementOrNull(element, "summary")),
         rights: parseTextLiteral(element, "rights"),
         media: Media.parse(element),
       );
@@ -66,8 +66,8 @@ class AtomItem {
       if (contributors != null) contributors.forEach((c) => c.build(b, 'contributor'));
       if (source != null) source.build(b);
       if (published != null) b.element('published', nest: () => b.text(published.toUtc().toIso8601String()));
-      if (summary != null) b.element('summary', nest: () => b.text(summary));
-      if (content != null) content.build(b);
+      if (summary != null) summary.build(b, 'summary');
+      if (content != null) content.build(b, 'content');
       if (rights != null) b.element('rights', nest: () => b.text(rights));
       //if (media != null) media.build(b); // TODO
     });

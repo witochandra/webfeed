@@ -84,7 +84,7 @@ void main() {
     expect(item.contributors.first.email, "gin@foo.bar.news");
 
     expect(item.published, DateTime.parse("2018-04-06T13:02:49Z"));
-    expect(item.summary, "This is summary 1");
+    expect(item.summary.text, "This is summary 1");
     expect(item.content.text, "This is content 1");
     expect(item.rights, "This is rights 1");
   });
@@ -312,7 +312,7 @@ void main() {
           title: 'Foo bar item 1',
           updated: DateTime.parse('2018-04-06T13:02:47Z'),
           published: DateTime.parse('2018-04-06T13:02:49Z'),
-          summary: 'This is summary 1',
+          summary: AtomContent(text: 'This is summary 1'),
           content: AtomContent(text: 'This is content 1'),
           rights: 'This is rights 1',
           authors: [
@@ -342,7 +342,7 @@ void main() {
           title: 'Foo bar item 2',
           updated: DateTime.parse('2018-04-06T13:02:50Z'),
           published: DateTime.parse('2018-04-06T13:02:52Z'),
-          summary: 'This is summary 2',
+          summary: AtomContent(text: 'This is summary 2'),
           content: AtomContent(text: 'This is content 2'),
           rights: 'This is rights 2',
           authors: [
@@ -407,7 +407,7 @@ void main() {
           ],
           id: 'urn:uuid:1225c695-cfb8-4ebb-aaaa-80da344efa6a',
           updated: DateTime.parse('2003-12-13T18:30:02Z'),
-          summary: 'Some text.',
+          summary: AtomContent(text: 'Some text.'),
         ),
       ],
     );
@@ -441,7 +441,7 @@ void main() {
           ],
           id: 'urn:uuid:1225c695-cfb8-4ebb-aaaa-80da344efa6a',
           updated: DateTime.parse('2003-12-13T18:30:02Z'),
-          summary: 'Some text.',
+          summary: AtomContent(text: 'Some text.'),
         ),
       ],
     );

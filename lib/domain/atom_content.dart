@@ -17,7 +17,7 @@ class AtomContent {
     );
   }
 
-  void build(XmlBuilder b) => b.element('content', nest: () {
+  void build(XmlBuilder b, String kind) => b.element(kind, nest: () {
         if (type != null) b.attribute('type', type);
         if (text != null) b.text(text);
       });

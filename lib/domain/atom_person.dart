@@ -17,8 +17,8 @@ class AtomPerson {
     );
   }
 
-  void build(XmlBuilder b, String type) {
-    b.element(type, nest: () {
+  void build(XmlBuilder b, String kind) {
+    b.element(kind, nest: () {
       if (name != null) b.element('name', nest: () => b.text(name));
       if (uri != null) b.element('uri', nest: () => b.text(uri));
       if (email != null) b.element('email', nest: () => b.text(email));
