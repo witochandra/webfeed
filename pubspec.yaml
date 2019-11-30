@@ -1,6 +1,6 @@
 name: webfeed
-version: 0.4.2
-description: webfeed is a dart package for parsing RSS and Atom feeds. Media & DublinCore namespaces are also supported.
+version: 0.5.0
+description: webfeed is a dart package for parsing and generating RSS and Atom feeds. Media & DublinCore namespaces are also supported.
 author: Wito Chandra <wito.c.91@gmail.com>
 homepage: https://github.com/witochandra/webfeed
 environment:

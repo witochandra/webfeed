@@ -31,13 +31,12 @@ class AtomItem {
     this.categories,
     this.contributors,
     this.source,
-    published,
+    this.published,
     this.content,
     this.summary,
     this.rights,
     this.media,
-  })  : this.updated = updated ?? DateTime.now(),
-        this.published = published ?? DateTime.now();
+  }) : this.updated = updated ?? DateTime.now();
 
   factory AtomItem.parse(XmlElement element) => AtomItem(
         id: parseTextLiteral(element, "id"),

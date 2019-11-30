@@ -268,7 +268,7 @@ void main() {
     var lastPage = feed.links.firstWhere((l) => l.rel == 'last', orElse: () => null);
 
     expect(firstPage.href, Uri.parse('http://example.org/index.atom'));
-    expect(previousPage.href, Uri.parse('http://example.org/index.atom?page=2'));
+    expect(previousPage.href, Uri.parse('http://example.org/index.atom'));
     expect(nextPage, null);
     expect(lastPage.href, Uri.parse('http://example.org/index.atom?page=2'));
   });
@@ -374,6 +374,74 @@ void main() {
             title: 'Foo bar source',
             updated: DateTime.parse('2018-04-06T13:02:51Z'),
           ),
+        ),
+      ],
+    );
+
+    var xmlString2 = feed.toXml().toXmlString(pretty: true, indent: '    ');
+    expect(xmlString2, xmlString);
+  });
+
+  // RFC 5005: Feed Paging and Archiving
+  test("generate Atom-Page1.xml", () {
+    var xmlString = File("test/xml/Atom-Page1.xml").readAsStringSync();
+
+    var feed = AtomFeed(
+      title: 'Example Feed',
+      links: [
+        AtomLink(href: Uri.parse('http://example.org/')),
+        AtomLink(rel: 'first', href: Uri.parse('http://example.org/index.atom')),
+        AtomLink(rel: 'next', href: Uri.parse('http://example.org/index.atom?page=2')),
+        AtomLink(rel: 'last', href: Uri.parse('http://example.org/index.atom?page=2')),
+      ],
+      updated: DateTime.parse('2003-12-13T18:30:02Z'),
+      authors: [
+        AtomPerson(name: 'John Doe'),
+      ],
+      id: Uri.parse('urn:uuid:60a76c80-d399-11d9-b93C-0003939e0af6'),
+      items: [
+        AtomItem(
+          title: 'Atom-Powered Robots Run Amok',
+          links: [
+            AtomLink(href: Uri.parse('http://example.org/2003/12/13/atom03')),
+          ],
+          id: 'urn:uuid:1225c695-cfb8-4ebb-aaaa-80da344efa6a',
+          updated: DateTime.parse('2003-12-13T18:30:02Z'),
+          summary: 'Some text.',
+        ),
+      ],
+    );
+
+    var xmlString2 = feed.toXml().toXmlString(pretty: true, indent: '    ');
+    expect(xmlString2, xmlString);
+  });
+
+  // RFC 5005: Feed Paging and Archiving
+  test("generate Atom-Page2.xml", () {
+    var xmlString = File("test/xml/Atom-Page2.xml").readAsStringSync();
+
+    var feed = AtomFeed(
+      title: 'Example Feed',
+      links: [
+        AtomLink(href: Uri.parse('http://example.org/')),
+        AtomLink(rel: 'first', href: Uri.parse('http://example.org/index.atom')),
+        AtomLink(rel: 'previous', href: Uri.parse('http://example.org/index.atom')),
+        AtomLink(rel: 'last', href: Uri.parse('http://example.org/index.atom?page=2')),
+      ],
+      updated: DateTime.parse('2003-12-13T18:30:02Z'),
+      authors: [
+        AtomPerson(name: 'John Doe'),
+      ],
+      id: Uri.parse('urn:uuid:60a76c80-d399-11d9-b93C-0003939e0af6'),
+      items: [
+        AtomItem(
+          title: 'Atom-Powered Robots Run Amok',
+          links: [
+            AtomLink(href: Uri.parse('http://example.org/2003/12/13/atom03')),
+          ],
+          id: 'urn:uuid:1225c695-cfb8-4ebb-aaaa-80da344efa6a',
+          updated: DateTime.parse('2003-12-13T18:30:02Z'),
+          summary: 'Some text.',
         ),
       ],
     );
