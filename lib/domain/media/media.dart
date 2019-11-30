@@ -41,7 +41,7 @@ class Media {
   final List<String> comments;
   final Embed embed;
   final List<String> responses;
-  final List<Uri> backLinks;
+  final List<String> backLinks;
   final Status status;
   final List<Price> prices;
   final License license;
@@ -97,7 +97,7 @@ class Media {
       comments: findElementOrNull(element, "media:comments")?.findElements("media:comment")?.map((e) => e.text)?.toList() ?? [],
       embed: Embed.parse(findElementOrNull(element, "media:embed")),
       responses: findElementOrNull(element, "media:responses")?.findElements("media:response")?.map((e) => e.text)?.toList() ?? [],
-      backLinks: findElementOrNull(element, "media:backLinks")?.findElements("media:backLink")?.map((e) => Uri.parse(e.text))?.toList() ?? [],
+      backLinks: findElementOrNull(element, "media:backLinks")?.findElements("media:backLink")?.map((e) => e.text)?.toList() ?? [],
       status: Status.parse(findElementOrNull(element, "media:status")),
       prices: element.findElements("media:price").map((e) => Price.parse(e)).toList(),
       license: License.parse(findElementOrNull(element, "media:license")),

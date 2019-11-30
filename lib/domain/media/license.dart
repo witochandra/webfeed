@@ -2,7 +2,7 @@ import 'package:xml/xml.dart';
 
 class License {
   final String type;
-  final Uri href;
+  final String href;
   final String value;
 
   License({
@@ -13,10 +13,9 @@ class License {
 
   factory License.parse(XmlElement element) {
     if (element == null) return null;
-    var href = element.getAttribute("href");
     return License(
       type: element.getAttribute("type"),
-      href: href == null ? null : Uri.parse(href),
+      href: element.getAttribute("href"),
       value: element.text,
     );
   }

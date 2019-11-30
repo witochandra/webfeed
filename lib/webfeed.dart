@@ -1,4 +1,5 @@
 export 'domain/atom_category.dart';
+export 'domain/atom_content.dart';
 export 'domain/atom_feed.dart';
 export 'domain/atom_generator.dart';
 export 'domain/atom_item.dart';

@@ -1,7 +1,7 @@
 import 'package:xml/xml.dart';
 
 class Copyright {
-  final Uri url;
+  final String url;
   final String value;
 
   Copyright({
@@ -11,9 +11,8 @@ class Copyright {
 
   factory Copyright.parse(XmlElement element) {
     if (element == null) return null;
-    var url = element.getAttribute("url");
     return Copyright(
-      url: url == null ? null : Uri.parse(url),
+      url: element.getAttribute("url"),
       value: element.text,
     );
   }

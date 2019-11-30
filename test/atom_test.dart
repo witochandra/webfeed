@@ -2,7 +2,6 @@ import 'dart:core';
 import 'dart:io';
 
 import 'package:test/test.dart';
-import 'package:webfeed/domain/atom_content.dart';
 import 'package:webfeed/webfeed.dart';
 
 void main() {
@@ -86,7 +85,7 @@ void main() {
 
     expect(item.published, DateTime.parse("2018-04-06T13:02:49Z"));
     expect(item.summary, "This is summary 1");
-    expect(item.content, "This is content 1");
+    expect(item.content.text, "This is content 1");
     expect(item.rights, "This is rights 1");
   });
 
@@ -108,7 +107,7 @@ void main() {
 
     expect(item.media.contents.length, 2);
     var mediaContent = item.media.contents.first;
-    expect(mediaContent.url, Uri.parse("http://www.foo.com/video.mov"));
+    expect(mediaContent.url, "http://www.foo.com/video.mov");
     expect(mediaContent.type, "video/quicktime");
     expect(mediaContent.fileSize, 2000);
     expect(mediaContent.medium, "video");
@@ -142,7 +141,7 @@ void main() {
 
     expect(item.media.thumbnails.length, 2);
     var mediaThumbnail = item.media.thumbnails.first;
-    expect(mediaThumbnail.url, Uri.parse("http://www.foo.com/keyframe1.jpg"));
+    expect(mediaThumbnail.url, "http://www.foo.com/keyframe1.jpg");
     expect(mediaThumbnail.width, "75");
     expect(mediaThumbnail.height, "50");
     expect(mediaThumbnail.time, "12:05:01.123");
@@ -150,12 +149,12 @@ void main() {
     expect(item.media.hash.algo, "md5");
     expect(item.media.hash.value, "dfdec888b72151965a34b4b59031290a");
 
-    expect(item.media.player.url, Uri.parse("http://www.foo.com/player?id=1111"));
+    expect(item.media.player.url, "http://www.foo.com/player?id=1111");
     expect(item.media.player.width, 400);
     expect(item.media.player.height, 200);
     expect(item.media.player.value, "");
 
-    expect(item.media.copyright.url, Uri.parse("http://blah.com/additional-info.html"));
+    expect(item.media.copyright.url, "http://blah.com/additional-info.html");
     expect(item.media.copyright.value, "2005 FooBar Media");
 
     expect(item.media.text.type, "plain");
@@ -181,7 +180,7 @@ void main() {
     expect(item.media.comments.first, "comment1");
     expect(item.media.comments.last, "comment2");
 
-    expect(item.media.embed.url, Uri.parse("http://www.foo.com/player.swf"));
+    expect(item.media.embed.url, "http://www.foo.com/player.swf");
     expect(item.media.embed.width, 512);
     expect(item.media.embed.height, 323);
     expect(item.media.embed.params.length, 5);
@@ -193,8 +192,8 @@ void main() {
     expect(item.media.responses.last, "http://www.response2.com");
 
     expect(item.media.backLinks.length, 2);
-    expect(item.media.backLinks.first, Uri.parse("http://www.backlink1.com"));
-    expect(item.media.backLinks.last, Uri.parse("http://www.backlink2.com"));
+    expect(item.media.backLinks.first, "http://www.backlink1.com");
+    expect(item.media.backLinks.last, "http://www.backlink2.com");
 
     expect(item.media.status.state, "active");
     expect(item.media.status.reason, null);
@@ -202,15 +201,15 @@ void main() {
     expect(item.media.prices.length, 2);
     expect(item.media.prices.first.price, 19.99);
     expect(item.media.prices.first.type, "rent");
-    expect(item.media.prices.first.info, Uri.parse("http://www.dummy.jp/package_info.html"));
+    expect(item.media.prices.first.info, "http://www.dummy.jp/package_info.html");
     expect(item.media.prices.first.currency, "EUR");
 
     expect(item.media.license.type, "text/html");
-    expect(item.media.license.href, Uri.parse("http://www.licensehost.com/license"));
+    expect(item.media.license.href, "http://www.licensehost.com/license");
     expect(item.media.license.value, " Sample license for a video");
 
     expect(item.media.peerLink.type, "application/x-bittorrent");
-    expect(item.media.peerLink.href, Uri.parse("http://www.foo.org/sampleFile.torrent"));
+    expect(item.media.peerLink.href, "http://www.foo.org/sampleFile.torrent");
     expect(item.media.peerLink.value, "");
 
     expect(item.media.rights.status, "official");
