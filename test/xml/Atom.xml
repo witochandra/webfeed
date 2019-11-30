@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <id>foo-bar-id</id>
+    <id>urn:foo:foo-bar-id</id>
     <title>Foo bar news</title>
     <updated>2018-04-06T13:02:46.000Z</updated>
-    <link rel="foo" type="text/html" hreflang="en" href="http://foo.bar.news/" title="Foo bar news html" length="1000"/>
-    <link rel="bar" type="application/atom+xml" hreflang="pt" href="http://foo.bar.news/feed.atom" title="Foo bar news atom" length="100"/>
+    <link rel="related" type="text/html" hreflang="en" href="http://foo.bar.news/" title="Foo bar news html" length="1000"/>
+    <link rel="related" type="application/atom+xml" hreflang="pt" href="http://foo.bar.news/feed.atom" title="Foo bar news atom" length="100"/>
     <author>
         <name>Alice</name>
         <uri>http://foo.bar.news/people/alice</uri>
@@ -25,14 +25,14 @@
         <uri>http://foo.bar.news/people/david</uri>
         <email>david@foo.bar.news</email>
     </contributor>
-    <category term="foo category" scheme="this-is-foo-scheme" label="this is foo label"/>
-    <category term="bar category" scheme="this-is-bar-scheme" label="this is bar label"/>
+    <category term="foo category" scheme="https://foo.com/this-is-foo-scheme" label="this is foo label"/>
+    <category term="bar category" scheme="https://foo.com/this-is-bar-scheme" label="this is bar label"/>
     <generator uri="http://foo.bar.news/generator" version="1.0">Foo bar generator</generator>
     <icon>http://foo.bar.news/icon.png</icon>
     <logo>http://foo.bar.news/logo.png</logo>
     <subtitle>This is subtitle</subtitle>
     <entry>
-        <id>foo-bar-entry-id-1</id>
+        <id>urn:foo:foo-bar-entry-id-1</id>
         <title>Foo bar item 1</title>
         <updated>2018-04-06T13:02:47.000Z</updated>
         <author>
@@ -45,10 +45,10 @@
             <uri>http://foo.bar.news/people/franz</uri>
             <email>franz@foo.bar.news</email>
         </author>
-        <link rel="foo entry" type="text/html" hreflang="en" href="http://foo.bar.news/entry" title="Foo bar news html" length="1000"/>
-        <link rel="bar entry" type="application/atom+xml" hreflang="pt" href="http://foo.bar.news/entry/feed.atom" title="Foo bar entry atom" length="100"/>
-        <category term="foo entry category" scheme="this-is-foo-entry-scheme" label="this is foo entry label"/>
-        <category term="bar entry category" scheme="this-is-bar-entry-scheme" label="this is bar entry label"/>
+        <link rel="related" type="text/html" hreflang="en" href="http://foo.bar.news/entry" title="Foo bar news html" length="1000"/>
+        <link rel="related" type="application/atom+xml" hreflang="pt" href="http://foo.bar.news/entry/feed.atom" title="Foo bar entry atom" length="100"/>
+        <category term="foo entry category" scheme="https://foo.com/this-is-foo-entry-scheme" label="this is foo entry label"/>
+        <category term="bar entry category" scheme="https://foo.com/this-is-bar-entry-scheme" label="this is bar entry label"/>
         <contributor>
             <name>Gin</name>
             <uri>http://foo.bar.news/people/gin</uri>
@@ -70,7 +70,7 @@
         <rights>This is rights 1</rights>
     </entry>
     <entry>
-        <id>foo-bar-entry-id-2</id>
+        <id>urn:foo:foo-bar-entry-id-2</id>
         <title>Foo bar item 2</title>
         <updated>2018-04-06T13:02:50.000Z</updated>
         <author>
@@ -83,8 +83,8 @@
             <uri>http://foo.bar.news/people/jhon</uri>
             <email>jhon@foo.bar.news</email>
         </author>
-        <link rel="foo entry" type="text/html" hreflang="en" href="http://foo.bar.news/entry" title="Foo bar news html" length="1000"/>
-        <link rel="bar entry" type="application/atom+xml" hreflang="pt" href="http://foo.bar.news/entry/feed.atom" title="Foo bar entry atom" length="100"/>
+        <link rel="related" type="text/html" hreflang="en" href="http://foo.bar.news/entry" title="Foo bar news html" length="1000"/>
+        <link rel="related" type="application/atom+xml" hreflang="pt" href="http://foo.bar.news/entry/feed.atom" title="Foo bar entry atom" length="100"/>
         <category term="foo entry category"/>
         <category term="bar entry category"/>
         <contributor>

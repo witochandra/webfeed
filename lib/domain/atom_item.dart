@@ -8,7 +8,7 @@ import 'package:webfeed/util/helpers.dart';
 import 'package:xml/xml.dart';
 
 class AtomItem {
-  final String id;
+  final Uri id;
   final String title;
   final DateTime updated;
   final List<AtomPerson> authors;
@@ -39,7 +39,7 @@ class AtomItem {
   }) : this.updated = updated ?? DateTime.now();
 
   factory AtomItem.parse(XmlElement element) => AtomItem(
-        id: parseTextLiteral(element, "id"),
+        id: parseUriLiteral(element, "id"),
         title: parseTextLiteral(element, "title"),
         updated: parseDateTimeLiteral(element, "updated"),
         authors: element.findElements("author").map((e) => AtomPerson.parse(e)).toList(),
@@ -55,7 +55,7 @@ class AtomItem {
       );
 
   void build(XmlBuilder b) {
-    if (id == null || id.isEmpty) throw Exception('must have an id');
+    if (id == null) throw Exception('must have an id');
     b.element('entry', nest: () {
       b.element('id', nest: () => b.text(id));
       if (title != null) b.element('title', nest: () => b.text(title));
@@ -69,7 +69,7 @@ class AtomItem {
       if (summary != null) summary.build(b, 'summary');
       if (content != null) content.build(b, 'content');
       if (rights != null) b.element('rights', nest: () => b.text(rights));
-      //if (media != null) media.build(b); // TODO
+      //if (media != null) media.build(b);
     });
   }
 }

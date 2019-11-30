@@ -18,13 +18,12 @@ void main() {
     var xmlString = File("test/xml/Atom.xml").readAsStringSync();
 
     var feed = AtomFeed.parse(xmlString);
-
-    expect(feed.id, Uri.parse("foo-bar-id"));
+    expect(feed.id, Uri.parse("urn:foo:foo-bar-id"));
     expect(feed.title, "Foo bar news");
     expect(feed.updated, DateTime.parse("2018-04-06T13:02:46Z"));
 
     expect(feed.links.length, 2);
-    expect(feed.links.first.rel, "foo");
+    expect(feed.links.first.rel, "related");
     expect(feed.links.first.type, "text/html");
     expect(feed.links.first.hreflang, "en");
     expect(feed.links.first.href, Uri.parse("http://foo.bar.news/"));
@@ -43,7 +42,7 @@ void main() {
 
     expect(feed.categories.length, 2);
     expect(feed.categories.first.term, "foo category");
-    expect(feed.categories.first.scheme, "this-is-foo-scheme");
+    expect(feed.categories.first.scheme, "https://foo.com/this-is-foo-scheme");
     expect(feed.categories.first.label, "this is foo label");
 
     expect(feed.generator.uri, Uri.parse("http://foo.bar.news/generator"));
@@ -56,7 +55,7 @@ void main() {
 
     expect(feed.items.length, 2);
     var item = feed.items.first;
-    expect(item.id, "foo-bar-entry-id-1");
+    expect(item.id, Uri.parse("urn:foo:foo-bar-entry-id-1"));
     expect(item.title, "Foo bar item 1");
     expect(item.updated, DateTime.parse("2018-04-06T13:02:47Z"));
 
@@ -66,7 +65,7 @@ void main() {
     expect(item.authors.first.email, "ellie@foo.bar.news");
 
     expect(item.links.length, 2);
-    expect(item.links.first.rel, "foo entry");
+    expect(item.links.first.rel, "related");
     expect(item.links.first.type, "text/html");
     expect(item.links.first.hreflang, "en");
     expect(item.links.first.href, Uri.parse("http://foo.bar.news/entry"));
@@ -75,7 +74,7 @@ void main() {
 
     expect(item.categories.length, 2);
     expect(item.categories.first.term, "foo entry category");
-    expect(item.categories.first.scheme, "this-is-foo-entry-scheme");
+    expect(item.categories.first.scheme, "https://foo.com/this-is-foo-entry-scheme");
     expect(item.categories.first.label, "this is foo entry label");
 
     expect(item.contributors.length, 2);
@@ -283,15 +282,15 @@ void main() {
   test("generate Atom.xml", () {
     var xmlString = File("test/xml/Atom.xml").readAsStringSync();
     var feed = AtomFeed(
-      id: Uri.parse('foo-bar-id'),
+      id: Uri.parse('urn:foo:foo-bar-id'),
       title: 'Foo bar news',
       updated: DateTime.parse('2018-04-06T13:02:46Z'),
       icon: Uri.parse('http://foo.bar.news/icon.png'),
       logo: Uri.parse('http://foo.bar.news/logo.png'),
       subtitle: 'This is subtitle',
       links: [
-        AtomLink(rel: 'foo', type: 'text/html', hreflang: 'en', href: Uri.parse('http://foo.bar.news/'), title: 'Foo bar news html', length: 1000),
-        AtomLink(rel: 'bar', type: 'application/atom+xml', hreflang: 'pt', href: Uri.parse('http://foo.bar.news/feed.atom'), title: 'Foo bar news atom', length: 100),
+        AtomLink(rel: 'related', type: 'text/html', hreflang: 'en', href: Uri.parse('http://foo.bar.news/'), title: 'Foo bar news html', length: 1000),
+        AtomLink(rel: 'related', type: 'application/atom+xml', hreflang: 'pt', href: Uri.parse('http://foo.bar.news/feed.atom'), title: 'Foo bar news atom', length: 100),
       ],
       authors: [
         AtomPerson(name: 'Alice', uri: Uri.parse('http://foo.bar.news/people/alice'), email: 'alice@foo.bar.news'),
@@ -302,13 +301,13 @@ void main() {
         AtomPerson(name: 'David', uri: Uri.parse('http://foo.bar.news/people/david'), email: 'david@foo.bar.news'),
       ],
       categories: [
-        AtomCategory(term: 'foo category', scheme: 'this-is-foo-scheme', label: 'this is foo label'),
-        AtomCategory(term: 'bar category', scheme: 'this-is-bar-scheme', label: 'this is bar label'),
+        AtomCategory(term: 'foo category', scheme: 'https://foo.com/this-is-foo-scheme', label: 'this is foo label'),
+        AtomCategory(term: 'bar category', scheme: 'https://foo.com/this-is-bar-scheme', label: 'this is bar label'),
       ],
       generator: AtomGenerator(uri: Uri.parse('http://foo.bar.news/generator'), version: '1.0', value: 'Foo bar generator'),
       items: [
         AtomItem(
-          id: 'foo-bar-entry-id-1',
+          id: Uri.parse('urn:foo:foo-bar-entry-id-1'),
           title: 'Foo bar item 1',
           updated: DateTime.parse('2018-04-06T13:02:47Z'),
           published: DateTime.parse('2018-04-06T13:02:49Z'),
@@ -320,12 +319,12 @@ void main() {
             AtomPerson(name: 'Franz', uri: Uri.parse('http://foo.bar.news/people/franz'), email: 'franz@foo.bar.news'),
           ],
           links: [
-            AtomLink(rel: 'foo entry', type: 'text/html', hreflang: 'en', href: Uri.parse('http://foo.bar.news/entry'), title: 'Foo bar news html', length: 1000),
-            AtomLink(rel: 'bar entry', type: 'application/atom+xml', hreflang: 'pt', href: Uri.parse('http://foo.bar.news/entry/feed.atom'), title: 'Foo bar entry atom', length: 100),
+            AtomLink(rel: 'related', type: 'text/html', hreflang: 'en', href: Uri.parse('http://foo.bar.news/entry'), title: 'Foo bar news html', length: 1000),
+            AtomLink(rel: 'related', type: 'application/atom+xml', hreflang: 'pt', href: Uri.parse('http://foo.bar.news/entry/feed.atom'), title: 'Foo bar entry atom', length: 100),
           ],
           categories: [
-            AtomCategory(term: 'foo entry category', scheme: 'this-is-foo-entry-scheme', label: 'this is foo entry label'),
-            AtomCategory(term: 'bar entry category', scheme: 'this-is-bar-entry-scheme', label: 'this is bar entry label'),
+            AtomCategory(term: 'foo entry category', scheme: 'https://foo.com/this-is-foo-entry-scheme', label: 'this is foo entry label'),
+            AtomCategory(term: 'bar entry category', scheme: 'https://foo.com/this-is-bar-entry-scheme', label: 'this is bar entry label'),
           ],
           contributors: [
             AtomPerson(name: 'Gin', uri: Uri.parse('http://foo.bar.news/people/gin'), email: 'gin@foo.bar.news'),
@@ -338,7 +337,7 @@ void main() {
           ),
         ),
         AtomItem(
-          id: 'foo-bar-entry-id-2',
+          id: Uri.parse('urn:foo:foo-bar-entry-id-2'),
           title: 'Foo bar item 2',
           updated: DateTime.parse('2018-04-06T13:02:50Z'),
           published: DateTime.parse('2018-04-06T13:02:52Z'),
@@ -358,8 +357,8 @@ void main() {
             ),
           ],
           links: [
-            AtomLink(rel: 'foo entry', type: 'text/html', hreflang: 'en', href: Uri.parse('http://foo.bar.news/entry'), title: 'Foo bar news html', length: 1000),
-            AtomLink(rel: 'bar entry', type: 'application/atom+xml', hreflang: 'pt', href: Uri.parse('http://foo.bar.news/entry/feed.atom'), title: 'Foo bar entry atom', length: 100),
+            AtomLink(rel: 'related', type: 'text/html', hreflang: 'en', href: Uri.parse('http://foo.bar.news/entry'), title: 'Foo bar news html', length: 1000),
+            AtomLink(rel: 'related', type: 'application/atom+xml', hreflang: 'pt', href: Uri.parse('http://foo.bar.news/entry/feed.atom'), title: 'Foo bar entry atom', length: 100),
           ],
           categories: [
             AtomCategory(term: 'foo entry category'),
@@ -405,7 +404,7 @@ void main() {
           links: [
             AtomLink(href: Uri.parse('http://example.org/2003/12/13/atom03')),
           ],
-          id: 'urn:uuid:1225c695-cfb8-4ebb-aaaa-80da344efa6a',
+          id: Uri.parse('urn:uuid:1225c695-cfb8-4ebb-aaaa-80da344efa6a'),
           updated: DateTime.parse('2003-12-13T18:30:02Z'),
           summary: AtomContent(text: 'Some text.'),
         ),
@@ -439,7 +438,7 @@ void main() {
           links: [
             AtomLink(href: Uri.parse('http://example.org/2003/12/13/atom03')),
           ],
-          id: 'urn:uuid:1225c695-cfb8-4ebb-aaaa-80da344efa6a',
+          id: Uri.parse('urn:uuid:1225c695-cfb8-4ebb-aaaa-80da344efa6a'),
           updated: DateTime.parse('2003-12-13T18:30:02Z'),
           summary: AtomContent(text: 'Some text.'),
         ),
