@@ -1,4 +1,5 @@
 import 'package:webfeed/domain/atom_category.dart';
+import 'package:webfeed/domain/atom_content.dart';
 import 'package:webfeed/domain/atom_link.dart';
 import 'package:webfeed/domain/atom_person.dart';
 import 'package:webfeed/domain/atom_source.dart';
@@ -10,14 +11,13 @@ class AtomItem {
   final String id;
   final String title;
   final DateTime updated;
-
   final List<AtomPerson> authors;
   final List<AtomLink> links;
   final List<AtomCategory> categories;
   final List<AtomPerson> contributors;
   final AtomSource source;
   final DateTime published;
-  final String content;
+  final AtomContent content;
   final String summary;
   final String rights;
   final Media media;
@@ -48,7 +48,7 @@ class AtomItem {
         contributors: element.findElements("contributor").map((e) => AtomPerson.parse(e)).toList(),
         source: AtomSource.parse(findElementOrNull(element, "source")),
         published: parseDateTimeLiteral(element, "published"),
-        content: parseTextLiteral(element, "content"),
+        content: AtomContent.parse(findElementOrNull(element, "content")),
         summary: parseTextLiteral(element, "summary"),
         rights: parseTextLiteral(element, "rights"),
         media: Media.parse(element),
@@ -67,7 +67,7 @@ class AtomItem {
       if (source != null) source.build(b);
       if (published != null) b.element('published', nest: () => b.text(published.toUtc().toIso8601String()));
       if (summary != null) b.element('summary', nest: () => b.text(summary));
-      if (content != null) b.element('content', nest: () => b.text(content));
+      if (content != null) content.build(b);
       if (rights != null) b.element('rights', nest: () => b.text(rights));
       //if (media != null) media.build(b); // TODO
     });

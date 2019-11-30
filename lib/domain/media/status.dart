@@ -10,10 +10,8 @@ class Status {
   });
 
   factory Status.parse(XmlElement element) {
-    if (element == null) {
-      return null;
-    }
-    return new Status(
+    if (element == null) return null;
+    return Status(
       state: element.getAttribute("state"),
       reason: element.getAttribute("reason"),
     );

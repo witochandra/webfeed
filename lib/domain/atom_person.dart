@@ -9,11 +9,11 @@ class AtomPerson {
   AtomPerson({this.name, this.uri, this.email});
 
   factory AtomPerson.parse(XmlElement element) {
-    var uri = findElementOrNull(element, "uri");
+    var uri = parseTextLiteral(element, "uri");
     return AtomPerson(
-      name: findElementOrNull(element, "name")?.text,
-      uri: uri == null ? null : Uri.parse(uri.text),
-      email: findElementOrNull(element, "email")?.text,
+      name: parseTextLiteral(element, "name"),
+      uri: uri == null ? null : Uri.parse(uri),
+      email: parseTextLiteral(element, "email"),
     );
   }
 

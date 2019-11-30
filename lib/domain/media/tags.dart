@@ -10,10 +10,8 @@ class Tags {
   });
 
   factory Tags.parse(XmlElement element) {
-    if (element == null) {
-      return null;
-    }
-    return new Tags(
+    if (element == null) return null;
+    return Tags(
       tags: element.text,
       weight: int.tryParse(element.getAttribute("weight") ?? "1"),
     );

@@ -2,22 +2,23 @@ import 'dart:core';
 import 'dart:io';
 
 import 'package:test/test.dart';
+import 'package:webfeed/domain/atom_content.dart';
 import 'package:webfeed/webfeed.dart';
 
 void main() {
   test("parse Invalid.xml", () {
-    var xmlString = new File("test/xml/Invalid.xml").readAsStringSync();
+    var xmlString = File("test/xml/Invalid.xml").readAsStringSync();
 
     try {
-      new AtomFeed.parse(xmlString);
+      AtomFeed.parse(xmlString);
       fail("Should throw Argument Error");
     } on ArgumentError {}
   });
 
   test("parse Atom.xml", () {
-    var xmlString = new File("test/xml/Atom.xml").readAsStringSync();
+    var xmlString = File("test/xml/Atom.xml").readAsStringSync();
 
-    var feed = new AtomFeed.parse(xmlString);
+    var feed = AtomFeed.parse(xmlString);
 
     expect(feed.id, Uri.parse("foo-bar-id"));
     expect(feed.title, "Foo bar news");
@@ -90,7 +91,7 @@ void main() {
   });
 
   test("parse Atom-Media.xml", () {
-    var xmlString = new File("test/xml/Atom-Media.xml").readAsStringSync();
+    var xmlString = File("test/xml/Atom-Media.xml").readAsStringSync();
 
     var feed = AtomFeed.parse(xmlString);
     expect(feed.id, Uri.parse("foo-bar-id"));
@@ -313,7 +314,7 @@ void main() {
           updated: DateTime.parse('2018-04-06T13:02:47Z'),
           published: DateTime.parse('2018-04-06T13:02:49Z'),
           summary: 'This is summary 1',
-          content: 'This is content 1',
+          content: AtomContent(text: 'This is content 1'),
           rights: 'This is rights 1',
           authors: [
             AtomPerson(name: 'Ellie', uri: Uri.parse('http://foo.bar.news/people/ellie'), email: 'ellie@foo.bar.news'),
@@ -343,7 +344,7 @@ void main() {
           updated: DateTime.parse('2018-04-06T13:02:50Z'),
           published: DateTime.parse('2018-04-06T13:02:52Z'),
           summary: 'This is summary 2',
-          content: 'This is content 2',
+          content: AtomContent(text: 'This is content 2'),
           rights: 'This is rights 2',
           authors: [
             AtomPerson(

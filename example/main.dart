@@ -2,7 +2,7 @@ import 'package:http/http.dart' as http;
 import 'package:webfeed/webfeed.dart';
 
 void main() async {
-  var client = new http.Client();
+  var client = http.Client();
 
   // RSS feed
   var rssresp = await client.get("https://developer.apple.com/news/releases/rss/releases.rss");

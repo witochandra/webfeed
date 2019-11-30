@@ -15,14 +15,12 @@ class Scene {
   });
 
   factory Scene.parse(XmlElement element) {
-    if (element == null) {
-      return null;
-    }
-    return new Scene(
-      title: findElementOrNull(element, "sceneTitle")?.text,
-      description: findElementOrNull(element, "sceneDescription")?.text,
-      startTime: findElementOrNull(element, "sceneStartTime")?.text,
-      endTime: findElementOrNull(element, "sceneEndTime")?.text,
+    if (element == null) return null;
+    return Scene(
+      title: parseTextLiteral(element, "sceneTitle"),
+      description: parseTextLiteral(element, "sceneDescription"),
+      startTime: parseTextLiteral(element, "sceneStartTime"),
+      endTime: parseTextLiteral(element, "sceneEndTime"),
     );
   }
 }

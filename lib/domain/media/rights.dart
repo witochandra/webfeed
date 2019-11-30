@@ -8,10 +8,8 @@ class Rights {
   });
 
   factory Rights.parse(XmlElement element) {
-    if (element == null) {
-      return null;
-    }
-    return new Rights(
+    if (element == null) return null;
+    return Rights(
       status: element.getAttribute("status"),
     );
   }

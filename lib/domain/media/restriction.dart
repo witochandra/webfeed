@@ -12,10 +12,8 @@ class Restriction {
   });
 
   factory Restriction.parse(XmlElement element) {
-    if (element == null) {
-      return null;
-    }
-    return new Restriction(
+    if (element == null) return null;
+    return Restriction(
       relationship: element.getAttribute("relationship"),
       type: element.getAttribute("type"),
       value: element.text,
