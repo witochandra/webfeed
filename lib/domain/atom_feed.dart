@@ -38,12 +38,13 @@ class AtomFeed {
   }) : this.updated = updated ?? DateTime.now(); // default value
 
   factory AtomFeed.parse(String xmlString) {
-    var document = parse(xmlString);
     XmlElement feedElement;
+
     try {
+      var document = parse(xmlString);
       feedElement = document.findElements("feed").first;
     } on StateError {
-      throw new ArgumentError("feed not found");
+      throw ArgumentError("feed not found");
     }
 
     return AtomFeed(
@@ -64,44 +65,29 @@ class AtomFeed {
   }
 
   XmlDocument toXml() {
-    if (id == null) throw Exception('must have an id');
     var doc = parse('<?xml version="1.0" encoding="UTF-8"?><feed xmlns="http://www.w3.org/2005/Atom"></feed>');
-
     var b = XmlBuilder();
+    build(b);
+    var feed = doc.findAllElements('feed').first;
+    b.build().children.forEach((c) => feed.children.add(c.copy()));
+    return doc;
+  }
+
+  void build(XmlBuilder b) {
+    if (id == null) throw Exception('must have an id');
+
     b.element('id', nest: () => b.text(id));
     b.element('title', nest: () => title == null ? '' : b.text(title));
     b.element('updated', nest: () => b.text(updated.toUtc().toIso8601String()));
 
-    for (var link in links ?? List<AtomLink>()) {
-      b.element('link', nest: () {
-        if (link.rel != null) b.attribute('rel', link.rel);
-        if (link.type != null) b.attribute('type', link.type);
-        if (link.hreflang != null) b.attribute('hreflang', link.hreflang);
-        if (link.href != null) b.attribute('href', link.href);
-        if (link.title != null) b.attribute('title', link.title);
-        if (link.length != null) b.attribute('length', link.length);
-      });
-    }
+    if (links != null) links.forEach((l) => l.build(b));
+    if (authors != null) authors.forEach((a) => a.build(b, 'author'));
+    if (contributors != null) contributors.forEach((c) => c.build(b, 'contributor'));
+    if (categories != null) categories.forEach((c) => c.build(b));
+    if (generator != null) generator.build(b);
 
-    for (var author in authors ?? List<AtomPerson>()) {
-      b.element('author', nest: () {
-        if (author.name != null) b.element('name', nest: () => b.text(author.name));
-        if (author.uri != null) b.element('uri', nest: () => b.text(author.uri));
-        if (author.email != null) b.element('email', nest: () => b.text(author.email));
-      });
-    }
-
-    for (var contributor in contributors ?? List<AtomPerson>()) {
-      b.element('contributor', nest: () {
-        if (contributor.name != null) b.element('name', nest: () => b.text(contributor.name));
-        if (contributor.uri != null) b.element('uri', nest: () => b.text(contributor.uri));
-        if (contributor.email != null) b.element('email', nest: () => b.text(contributor.email));
-      });
-    }
-
-    var feed = doc.findAllElements('feed').first;
-    b.build().children.forEach((c) => feed.children.add(c.copy()));
-
-    return doc;
+    if (icon != null) b.element('icon', nest: () => b.text(icon));
+    if (logo != null) b.element('logo', nest: () => b.text(logo));
+    if (subtitle != null) b.element('subtitle', nest: () => b.text(subtitle));
   }
 }

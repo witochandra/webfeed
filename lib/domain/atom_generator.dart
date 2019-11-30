@@ -20,4 +20,13 @@ class AtomGenerator {
       value: element.text,
     );
   }
+
+  void build(XmlBuilder b) {
+    //    <generator uri="http://foo.bar.news/generator" version="1.0">Foo bar generator</generator>
+    b.element('generator', nest: () {
+      if (uri != null) b.attribute('uri', uri);
+      if (version != null) b.attribute('version', version);
+      if (value != null) b.text(value);
+    });
+  }
 }

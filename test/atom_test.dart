@@ -282,67 +282,121 @@ void main() {
 
   test("generate Atom.xml", () {
     var xmlString = File("test/xml/Atom.xml").readAsStringSync();
-    var feed = AtomFeed(id: Uri.parse('foo-bar-id'), title: 'Foo bar news', updated: DateTime.parse('2018-04-06T13:02:46Z'), links: [
-      AtomLink(rel: 'foo', type: 'text/html', hreflang: 'en', href: Uri.parse('http://foo.bar.news/'), title: 'Foo bar news html', length: 1000),
-      AtomLink(rel: 'bar', type: 'application/atom+xml', hreflang: 'pt', href: Uri.parse('http://foo.bar.news/feed.atom'), title: 'Foo bar news atom', length: 100),
-    ], authors: [
-      AtomPerson(name: 'Alice', uri: Uri.parse('http://foo.bar.news/people/alice'), email: 'alice@foo.bar.news'),
-      AtomPerson(name: 'Bob', uri: Uri.parse('http://foo.bar.news/people/bob'), email: 'bob@foo.bar.news'),
-    ], contributors: [
-      AtomPerson(name: 'Charlie', uri: Uri.parse('http://foo.bar.news/people/charlie'), email: 'charlie@foo.bar.news'),
-      AtomPerson(name: 'David', uri: Uri.parse('http://foo.bar.news/people/david'), email: 'david@foo.bar.news'),
-    ], categories: [
-      AtomCategory(),
-    ]);
+    var feed = AtomFeed(
+      id: Uri.parse('foo-bar-id'),
+      title: 'Foo bar news',
+      updated: DateTime.parse('2018-04-06T13:02:46Z'),
+      links: [
+        AtomLink(rel: 'foo', type: 'text/html', hreflang: 'en', href: Uri.parse('http://foo.bar.news/'), title: 'Foo bar news html', length: 1000),
+        AtomLink(rel: 'bar', type: 'application/atom+xml', hreflang: 'pt', href: Uri.parse('http://foo.bar.news/feed.atom'), title: 'Foo bar news atom', length: 100),
+      ],
+      authors: [
+        AtomPerson(name: 'Alice', uri: Uri.parse('http://foo.bar.news/people/alice'), email: 'alice@foo.bar.news'),
+        AtomPerson(name: 'Bob', uri: Uri.parse('http://foo.bar.news/people/bob'), email: 'bob@foo.bar.news'),
+      ],
+      contributors: [
+        AtomPerson(name: 'Charlie', uri: Uri.parse('http://foo.bar.news/people/charlie'), email: 'charlie@foo.bar.news'),
+        AtomPerson(name: 'David', uri: Uri.parse('http://foo.bar.news/people/david'), email: 'david@foo.bar.news'),
+      ],
+      categories: [
+        AtomCategory(term: 'foo category', scheme: 'this-is-foo-scheme', label: 'this is foo label'),
+        AtomCategory(term: 'bar category', scheme: 'this-is-bar-scheme', label: 'this is bar label'),
+      ],
+      generator: AtomGenerator(uri: Uri.parse('http://foo.bar.news/generator'), version: '1.0', value: 'Foo bar generator'),
+      icon: Uri.parse('http://foo.bar.news/icon.png'),
+      logo: Uri.parse('http://foo.bar.news/logo.png'),
+      subtitle: 'This is subtitle',
+    );
 
     var xmlString2 = feed.toXml().toXmlString(pretty: true, indent: '    ');
     expect(xmlString2, xmlString);
 
-    // expect(feed.categories.length, 2);
-    // expect(feed.categories.first.term, "foo category");
-    // expect(feed.categories.first.scheme, "this-is-foo-scheme");
-    // expect(feed.categories.first.label, "this is foo label");
+    /*
+    <icon>http://foo.bar.news/icon.png</icon>
+    <logo>http://foo.bar.news/logo.png</logo>
+    <subtitle>This is subtitle</subtitle>
+    <entry>
+        <id>foo-bar-entry-id-1</id>
+        <title>Foo bar item 1</title>
+        <updated>2018-04-06T13:02:47Z</updated>
+        <author>
+            <name>Ellie</name>
+            <uri>http://foo.bar.news/people/ellie</uri>
+            <email>ellie@foo.bar.news</email>
+        </author>
+        <author>
+            <name>Franz</name>
+            <uri>http://foo.bar.news/people/franz</uri>
+            <email>franz@foo.bar.news</email>
+        </author>
+        <link rel="foo entry" type="text/html" hreflang="en" href="http://foo.bar.news/entry" title="Foo bar news html"
+              length="1000"/>
+        <link rel="bar entry" type="application/atom+xml" hreflang="pt" href="http://foo.bar.news/entry/feed.atom"
+              title="Foo bar entry atom" length="100"/>
+        <category term="foo entry category" scheme="this-is-foo-entry-scheme" label="this is foo entry label"/>
+        <category term="bar entry category" scheme="this-is-bar-entry-scheme" label="this is bar entry label"/>
+        <contributor>
+            <name>Gin</name>
+            <uri>http://foo.bar.news/people/gin</uri>
+            <email>gin@foo.bar.news</email>
+        </contributor>
+        <contributor>
+            <name>Hanz</name>
+            <uri>http://foo.bar.news/people/hanz</uri>
+            <email>hanz@foo.bar.news</email>
+        </contributor>
+        <source>
+            <id>http://foo.bar.news/source</id>
+            <title>Foo bar source</title>
+            <updated>2018-04-06T13:02:48Z</updated>
+        </source>
 
-    // expect(feed.generator.uri, "http://foo.bar.news/generator");
-    // expect(feed.generator.version, "1.0");
-    // expect(feed.generator.value, "Foo bar generator");
+        <published>2018-04-06T13:02:49Z</published>
+        <summary type="text">This is summary 1</summary>
+        <content>This is content 1</content>
+        <rights>This is rights 1</rights>
+    </entry>
+    <entry>
+        <id>foo-bar-entry-id-2</id>
+        <title>Foo bar item 2</title>
+        <updated>2018-04-06T13:02:50Z</updated>
+        <author>
+            <name>Iris</name>
+            <uri>http://foo.bar.news/people/iris</uri>
+            <email>iris@foo.bar.news</email>
+        </author>
+        <author>
+            <name>Jhon</name>
+            <uri>http://foo.bar.news/people/jhon</uri>
+            <email>jhon@foo.bar.news</email>
+        </author>
+        <link rel="foo entry" type="text/html" hreflang="en" href="http://foo.bar.news/entry" title="Foo bar news html"
+              length="1000"/>
+        <link rel="bar entry" type="application/atom+xml" hreflang="pt" href="http://foo.bar.news/entry/feed.atom"
+              title="Foo bar entry atom" length="100"/>
+        <category term="foo entry category"/>
+        <category term="bar entry category"/>
+        <contributor>
+            <name>Kevin</name>
+            <uri>http://foo.bar.news/people/kevin</uri>
+            <email>kevin@foo.bar.news</email>
+        </contributor>
+        <contributor>
+            <name>Lucy</name>
+            <uri>http://foo.bar.news/people/lucy</uri>
+            <email>lucy@foo.bar.news</email>
+        </contributor>
+        <source>
+            <id>http://foo.bar.news/source</id>
+            <title>Foo bar source</title>
+            <updated>2018-04-06T13:02:51Z</updated>
+        </source>
 
-    // expect(feed.icon, "http://foo.bar.news/icon.png");
-    // expect(feed.logo, "http://foo.bar.news/logo.png");
-    // expect(feed.subtitle, "This is subtitle");
-
-    // expect(feed.items.length, 2);
-    // var item = feed.items.first;
-    // expect(item.id, "foo-bar-entry-id-1");
-    // expect(item.title, "Foo bar item 1");
-    // expect(item.updated, "2018-04-06T13:02:47Z");
-
-    // expect(item.authors.length, 2);
-    // expect(item.authors.first.name, "Ellie");
-    // expect(item.authors.first.uri, "http://foo.bar.news/people/ellie");
-    // expect(item.authors.first.email, "ellie@foo.bar.news");
-
-    // expect(item.links.length, 2);
-    // expect(item.links.first.rel, "foo entry");
-    // expect(item.links.first.type, "text/html");
-    // expect(item.links.first.hreflang, "en");
-    // expect(item.links.first.href, "http://foo.bar.news/entry");
-    // expect(item.links.first.title, "Foo bar news html");
-    // expect(item.links.first.length, 1000);
-
-    // expect(item.categories.length, 2);
-    // expect(item.categories.first.term, "foo entry category");
-    // expect(item.categories.first.scheme, "this-is-foo-entry-scheme");
-    // expect(item.categories.first.label, "this is foo entry label");
-
-    // expect(item.contributors.length, 2);
-    // expect(item.contributors.first.name, "Gin");
-    // expect(item.contributors.first.uri, "http://foo.bar.news/people/gin");
-    // expect(item.contributors.first.email, "gin@foo.bar.news");
-
-    // expect(item.published, "2018-04-06T13:02:49Z");
-    // expect(item.summary, "This is summary 1");
-    // expect(item.content, "This is content 1");
-    // expect(item.rights, "This is rights 1");
+        <published>2018-04-06T13:02:52Z</published>
+        <summary type="text">This is summary 2</summary>
+        <content>This is content 2</content>
+        <rights>This is rights 2</rights>
+    </entry>
+    */
   });
 }

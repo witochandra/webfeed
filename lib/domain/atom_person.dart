@@ -16,4 +16,12 @@ class AtomPerson {
       email: findElementOrNull(element, "email")?.text,
     );
   }
+
+  void build(XmlBuilder b, String type) {
+    b.element(type, nest: () {
+      if (name != null) b.element('name', nest: () => b.text(name));
+      if (uri != null) b.element('uri', nest: () => b.text(uri));
+      if (email != null) b.element('email', nest: () => b.text(email));
+    });
+  }
 }

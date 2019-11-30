@@ -28,4 +28,15 @@ class AtomLink {
       length: int.parse(element.getAttribute("length") ?? "0"),
     );
   }
+
+  void build(XmlBuilder b) {
+    b.element('link', nest: () {
+      if (rel != null) b.attribute('rel', rel);
+      if (type != null) b.attribute('type', type);
+      if (hreflang != null) b.attribute('hreflang', hreflang);
+      if (href != null) b.attribute('href', href);
+      if (title != null) b.attribute('title', title);
+      if (length != null) b.attribute('length', length);
+    });
+  }
 }
