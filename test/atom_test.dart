@@ -83,7 +83,7 @@ void main() {
     expect(item.contributors.first.uri, Uri.parse("http://foo.bar.news/people/gin"));
     expect(item.contributors.first.email, "gin@foo.bar.news");
 
-    expect(item.published, "2018-04-06T13:02:49Z");
+    expect(item.published, DateTime.parse("2018-04-06T13:02:49Z"));
     expect(item.summary, "This is summary 1");
     expect(item.content, "This is content 1");
     expect(item.rights, "This is rights 1");
@@ -337,54 +337,48 @@ void main() {
             updated: DateTime.parse('2018-04-06T13:02:48Z'),
           ),
         ),
+        AtomItem(
+          id: 'foo-bar-entry-id-2',
+          title: 'Foo bar item 2',
+          updated: DateTime.parse('2018-04-06T13:02:50Z'),
+          published: DateTime.parse('2018-04-06T13:02:52Z'),
+          summary: 'This is summary 2',
+          content: 'This is content 2',
+          rights: 'This is rights 2',
+          authors: [
+            AtomPerson(
+              name: 'Iris',
+              uri: Uri.parse('http://foo.bar.news/people/iris'),
+              email: 'iris@foo.bar.news',
+            ),
+            AtomPerson(
+              name: 'Jhon',
+              uri: Uri.parse('http://foo.bar.news/people/jhon'),
+              email: 'jhon@foo.bar.news',
+            ),
+          ],
+          links: [
+            AtomLink(rel: 'foo entry', type: 'text/html', hreflang: 'en', href: Uri.parse('http://foo.bar.news/entry'), title: 'Foo bar news html', length: 1000),
+            AtomLink(rel: 'bar entry', type: 'application/atom+xml', hreflang: 'pt', href: Uri.parse('http://foo.bar.news/entry/feed.atom'), title: 'Foo bar entry atom', length: 100),
+          ],
+          categories: [
+            AtomCategory(term: 'foo entry category'),
+            AtomCategory(term: 'bar entry category'),
+          ],
+          contributors: [
+            AtomPerson(name: 'Kevin', uri: Uri.parse('http://foo.bar.news/people/kevin'), email: 'kevin@foo.bar.news'),
+            AtomPerson(name: 'Lucy', uri: Uri.parse('http://foo.bar.news/people/lucy'), email: 'lucy@foo.bar.news'),
+          ],
+          source: AtomSource(
+            id: Uri.parse('http://foo.bar.news/source'),
+            title: 'Foo bar source',
+            updated: DateTime.parse('2018-04-06T13:02:51Z'),
+          ),
+        ),
       ],
     );
 
     var xmlString2 = feed.toXml().toXmlString(pretty: true, indent: '    ');
     expect(xmlString2, xmlString);
-
-    /*
-    <entry>
-        <id>foo-bar-entry-id-2</id>
-        <title>Foo bar item 2</title>
-        <updated>2018-04-06T13:02:50Z</updated>
-        <author>
-            <name>Iris</name>
-            <uri>http://foo.bar.news/people/iris</uri>
-            <email>iris@foo.bar.news</email>
-        </author>
-        <author>
-            <name>Jhon</name>
-            <uri>http://foo.bar.news/people/jhon</uri>
-            <email>jhon@foo.bar.news</email>
-        </author>
-        <link rel="foo entry" type="text/html" hreflang="en" href="http://foo.bar.news/entry" title="Foo bar news html"
-              length="1000"/>
-        <link rel="bar entry" type="application/atom+xml" hreflang="pt" href="http://foo.bar.news/entry/feed.atom"
-              title="Foo bar entry atom" length="100"/>
-        <category term="foo entry category"/>
-        <category term="bar entry category"/>
-        <contributor>
-            <name>Kevin</name>
-            <uri>http://foo.bar.news/people/kevin</uri>
-            <email>kevin@foo.bar.news</email>
-        </contributor>
-        <contributor>
-            <name>Lucy</name>
-            <uri>http://foo.bar.news/people/lucy</uri>
-            <email>lucy@foo.bar.news</email>
-        </contributor>
-        <source>
-            <id>http://foo.bar.news/source</id>
-            <title>Foo bar source</title>
-            <updated>2018-04-06T13:02:51Z</updated>
-        </source>
-
-        <published>2018-04-06T13:02:52Z</published>
-        <summary type="text">This is summary 2</summary>
-        <content>This is content 2</content>
-        <rights>This is rights 2</rights>
-    </entry>
-    */
   });
 }
