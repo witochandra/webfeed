@@ -12,10 +12,8 @@ class PeerLink {
   });
 
   factory PeerLink.parse(XmlElement element) {
-    if (element == null) {
-      return null;
-    }
-    return new PeerLink(
+    if (element == null) return null;
+    return PeerLink(
       type: element.getAttribute("type"),
       href: element.getAttribute("href"),
       value: element.text,

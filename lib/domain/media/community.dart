@@ -16,19 +16,11 @@ class Community {
   });
 
   factory Community.parse(XmlElement element) {
-    if (element == null) {
-      return null;
-    }
-    return new Community(
-      starRating: new StarRating.parse(
-        findElementOrNull(element, "media:starRating"),
-      ),
-      statistics: new Statistics.parse(
-        findElementOrNull(element, "media:statistics"),
-      ),
-      tags: new Tags.parse(
-        findElementOrNull(element, "media:tags"),
-      ),
+    if (element == null) return null;
+    return Community(
+      starRating: StarRating.parse(findElementOrNull(element, "media:starRating")),
+      statistics: Statistics.parse(findElementOrNull(element, "media:statistics")),
+      tags: Tags.parse(findElementOrNull(element, "media:tags")),
     );
   }
 }

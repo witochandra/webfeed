@@ -10,10 +10,8 @@ class Copyright {
   });
 
   factory Copyright.parse(XmlElement element) {
-    if (element == null) {
-      return null;
-    }
-    return new Copyright(
+    if (element == null) return null;
+    return Copyright(
       url: element.getAttribute("url"),
       value: element.text,
     );

@@ -11,11 +11,9 @@ class Credit {
     this.value,
   });
 
-  factory Credit.parse(XmlElement element) {
-    return new Credit(
-      role: element.getAttribute("role"),
-      scheme: element.getAttribute("scheme"),
-      value: element.text,
-    );
-  }
+  factory Credit.parse(XmlElement element) => Credit(
+        role: element.getAttribute("role"),
+        scheme: element.getAttribute("scheme"),
+        value: element.text,
+      );
 }

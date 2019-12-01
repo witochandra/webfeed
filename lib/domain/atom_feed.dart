@@ -7,25 +7,24 @@ import 'package:webfeed/util/helpers.dart';
 import 'package:xml/xml.dart';
 
 class AtomFeed {
-  final String id;
+  final Uri id;
   final String title;
-  final String updated;
+  final DateTime updated;
   final List<AtomItem> items;
-
   final List<AtomLink> links;
   final List<AtomPerson> authors;
   final List<AtomPerson> contributors;
   final List<AtomCategory> categories;
   final AtomGenerator generator;
-  final String icon;
-  final String logo;
+  final Uri icon;
+  final Uri logo;
   final String rights;
   final String subtitle;
 
   AtomFeed({
     this.id,
     this.title,
-    this.updated,
+    updated,
     this.items,
     this.links,
     this.authors,
@@ -36,42 +35,61 @@ class AtomFeed {
     this.logo,
     this.rights,
     this.subtitle,
-  });
+  }) : this.updated = updated ?? DateTime.now(); // default value
 
   factory AtomFeed.parse(String xmlString) {
-    var document = parse(xmlString);
     XmlElement feedElement;
+
     try {
+      var document = parse(xmlString);
       feedElement = document.findElements("feed").first;
     } on StateError {
-      throw new ArgumentError("feed not found");
+      throw ArgumentError("feed not found");
     }
 
     return AtomFeed(
-      id: findElementOrNull(feedElement, "id")?.text,
-      title: findElementOrNull(feedElement, "title")?.text,
-      updated: findElementOrNull(feedElement, "updated")?.text,
-      items: feedElement.findElements("entry").map((element) {
-        return AtomItem.parse(element);
-      }).toList(),
-      links: feedElement.findElements("link").map((element) {
-        return AtomLink.parse(element);
-      }).toList(),
-      authors: feedElement.findElements("author").map((element) {
-        return AtomPerson.parse(element);
-      }).toList(),
-      contributors: feedElement.findElements("contributor").map((element) {
-        return AtomPerson.parse(element);
-      }).toList(),
-      categories: feedElement.findElements("category").map((element) {
-        return AtomCategory.parse(element);
-      }).toList(),
-      generator:
-          AtomGenerator.parse(findElementOrNull(feedElement, "generator")),
-      icon: findElementOrNull(feedElement, "icon")?.text,
-      logo: findElementOrNull(feedElement, "logo")?.text,
-      rights: findElementOrNull(feedElement, "rights")?.text,
-      subtitle: findElementOrNull(feedElement, "subtitle")?.text,
+      id: parseUriLiteral(feedElement, "id"),
+      title: parseTextLiteral(feedElement, "title"),
+      updated: parseDateTimeLiteral(feedElement, "updated"),
+      items: feedElement.findElements("entry").map((e) => AtomItem.parse(e)).toList(),
+      links: feedElement.findElements("link").map((e) => AtomLink.parse(e)).toList(),
+      authors: feedElement.findElements("author").map((e) => AtomPerson.parse(e)).toList(),
+      contributors: feedElement.findElements("contributor").map((e) => AtomPerson.parse(e)).toList(),
+      categories: feedElement.findElements("category").map((e) => AtomCategory.parse(e)).toList(),
+      generator: AtomGenerator.parse(findElementOrNull(feedElement, "generator")),
+      icon: parseUriLiteral(feedElement, "icon"),
+      logo: parseUriLiteral(feedElement, "logo"),
+      rights: parseTextLiteral(feedElement, "rights"),
+      subtitle: parseTextLiteral(feedElement, "subtitle"),
     );
+  }
+
+  XmlDocument toXml() {
+    var doc = parse('<?xml version="1.0" encoding="UTF-8"?><feed xmlns="http://www.w3.org/2005/Atom"></feed>');
+    var b = XmlBuilder();
+    build(b);
+    var feed = doc.findAllElements('feed').first;
+    b.build().children.forEach((c) => feed.children.add(c.copy()));
+    return doc;
+  }
+
+  void build(XmlBuilder b) {
+    if (id == null) throw Exception('must have an id');
+
+    b.element('id', nest: () => b.text(id));
+    b.element('title', nest: () => title == null ? '' : b.text(title));
+    b.element('updated', nest: () => b.text(updated.toUtc().toIso8601String()));
+
+    if (links != null) links.forEach((l) => l.build(b));
+    if (authors != null) authors.forEach((a) => a.build(b, 'author'));
+    if (contributors != null) contributors.forEach((c) => c.build(b, 'contributor'));
+    if (categories != null) categories.forEach((c) => c.build(b));
+    if (generator != null) generator.build(b);
+
+    if (icon != null) b.element('icon', nest: () => b.text(icon));
+    if (logo != null) b.element('logo', nest: () => b.text(logo));
+    if (subtitle != null) b.element('subtitle', nest: () => b.text(subtitle));
+
+    if (items != null) items.forEach((i) => i.build(b));
   }
 }

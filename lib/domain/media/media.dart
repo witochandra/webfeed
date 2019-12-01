@@ -78,92 +78,32 @@ class Media {
   });
 
   factory Media.parse(XmlElement element) {
-    return new Media(
-      group: new Group.parse(
-        findElementOrNull(element, "media:group"),
-      ),
-      contents: element.findElements("media:content").map((e) {
-        return new Content.parse(e);
-      }).toList(),
-      credits: element.findElements("media:credit").map((e) {
-        return new Credit.parse(e);
-      }).toList(),
-      category: new Category.parse(
-        findElementOrNull(element, "media:category"),
-      ),
-      rating: new Rating.parse(
-        findElementOrNull(element, "media:rating"),
-      ),
-      title: new Title.parse(
-        findElementOrNull(element, "media:title"),
-      ),
-      description: new Description.parse(
-        findElementOrNull(element, "media:description"),
-      ),
-      keywords: findElementOrNull(element, "media:keywords")?.text,
-      thumbnails: element.findElements("media:thumbnail").map((e) {
-        return new Thumbnail.parse(e);
-      }).toList(),
-      hash: new Hash.parse(
-        findElementOrNull(element, "media:hash"),
-      ),
-      player: new Player.parse(
-        findElementOrNull(element, "media:player"),
-      ),
-      copyright: new Copyright.parse(
-        findElementOrNull(element, "media:copyright"),
-      ),
-      text: new Text.parse(
-        findElementOrNull(element, "media:text"),
-      ),
-      restriction: new Restriction.parse(
-        findElementOrNull(element, "media:restriction"),
-      ),
-      community: new Community.parse(
-        findElementOrNull(element, "media:community"),
-      ),
-      comments: findElementOrNull(element, "media:comments")
-              ?.findElements("media:comment")
-              ?.map((e) {
-            return e.text;
-          })?.toList() ??
-          [],
-      embed: new Embed.parse(
-        findElementOrNull(element, "media:embed"),
-      ),
-      responses: findElementOrNull(element, "media:responses")
-              ?.findElements("media:response")
-              ?.map((e) {
-            return e.text;
-          })?.toList() ??
-          [],
-      backLinks: findElementOrNull(element, "media:backLinks")
-              ?.findElements("media:backLink")
-              ?.map((e) {
-            return e.text;
-          })?.toList() ??
-          [],
-      status: new Status.parse(
-        findElementOrNull(element, "media:status"),
-      ),
-      prices: element.findElements("media:price").map((e) {
-        return new Price.parse(e);
-      }).toList(),
-      license: new License.parse(
-        findElementOrNull(element, "media:license"),
-      ),
-      peerLink: new PeerLink.parse(
-        findElementOrNull(element, "media:peerLink"),
-      ),
-      rights: new Rights.parse(
-        findElementOrNull(element, "media:rights"),
-      ),
-      scenes: findElementOrNull(element, "media:scenes")
-              ?.findElements("media:scene")
-              ?.map((e) {
-            return new Scene.parse(e);
-          })?.toList() ??
-          [],
+    return Media(
+      group: Group.parse(findElementOrNull(element, "media:group")),
+      contents: element.findElements("media:content").map((e) => Content.parse(e)).toList(),
+      credits: element.findElements("media:credit").map((e) => Credit.parse(e)).toList(),
+      category: Category.parse(findElementOrNull(element, "media:category")),
+      rating: Rating.parse(findElementOrNull(element, "media:rating")),
+      title: Title.parse(findElementOrNull(element, "media:title")),
+      description: Description.parse(findElementOrNull(element, "media:description")),
+      keywords: parseTextLiteral(element, "media:keywords"),
+      thumbnails: element.findElements("media:thumbnail").map((e) => Thumbnail.parse(e)).toList(),
+      hash: Hash.parse(findElementOrNull(element, "media:hash")),
+      player: Player.parse(findElementOrNull(element, "media:player")),
+      copyright: Copyright.parse(findElementOrNull(element, "media:copyright")),
+      text: Text.parse(findElementOrNull(element, "media:text")),
+      restriction: Restriction.parse(findElementOrNull(element, "media:restriction")),
+      community: Community.parse(findElementOrNull(element, "media:community")),
+      comments: findElementOrNull(element, "media:comments")?.findElements("media:comment")?.map((e) => e.text)?.toList() ?? [],
+      embed: Embed.parse(findElementOrNull(element, "media:embed")),
+      responses: findElementOrNull(element, "media:responses")?.findElements("media:response")?.map((e) => e.text)?.toList() ?? [],
+      backLinks: findElementOrNull(element, "media:backLinks")?.findElements("media:backLink")?.map((e) => e.text)?.toList() ?? [],
+      status: Status.parse(findElementOrNull(element, "media:status")),
+      prices: element.findElements("media:price").map((e) => Price.parse(e)).toList(),
+      license: License.parse(findElementOrNull(element, "media:license")),
+      peerLink: PeerLink.parse(findElementOrNull(element, "media:peerLink")),
+      rights: Rights.parse(findElementOrNull(element, "media:rights")),
+      scenes: findElementOrNull(element, "media:scenes")?.findElements("media:scene")?.map((e) => Scene.parse(e))?.toList() ?? [],
     );
   }
 }

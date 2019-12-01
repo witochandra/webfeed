@@ -16,10 +16,8 @@ class Text {
   });
 
   factory Text.parse(XmlElement element) {
-    if (element == null) {
-      return null;
-    }
-    return new Text(
+    if (element == null) return null;
+    return Text(
       type: element.getAttribute("type"),
       lang: element.getAttribute("lang"),
       start: element.getAttribute("start"),

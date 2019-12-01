@@ -10,10 +10,8 @@ class Title {
   });
 
   factory Title.parse(XmlElement element) {
-    if (element == null) {
-      return null;
-    }
-    return new Title(
+    if (element == null) return null;
+    return Title(
       type: element.getAttribute("type"),
       value: element.text,
     );

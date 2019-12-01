@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>urn:uuid:60a76c80-d399-11d9-b93C-0003939e0af6</id>
+    <title>Example Feed</title>
+    <updated>2003-12-13T18:30:02.000Z</updated>
+    <link href="http://example.org/"/>
+    <link rel="first" href="http://example.org/index.atom"/>
+    <link rel="previous" href="http://example.org/index.atom"/>
+    <link rel="last" href="http://example.org/index.atom?page=2"/>
+    <author>
+        <name>John Doe</name>
+    </author>
+    <entry>
+        <id>urn:uuid:1225c695-cfb8-4ebb-aaaa-80da344efa6a</id>
+        <title>Atom-Powered Robots Run Amok</title>
+        <updated>2003-12-13T18:30:02.000Z</updated>
+        <link href="http://example.org/2003/12/13/atom03"/>
+        <summary>Some text.</summary>
+    </entry>
+</feed>

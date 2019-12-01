@@ -6,98 +6,98 @@ import 'package:webfeed/webfeed.dart';
 
 void main() {
   test("parse Invalid.xml", () {
-    var xmlString = new File("test/xml/Invalid.xml").readAsStringSync();
+    var xmlString = File("test/xml/Invalid.xml").readAsStringSync();
 
     try {
-      new AtomFeed.parse(xmlString);
+      AtomFeed.parse(xmlString);
       fail("Should throw Argument Error");
     } on ArgumentError {}
   });
 
   test("parse Atom.xml", () {
-    var xmlString = new File("test/xml/Atom.xml").readAsStringSync();
+    var xmlString = File("test/xml/Atom.xml").readAsStringSync();
 
-    var feed = new AtomFeed.parse(xmlString);
-
-    expect(feed.id, "foo-bar-id");
+    var feed = AtomFeed.parse(xmlString);
+    expect(feed.id, Uri.parse("urn:foo:foo-bar-id"));
     expect(feed.title, "Foo bar news");
-    expect(feed.updated, "2018-04-06T13:02:46Z");
+    expect(feed.updated, DateTime.parse("2018-04-06T13:02:46Z"));
 
     expect(feed.links.length, 2);
-    expect(feed.links.first.rel, "foo");
+    expect(feed.links.first.rel, "related");
     expect(feed.links.first.type, "text/html");
     expect(feed.links.first.hreflang, "en");
-    expect(feed.links.first.href, "http://foo.bar.news/");
+    expect(feed.links.first.href, Uri.parse("http://foo.bar.news/"));
     expect(feed.links.first.title, "Foo bar news html");
     expect(feed.links.first.length, 1000);
 
     expect(feed.authors.length, 2);
     expect(feed.authors.first.name, "Alice");
-    expect(feed.authors.first.uri, "http://foo.bar.news/people/alice");
+    expect(feed.authors.first.uri, Uri.parse("http://foo.bar.news/people/alice"));
     expect(feed.authors.first.email, "alice@foo.bar.news");
 
     expect(feed.contributors.length, 2);
     expect(feed.contributors.first.name, "Charlie");
-    expect(feed.contributors.first.uri, "http://foo.bar.news/people/charlie");
+    expect(feed.contributors.first.uri, Uri.parse("http://foo.bar.news/people/charlie"));
     expect(feed.contributors.first.email, "charlie@foo.bar.news");
 
     expect(feed.categories.length, 2);
     expect(feed.categories.first.term, "foo category");
-    expect(feed.categories.first.scheme, "this-is-foo-scheme");
+    expect(feed.categories.first.scheme, "https://foo.com/this-is-foo-scheme");
     expect(feed.categories.first.label, "this is foo label");
 
-    expect(feed.generator.uri, "http://foo.bar.news/generator");
+    expect(feed.generator.uri, Uri.parse("http://foo.bar.news/generator"));
     expect(feed.generator.version, "1.0");
     expect(feed.generator.value, "Foo bar generator");
 
-    expect(feed.icon, "http://foo.bar.news/icon.png");
-    expect(feed.logo, "http://foo.bar.news/logo.png");
+    expect(feed.icon, Uri.parse("http://foo.bar.news/icon.png"));
+    expect(feed.logo, Uri.parse("http://foo.bar.news/logo.png"));
     expect(feed.subtitle, "This is subtitle");
 
     expect(feed.items.length, 2);
     var item = feed.items.first;
-    expect(item.id, "foo-bar-entry-id-1");
+    expect(item.id, Uri.parse("urn:foo:foo-bar-entry-id-1"));
     expect(item.title, "Foo bar item 1");
-    expect(item.updated, "2018-04-06T13:02:47Z");
+    expect(item.updated, DateTime.parse("2018-04-06T13:02:47Z"));
 
     expect(item.authors.length, 2);
     expect(item.authors.first.name, "Ellie");
-    expect(item.authors.first.uri, "http://foo.bar.news/people/ellie");
+    expect(item.authors.first.uri, Uri.parse("http://foo.bar.news/people/ellie"));
     expect(item.authors.first.email, "ellie@foo.bar.news");
 
     expect(item.links.length, 2);
-    expect(item.links.first.rel, "foo entry");
+    expect(item.links.first.rel, "related");
     expect(item.links.first.type, "text/html");
     expect(item.links.first.hreflang, "en");
-    expect(item.links.first.href, "http://foo.bar.news/entry");
+    expect(item.links.first.href, Uri.parse("http://foo.bar.news/entry"));
     expect(item.links.first.title, "Foo bar news html");
     expect(item.links.first.length, 1000);
 
     expect(item.categories.length, 2);
     expect(item.categories.first.term, "foo entry category");
-    expect(item.categories.first.scheme, "this-is-foo-entry-scheme");
+    expect(item.categories.first.scheme, "https://foo.com/this-is-foo-entry-scheme");
     expect(item.categories.first.label, "this is foo entry label");
 
     expect(item.contributors.length, 2);
     expect(item.contributors.first.name, "Gin");
-    expect(item.contributors.first.uri, "http://foo.bar.news/people/gin");
+    expect(item.contributors.first.uri, Uri.parse("http://foo.bar.news/people/gin"));
     expect(item.contributors.first.email, "gin@foo.bar.news");
 
-    expect(item.published, "2018-04-06T13:02:49Z");
-    expect(item.summary, "This is summary 1");
-    expect(item.content, "This is content 1");
+    expect(item.published, DateTime.parse("2018-04-06T13:02:49Z"));
+    expect(item.summary.text, "This is summary 1");
+    expect(item.content.text, "This is content 1");
     expect(item.rights, "This is rights 1");
   });
-  test("parse Atom-Media.xml", (){
-    var xmlString = new File("test/xml/Atom-Media.xml").readAsStringSync();
 
-    var feed = new AtomFeed.parse(xmlString);
-    expect(feed.id, "foo-bar-id");
+  test("parse Atom-Media.xml", () {
+    var xmlString = File("test/xml/Atom-Media.xml").readAsStringSync();
+
+    var feed = AtomFeed.parse(xmlString);
+    expect(feed.id, Uri.parse("foo-bar-id"));
     expect(feed.title, "Foo bar news");
-    expect(feed.updated, "2018-04-06T13:02:46Z");
+    expect(feed.updated, DateTime.parse("2018-04-06T13:02:46Z"));
 
     expect(feed.items.length, 1);
-    
+
     var item = feed.items.first;
     expect(item.media.group.contents.length, 5);
     expect(item.media.group.credits.length, 2);
@@ -135,9 +135,9 @@ void main() {
 
     expect(item.media.description.type, "plain");
     expect(item.media.description.value, "This was some really bizarre band I listened to as a young lad.");
-    
+
     expect(item.media.keywords, "kitty, cat, big dog, yarn, fluffy");
-  
+
     expect(item.media.thumbnails.length, 2);
     var mediaThumbnail = item.media.thumbnails.first;
     expect(mediaThumbnail.url, "http://www.foo.com/keyframe1.jpg");
@@ -225,9 +225,9 @@ void main() {
 
     var feed = AtomFeed.parse(xmlString);
 
-    expect(feed.id, null);
+    expect(feed.id, Uri.parse('https://example.com'));
     expect(feed.title, null);
-    expect(feed.updated, null);
+    expect(feed.updated, DateTime.parse('1970-01-01T00:00:00-00:00'));
     expect(feed.links.length, 0);
     expect(feed.authors.length, 0);
     expect(feed.contributors.length, 0);
@@ -237,20 +237,215 @@ void main() {
     expect(feed.logo, null);
     expect(feed.subtitle, null);
 
-    expect(feed.items.length, 1);
-    var item = feed.items.first;
+    expect(feed.items.length, 0);
+  });
 
-    expect(item.authors.length, 0);
+  // RFC 5005: Feed Paging and Archiving
+  test("parse Atom-Page1.xml", () {
+    var xmlString = File("test/xml/Atom-Page1.xml").readAsStringSync();
 
-    expect(item.links.length, 0);
+    var feed = AtomFeed.parse(xmlString);
+    var firstPage = feed.links.firstWhere((l) => l.rel == 'first', orElse: () => null);
+    var previousPage = feed.links.firstWhere((l) => l.rel == 'previous', orElse: () => null);
+    var nextPage = feed.links.firstWhere((l) => l.rel == 'next', orElse: () => null);
+    var lastPage = feed.links.firstWhere((l) => l.rel == 'last', orElse: () => null);
 
-    expect(item.categories.length, 0);
+    expect(firstPage.href, Uri.parse('http://example.org/index.atom'));
+    expect(previousPage, null);
+    expect(nextPage.href, Uri.parse('http://example.org/index.atom?page=2'));
+    expect(lastPage.href, Uri.parse('http://example.org/index.atom?page=2'));
+  });
 
-    expect(item.contributors.length, 0);
+  // RFC 5005: Feed Paging and Archiving
+  test("parse Atom-Page2.xml", () {
+    var xmlString = File("test/xml/Atom-Page2.xml").readAsStringSync();
 
-    expect(item.published, null);
-    expect(item.summary, null);
-    expect(item.content, null);
-    expect(item.rights, null);
+    var feed = AtomFeed.parse(xmlString);
+    var firstPage = feed.links.firstWhere((l) => l.rel == 'first', orElse: () => null);
+    var previousPage = feed.links.firstWhere((l) => l.rel == 'previous', orElse: () => null);
+    var nextPage = feed.links.firstWhere((l) => l.rel == 'next', orElse: () => null);
+    var lastPage = feed.links.firstWhere((l) => l.rel == 'last', orElse: () => null);
+
+    expect(firstPage.href, Uri.parse('http://example.org/index.atom'));
+    expect(previousPage.href, Uri.parse('http://example.org/index.atom'));
+    expect(nextPage, null);
+    expect(lastPage.href, Uri.parse('http://example.org/index.atom?page=2'));
+  });
+
+  test("generate Atom-Empty.xml", () {
+    var xmlString = File("test/xml/Atom-Empty.xml").readAsStringSync();
+    var feed = AtomFeed(id: Uri.parse('https://example.com'), updated: DateTime.parse('1970-01-01T00:00:00-00:00'));
+    var xmlString2 = feed.toXml().toXmlString(pretty: true, indent: '    ');
+    expect(xmlString2, xmlString);
+  });
+
+  test("generate Atom.xml", () {
+    var xmlString = File("test/xml/Atom.xml").readAsStringSync();
+    var feed = AtomFeed(
+      id: Uri.parse('urn:foo:foo-bar-id'),
+      title: 'Foo bar news',
+      updated: DateTime.parse('2018-04-06T13:02:46Z'),
+      icon: Uri.parse('http://foo.bar.news/icon.png'),
+      logo: Uri.parse('http://foo.bar.news/logo.png'),
+      subtitle: 'This is subtitle',
+      links: [
+        AtomLink(rel: 'related', type: 'text/html', hreflang: 'en', href: Uri.parse('http://foo.bar.news/'), title: 'Foo bar news html', length: 1000),
+        AtomLink(rel: 'related', type: 'application/atom+xml', hreflang: 'pt', href: Uri.parse('http://foo.bar.news/feed.atom'), title: 'Foo bar news atom', length: 100),
+      ],
+      authors: [
+        AtomPerson(name: 'Alice', uri: Uri.parse('http://foo.bar.news/people/alice'), email: 'alice@foo.bar.news'),
+        AtomPerson(name: 'Bob', uri: Uri.parse('http://foo.bar.news/people/bob'), email: 'bob@foo.bar.news'),
+      ],
+      contributors: [
+        AtomPerson(name: 'Charlie', uri: Uri.parse('http://foo.bar.news/people/charlie'), email: 'charlie@foo.bar.news'),
+        AtomPerson(name: 'David', uri: Uri.parse('http://foo.bar.news/people/david'), email: 'david@foo.bar.news'),
+      ],
+      categories: [
+        AtomCategory(term: 'foo category', scheme: 'https://foo.com/this-is-foo-scheme', label: 'this is foo label'),
+        AtomCategory(term: 'bar category', scheme: 'https://foo.com/this-is-bar-scheme', label: 'this is bar label'),
+      ],
+      generator: AtomGenerator(uri: Uri.parse('http://foo.bar.news/generator'), version: '1.0', value: 'Foo bar generator'),
+      items: [
+        AtomItem(
+          id: Uri.parse('urn:foo:foo-bar-entry-id-1'),
+          title: 'Foo bar item 1',
+          updated: DateTime.parse('2018-04-06T13:02:47Z'),
+          published: DateTime.parse('2018-04-06T13:02:49Z'),
+          summary: AtomContent(text: 'This is summary 1'),
+          content: AtomContent(text: 'This is content 1'),
+          rights: 'This is rights 1',
+          authors: [
+            AtomPerson(name: 'Ellie', uri: Uri.parse('http://foo.bar.news/people/ellie'), email: 'ellie@foo.bar.news'),
+            AtomPerson(name: 'Franz', uri: Uri.parse('http://foo.bar.news/people/franz'), email: 'franz@foo.bar.news'),
+          ],
+          links: [
+            AtomLink(rel: 'related', type: 'text/html', hreflang: 'en', href: Uri.parse('http://foo.bar.news/entry'), title: 'Foo bar news html', length: 1000),
+            AtomLink(rel: 'related', type: 'application/atom+xml', hreflang: 'pt', href: Uri.parse('http://foo.bar.news/entry/feed.atom'), title: 'Foo bar entry atom', length: 100),
+          ],
+          categories: [
+            AtomCategory(term: 'foo entry category', scheme: 'https://foo.com/this-is-foo-entry-scheme', label: 'this is foo entry label'),
+            AtomCategory(term: 'bar entry category', scheme: 'https://foo.com/this-is-bar-entry-scheme', label: 'this is bar entry label'),
+          ],
+          contributors: [
+            AtomPerson(name: 'Gin', uri: Uri.parse('http://foo.bar.news/people/gin'), email: 'gin@foo.bar.news'),
+            AtomPerson(name: 'Hanz', uri: Uri.parse('http://foo.bar.news/people/hanz'), email: 'hanz@foo.bar.news'),
+          ],
+          source: AtomSource(
+            id: Uri.parse('http://foo.bar.news/source'),
+            title: 'Foo bar source',
+            updated: DateTime.parse('2018-04-06T13:02:48Z'),
+          ),
+        ),
+        AtomItem(
+          id: Uri.parse('urn:foo:foo-bar-entry-id-2'),
+          title: 'Foo bar item 2',
+          updated: DateTime.parse('2018-04-06T13:02:50Z'),
+          published: DateTime.parse('2018-04-06T13:02:52Z'),
+          summary: AtomContent(text: 'This is summary 2'),
+          content: AtomContent(text: 'This is content 2'),
+          rights: 'This is rights 2',
+          authors: [
+            AtomPerson(
+              name: 'Iris',
+              uri: Uri.parse('http://foo.bar.news/people/iris'),
+              email: 'iris@foo.bar.news',
+            ),
+            AtomPerson(
+              name: 'Jhon',
+              uri: Uri.parse('http://foo.bar.news/people/jhon'),
+              email: 'jhon@foo.bar.news',
+            ),
+          ],
+          links: [
+            AtomLink(rel: 'related', type: 'text/html', hreflang: 'en', href: Uri.parse('http://foo.bar.news/entry'), title: 'Foo bar news html', length: 1000),
+            AtomLink(rel: 'related', type: 'application/atom+xml', hreflang: 'pt', href: Uri.parse('http://foo.bar.news/entry/feed.atom'), title: 'Foo bar entry atom', length: 100),
+          ],
+          categories: [
+            AtomCategory(term: 'foo entry category'),
+            AtomCategory(term: 'bar entry category'),
+          ],
+          contributors: [
+            AtomPerson(name: 'Kevin', uri: Uri.parse('http://foo.bar.news/people/kevin'), email: 'kevin@foo.bar.news'),
+            AtomPerson(name: 'Lucy', uri: Uri.parse('http://foo.bar.news/people/lucy'), email: 'lucy@foo.bar.news'),
+          ],
+          source: AtomSource(
+            id: Uri.parse('http://foo.bar.news/source'),
+            title: 'Foo bar source',
+            updated: DateTime.parse('2018-04-06T13:02:51Z'),
+          ),
+        ),
+      ],
+    );
+
+    var xmlString2 = feed.toXml().toXmlString(pretty: true, indent: '    ');
+    expect(xmlString2, xmlString);
+  });
+
+  // RFC 5005: Feed Paging and Archiving
+  test("generate Atom-Page1.xml", () {
+    var xmlString = File("test/xml/Atom-Page1.xml").readAsStringSync();
+
+    var feed = AtomFeed(
+      title: 'Example Feed',
+      links: [
+        AtomLink(href: Uri.parse('http://example.org/')),
+        AtomLink(rel: 'first', href: Uri.parse('http://example.org/index.atom')),
+        AtomLink(rel: 'next', href: Uri.parse('http://example.org/index.atom?page=2')),
+        AtomLink(rel: 'last', href: Uri.parse('http://example.org/index.atom?page=2')),
+      ],
+      updated: DateTime.parse('2003-12-13T18:30:02Z'),
+      authors: [
+        AtomPerson(name: 'John Doe'),
+      ],
+      id: Uri.parse('urn:uuid:60a76c80-d399-11d9-b93C-0003939e0af6'),
+      items: [
+        AtomItem(
+          title: 'Atom-Powered Robots Run Amok',
+          links: [
+            AtomLink(href: Uri.parse('http://example.org/2003/12/13/atom03')),
+          ],
+          id: Uri.parse('urn:uuid:1225c695-cfb8-4ebb-aaaa-80da344efa6a'),
+          updated: DateTime.parse('2003-12-13T18:30:02Z'),
+          summary: AtomContent(text: 'Some text.'),
+        ),
+      ],
+    );
+
+    var xmlString2 = feed.toXml().toXmlString(pretty: true, indent: '    ');
+    expect(xmlString2, xmlString);
+  });
+
+  // RFC 5005: Feed Paging and Archiving
+  test("generate Atom-Page2.xml", () {
+    var xmlString = File("test/xml/Atom-Page2.xml").readAsStringSync();
+
+    var feed = AtomFeed(
+      title: 'Example Feed',
+      links: [
+        AtomLink(href: Uri.parse('http://example.org/')),
+        AtomLink(rel: 'first', href: Uri.parse('http://example.org/index.atom')),
+        AtomLink(rel: 'previous', href: Uri.parse('http://example.org/index.atom')),
+        AtomLink(rel: 'last', href: Uri.parse('http://example.org/index.atom?page=2')),
+      ],
+      updated: DateTime.parse('2003-12-13T18:30:02Z'),
+      authors: [
+        AtomPerson(name: 'John Doe'),
+      ],
+      id: Uri.parse('urn:uuid:60a76c80-d399-11d9-b93C-0003939e0af6'),
+      items: [
+        AtomItem(
+          title: 'Atom-Powered Robots Run Amok',
+          links: [
+            AtomLink(href: Uri.parse('http://example.org/2003/12/13/atom03')),
+          ],
+          id: Uri.parse('urn:uuid:1225c695-cfb8-4ebb-aaaa-80da344efa6a'),
+          updated: DateTime.parse('2003-12-13T18:30:02Z'),
+          summary: AtomContent(text: 'Some text.'),
+        ),
+      ],
+    );
+
+    var xmlString2 = feed.toXml().toXmlString(pretty: true, indent: '    ');
+    expect(xmlString2, xmlString);
   });
 }

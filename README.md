@@ -3,21 +3,28 @@
 [![Build Status](https://travis-ci.org/witochandra/webfeed.svg?branch=master)](https://travis-ci.org/witochandra/webfeed)
 [![Pub](https://img.shields.io/pub/v/webfeed.svg)](https://pub.dartlang.org/packages/webfeed)
 
-A dart package for parsing RSS and Atom feed.
+A dart package for parsing and generating RSS and Atom feeds.
 
 ### Features
 
-- [x] RSS
-- [x] Atom
-- [x] Namespaces
-    - [x] Media RSS
-    - [x] Dublin Core
+- [x] Parsing
+    - [x] RSS
+    - [x] Atom
+    - [x] Namespaces
+        - [x] Media RSS
+        - [x] Dublin Core
+- [ ] Generating
+    - [ ] RSS
+    - [x] Atom
+    - [ ] Namespaces
+        - [ ] Media RSS
+        - [ ] Dublin Core
 
 ### Installing
 
 Add this line into your `pubspec.yaml`
 ```
-webfeed: ^0.4.2
+webfeed: ^0.5.0
 ```
 
 Import the package into your dart code using:
@@ -27,10 +34,16 @@ import 'package:webfeed/webfeed.dart';
 
 ### Example
 
-To parse string into `RssFeed` object use:
+To parse string into an object use:
+```dart
+var rssFeed = RssFeed.parse(xmlString); // for parsing RSS feed
+var atomFeed = AtomFeed.parse(xmlString); // for parsing Atom feed
 ```
-var rssFeed = new RssFeed.parse(xmlString); // for parsing RSS feed
-var atomFeed = new AtomFeed.parse(xmlString); // for parsing Atom feed
+
+To generate string from an object use:
+```dart
+var atomFeed = AtomFeed(id: Uri.parse('urn:42'), title: 'a title', ...); // for creating Atom feed
+var xmlString = atomFeed.toXml().toXmlString(); // for creating XML string for Atom feed
 ```
 
 ### Preview
@@ -104,6 +117,10 @@ item.summary
 item.rights
 item.media
 ```
+
+## Contributors
+- Wito Chandra <wito.c.91@gmail.com> (author)
+- Chris Sells <csells@sellsbrothers.com> (provided XML generation from Atom OM)
 
 ## License
 

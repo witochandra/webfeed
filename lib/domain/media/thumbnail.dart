@@ -13,12 +13,10 @@ class Thumbnail {
     this.time,
   });
 
-  factory Thumbnail.parse(XmlElement element) {
-    return new Thumbnail(
-      url: element.getAttribute("url"),
-      width: element.getAttribute("width"),
-      height: element.getAttribute("height"),
-      time: element.getAttribute("time"),
-    );
-  }
+  factory Thumbnail.parse(XmlElement element) => Thumbnail(
+        url: element.getAttribute("url"),
+        width: element.getAttribute("width"),
+        height: element.getAttribute("height"),
+        time: element.getAttribute("time"),
+      );
 }

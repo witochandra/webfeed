@@ -10,10 +10,8 @@ class Param {
   });
 
   factory Param.parse(XmlElement element) {
-    if (element == null) {
-      return null;
-    }
-    return new Param(
+    if (element == null) return null;
+    return Param(
       name: element.getAttribute("name"),
       value: element.text,
     );

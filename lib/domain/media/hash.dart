@@ -10,10 +10,8 @@ class Hash {
   });
 
   factory Hash.parse(XmlElement element) {
-    if (element == null) {
-      return null;
-    }
-    return new Hash(
+    if (element == null) return null;
+    return Hash(
       algo: element.getAttribute("algo"),
       value: element.text,
     );

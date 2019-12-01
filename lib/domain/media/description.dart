@@ -10,10 +10,8 @@ class Description {
   });
 
   factory Description.parse(XmlElement element) {
-    if (element == null) {
-      return null;
-    }
-    return new Description(
+    if (element == null) return null;
+    return Description(
       type: element.getAttribute("type"),
       value: element.text,
     );

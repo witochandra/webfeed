@@ -9,10 +9,8 @@ class Statistics {
     this.favorites,
   });
 
-  factory Statistics.parse(XmlElement element) {
-    return new Statistics(
-      views: int.tryParse(element.getAttribute("views") ?? "0"),
-      favorites: int.tryParse(element.getAttribute("favorites") ?? "0"),
-    );
-  }
+  factory Statistics.parse(XmlElement element) => Statistics(
+        views: int.tryParse(element.getAttribute("views") ?? "0"),
+        favorites: int.tryParse(element.getAttribute("favorites") ?? "0"),
+      );
 }
