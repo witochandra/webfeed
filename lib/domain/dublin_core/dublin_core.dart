@@ -9,6 +9,8 @@ class DublinCore {
   final String publisher;
   final String contributor;
   final String date;
+  final String created;
+  final String modified;
   final String type;
   final String format;
   final String identifier;
@@ -26,6 +28,8 @@ class DublinCore {
     this.publisher,
     this.contributor,
     this.date,
+    this.created,
+    this.modified,
     this.type,
     this.format,
     this.identifier,
@@ -48,6 +52,8 @@ class DublinCore {
       publisher: findElementOrNull(element, "dc:publisher")?.text,
       contributor: findElementOrNull(element, "dc:contributor")?.text,
       date: findElementOrNull(element, "dc:date")?.text,
+      created: findElementOrNull(element, "dc:created")?.text,
+      modified: findElementOrNull(element, "dc:modified")?.text,
       type: findElementOrNull(element, "dc:type")?.text,
       format: findElementOrNull(element, "dc:format")?.text,
       identifier: findElementOrNull(element, "dc:identifier")?.text,
