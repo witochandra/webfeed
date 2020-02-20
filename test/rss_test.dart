@@ -240,6 +240,8 @@ void main() {
     expect(feed.dc.publisher, "publisher");
     expect(feed.dc.contributor, "contributor");
     expect(feed.dc.date, "2000-01-01T12:00+00:00");
+    expect(feed.dc.created, "2000-01-01T12:00+00:00");
+    expect(feed.dc.modified, "2000-01-01T12:00+00:00");
     expect(feed.dc.type, "type");
     expect(feed.dc.format, "format");
     expect(feed.dc.identifier, "identifier");
