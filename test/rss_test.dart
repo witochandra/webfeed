@@ -8,17 +8,17 @@ import 'package:webfeed/webfeed.dart';
 
 void main() {
   test("parse Invalid.xml", () {
-    var xmlString = new File("test/xml/Invalid.xml").readAsStringSync();
+    var xmlString = File("test/xml/Invalid.xml").readAsStringSync();
 
     try {
-      new RssFeed.parse(xmlString);
+      RssFeed.parse(xmlString);
       fail("Should throw Argument Error");
     } on ArgumentError {}
   });
   test("parse RSS.xml", () {
-    var xmlString = new File("test/xml/RSS.xml").readAsStringSync();
+    var xmlString = File("test/xml/RSS.xml").readAsStringSync();
 
-    var feed = new RssFeed.parse(xmlString);
+    var feed = RssFeed.parse(xmlString);
 
     expect(feed.title, "News - Foo bar News");
     expect(feed.description,
@@ -90,9 +90,9 @@ void main() {
         feed.items.first.content.images.first, "https://test.com/image_link");
   });
   test("parse RSS-Media.xml", () {
-    var xmlString = new File("test/xml/RSS-Media.xml").readAsStringSync();
+    var xmlString = File("test/xml/RSS-Media.xml").readAsStringSync();
 
-    var feed = new RssFeed.parse(xmlString);
+    var feed = RssFeed.parse(xmlString);
     expect(feed.title, "Song Site");
     expect(
         feed.description, "Media RSS example with new fields added in v1.5.0");

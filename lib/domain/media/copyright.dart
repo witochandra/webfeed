@@ -13,7 +13,7 @@ class Copyright {
     if (element == null) {
       return null;
     }
-    return new Copyright(
+    return Copyright(
       url: element.getAttribute("url"),
       value: element.text,
     );

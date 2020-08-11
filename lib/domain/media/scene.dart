@@ -18,7 +18,7 @@ class Scene {
     if (element == null) {
       return null;
     }
-    return new Scene(
+    return Scene(
       title: findElementOrNull(element, "sceneTitle")?.text,
       description: findElementOrNull(element, "sceneDescription")?.text,
       startTime: findElementOrNull(element, "sceneStartTime")?.text,

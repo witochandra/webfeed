@@ -1,7 +1,4 @@
 analyzer:
-  language:
-    enablePreviewDart2: true
-  strong-mode: true
   errors:
     unused_import: error
     unused_local_variable: error
@@ -35,3 +32,4 @@ linter:
      - prefer_typing_uninitialized_variables
      - slash_for_doc_comments
      - type_init_formals
+     - unnecessary_new

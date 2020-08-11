@@ -13,7 +13,7 @@ class Rating {
     if (element == null) {
       return null;
     }
-    return new Rating(
+    return Rating(
       scheme: element.getAttribute("scheme"),
       value: element.text,
     );

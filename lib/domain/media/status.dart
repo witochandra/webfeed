@@ -13,7 +13,7 @@ class Status {
     if (element == null) {
       return null;
     }
-    return new Status(
+    return Status(
       state: element.getAttribute("state"),
       reason: element.getAttribute("reason"),
     );

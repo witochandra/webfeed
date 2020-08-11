@@ -14,7 +14,7 @@ class Price {
   });
 
   factory Price.parse(XmlElement element) {
-    return new Price(
+    return Price(
       price: double.tryParse(element.getAttribute("price") ?? "0"),
       type: element.getAttribute("type"),
       info: element.getAttribute("info"),

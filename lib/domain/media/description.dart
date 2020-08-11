@@ -13,7 +13,7 @@ class Description {
     if (element == null) {
       return null;
     }
-    return new Description(
+    return Description(
       type: element.getAttribute("type"),
       value: element.text,
     );

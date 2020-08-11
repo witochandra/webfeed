@@ -15,7 +15,7 @@ class License {
     if (element == null) {
       return null;
     }
-    return new License(
+    return License(
       type: element.getAttribute("type"),
       href: element.getAttribute("href"),
       value: element.text,

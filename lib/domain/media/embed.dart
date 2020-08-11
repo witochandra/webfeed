@@ -18,12 +18,12 @@ class Embed {
     if (element == null) {
       return null;
     }
-    return new Embed(
+    return Embed(
       url: element.getAttribute("url"),
       width: int.tryParse(element.getAttribute("width") ?? "0"),
       height: int.tryParse(element.getAttribute("height") ?? "0"),
       params: element.findElements("media:param").map((e) {
-        return new Param.parse(e);
+        return Param.parse(e);
       }).toList(),
     );
   }

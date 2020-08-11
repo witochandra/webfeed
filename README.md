@@ -29,8 +29,8 @@ import 'package:webfeed/webfeed.dart';
 
 To parse string into `RssFeed` object use:
 ```
-var rssFeed = new RssFeed.parse(xmlString); // for parsing RSS feed
-var atomFeed = new AtomFeed.parse(xmlString); // for parsing Atom feed
+var rssFeed = RssFeed.parse(xmlString); // for parsing RSS feed
+var atomFeed = AtomFeed.parse(xmlString); // for parsing Atom feed
 ```
 
 ### Preview

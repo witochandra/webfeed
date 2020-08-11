@@ -11,7 +11,7 @@ class Rights {
     if (element == null) {
       return null;
     }
-    return new Rights(
+    return Rights(
       status: element.getAttribute("status"),
     );
   }

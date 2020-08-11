@@ -6,18 +6,18 @@ import 'package:webfeed/webfeed.dart';
 
 void main() {
   test("parse Invalid.xml", () {
-    var xmlString = new File("test/xml/Invalid.xml").readAsStringSync();
+    var xmlString = File("test/xml/Invalid.xml").readAsStringSync();
 
     try {
-      new AtomFeed.parse(xmlString);
+      AtomFeed.parse(xmlString);
       fail("Should throw Argument Error");
     } on ArgumentError {}
   });
 
   test("parse Atom.xml", () {
-    var xmlString = new File("test/xml/Atom.xml").readAsStringSync();
+    var xmlString = File("test/xml/Atom.xml").readAsStringSync();
 
-    var feed = new AtomFeed.parse(xmlString);
+    var feed = AtomFeed.parse(xmlString);
 
     expect(feed.id, "foo-bar-id");
     expect(feed.title, "Foo bar news");
@@ -89,9 +89,9 @@ void main() {
     expect(item.rights, "This is rights 1");
   });
   test("parse Atom-Media.xml", () {
-    var xmlString = new File("test/xml/Atom-Media.xml").readAsStringSync();
+    var xmlString = File("test/xml/Atom-Media.xml").readAsStringSync();
 
-    var feed = new AtomFeed.parse(xmlString);
+    var feed = AtomFeed.parse(xmlString);
     expect(feed.id, "foo-bar-id");
     expect(feed.title, "Foo bar news");
     expect(feed.updated, DateTime.utc(2018, 4, 6, 13, 2, 46));

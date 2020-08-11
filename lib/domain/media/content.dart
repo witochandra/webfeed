@@ -34,7 +34,7 @@ class Content {
   });
 
   factory Content.parse(XmlElement element) {
-    return new Content(
+    return Content(
       url: element.getAttribute("url"),
       type: element.getAttribute("type"),
       fileSize: int.tryParse(element.getAttribute("fileSize") ?? "0"),

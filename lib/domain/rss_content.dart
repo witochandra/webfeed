@@ -1,6 +1,6 @@
 import 'package:xml/xml.dart';
 
-final _imagesRegExp = new RegExp(
+final _imagesRegExp = RegExp(
   "<img\\s.*?src=(?:'|\")([^'\">]+)(?:'|\")",
   multiLine: true,
   caseSensitive: false,

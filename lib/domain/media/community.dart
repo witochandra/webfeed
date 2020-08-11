@@ -19,14 +19,14 @@ class Community {
     if (element == null) {
       return null;
     }
-    return new Community(
-      starRating: new StarRating.parse(
+    return Community(
+      starRating: StarRating.parse(
         findElementOrNull(element, "media:starRating"),
       ),
-      statistics: new Statistics.parse(
+      statistics: Statistics.parse(
         findElementOrNull(element, "media:statistics"),
       ),
-      tags: new Tags.parse(
+      tags: Tags.parse(
         findElementOrNull(element, "media:tags"),
       ),
     );

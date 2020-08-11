@@ -14,7 +14,7 @@ class Thumbnail {
   });
 
   factory Thumbnail.parse(XmlElement element) {
-    return new Thumbnail(
+    return Thumbnail(
       url: element.getAttribute("url"),
       width: element.getAttribute("width"),
       height: element.getAttribute("height"),

@@ -13,7 +13,7 @@ class Param {
     if (element == null) {
       return null;
     }
-    return new Param(
+    return Param(
       name: element.getAttribute("name"),
       value: element.text,
     );
