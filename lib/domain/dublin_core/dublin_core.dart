@@ -1,3 +1,4 @@
+import 'package:webfeed/util/datetime.dart';
 import 'package:webfeed/util/xml.dart';
 import 'package:xml/xml.dart';
 
@@ -8,9 +9,9 @@ class DublinCore {
   final String subject;
   final String publisher;
   final String contributor;
-  final String date;
-  final String created;
-  final String modified;
+  final DateTime date;
+  final DateTime created;
+  final DateTime modified;
   final String type;
   final String format;
   final String identifier;
@@ -51,9 +52,9 @@ class DublinCore {
       subject: findElementOrNull(element, "dc:subject")?.text,
       publisher: findElementOrNull(element, "dc:publisher")?.text,
       contributor: findElementOrNull(element, "dc:contributor")?.text,
-      date: findElementOrNull(element, "dc:date")?.text,
-      created: findElementOrNull(element, "dc:created")?.text,
-      modified: findElementOrNull(element, "dc:modified")?.text,
+      date: parseDateTime(findElementOrNull(element, "dc:date")?.text),
+      created: parseDateTime(findElementOrNull(element, "dc:created")?.text),
+      modified: parseDateTime(findElementOrNull(element, "dc:modified")?.text),
       type: findElementOrNull(element, "dc:type")?.text,
       format: findElementOrNull(element, "dc:format")?.text,
       identifier: findElementOrNull(element, "dc:identifier")?.text,

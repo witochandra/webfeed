@@ -2,10 +2,9 @@ import 'dart:core';
 import 'dart:io';
 
 import 'package:test/test.dart';
-import 'package:webfeed/webfeed.dart';
-
-import 'package:webfeed/domain/rss_itunes_type.dart';
 import 'package:webfeed/domain/rss_itunes_episode_type.dart';
+import 'package:webfeed/domain/rss_itunes_type.dart';
+import 'package:webfeed/webfeed.dart';
 
 void main() {
   test("parse Invalid.xml", () {
@@ -72,7 +71,8 @@ void main() {
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit");
     expect(feed.items.first.link, "https://foo.bar.news/1");
     expect(feed.items.first.guid, "https://foo.bar.news/1?guid");
-    expect(feed.items.first.pubDate, DateTime(2018, 03, 26, 14)); //Mon, 26 Mar 2018 14:00:00 PDT
+    expect(feed.items.first.pubDate,
+        DateTime(2018, 03, 26, 14)); //Mon, 26 Mar 2018 14:00:00 PDT
     expect(feed.items.first.categories.first.domain, "news");
     expect(feed.items.first.categories.first.value, "Lorem");
     expect(feed.items.first.author, "alice@foo.bar.news");
@@ -102,7 +102,8 @@ void main() {
     var item = feed.items.first;
     expect(item.title, null);
     expect(item.link, "http://www.foo.com");
-    expect(item.pubDate, DateTime(2001, 08, 27, 16, 08, 56)); //Mon, 27 Aug 2001 16:08:56 PST
+    expect(item.pubDate,
+        DateTime(2001, 08, 27, 16, 08, 56)); //Mon, 27 Aug 2001 16:08:56 PST
 
     expect(item.media.group.contents.length, 5);
     expect(item.media.group.credits.length, 2);
@@ -239,9 +240,9 @@ void main() {
     expect(feed.dc.description, "description");
     expect(feed.dc.publisher, "publisher");
     expect(feed.dc.contributor, "contributor");
-    expect(feed.dc.date, "2000-01-01T12:00+00:00");
-    expect(feed.dc.created, "2000-01-01T12:00+00:00");
-    expect(feed.dc.modified, "2000-01-01T12:00+00:00");
+    expect(feed.dc.date, DateTime.utc(2000, 1, 1, 12));
+    expect(feed.dc.created, DateTime.utc(2000, 1, 1, 13));
+    expect(feed.dc.modified, DateTime.utc(2000, 1, 1, 14));
     expect(feed.dc.type, "type");
     expect(feed.dc.format, "format");
     expect(feed.dc.identifier, "identifier");
@@ -257,7 +258,7 @@ void main() {
     expect(feed.items.first.dc.description, "description");
     expect(feed.items.first.dc.publisher, "publisher");
     expect(feed.items.first.dc.contributor, "contributor");
-    expect(feed.items.first.dc.date, "2000-01-01T12:00+00:00");
+    expect(feed.items.first.dc.date, DateTime.utc(2000, 1, 1, 12));
     expect(feed.items.first.dc.type, "type");
     expect(feed.items.first.dc.format, "format");
     expect(feed.items.first.dc.identifier, "identifier");
