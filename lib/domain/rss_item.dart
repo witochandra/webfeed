@@ -1,4 +1,3 @@
-import 'package:intl/intl.dart';
 import 'package:webfeed/domain/dublin_core/dublin_core.dart';
 import 'package:webfeed/domain/media/media.dart';
 import 'package:webfeed/domain/rss_category.dart';
@@ -6,6 +5,7 @@ import 'package:webfeed/domain/rss_content.dart';
 import 'package:webfeed/domain/rss_enclosure.dart';
 import 'package:webfeed/domain/rss_item_itunes.dart';
 import 'package:webfeed/domain/rss_source.dart';
+import 'package:webfeed/util/datetime.dart';
 import 'package:webfeed/util/xml.dart';
 import 'package:xml/xml.dart';
 
@@ -32,7 +32,7 @@ class RssItem {
     this.link,
     this.categories,
     this.guid,
-    String pubDate,
+    this.pubDate,
     this.author,
     this.comments,
     this.source,
@@ -41,7 +41,7 @@ class RssItem {
     this.enclosure,
     this.dc,
     this.itunes,
-  }) : this.pubDate = _parsePubDate(pubDate);
+  });
 
   factory RssItem.parse(XmlElement element) {
     return RssItem(
@@ -52,7 +52,7 @@ class RssItem {
         return RssCategory.parse(element);
       }).toList(),
       guid: findElementOrNull(element, "guid")?.text,
-      pubDate: findElementOrNull(element, "pubDate")?.text,
+      pubDate: parseDateTime(findElementOrNull(element, "pubDate")?.text),
       author: findElementOrNull(element, "author")?.text,
       comments: findElementOrNull(element, "comments")?.text,
       source: RssSource.parse(findElementOrNull(element, "source")),
@@ -62,11 +62,5 @@ class RssItem {
       dc: DublinCore.parse(element),
       itunes: RssItemItunes.parse(element),
     );
-  }
-
-  static _parsePubDate(pubDate) {
-    if (pubDate == null) return null;
-    //Locale for pubDate is always en_US, regardless of device locale
-    return DateFormat('EEE, dd MMM yyyy HH:mm:ss Z', 'en_US').parse(pubDate);
   }
 }
