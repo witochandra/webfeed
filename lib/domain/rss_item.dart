@@ -4,11 +4,10 @@ import 'package:webfeed/domain/media/media.dart';
 import 'package:webfeed/domain/rss_category.dart';
 import 'package:webfeed/domain/rss_content.dart';
 import 'package:webfeed/domain/rss_enclosure.dart';
+import 'package:webfeed/domain/rss_item_itunes.dart';
 import 'package:webfeed/domain/rss_source.dart';
-import 'package:webfeed/util/helpers.dart';
+import 'package:webfeed/util/xml.dart';
 import 'package:xml/xml.dart';
-
-import 'rss_item_itunes.dart';
 
 class RssItem {
   final String title;
@@ -42,8 +41,7 @@ class RssItem {
     this.enclosure,
     this.dc,
     this.itunes,
-  })
-    : this.pubDate = _parsePubDate(pubDate);
+  }) : this.pubDate = _parsePubDate(pubDate);
 
   factory RssItem.parse(XmlElement element) {
     return RssItem(

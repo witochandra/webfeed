@@ -3,7 +3,7 @@ import 'package:webfeed/domain/atom_generator.dart';
 import 'package:webfeed/domain/atom_item.dart';
 import 'package:webfeed/domain/atom_link.dart';
 import 'package:webfeed/domain/atom_person.dart';
-import 'package:webfeed/util/helpers.dart';
+import 'package:webfeed/util/xml.dart';
 import 'package:xml/xml.dart';
 
 class AtomFeed {

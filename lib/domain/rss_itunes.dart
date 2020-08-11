@@ -1,6 +1,5 @@
+import 'package:webfeed/util/xml.dart';
 import 'package:xml/xml.dart';
-
-import 'package:webfeed/util/helpers.dart';
 
 import 'rss_itunes_category.dart';
 import 'rss_itunes_image.dart';
@@ -66,4 +65,3 @@ class RssItunes {
     );
   }
 }
-

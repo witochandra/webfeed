@@ -5,7 +5,7 @@ import 'package:webfeed/domain/rss_category.dart';
 import 'package:webfeed/domain/rss_cloud.dart';
 import 'package:webfeed/domain/rss_image.dart';
 import 'package:webfeed/domain/rss_item.dart';
-import 'package:webfeed/util/helpers.dart';
+import 'package:webfeed/util/xml.dart';
 import 'package:xml/xml.dart';
 
 import 'rss_itunes.dart';

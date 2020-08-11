@@ -1,6 +1,6 @@
 import 'package:xml/xml.dart';
 
-import '../util/helpers.dart';
+import '../util/xml.dart';
 
 class RssItunesOwner {
   final String name;
