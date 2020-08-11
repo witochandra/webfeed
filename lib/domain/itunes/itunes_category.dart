@@ -1,12 +1,12 @@
 import 'package:xml/xml.dart';
 
-class RssItunesCategory {
+class ItunesCategory {
   final String category;
   final List<String> subCategories;
 
-  RssItunesCategory({this.category, this.subCategories});
+  ItunesCategory({this.category, this.subCategories});
 
-  factory RssItunesCategory.parse(XmlElement element) {
+  factory ItunesCategory.parse(XmlElement element) {
     if (element == null) return null;
 
     Iterable<XmlElement> subCategories;
@@ -15,7 +15,7 @@ class RssItunesCategory {
     } on StateError {
       subCategories = null;
     }
-    return RssItunesCategory(
+    return ItunesCategory(
       category: element.getAttribute('text')?.trim(),
       subCategories: subCategories
           ?.map((ele) => ele.getAttribute('text')?.trim())

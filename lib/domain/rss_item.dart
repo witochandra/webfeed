@@ -1,9 +1,9 @@
 import 'package:webfeed/domain/dublin_core/dublin_core.dart';
+import 'package:webfeed/domain/itunes/itunes.dart';
 import 'package:webfeed/domain/media/media.dart';
 import 'package:webfeed/domain/rss_category.dart';
 import 'package:webfeed/domain/rss_content.dart';
 import 'package:webfeed/domain/rss_enclosure.dart';
-import 'package:webfeed/domain/rss_item_itunes.dart';
 import 'package:webfeed/domain/rss_source.dart';
 import 'package:webfeed/util/datetime.dart';
 import 'package:webfeed/util/xml.dart';
@@ -24,7 +24,7 @@ class RssItem {
   final Media media;
   final RssEnclosure enclosure;
   final DublinCore dc;
-  final RssItemItunes itunes;
+  final Itunes itunes;
 
   RssItem({
     this.title,
@@ -60,7 +60,7 @@ class RssItem {
       media: Media.parse(element),
       enclosure: RssEnclosure.parse(findElementOrNull(element, 'enclosure')),
       dc: DublinCore.parse(element),
-      itunes: RssItemItunes.parse(element),
+      itunes: Itunes.parse(element),
     );
   }
 }

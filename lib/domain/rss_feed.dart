@@ -1,14 +1,13 @@
 import 'dart:core';
 
 import 'package:webfeed/domain/dublin_core/dublin_core.dart';
+import 'package:webfeed/domain/itunes/itunes.dart';
 import 'package:webfeed/domain/rss_category.dart';
 import 'package:webfeed/domain/rss_cloud.dart';
 import 'package:webfeed/domain/rss_image.dart';
 import 'package:webfeed/domain/rss_item.dart';
 import 'package:webfeed/util/xml.dart';
 import 'package:xml/xml.dart';
-
-import 'rss_itunes.dart';
 
 class RssFeed {
   final String title;
@@ -32,7 +31,7 @@ class RssFeed {
   final String webMaster;
   final int ttl;
   final DublinCore dc;
-  final RssItunes itunes;
+  final Itunes itunes;
 
   RssFeed({
     this.title,
@@ -102,7 +101,7 @@ class RssFeed {
       webMaster: findElementOrNull(channelElement, 'webMaster')?.text,
       ttl: int.tryParse(findElementOrNull(channelElement, 'ttl')?.text ?? '0'),
       dc: DublinCore.parse(channelElement),
-      itunes: RssItunes.parse(channelElement),
+      itunes: Itunes.parse(channelElement),
     );
   }
 }

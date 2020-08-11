@@ -2,8 +2,8 @@ import 'dart:core';
 import 'dart:io';
 
 import 'package:test/test.dart';
-import 'package:webfeed/domain/rss_itunes_episode_type.dart';
-import 'package:webfeed/domain/rss_itunes_type.dart';
+import 'package:webfeed/domain/itunes/itunes_episode_type.dart';
+import 'package:webfeed/domain/itunes/itunes_type.dart';
 import 'package:webfeed/webfeed.dart';
 
 void main() {
@@ -344,13 +344,13 @@ void main() {
       }
     }
     expect(feed.itunes.title, 'Go Time');
-    expect(feed.itunes.type, RssItunesType.serial);
+    expect(feed.itunes.type, ItunesType.serial);
     expect(feed.itunes.newFeedUrl, 'wubawuba');
     expect(feed.itunes.block, true);
     expect(feed.itunes.complete, true);
 
     var item = feed.items[0];
-    expect(item.itunes.episodeType, RssItunesEpisodeType.full);
+    expect(item.itunes.episodeType, ItunesEpisodeType.full);
     expect(item.itunes.episode, 1);
     expect(item.itunes.season, 1);
     expect(item.itunes.image.href,

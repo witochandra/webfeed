@@ -1,16 +1,15 @@
+import 'package:webfeed/util/xml.dart';
 import 'package:xml/xml.dart';
 
-import '../util/xml.dart';
-
-class RssItunesOwner {
+class ItunesOwner {
   final String name;
   final String email;
 
-  RssItunesOwner({this.name, this.email});
+  ItunesOwner({this.name, this.email});
 
-  factory RssItunesOwner.parse(XmlElement element) {
+  factory ItunesOwner.parse(XmlElement element) {
     if (element == null) return null;
-    return RssItunesOwner(
+    return ItunesOwner(
       name: findElementOrNull(element, 'itunes:name')?.text?.trim(),
       email: findElementOrNull(element, 'itunes:email')?.text?.trim(),
     );
