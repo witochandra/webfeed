@@ -3,13 +3,14 @@ import 'package:webfeed/domain/atom_link.dart';
 import 'package:webfeed/domain/atom_person.dart';
 import 'package:webfeed/domain/atom_source.dart';
 import 'package:webfeed/domain/media/media.dart';
+import 'package:webfeed/util/datetime.dart';
 import 'package:webfeed/util/xml.dart';
 import 'package:xml/xml.dart';
 
 class AtomItem {
   final String id;
   final String title;
-  final String updated;
+  final DateTime updated;
 
   final List<AtomPerson> authors;
   final List<AtomLink> links;
@@ -42,7 +43,7 @@ class AtomItem {
     return AtomItem(
       id: findElementOrNull(element, "id")?.text,
       title: findElementOrNull(element, "title")?.text,
-      updated: findElementOrNull(element, "updated")?.text,
+      updated: parseDateTime(findElementOrNull(element, "updated")?.text),
       authors: element.findElements("author").map((element) {
         return AtomPerson.parse(element);
       }).toList(),
