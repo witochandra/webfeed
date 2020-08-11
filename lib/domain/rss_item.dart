@@ -1,3 +1,4 @@
+import 'package:intl/intl.dart';
 import 'package:webfeed/domain/dublin_core/dublin_core.dart';
 import 'package:webfeed/domain/media/media.dart';
 import 'package:webfeed/domain/rss_category.dart';
@@ -16,7 +17,7 @@ class RssItem {
 
   final List<RssCategory> categories;
   final String guid;
-  final String pubDate;
+  final DateTime pubDate;
   final String author;
   final String comments;
   final RssSource source;
@@ -32,7 +33,7 @@ class RssItem {
     this.link,
     this.categories,
     this.guid,
-    this.pubDate,
+    String pubDate,
     this.author,
     this.comments,
     this.source,
@@ -41,7 +42,8 @@ class RssItem {
     this.enclosure,
     this.dc,
     this.itunes,
-  });
+  })
+    : this.pubDate = _parsePubDate(pubDate);
 
   factory RssItem.parse(XmlElement element) {
     return RssItem(
@@ -62,5 +64,11 @@ class RssItem {
       dc: DublinCore.parse(element),
       itunes: RssItemItunes.parse(element),
     );
+  }
+
+  static _parsePubDate(pubDate) {
+    if (pubDate == null) return null;
+    //Locale for pubDate is always en_US, regardless of device locale
+    return DateFormat('EEE, dd MMM yyyy HH:mm:ss Z', 'en_US').parse(pubDate);
   }
 }
