@@ -14,7 +14,7 @@ class Param {
       return null;
     }
     return Param(
-      name: element.getAttribute("name"),
+      name: element.getAttribute('name'),
       value: element.text,
     );
   }

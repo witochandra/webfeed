@@ -20,10 +20,10 @@ class Text {
       return null;
     }
     return Text(
-      type: element.getAttribute("type"),
-      lang: element.getAttribute("lang"),
-      start: element.getAttribute("start"),
-      end: element.getAttribute("end"),
+      type: element.getAttribute('type'),
+      lang: element.getAttribute('lang'),
+      start: element.getAttribute('start'),
+      end: element.getAttribute('end'),
       value: element.text,
     );
   }

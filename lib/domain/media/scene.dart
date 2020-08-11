@@ -19,10 +19,10 @@ class Scene {
       return null;
     }
     return Scene(
-      title: findElementOrNull(element, "sceneTitle")?.text,
-      description: findElementOrNull(element, "sceneDescription")?.text,
-      startTime: findElementOrNull(element, "sceneStartTime")?.text,
-      endTime: findElementOrNull(element, "sceneEndTime")?.text,
+      title: findElementOrNull(element, 'sceneTitle')?.text,
+      description: findElementOrNull(element, 'sceneDescription')?.text,
+      startTime: findElementOrNull(element, 'sceneStartTime')?.text,
+      endTime: findElementOrNull(element, 'sceneEndTime')?.text,
     );
   }
 }

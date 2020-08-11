@@ -14,7 +14,7 @@ class Rating {
       return null;
     }
     return Rating(
-      scheme: element.getAttribute("scheme"),
+      scheme: element.getAttribute('scheme'),
       value: element.text,
     );
   }

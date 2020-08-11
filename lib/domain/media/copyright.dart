@@ -14,7 +14,7 @@ class Copyright {
       return null;
     }
     return Copyright(
-      url: element.getAttribute("url"),
+      url: element.getAttribute('url'),
       value: element.text,
     );
   }

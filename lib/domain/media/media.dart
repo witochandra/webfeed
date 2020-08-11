@@ -80,86 +80,86 @@ class Media {
   factory Media.parse(XmlElement element) {
     return Media(
       group: Group.parse(
-        findElementOrNull(element, "media:group"),
+        findElementOrNull(element, 'media:group'),
       ),
-      contents: element.findElements("media:content").map((e) {
+      contents: element.findElements('media:content').map((e) {
         return Content.parse(e);
       }).toList(),
-      credits: element.findElements("media:credit").map((e) {
+      credits: element.findElements('media:credit').map((e) {
         return Credit.parse(e);
       }).toList(),
       category: Category.parse(
-        findElementOrNull(element, "media:category"),
+        findElementOrNull(element, 'media:category'),
       ),
       rating: Rating.parse(
-        findElementOrNull(element, "media:rating"),
+        findElementOrNull(element, 'media:rating'),
       ),
       title: Title.parse(
-        findElementOrNull(element, "media:title"),
+        findElementOrNull(element, 'media:title'),
       ),
       description: Description.parse(
-        findElementOrNull(element, "media:description"),
+        findElementOrNull(element, 'media:description'),
       ),
-      keywords: findElementOrNull(element, "media:keywords")?.text,
-      thumbnails: element.findElements("media:thumbnail").map((e) {
+      keywords: findElementOrNull(element, 'media:keywords')?.text,
+      thumbnails: element.findElements('media:thumbnail').map((e) {
         return Thumbnail.parse(e);
       }).toList(),
       hash: Hash.parse(
-        findElementOrNull(element, "media:hash"),
+        findElementOrNull(element, 'media:hash'),
       ),
       player: Player.parse(
-        findElementOrNull(element, "media:player"),
+        findElementOrNull(element, 'media:player'),
       ),
       copyright: Copyright.parse(
-        findElementOrNull(element, "media:copyright"),
+        findElementOrNull(element, 'media:copyright'),
       ),
       text: Text.parse(
-        findElementOrNull(element, "media:text"),
+        findElementOrNull(element, 'media:text'),
       ),
       restriction: Restriction.parse(
-        findElementOrNull(element, "media:restriction"),
+        findElementOrNull(element, 'media:restriction'),
       ),
       community: Community.parse(
-        findElementOrNull(element, "media:community"),
+        findElementOrNull(element, 'media:community'),
       ),
-      comments: findElementOrNull(element, "media:comments")
-              ?.findElements("media:comment")
+      comments: findElementOrNull(element, 'media:comments')
+              ?.findElements('media:comment')
               ?.map((e) {
             return e.text;
           })?.toList() ??
           [],
       embed: Embed.parse(
-        findElementOrNull(element, "media:embed"),
+        findElementOrNull(element, 'media:embed'),
       ),
-      responses: findElementOrNull(element, "media:responses")
-              ?.findElements("media:response")
+      responses: findElementOrNull(element, 'media:responses')
+              ?.findElements('media:response')
               ?.map((e) {
             return e.text;
           })?.toList() ??
           [],
-      backLinks: findElementOrNull(element, "media:backLinks")
-              ?.findElements("media:backLink")
+      backLinks: findElementOrNull(element, 'media:backLinks')
+              ?.findElements('media:backLink')
               ?.map((e) {
             return e.text;
           })?.toList() ??
           [],
       status: Status.parse(
-        findElementOrNull(element, "media:status"),
+        findElementOrNull(element, 'media:status'),
       ),
-      prices: element.findElements("media:price").map((e) {
+      prices: element.findElements('media:price').map((e) {
         return Price.parse(e);
       }).toList(),
       license: License.parse(
-        findElementOrNull(element, "media:license"),
+        findElementOrNull(element, 'media:license'),
       ),
       peerLink: PeerLink.parse(
-        findElementOrNull(element, "media:peerLink"),
+        findElementOrNull(element, 'media:peerLink'),
       ),
       rights: Rights.parse(
-        findElementOrNull(element, "media:rights"),
+        findElementOrNull(element, 'media:rights'),
       ),
-      scenes: findElementOrNull(element, "media:scenes")
-              ?.findElements("media:scene")
+      scenes: findElementOrNull(element, 'media:scenes')
+              ?.findElements('media:scene')
               ?.map((e) {
             return Scene.parse(e);
           })?.toList() ??

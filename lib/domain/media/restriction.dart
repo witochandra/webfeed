@@ -16,8 +16,8 @@ class Restriction {
       return null;
     }
     return Restriction(
-      relationship: element.getAttribute("relationship"),
-      type: element.getAttribute("type"),
+      relationship: element.getAttribute('relationship'),
+      type: element.getAttribute('type'),
       value: element.text,
     );
   }

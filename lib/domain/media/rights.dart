@@ -12,7 +12,7 @@ class Rights {
       return null;
     }
     return Rights(
-      status: element.getAttribute("status"),
+      status: element.getAttribute('status'),
     );
   }
 }

@@ -16,8 +16,8 @@ class PeerLink {
       return null;
     }
     return PeerLink(
-      type: element.getAttribute("type"),
-      href: element.getAttribute("href"),
+      type: element.getAttribute('type'),
+      href: element.getAttribute('href'),
       value: element.text,
     );
   }

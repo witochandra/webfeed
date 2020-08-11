@@ -35,22 +35,22 @@ class Content {
 
   factory Content.parse(XmlElement element) {
     return Content(
-      url: element.getAttribute("url"),
-      type: element.getAttribute("type"),
-      fileSize: int.tryParse(element.getAttribute("fileSize") ?? "0"),
-      medium: element.getAttribute("medium"),
-      isDefault: element.getAttribute("isDefault") == "true",
-      expression: element.getAttribute("expression"),
-      bitrate: int.tryParse(element.getAttribute("bitrate") ?? "0"),
-      framerate: double.tryParse(element.getAttribute("framerate") ?? "0"),
+      url: element.getAttribute('url'),
+      type: element.getAttribute('type'),
+      fileSize: int.tryParse(element.getAttribute('fileSize') ?? '0'),
+      medium: element.getAttribute('medium'),
+      isDefault: element.getAttribute('isDefault') == 'true',
+      expression: element.getAttribute('expression'),
+      bitrate: int.tryParse(element.getAttribute('bitrate') ?? '0'),
+      framerate: double.tryParse(element.getAttribute('framerate') ?? '0'),
       samplingrate: double.tryParse(
-        element.getAttribute("samplingrate") ?? "0",
+        element.getAttribute('samplingrate') ?? '0',
       ),
-      channels: int.tryParse(element.getAttribute("channels") ?? "0"),
-      duration: int.tryParse(element.getAttribute("duration") ?? "0"),
-      height: int.tryParse(element.getAttribute("height") ?? "0"),
-      width: int.tryParse(element.getAttribute("width") ?? "0"),
-      lang: element.getAttribute("lang"),
+      channels: int.tryParse(element.getAttribute('channels') ?? '0'),
+      duration: int.tryParse(element.getAttribute('duration') ?? '0'),
+      height: int.tryParse(element.getAttribute('height') ?? '0'),
+      width: int.tryParse(element.getAttribute('width') ?? '0'),
+      lang: element.getAttribute('lang'),
     );
   }
 }

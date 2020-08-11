@@ -11,8 +11,8 @@ class AtomGenerator {
     if (element == null) {
       return null;
     }
-    var uri = element.getAttribute("uri");
-    var version = element.getAttribute("version");
+    var uri = element.getAttribute('uri');
+    var version = element.getAttribute('version');
     var value = element.text;
     return AtomGenerator(uri, version, value);
   }

@@ -14,7 +14,7 @@ class Title {
       return null;
     }
     return Title(
-      type: element.getAttribute("type"),
+      type: element.getAttribute('type'),
       value: element.text,
     );
   }

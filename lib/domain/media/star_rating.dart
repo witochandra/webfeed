@@ -15,10 +15,10 @@ class StarRating {
 
   factory StarRating.parse(XmlElement element) {
     return StarRating(
-      average: double.tryParse(element.getAttribute("average") ?? "0"),
-      count: int.tryParse(element.getAttribute("count") ?? "0"),
-      min: int.tryParse(element.getAttribute("min") ?? "0"),
-      max: int.tryParse(element.getAttribute("max") ?? "0"),
+      average: double.tryParse(element.getAttribute('average') ?? '0'),
+      count: int.tryParse(element.getAttribute('count') ?? '0'),
+      min: int.tryParse(element.getAttribute('min') ?? '0'),
+      max: int.tryParse(element.getAttribute('max') ?? '0'),
     );
   }
 }

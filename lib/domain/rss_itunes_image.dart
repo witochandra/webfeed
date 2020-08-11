@@ -8,7 +8,7 @@ class RssItunesImage {
   factory RssItunesImage.parse(XmlElement element) {
     if (element == null) return null;
     return RssItunesImage(
-      href: element.getAttribute("href")?.trim(),
+      href: element.getAttribute('href')?.trim(),
     );
   }
 }

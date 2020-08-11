@@ -41,26 +41,26 @@ class AtomItem {
 
   factory AtomItem.parse(XmlElement element) {
     return AtomItem(
-      id: findElementOrNull(element, "id")?.text,
-      title: findElementOrNull(element, "title")?.text,
-      updated: parseDateTime(findElementOrNull(element, "updated")?.text),
-      authors: element.findElements("author").map((element) {
+      id: findElementOrNull(element, 'id')?.text,
+      title: findElementOrNull(element, 'title')?.text,
+      updated: parseDateTime(findElementOrNull(element, 'updated')?.text),
+      authors: element.findElements('author').map((element) {
         return AtomPerson.parse(element);
       }).toList(),
-      links: element.findElements("link").map((element) {
+      links: element.findElements('link').map((element) {
         return AtomLink.parse(element);
       }).toList(),
-      categories: element.findElements("category").map((element) {
+      categories: element.findElements('category').map((element) {
         return AtomCategory.parse(element);
       }).toList(),
-      contributors: element.findElements("contributor").map((element) {
+      contributors: element.findElements('contributor').map((element) {
         return AtomPerson.parse(element);
       }).toList(),
-      source: AtomSource.parse(findElementOrNull(element, "source")),
-      published: findElementOrNull(element, "published")?.text,
-      content: findElementOrNull(element, "content")?.text,
-      summary: findElementOrNull(element, "summary")?.text,
-      rights: findElementOrNull(element, "rights")?.text,
+      source: AtomSource.parse(findElementOrNull(element, 'source')),
+      published: findElementOrNull(element, 'published')?.text,
+      content: findElementOrNull(element, 'content')?.text,
+      summary: findElementOrNull(element, 'summary')?.text,
+      rights: findElementOrNull(element, 'rights')?.text,
       media: Media.parse(element),
     );
   }

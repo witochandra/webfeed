@@ -15,7 +15,7 @@ class Tags {
     }
     return Tags(
       tags: element.text,
-      weight: int.tryParse(element.getAttribute("weight") ?? "1"),
+      weight: int.tryParse(element.getAttribute('weight') ?? '1'),
     );
   }
 }

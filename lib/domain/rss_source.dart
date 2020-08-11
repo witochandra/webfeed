@@ -10,7 +10,7 @@ class RssSource {
     if (element == null) {
       return null;
     }
-    var url = element.getAttribute("url");
+    var url = element.getAttribute('url');
     var value = element.text;
 
     return RssSource(url, value);

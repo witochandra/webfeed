@@ -16,8 +16,8 @@ class Category {
       return null;
     }
     return Category(
-      scheme: element.getAttribute("scheme"),
-      label: element.getAttribute("label"),
+      scheme: element.getAttribute('scheme'),
+      label: element.getAttribute('label'),
       value: element.text,
     );
   }

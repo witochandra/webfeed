@@ -11,9 +11,9 @@ class RssEnclosure {
     if (element == null) {
       return null;
     }
-    var url = element.getAttribute("url");
-    var type = element.getAttribute("type");
-    var length = int.tryParse(element.getAttribute("length") ?? "0");
+    var url = element.getAttribute('url');
+    var type = element.getAttribute('type');
+    var length = int.tryParse(element.getAttribute('length') ?? '0');
     return RssEnclosure(url, type, length);
   }
 }

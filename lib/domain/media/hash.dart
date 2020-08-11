@@ -14,7 +14,7 @@ class Hash {
       return null;
     }
     return Hash(
-      algo: element.getAttribute("algo"),
+      algo: element.getAttribute('algo'),
       value: element.text,
     );
   }

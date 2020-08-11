@@ -23,17 +23,17 @@ class Group {
       return null;
     }
     return Group(
-      contents: element.findElements("media:content").map((e) {
+      contents: element.findElements('media:content').map((e) {
         return Content.parse(e);
       }).toList(),
-      credits: element.findElements("media:credit").map((e) {
+      credits: element.findElements('media:credit').map((e) {
         return Credit.parse(e);
       }).toList(),
       category: Category.parse(
-        findElementOrNull(element, "media:category"),
+        findElementOrNull(element, 'media:category'),
       ),
       rating: Rating.parse(
-        findElementOrNull(element, "media:rating"),
+        findElementOrNull(element, 'media:rating'),
       ),
     );
   }

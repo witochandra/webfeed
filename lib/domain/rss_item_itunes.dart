@@ -40,31 +40,31 @@ class RssItemItunes {
     if (element == null) {
       return null;
     }
-    var episodeStr = findElementOrNull(element, "itunes:episode")?.text?.trim();
-    var seasonStr = findElementOrNull(element, "itunes:season")?.text?.trim();
+    var episodeStr = findElementOrNull(element, 'itunes:episode')?.text?.trim();
+    var seasonStr = findElementOrNull(element, 'itunes:season')?.text?.trim();
     var durationStr =
-        findElementOrNull(element, "itunes:duration")?.text?.trim();
+        findElementOrNull(element, 'itunes:duration')?.text?.trim();
 
     return RssItemItunes(
-      title: findElementOrNull(element, "itunes:title")?.text?.trim(),
+      title: findElementOrNull(element, 'itunes:title')?.text?.trim(),
       episode: episodeStr == null ? null : int.parse(episodeStr),
       season: seasonStr == null ? null : int.parse(seasonStr),
       duration: durationStr == null ? null : parseDuration(durationStr),
       episodeType: newRssItunesEpisodeType(
-          findElementOrNull(element, "itunes:episodeType")),
-      author: findElementOrNull(element, "itunes:author")?.text?.trim(),
-      summary: findElementOrNull(element, "itunes:summary")?.text?.trim(),
-      explicit: parseBoolLiteral(element, "itunes:explicit"),
-      subtitle: findElementOrNull(element, "itunes:subtitle")?.text?.trim(),
-      keywords: findElementOrNull(element, "itunes:keywords")
+          findElementOrNull(element, 'itunes:episodeType')),
+      author: findElementOrNull(element, 'itunes:author')?.text?.trim(),
+      summary: findElementOrNull(element, 'itunes:summary')?.text?.trim(),
+      explicit: parseBoolLiteral(element, 'itunes:explicit'),
+      subtitle: findElementOrNull(element, 'itunes:subtitle')?.text?.trim(),
+      keywords: findElementOrNull(element, 'itunes:keywords')
           ?.text
-          ?.split(",")
+          ?.split(',')
           ?.map((keyword) => keyword.trim())
           ?.toList(),
-      image: RssItunesImage.parse(findElementOrNull(element, "itunes:image")),
+      image: RssItunesImage.parse(findElementOrNull(element, 'itunes:image')),
       category: RssItunesCategory.parse(
-          findElementOrNull(element, "itunes:category")),
-      block: parseBoolLiteral(element, "itunes:block"),
+          findElementOrNull(element, 'itunes:category')),
+      block: parseBoolLiteral(element, 'itunes:block'),
     );
   }
 }

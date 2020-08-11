@@ -14,8 +14,8 @@ class Status {
       return null;
     }
     return Status(
-      state: element.getAttribute("state"),
-      reason: element.getAttribute("reason"),
+      state: element.getAttribute('state'),
+      reason: element.getAttribute('reason'),
     );
   }
 }

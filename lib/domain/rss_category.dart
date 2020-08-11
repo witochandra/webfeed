@@ -10,7 +10,7 @@ class RssCategory {
     if (element == null) {
       return null;
     }
-    var domain = element.getAttribute("domain");
+    var domain = element.getAttribute('domain');
     var value = element.text;
 
     return RssCategory(domain, value);

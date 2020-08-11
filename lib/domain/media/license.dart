@@ -16,8 +16,8 @@ class License {
       return null;
     }
     return License(
-      type: element.getAttribute("type"),
-      href: element.getAttribute("href"),
+      type: element.getAttribute('type'),
+      href: element.getAttribute('href'),
       value: element.text,
     );
   }

@@ -13,8 +13,8 @@ class Credit {
 
   factory Credit.parse(XmlElement element) {
     return Credit(
-      role: element.getAttribute("role"),
-      scheme: element.getAttribute("scheme"),
+      role: element.getAttribute('role'),
+      scheme: element.getAttribute('scheme'),
       value: element.text,
     );
   }

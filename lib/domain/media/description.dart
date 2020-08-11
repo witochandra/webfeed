@@ -14,7 +14,7 @@ class Description {
       return null;
     }
     return Description(
-      type: element.getAttribute("type"),
+      type: element.getAttribute('type'),
       value: element.text,
     );
   }

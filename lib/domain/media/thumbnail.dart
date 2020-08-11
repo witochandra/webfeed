@@ -15,10 +15,10 @@ class Thumbnail {
 
   factory Thumbnail.parse(XmlElement element) {
     return Thumbnail(
-      url: element.getAttribute("url"),
-      width: element.getAttribute("width"),
-      height: element.getAttribute("height"),
-      time: element.getAttribute("time"),
+      url: element.getAttribute('url'),
+      width: element.getAttribute('width'),
+      height: element.getAttribute('height'),
+      time: element.getAttribute('time'),
     );
   }
 }

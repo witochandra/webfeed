@@ -43,36 +43,36 @@ class AtomFeed {
     var document = XmlDocument.parse(xmlString);
     XmlElement feedElement;
     try {
-      feedElement = document.findElements("feed").first;
+      feedElement = document.findElements('feed').first;
     } on StateError {
-      throw ArgumentError("feed not found");
+      throw ArgumentError('feed not found');
     }
 
     return AtomFeed(
-      id: findElementOrNull(feedElement, "id")?.text,
-      title: findElementOrNull(feedElement, "title")?.text,
-      updated: parseDateTime(findElementOrNull(feedElement, "updated")?.text),
-      items: feedElement.findElements("entry").map((element) {
+      id: findElementOrNull(feedElement, 'id')?.text,
+      title: findElementOrNull(feedElement, 'title')?.text,
+      updated: parseDateTime(findElementOrNull(feedElement, 'updated')?.text),
+      items: feedElement.findElements('entry').map((element) {
         return AtomItem.parse(element);
       }).toList(),
-      links: feedElement.findElements("link").map((element) {
+      links: feedElement.findElements('link').map((element) {
         return AtomLink.parse(element);
       }).toList(),
-      authors: feedElement.findElements("author").map((element) {
+      authors: feedElement.findElements('author').map((element) {
         return AtomPerson.parse(element);
       }).toList(),
-      contributors: feedElement.findElements("contributor").map((element) {
+      contributors: feedElement.findElements('contributor').map((element) {
         return AtomPerson.parse(element);
       }).toList(),
-      categories: feedElement.findElements("category").map((element) {
+      categories: feedElement.findElements('category').map((element) {
         return AtomCategory.parse(element);
       }).toList(),
       generator:
-          AtomGenerator.parse(findElementOrNull(feedElement, "generator")),
-      icon: findElementOrNull(feedElement, "icon")?.text,
-      logo: findElementOrNull(feedElement, "logo")?.text,
-      rights: findElementOrNull(feedElement, "rights")?.text,
-      subtitle: findElementOrNull(feedElement, "subtitle")?.text,
+          AtomGenerator.parse(findElementOrNull(feedElement, 'generator')),
+      icon: findElementOrNull(feedElement, 'icon')?.text,
+      logo: findElementOrNull(feedElement, 'logo')?.text,
+      rights: findElementOrNull(feedElement, 'rights')?.text,
+      subtitle: findElementOrNull(feedElement, 'subtitle')?.text,
     );
   }
 }

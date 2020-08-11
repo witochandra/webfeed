@@ -42,26 +42,26 @@ class RssItunes {
       return null;
     }
     return RssItunes(
-      author: findElementOrNull(element, "itunes:author")?.text?.trim(),
-      summary: findElementOrNull(element, "itunes:summary")?.text?.trim(),
-      explicit: parseBoolLiteral(element, "itunes:explicit"),
-      title: findElementOrNull(element, "itunes:title")?.text?.trim(),
-      subtitle: findElementOrNull(element, "itunes:subtitle")?.text?.trim(),
-      owner: RssItunesOwner.parse(findElementOrNull(element, "itunes:owner")),
-      keywords: findElementOrNull(element, "itunes:keywords")
+      author: findElementOrNull(element, 'itunes:author')?.text?.trim(),
+      summary: findElementOrNull(element, 'itunes:summary')?.text?.trim(),
+      explicit: parseBoolLiteral(element, 'itunes:explicit'),
+      title: findElementOrNull(element, 'itunes:title')?.text?.trim(),
+      subtitle: findElementOrNull(element, 'itunes:subtitle')?.text?.trim(),
+      owner: RssItunesOwner.parse(findElementOrNull(element, 'itunes:owner')),
+      keywords: findElementOrNull(element, 'itunes:keywords')
           ?.text
-          ?.split(",")
+          ?.split(',')
           ?.map((keyword) => keyword.trim())
           ?.toList(),
-      image: RssItunesImage.parse(findElementOrNull(element, "itunes:image")),
-      categories: findAllDirectElementsOrNull(element, "itunes:category")
+      image: RssItunesImage.parse(findElementOrNull(element, 'itunes:image')),
+      categories: findAllDirectElementsOrNull(element, 'itunes:category')
           .map((ele) => RssItunesCategory.parse(ele))
           .toList(),
-      type: newRssItunesType(findElementOrNull(element, "itunes:type")),
+      type: newRssItunesType(findElementOrNull(element, 'itunes:type')),
       newFeedUrl:
-          findElementOrNull(element, "itunes:new-feed-url")?.text?.trim(),
-      block: parseBoolLiteral(element, "itunes:block"),
-      complete: parseBoolLiteral(element, "itunes:complete"),
+          findElementOrNull(element, 'itunes:new-feed-url')?.text?.trim(),
+      block: parseBoolLiteral(element, 'itunes:block'),
+      complete: parseBoolLiteral(element, 'itunes:complete'),
     );
   }
 }
