@@ -1,4 +1,7 @@
 # Changelog
+## [0.5.2](https://pub.dartlang.org/packages/webfeed/versions/0.5.2)
+- Lower the xml package version constraints
+
 ## [0.5.1](https://pub.dartlang.org/packages/webfeed/versions/0.5.1)
 - Support iTunes namespace [#19](https://github.com/witochandra/webfeed/pull/19)
 - Parse date strings into DateTime [#22](https://github.com/witochandra/webfeed/pull/22)
