@@ -41,10 +41,8 @@ class AtomFeed {
 
   factory AtomFeed.parse(String xmlString) {
     var document = XmlDocument.parse(xmlString);
-    XmlElement feedElement;
-    try {
-      feedElement = document.findElements('feed').first;
-    } on StateError {
+    var feedElement = findFirstElement(document, 'feed', recursive: true);
+    if (feedElement == null) {
       throw ArgumentError('feed not found');
     }
 
@@ -52,21 +50,26 @@ class AtomFeed {
       id: findFirstElement(feedElement, 'id')?.text,
       title: findFirstElement(feedElement, 'title')?.text,
       updated: parseDateTime(findFirstElement(feedElement, 'updated')?.text),
-      items: feedElement.findElements('entry').map((element) {
-        return AtomItem.parse(element);
-      }).toList(),
-      links: feedElement.findElements('link').map((element) {
-        return AtomLink.parse(element);
-      }).toList(),
-      authors: feedElement.findElements('author').map((element) {
-        return AtomPerson.parse(element);
-      }).toList(),
-      contributors: feedElement.findElements('contributor').map((element) {
-        return AtomPerson.parse(element);
-      }).toList(),
-      categories: feedElement.findElements('category').map((element) {
-        return AtomCategory.parse(element);
-      }).toList(),
+      items: feedElement
+          .findElements('entry')
+          .map((e) => AtomItem.parse(e))
+          .toList(),
+      links: feedElement
+          .findElements('link')
+          .map((e) => AtomLink.parse(e))
+          .toList(),
+      authors: feedElement
+          .findElements('author')
+          .map((e) => AtomPerson.parse(e))
+          .toList(),
+      contributors: feedElement
+          .findElements('contributor')
+          .map((e) => AtomPerson.parse(e))
+          .toList(),
+      categories: feedElement
+          .findElements('category')
+          .map((e) => AtomCategory.parse(e))
+          .toList(),
       generator:
           AtomGenerator.parse(findFirstElement(feedElement, 'generator')),
       icon: findFirstElement(feedElement, 'icon')?.text,
