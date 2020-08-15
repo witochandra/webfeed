@@ -45,20 +45,21 @@ class RssItem {
 
   factory RssItem.parse(XmlElement element) {
     return RssItem(
-      title: findElementOrNull(element, 'title')?.text,
-      description: findElementOrNull(element, 'description')?.text,
-      link: findElementOrNull(element, 'link')?.text,
-      categories: element.findElements('category').map((element) {
-        return RssCategory.parse(element);
-      }).toList(),
-      guid: findElementOrNull(element, 'guid')?.text,
-      pubDate: parseDateTime(findElementOrNull(element, 'pubDate')?.text),
-      author: findElementOrNull(element, 'author')?.text,
-      comments: findElementOrNull(element, 'comments')?.text,
-      source: RssSource.parse(findElementOrNull(element, 'source')),
-      content: RssContent.parse(findElementOrNull(element, 'content:encoded')),
+      title: findFirstElement(element, 'title')?.text,
+      description: findFirstElement(element, 'description')?.text,
+      link: findFirstElement(element, 'link')?.text,
+      categories: element
+          .findElements('category')
+          .map((e) => RssCategory.parse(e))
+          .toList(),
+      guid: findFirstElement(element, 'guid')?.text,
+      pubDate: parseDateTime(findFirstElement(element, 'pubDate')?.text),
+      author: findFirstElement(element, 'author')?.text,
+      comments: findFirstElement(element, 'comments')?.text,
+      source: RssSource.parse(findFirstElement(element, 'source')),
+      content: RssContent.parse(findFirstElement(element, 'content:encoded')),
       media: Media.parse(element),
-      enclosure: RssEnclosure.parse(findElementOrNull(element, 'enclosure')),
+      enclosure: RssEnclosure.parse(findFirstElement(element, 'enclosure')),
       dc: DublinCore.parse(element),
       itunes: Itunes.parse(element),
     );

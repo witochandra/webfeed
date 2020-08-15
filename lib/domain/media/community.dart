@@ -21,13 +21,13 @@ class Community {
     }
     return Community(
       starRating: StarRating.parse(
-        findElementOrNull(element, 'media:starRating'),
+        findFirstElement(element, 'media:starRating'),
       ),
       statistics: Statistics.parse(
-        findElementOrNull(element, 'media:statistics'),
+        findFirstElement(element, 'media:statistics'),
       ),
       tags: Tags.parse(
-        findElementOrNull(element, 'media:tags'),
+        findFirstElement(element, 'media:tags'),
       ),
     );
   }

@@ -6,16 +6,16 @@ class RssImage {
   final String url;
   final String link;
 
-  RssImage(this.title, this.url, this.link);
+  RssImage({this.title, this.url, this.link});
 
   factory RssImage.parse(XmlElement element) {
     if (element == null) {
       return null;
     }
-    var title = findElementOrNull(element, 'title')?.text;
-    var url = findElementOrNull(element, 'url')?.text;
-    var link = findElementOrNull(element, 'link')?.text;
-
-    return RssImage(title, url, link);
+    return RssImage(
+      title: findFirstElement(element, 'title')?.text,
+      url: findFirstElement(element, 'url')?.text,
+      link: findFirstElement(element, 'link')?.text,
+    );
   }
 }

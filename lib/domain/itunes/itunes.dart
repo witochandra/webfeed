@@ -49,36 +49,35 @@ class Itunes {
     if (element == null) {
       return null;
     }
-    var episodeStr = findElementOrNull(element, 'itunes:episode')?.text?.trim();
-    var seasonStr = findElementOrNull(element, 'itunes:season')?.text?.trim();
-    var durationStr =
-        findElementOrNull(element, 'itunes:duration')?.text?.trim();
+    var episodeStr = findFirstElement(element, 'itunes:episode')?.text;
+    var seasonStr = findFirstElement(element, 'itunes:season')?.text;
+    var durationStr = findFirstElement(element, 'itunes:duration')?.text;
     return Itunes(
-      author: findElementOrNull(element, 'itunes:author')?.text?.trim(),
-      summary: findElementOrNull(element, 'itunes:summary')?.text?.trim(),
+      author: findFirstElement(element, 'itunes:author')?.text,
+      summary: findFirstElement(element, 'itunes:summary')?.text,
       explicit: parseBoolLiteral(element, 'itunes:explicit'),
-      title: findElementOrNull(element, 'itunes:title')?.text?.trim(),
-      subtitle: findElementOrNull(element, 'itunes:subtitle')?.text?.trim(),
-      owner: ItunesOwner.parse(findElementOrNull(element, 'itunes:owner')),
-      keywords: findElementOrNull(element, 'itunes:keywords')
-          ?.text
-          ?.split(',')
-          ?.map((keyword) => keyword.trim())
-          ?.toList(),
-      image: ItunesImage.parse(findElementOrNull(element, 'itunes:image')),
-      categories: findAllDirectElementsOrNull(element, 'itunes:category')
-          .map((ele) => ItunesCategory.parse(ele))
+      title: findFirstElement(element, 'itunes:title')?.text,
+      subtitle: findFirstElement(element, 'itunes:subtitle')?.text,
+      owner: ItunesOwner.parse(findFirstElement(element, 'itunes:owner')),
+      keywords: findFirstElement(element, 'itunes:keywords')
+              ?.text
+              ?.split(',')
+              ?.map((keyword) => keyword.trim())
+              ?.toList() ??
+          [],
+      image: ItunesImage.parse(findFirstElement(element, 'itunes:image')),
+      categories: findElements(element, 'itunes:category')
+          .map((e) => ItunesCategory.parse(e))
           .toList(),
-      type: newItunesType(findElementOrNull(element, 'itunes:type')),
-      newFeedUrl:
-          findElementOrNull(element, 'itunes:new-feed-url')?.text?.trim(),
+      type: newItunesType(findFirstElement(element, 'itunes:type')),
+      newFeedUrl: findFirstElement(element, 'itunes:new-feed-url')?.text,
       block: parseBoolLiteral(element, 'itunes:block'),
       complete: parseBoolLiteral(element, 'itunes:complete'),
       episode: episodeStr == null ? null : int.parse(episodeStr),
       season: seasonStr == null ? null : int.parse(seasonStr),
       duration: durationStr == null ? null : _parseDuration(durationStr),
-      episodeType: newItunesEpisodeType(
-          findElementOrNull(element, 'itunes:episodeType')),
+      episodeType:
+          newItunesEpisodeType(findFirstElement(element, 'itunes:episodeType')),
     );
   }
 

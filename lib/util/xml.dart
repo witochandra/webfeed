@@ -2,26 +2,39 @@ import 'dart:core';
 
 import 'package:xml/xml.dart';
 
-XmlElement findElementOrNull(XmlElement element, String name,
-    {String namespace}) {
+XmlElement findFirstElement(
+  XmlNode node,
+  String name, {
+  bool recursive = false,
+  String namespace,
+}) {
   try {
-    return element.findAllElements(name, namespace: namespace).first;
+    return findElements(node, name, recursive: recursive, namespace: namespace)
+        ?.first;
   } on StateError {
     return null;
   }
 }
 
-List<XmlElement> findAllDirectElementsOrNull(XmlElement element, String name,
-    {String namespace}) {
+Iterable<XmlElement> findElements(
+  XmlNode node,
+  String name, {
+  bool recursive = false,
+  String namespace,
+}) {
   try {
-    return element.findElements(name, namespace: namespace).toList();
+    if (recursive) {
+      return node.findAllElements(name, namespace: namespace);
+    } else {
+      return node.findElements(name, namespace: namespace);
+    }
   } on StateError {
     return null;
   }
 }
 
 bool parseBoolLiteral(XmlElement element, String tagName) {
-  var v = findElementOrNull(element, tagName)?.text?.toLowerCase()?.trim();
+  var v = findFirstElement(element, tagName)?.text?.toLowerCase()?.trim();
   if (v == null) return false;
   return ['yes', 'true'].contains(v);
 }

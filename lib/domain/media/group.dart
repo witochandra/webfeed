@@ -30,10 +30,10 @@ class Group {
         return Credit.parse(e);
       }).toList(),
       category: Category.parse(
-        findElementOrNull(element, 'media:category'),
+        findFirstElement(element, 'media:category'),
       ),
       rating: Rating.parse(
-        findElementOrNull(element, 'media:rating'),
+        findFirstElement(element, 'media:rating'),
       ),
     );
   }

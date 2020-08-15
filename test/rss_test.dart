@@ -258,7 +258,9 @@ void main() {
     expect(feed.items.first.dc.description, 'description');
     expect(feed.items.first.dc.publisher, 'publisher');
     expect(feed.items.first.dc.contributor, 'contributor');
-    expect(feed.items.first.dc.date, DateTime.utc(2000, 1, 1, 12));
+    expect(feed.items.first.dc.date, DateTime.utc(2000, 1, 2, 12));
+    expect(feed.items.first.dc.created, DateTime.utc(2000, 1, 2, 13));
+    expect(feed.items.first.dc.modified, DateTime.utc(2000, 1, 2, 14));
     expect(feed.items.first.dc.type, 'type');
     expect(feed.items.first.dc.format, 'format');
     expect(feed.items.first.dc.identifier, 'identifier');

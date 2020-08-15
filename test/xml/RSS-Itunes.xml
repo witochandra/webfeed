@@ -45,12 +45,9 @@
             <itunes:keywords>go, golang, open source, software, development</itunes:keywords>
             <itunes:subtitle>with Erik, Carlisia, and Brian</itunes:subtitle>
             <itunes:summary>Foo</itunes:summary>
-            <dc:creator>
-                Erik St. Martin, Carlisia Pinto, and Brian Ketelsen
+            <dc:creator>Erik St. Martin, Carlisia Pinto, and Brian Ketelsen
             </dc:creator>
-            <itunes:author>
-                Erik St. Martin, Carlisia Pinto, and Brian Ketelsen
-            </itunes:author>
+            <itunes:author>Erik St. Martin, Carlisia Pinto, and Brian Ketelsen</itunes:author>
         </item>
     </channel>
 </rss>
