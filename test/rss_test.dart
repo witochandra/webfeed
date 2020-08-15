@@ -4,6 +4,7 @@ import 'dart:io';
 import 'package:test/test.dart';
 import 'package:webfeed/domain/itunes/itunes_episode_type.dart';
 import 'package:webfeed/domain/itunes/itunes_type.dart';
+import 'package:webfeed/domain/syndication/syndication.dart';
 import 'package:webfeed/webfeed.dart';
 
 void main() {
@@ -384,5 +385,27 @@ void main() {
     expect(feed.items.length, 5);
     expect(feed.items.first.title, 'New Status Updates');
     expect(feed.items.first.link, 'http://www.mozilla.org/status/');
+  });
+
+  test('parse RSS-Syndication.xml', () {
+    var xmlString = File('test/xml/RSS-Syndication.xml').readAsStringSync();
+
+    var feed = RssFeed.parse(xmlString);
+
+    expect(feed.title, 'Meerkat');
+    expect(feed.link, 'http://meerkat.oreillynet.com');
+    expect(feed.description, 'Meerkat: An Open Wire Service');
+    expect(feed.image.title, 'Meerkat Powered!');
+    expect(feed.image.url,
+        'http://meerkat.oreillynet.com/icons/meerkat-powered.jpg');
+    expect(feed.image.link, 'http://meerkat.oreillynet.com');
+    expect(feed.syndication.updatePeriod, SyndicationUpdatePeriod.hourly);
+    expect(feed.syndication.updateFrequency, 2);
+    expect(feed.syndication.updateBase, DateTime.utc(2001, 1, 1, 12, 1));
+    expect(feed.items.length, 1);
+    expect(feed.items.first.title, 'XML: A Disruptive Technology');
+    expect(feed.items.first.description,
+        'XML is placing increasingly heavy loads on the existing technical infrastructure of the Internet.');
+    expect(feed.items.first.link, 'http://c.moreover.com/click/here.pl?r123');
   });
 }
