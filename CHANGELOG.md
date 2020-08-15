@@ -1,4 +1,9 @@
 # Changelog
+## [0.6.0](https://pub.dartlang.org/packages/webfeed/versions/0.6.0)
+- Refactor util/xml.dart
+- Support RDF feed
+- Support Syndication namespace
+
 ## [0.5.2](https://pub.dartlang.org/packages/webfeed/versions/0.5.2)
 - Lower the xml package version constraints
 
