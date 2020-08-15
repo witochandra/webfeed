@@ -59,7 +59,12 @@ class RssFeed {
 
   factory RssFeed.parse(String xmlString) {
     var document = XmlDocument.parse(xmlString);
-    var channelElement = findFirstElement(document, 'channel', recursive: true);
+    var rss = findFirstElement(document, 'rss');
+    var rdf = findFirstElement(document, 'rdf:RDF');
+    if (rss == null && rdf == null) {
+      throw ArgumentError('not a rss feed');
+    }
+    var channelElement = findFirstElement(rss ?? rdf, 'channel');
     if (channelElement == null) {
       throw ArgumentError('channel not found');
     }
@@ -68,11 +73,12 @@ class RssFeed {
       author: findFirstElement(channelElement, 'author')?.text,
       description: findFirstElement(channelElement, 'description')?.text,
       link: findFirstElement(channelElement, 'link')?.text,
-      items: channelElement
+      items: (rss != null ? channelElement : rdf)
           .findElements('item')
           .map((e) => RssItem.parse(e))
           .toList(),
-      image: RssImage.parse(findFirstElement(channelElement, 'image')),
+      image: RssImage.parse(
+          findFirstElement(rss != null ? channelElement : rdf, 'image')),
       cloud: RssCloud.parse(findFirstElement(channelElement, 'cloud')),
       categories: channelElement
           .findElements('category')

@@ -369,4 +369,20 @@ void main() {
     expect(item.itunes.title, 'awesome title');
     expect(item.itunes.block, false);
   });
+
+  test('parse RSS-RDF.xml', () {
+    var xmlString = File('test/xml/RSS-RDF.xml').readAsStringSync();
+
+    var feed = RssFeed.parse(xmlString);
+
+    expect(feed.title, 'Mozilla Dot Org');
+    expect(feed.link, 'http://www.mozilla.org');
+    expect(feed.description, 'the Mozilla Organization web site');
+    expect(feed.image.title, 'Mozilla');
+    expect(feed.image.url, 'http://www.mozilla.org/images/moz.gif');
+    expect(feed.image.link, 'http://www.mozilla.org');
+    expect(feed.items.length, 5);
+    expect(feed.items.first.title, 'New Status Updates');
+    expect(feed.items.first.link, 'http://www.mozilla.org/status/');
+  });
 }

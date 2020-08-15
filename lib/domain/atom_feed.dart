@@ -41,7 +41,7 @@ class AtomFeed {
 
   factory AtomFeed.parse(String xmlString) {
     var document = XmlDocument.parse(xmlString);
-    var feedElement = findFirstElement(document, 'feed', recursive: true);
+    var feedElement = findFirstElement(document, 'feed');
     if (feedElement == null) {
       throw ArgumentError('feed not found');
     }
