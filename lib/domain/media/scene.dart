@@ -1,4 +1,4 @@
-import 'package:webfeed/util/helpers.dart';
+import 'package:webfeed/util/xml.dart';
 import 'package:xml/xml.dart';
 
 class Scene {
@@ -18,11 +18,11 @@ class Scene {
     if (element == null) {
       return null;
     }
-    return new Scene(
-      title: findElementOrNull(element, "sceneTitle")?.text,
-      description: findElementOrNull(element, "sceneDescription")?.text,
-      startTime: findElementOrNull(element, "sceneStartTime")?.text,
-      endTime: findElementOrNull(element, "sceneEndTime")?.text,
+    return Scene(
+      title: findFirstElement(element, 'sceneTitle')?.text,
+      description: findFirstElement(element, 'sceneDescription')?.text,
+      startTime: findFirstElement(element, 'sceneStartTime')?.text,
+      endTime: findFirstElement(element, 'sceneEndTime')?.text,
     );
   }
 }

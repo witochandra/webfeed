@@ -8,9 +8,9 @@ class AtomCategory {
   AtomCategory(this.term, this.scheme, this.label);
 
   factory AtomCategory.parse(XmlElement element) {
-    var term = element.getAttribute("term");
-    var scheme = element.getAttribute("scheme");
-    var label = element.getAttribute("label");
+    var term = element.getAttribute('term');
+    var scheme = element.getAttribute('scheme');
+    var label = element.getAttribute('label');
     return AtomCategory(term, scheme, label);
   }
 }

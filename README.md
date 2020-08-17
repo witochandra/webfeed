@@ -7,17 +7,19 @@ A dart package for parsing RSS and Atom feed.
 
 ### Features
 
-- [x] RSS
+- [x] RSS (0.9, 1.0, & 2.0)
 - [x] Atom
 - [x] Namespaces
     - [x] Media RSS
     - [x] Dublin Core
+    - [x] iTunes
+    - [x] Syndication
 
 ### Installing
 
 Add this line into your `pubspec.yaml`
 ```
-webfeed: ^0.4.2
+webfeed: ^0.6.0
 ```
 
 Import the package into your dart code using:
@@ -29,8 +31,8 @@ import 'package:webfeed/webfeed.dart';
 
 To parse string into `RssFeed` object use:
 ```
-var rssFeed = new RssFeed.parse(xmlString); // for parsing RSS feed
-var atomFeed = new AtomFeed.parse(xmlString); // for parsing Atom feed
+var rssFeed = RssFeed.parse(xmlString); // for parsing RSS feed
+var atomFeed = AtomFeed.parse(xmlString); // for parsing Atom feed
 ```
 
 ### Preview

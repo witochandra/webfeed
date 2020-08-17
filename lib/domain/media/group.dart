@@ -2,7 +2,7 @@ import 'package:webfeed/domain/media/category.dart';
 import 'package:webfeed/domain/media/content.dart';
 import 'package:webfeed/domain/media/credit.dart';
 import 'package:webfeed/domain/media/rating.dart';
-import 'package:webfeed/util/helpers.dart';
+import 'package:webfeed/util/xml.dart';
 import 'package:xml/xml.dart';
 
 class Group {
@@ -22,18 +22,18 @@ class Group {
     if (element == null) {
       return null;
     }
-    return new Group(
-      contents: element.findElements("media:content").map((e) {
-        return new Content.parse(e);
+    return Group(
+      contents: element.findElements('media:content').map((e) {
+        return Content.parse(e);
       }).toList(),
-      credits: element.findElements("media:credit").map((e) {
-        return new Credit.parse(e);
+      credits: element.findElements('media:credit').map((e) {
+        return Credit.parse(e);
       }).toList(),
-      category: new Category.parse(
-        findElementOrNull(element, "media:category"),
+      category: Category.parse(
+        findFirstElement(element, 'media:category'),
       ),
-      rating: new Rating.parse(
-        findElementOrNull(element, "media:rating"),
+      rating: Rating.parse(
+        findFirstElement(element, 'media:rating'),
       ),
     );
   }

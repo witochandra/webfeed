@@ -1,4 +1,5 @@
-import 'package:webfeed/util/helpers.dart';
+import 'package:webfeed/util/datetime.dart';
+import 'package:webfeed/util/xml.dart';
 import 'package:xml/xml.dart';
 
 class DublinCore {
@@ -8,7 +9,9 @@ class DublinCore {
   final String subject;
   final String publisher;
   final String contributor;
-  final String date;
+  final DateTime date;
+  final DateTime created;
+  final DateTime modified;
   final String type;
   final String format;
   final String identifier;
@@ -26,6 +29,8 @@ class DublinCore {
     this.publisher,
     this.contributor,
     this.date,
+    this.created,
+    this.modified,
     this.type,
     this.format,
     this.identifier,
@@ -41,21 +46,23 @@ class DublinCore {
       return null;
     }
     return DublinCore(
-      title: findElementOrNull(element, "dc:title")?.text,
-      description: findElementOrNull(element, "dc:description")?.text,
-      creator: findElementOrNull(element, "dc:creator")?.text,
-      subject: findElementOrNull(element, "dc:subject")?.text,
-      publisher: findElementOrNull(element, "dc:publisher")?.text,
-      contributor: findElementOrNull(element, "dc:contributor")?.text,
-      date: findElementOrNull(element, "dc:date")?.text,
-      type: findElementOrNull(element, "dc:type")?.text,
-      format: findElementOrNull(element, "dc:format")?.text,
-      identifier: findElementOrNull(element, "dc:identifier")?.text,
-      source: findElementOrNull(element, "dc:source")?.text,
-      language: findElementOrNull(element, "dc:language")?.text,
-      relation: findElementOrNull(element, "dc:relation")?.text,
-      coverage: findElementOrNull(element, "dc:coverage")?.text,
-      rights: findElementOrNull(element, "dc:rights")?.text,
+      title: findFirstElement(element, 'dc:title')?.text,
+      description: findFirstElement(element, 'dc:description')?.text,
+      creator: findFirstElement(element, 'dc:creator')?.text,
+      subject: findFirstElement(element, 'dc:subject')?.text,
+      publisher: findFirstElement(element, 'dc:publisher')?.text,
+      contributor: findFirstElement(element, 'dc:contributor')?.text,
+      date: parseDateTime(findFirstElement(element, 'dc:date')?.text),
+      created: parseDateTime(findFirstElement(element, 'dc:created')?.text),
+      modified: parseDateTime(findFirstElement(element, 'dc:modified')?.text),
+      type: findFirstElement(element, 'dc:type')?.text,
+      format: findFirstElement(element, 'dc:format')?.text,
+      identifier: findFirstElement(element, 'dc:identifier')?.text,
+      source: findFirstElement(element, 'dc:source')?.text,
+      language: findFirstElement(element, 'dc:language')?.text,
+      relation: findFirstElement(element, 'dc:relation')?.text,
+      coverage: findFirstElement(element, 'dc:coverage')?.text,
+      rights: findFirstElement(element, 'dc:rights')?.text,
     );
   }
 }

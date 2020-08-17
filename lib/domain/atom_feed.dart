@@ -3,13 +3,14 @@ import 'package:webfeed/domain/atom_generator.dart';
 import 'package:webfeed/domain/atom_item.dart';
 import 'package:webfeed/domain/atom_link.dart';
 import 'package:webfeed/domain/atom_person.dart';
-import 'package:webfeed/util/helpers.dart';
+import 'package:webfeed/util/datetime.dart';
+import 'package:webfeed/util/xml.dart';
 import 'package:xml/xml.dart';
 
 class AtomFeed {
   final String id;
   final String title;
-  final String updated;
+  final DateTime updated;
   final List<AtomItem> items;
 
   final List<AtomLink> links;
@@ -39,39 +40,42 @@ class AtomFeed {
   });
 
   factory AtomFeed.parse(String xmlString) {
-    var document = parse(xmlString);
-    XmlElement feedElement;
-    try {
-      feedElement = document.findElements("feed").first;
-    } on StateError {
-      throw new ArgumentError("feed not found");
+    var document = XmlDocument.parse(xmlString);
+    var feedElement = findFirstElement(document, 'feed');
+    if (feedElement == null) {
+      throw ArgumentError('feed not found');
     }
 
     return AtomFeed(
-      id: findElementOrNull(feedElement, "id")?.text,
-      title: findElementOrNull(feedElement, "title")?.text,
-      updated: findElementOrNull(feedElement, "updated")?.text,
-      items: feedElement.findElements("entry").map((element) {
-        return AtomItem.parse(element);
-      }).toList(),
-      links: feedElement.findElements("link").map((element) {
-        return AtomLink.parse(element);
-      }).toList(),
-      authors: feedElement.findElements("author").map((element) {
-        return AtomPerson.parse(element);
-      }).toList(),
-      contributors: feedElement.findElements("contributor").map((element) {
-        return AtomPerson.parse(element);
-      }).toList(),
-      categories: feedElement.findElements("category").map((element) {
-        return AtomCategory.parse(element);
-      }).toList(),
+      id: findFirstElement(feedElement, 'id')?.text,
+      title: findFirstElement(feedElement, 'title')?.text,
+      updated: parseDateTime(findFirstElement(feedElement, 'updated')?.text),
+      items: feedElement
+          .findElements('entry')
+          .map((e) => AtomItem.parse(e))
+          .toList(),
+      links: feedElement
+          .findElements('link')
+          .map((e) => AtomLink.parse(e))
+          .toList(),
+      authors: feedElement
+          .findElements('author')
+          .map((e) => AtomPerson.parse(e))
+          .toList(),
+      contributors: feedElement
+          .findElements('contributor')
+          .map((e) => AtomPerson.parse(e))
+          .toList(),
+      categories: feedElement
+          .findElements('category')
+          .map((e) => AtomCategory.parse(e))
+          .toList(),
       generator:
-          AtomGenerator.parse(findElementOrNull(feedElement, "generator")),
-      icon: findElementOrNull(feedElement, "icon")?.text,
-      logo: findElementOrNull(feedElement, "logo")?.text,
-      rights: findElementOrNull(feedElement, "rights")?.text,
-      subtitle: findElementOrNull(feedElement, "subtitle")?.text,
+          AtomGenerator.parse(findFirstElement(feedElement, 'generator')),
+      icon: findFirstElement(feedElement, 'icon')?.text,
+      logo: findFirstElement(feedElement, 'logo')?.text,
+      rights: findFirstElement(feedElement, 'rights')?.text,
+      subtitle: findFirstElement(feedElement, 'subtitle')?.text,
     );
   }
 }

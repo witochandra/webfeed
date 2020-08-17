@@ -17,10 +17,10 @@ class Player {
     if (element == null) {
       return null;
     }
-    return new Player(
-      url: element.getAttribute("url"),
-      width: int.tryParse(element.getAttribute("width") ?? "0"),
-      height: int.tryParse(element.getAttribute("height") ?? "0"),
+    return Player(
+      url: element.getAttribute('url'),
+      width: int.tryParse(element.getAttribute('width') ?? '0'),
+      height: int.tryParse(element.getAttribute('height') ?? '0'),
       value: element.text,
     );
   }

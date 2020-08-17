@@ -19,7 +19,7 @@ import 'package:webfeed/domain/media/status.dart';
 import 'package:webfeed/domain/media/text.dart';
 import 'package:webfeed/domain/media/thumbnail.dart';
 import 'package:webfeed/domain/media/title.dart';
-import 'package:webfeed/util/helpers.dart';
+import 'package:webfeed/util/xml.dart';
 import 'package:xml/xml.dart';
 
 class Media {
@@ -78,90 +78,90 @@ class Media {
   });
 
   factory Media.parse(XmlElement element) {
-    return new Media(
-      group: new Group.parse(
-        findElementOrNull(element, "media:group"),
+    return Media(
+      group: Group.parse(
+        findFirstElement(element, 'media:group'),
       ),
-      contents: element.findElements("media:content").map((e) {
-        return new Content.parse(e);
+      contents: element.findElements('media:content').map((e) {
+        return Content.parse(e);
       }).toList(),
-      credits: element.findElements("media:credit").map((e) {
-        return new Credit.parse(e);
+      credits: element.findElements('media:credit').map((e) {
+        return Credit.parse(e);
       }).toList(),
-      category: new Category.parse(
-        findElementOrNull(element, "media:category"),
+      category: Category.parse(
+        findFirstElement(element, 'media:category'),
       ),
-      rating: new Rating.parse(
-        findElementOrNull(element, "media:rating"),
+      rating: Rating.parse(
+        findFirstElement(element, 'media:rating'),
       ),
-      title: new Title.parse(
-        findElementOrNull(element, "media:title"),
+      title: Title.parse(
+        findFirstElement(element, 'media:title'),
       ),
-      description: new Description.parse(
-        findElementOrNull(element, "media:description"),
+      description: Description.parse(
+        findFirstElement(element, 'media:description'),
       ),
-      keywords: findElementOrNull(element, "media:keywords")?.text,
-      thumbnails: element.findElements("media:thumbnail").map((e) {
-        return new Thumbnail.parse(e);
+      keywords: findFirstElement(element, 'media:keywords')?.text,
+      thumbnails: element.findElements('media:thumbnail').map((e) {
+        return Thumbnail.parse(e);
       }).toList(),
-      hash: new Hash.parse(
-        findElementOrNull(element, "media:hash"),
+      hash: Hash.parse(
+        findFirstElement(element, 'media:hash'),
       ),
-      player: new Player.parse(
-        findElementOrNull(element, "media:player"),
+      player: Player.parse(
+        findFirstElement(element, 'media:player'),
       ),
-      copyright: new Copyright.parse(
-        findElementOrNull(element, "media:copyright"),
+      copyright: Copyright.parse(
+        findFirstElement(element, 'media:copyright'),
       ),
-      text: new Text.parse(
-        findElementOrNull(element, "media:text"),
+      text: Text.parse(
+        findFirstElement(element, 'media:text'),
       ),
-      restriction: new Restriction.parse(
-        findElementOrNull(element, "media:restriction"),
+      restriction: Restriction.parse(
+        findFirstElement(element, 'media:restriction'),
       ),
-      community: new Community.parse(
-        findElementOrNull(element, "media:community"),
+      community: Community.parse(
+        findFirstElement(element, 'media:community'),
       ),
-      comments: findElementOrNull(element, "media:comments")
-              ?.findElements("media:comment")
+      comments: findFirstElement(element, 'media:comments')
+              ?.findElements('media:comment')
               ?.map((e) {
             return e.text;
           })?.toList() ??
           [],
-      embed: new Embed.parse(
-        findElementOrNull(element, "media:embed"),
+      embed: Embed.parse(
+        findFirstElement(element, 'media:embed'),
       ),
-      responses: findElementOrNull(element, "media:responses")
-              ?.findElements("media:response")
+      responses: findFirstElement(element, 'media:responses')
+              ?.findElements('media:response')
               ?.map((e) {
             return e.text;
           })?.toList() ??
           [],
-      backLinks: findElementOrNull(element, "media:backLinks")
-              ?.findElements("media:backLink")
+      backLinks: findFirstElement(element, 'media:backLinks')
+              ?.findElements('media:backLink')
               ?.map((e) {
             return e.text;
           })?.toList() ??
           [],
-      status: new Status.parse(
-        findElementOrNull(element, "media:status"),
+      status: Status.parse(
+        findFirstElement(element, 'media:status'),
       ),
-      prices: element.findElements("media:price").map((e) {
-        return new Price.parse(e);
+      prices: element.findElements('media:price').map((e) {
+        return Price.parse(e);
       }).toList(),
-      license: new License.parse(
-        findElementOrNull(element, "media:license"),
+      license: License.parse(
+        findFirstElement(element, 'media:license'),
       ),
-      peerLink: new PeerLink.parse(
-        findElementOrNull(element, "media:peerLink"),
+      peerLink: PeerLink.parse(
+        findFirstElement(element, 'media:peerLink'),
       ),
-      rights: new Rights.parse(
-        findElementOrNull(element, "media:rights"),
+      rights: Rights.parse(
+        findFirstElement(element, 'media:rights'),
       ),
-      scenes: findElementOrNull(element, "media:scenes")
-              ?.findElements("media:scene")
+      scenes: findFirstElement(element, 'media:scenes')
+              ?.findElements('media:scene')
               ?.map((e) {
-            return new Scene.parse(e);
+            return Scene.parse(e);
           })?.toList() ??
           [],
     );

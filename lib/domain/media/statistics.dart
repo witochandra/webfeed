@@ -10,9 +10,9 @@ class Statistics {
   });
 
   factory Statistics.parse(XmlElement element) {
-    return new Statistics(
-      views: int.tryParse(element.getAttribute("views") ?? "0"),
-      favorites: int.tryParse(element.getAttribute("favorites") ?? "0"),
+    return Statistics(
+      views: int.tryParse(element.getAttribute('views') ?? '0'),
+      favorites: int.tryParse(element.getAttribute('favorites') ?? '0'),
     );
   }
 }

@@ -19,11 +19,11 @@ class Text {
     if (element == null) {
       return null;
     }
-    return new Text(
-      type: element.getAttribute("type"),
-      lang: element.getAttribute("lang"),
-      start: element.getAttribute("start"),
-      end: element.getAttribute("end"),
+    return Text(
+      type: element.getAttribute('type'),
+      lang: element.getAttribute('lang'),
+      start: element.getAttribute('start'),
+      end: element.getAttribute('end'),
       value: element.text,
     );
   }

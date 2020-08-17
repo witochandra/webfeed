@@ -3,13 +3,14 @@ import 'package:webfeed/domain/atom_link.dart';
 import 'package:webfeed/domain/atom_person.dart';
 import 'package:webfeed/domain/atom_source.dart';
 import 'package:webfeed/domain/media/media.dart';
-import 'package:webfeed/util/helpers.dart';
+import 'package:webfeed/util/datetime.dart';
+import 'package:webfeed/util/xml.dart';
 import 'package:xml/xml.dart';
 
 class AtomItem {
   final String id;
   final String title;
-  final String updated;
+  final DateTime updated;
 
   final List<AtomPerson> authors;
   final List<AtomLink> links;
@@ -40,26 +41,28 @@ class AtomItem {
 
   factory AtomItem.parse(XmlElement element) {
     return AtomItem(
-      id: findElementOrNull(element, "id")?.text,
-      title: findElementOrNull(element, "title")?.text,
-      updated: findElementOrNull(element, "updated")?.text,
-      authors: element.findElements("author").map((element) {
-        return AtomPerson.parse(element);
-      }).toList(),
-      links: element.findElements("link").map((element) {
-        return AtomLink.parse(element);
-      }).toList(),
-      categories: element.findElements("category").map((element) {
-        return AtomCategory.parse(element);
-      }).toList(),
-      contributors: element.findElements("contributor").map((element) {
-        return AtomPerson.parse(element);
-      }).toList(),
-      source: AtomSource.parse(findElementOrNull(element, "source")),
-      published: findElementOrNull(element, "published")?.text,
-      content: findElementOrNull(element, "content")?.text,
-      summary: findElementOrNull(element, "summary")?.text,
-      rights: findElementOrNull(element, "rights")?.text,
+      id: findFirstElement(element, 'id')?.text,
+      title: findFirstElement(element, 'title')?.text,
+      updated: parseDateTime(findFirstElement(element, 'updated')?.text),
+      authors: element
+          .findElements('author')
+          .map((e) => AtomPerson.parse(e))
+          .toList(),
+      links:
+          element.findElements('link').map((e) => AtomLink.parse(e)).toList(),
+      categories: element
+          .findElements('category')
+          .map((e) => AtomCategory.parse(e))
+          .toList(),
+      contributors: element
+          .findElements('contributor')
+          .map((e) => AtomPerson.parse(e))
+          .toList(),
+      source: AtomSource.parse(findFirstElement(element, 'source')),
+      published: findFirstElement(element, 'published')?.text,
+      content: findFirstElement(element, 'content')?.text,
+      summary: findFirstElement(element, 'summary')?.text,
+      rights: findFirstElement(element, 'rights')?.text,
       media: Media.parse(element),
     );
   }

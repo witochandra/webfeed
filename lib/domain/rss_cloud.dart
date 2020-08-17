@@ -19,11 +19,11 @@ class RssCloud {
     if (node == null) {
       return null;
     }
-    var domain = node.getAttribute("domain");
-    var port = node.getAttribute("port");
-    var path = node.getAttribute("path");
-    var registerProcedure = node.getAttribute("registerProcedure");
-    var protocol = node.getAttribute("protocol");
+    var domain = node.getAttribute('domain');
+    var port = node.getAttribute('port');
+    var path = node.getAttribute('path');
+    var registerProcedure = node.getAttribute('registerProcedure');
+    var protocol = node.getAttribute('protocol');
     return RssCloud(domain, port, path, registerProcedure, protocol);
   }
 }

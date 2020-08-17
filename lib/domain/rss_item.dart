@@ -1,14 +1,13 @@
-import 'package:intl/intl.dart';
 import 'package:webfeed/domain/dublin_core/dublin_core.dart';
+import 'package:webfeed/domain/itunes/itunes.dart';
 import 'package:webfeed/domain/media/media.dart';
 import 'package:webfeed/domain/rss_category.dart';
 import 'package:webfeed/domain/rss_content.dart';
 import 'package:webfeed/domain/rss_enclosure.dart';
 import 'package:webfeed/domain/rss_source.dart';
-import 'package:webfeed/util/helpers.dart';
+import 'package:webfeed/util/datetime.dart';
+import 'package:webfeed/util/xml.dart';
 import 'package:xml/xml.dart';
-
-import 'rss_item_itunes.dart';
 
 class RssItem {
   final String title;
@@ -25,7 +24,7 @@ class RssItem {
   final Media media;
   final RssEnclosure enclosure;
   final DublinCore dc;
-  final RssItemItunes itunes;
+  final Itunes itunes;
 
   RssItem({
     this.title,
@@ -33,7 +32,7 @@ class RssItem {
     this.link,
     this.categories,
     this.guid,
-    String pubDate,
+    this.pubDate,
     this.author,
     this.comments,
     this.source,
@@ -42,33 +41,27 @@ class RssItem {
     this.enclosure,
     this.dc,
     this.itunes,
-  })
-    : this.pubDate = _parsePubDate(pubDate);
+  });
 
   factory RssItem.parse(XmlElement element) {
     return RssItem(
-      title: findElementOrNull(element, "title")?.text,
-      description: findElementOrNull(element, "description")?.text,
-      link: findElementOrNull(element, "link")?.text,
-      categories: element.findElements("category").map((element) {
-        return RssCategory.parse(element);
-      }).toList(),
-      guid: findElementOrNull(element, "guid")?.text,
-      pubDate: findElementOrNull(element, "pubDate")?.text,
-      author: findElementOrNull(element, "author")?.text,
-      comments: findElementOrNull(element, "comments")?.text,
-      source: RssSource.parse(findElementOrNull(element, "source")),
-      content: RssContent.parse(findElementOrNull(element, "content:encoded")),
+      title: findFirstElement(element, 'title')?.text,
+      description: findFirstElement(element, 'description')?.text,
+      link: findFirstElement(element, 'link')?.text,
+      categories: element
+          .findElements('category')
+          .map((e) => RssCategory.parse(e))
+          .toList(),
+      guid: findFirstElement(element, 'guid')?.text,
+      pubDate: parseDateTime(findFirstElement(element, 'pubDate')?.text),
+      author: findFirstElement(element, 'author')?.text,
+      comments: findFirstElement(element, 'comments')?.text,
+      source: RssSource.parse(findFirstElement(element, 'source')),
+      content: RssContent.parse(findFirstElement(element, 'content:encoded')),
       media: Media.parse(element),
-      enclosure: RssEnclosure.parse(findElementOrNull(element, "enclosure")),
+      enclosure: RssEnclosure.parse(findFirstElement(element, 'enclosure')),
       dc: DublinCore.parse(element),
-      itunes: RssItemItunes.parse(element),
+      itunes: Itunes.parse(element),
     );
-  }
-
-  static _parsePubDate(pubDate) {
-    if (pubDate == null) return null;
-    //Locale for pubDate is always en_US, regardless of device locale
-    return DateFormat('EEE, dd MMM yyyy HH:mm:ss Z', 'en_US').parse(pubDate);
   }
 }

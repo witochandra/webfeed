@@ -18,14 +18,14 @@ class AtomLink {
   );
 
   factory AtomLink.parse(XmlElement element) {
-    var href = element.getAttribute("href");
-    var rel = element.getAttribute("rel");
-    var type = element.getAttribute("type");
-    var title = element.getAttribute("title");
-    var hreflang = element.getAttribute("hreflang");
+    var href = element.getAttribute('href');
+    var rel = element.getAttribute('rel');
+    var type = element.getAttribute('type');
+    var title = element.getAttribute('title');
+    var hreflang = element.getAttribute('hreflang');
     var length = 0;
-    if (element.getAttribute("length") != null) {
-      length = int.parse(element.getAttribute("length"));
+    if (element.getAttribute('length') != null) {
+      length = int.parse(element.getAttribute('length'));
     }
     return AtomLink(href, rel, type, hreflang, title, length);
   }

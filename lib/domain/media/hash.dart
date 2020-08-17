@@ -13,8 +13,8 @@ class Hash {
     if (element == null) {
       return null;
     }
-    return new Hash(
-      algo: element.getAttribute("algo"),
+    return Hash(
+      algo: element.getAttribute('algo'),
       value: element.text,
     );
   }
