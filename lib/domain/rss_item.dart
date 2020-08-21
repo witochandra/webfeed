@@ -22,6 +22,7 @@ class RssItem {
   final RssSource source;
   final RssContent content;
   final Media media;
+  final String image;
   final RssEnclosure enclosure;
   final DublinCore dc;
   final Itunes itunes;
@@ -38,6 +39,7 @@ class RssItem {
     this.source,
     this.content,
     this.media,
+    this.image,
     this.enclosure,
     this.dc,
     this.itunes,
