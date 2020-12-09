@@ -27,7 +27,8 @@ void main() {
     expect(feed.link, 'https://foo.bar.news/');
     expect(feed.author, 'hello@world.net');
     expect(feed.language, 'en-US');
-    expect(feed.lastBuildDate, 'Mon, 26 Mar 2018 14:00:00 PDT');
+    expect(feed.pubDate, DateTime(2018, 03, 26, 13, 30));
+    expect(feed.lastBuildDate, DateTime(2018, 03, 26, 14));
     expect(feed.generator, 'Custom');
     expect(feed.copyright, 'Copyright 2018, Foo bar Inc.');
     expect(feed.docs, 'https://foo.bar.news/docs');

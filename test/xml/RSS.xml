@@ -17,6 +17,7 @@
         <category>Ipsum</category>
         <category domain="news">Lorem Ipsum</category>
         <language>en-US</language>
+        <pubDate>Mon, 26 Mar 2018 13:30:00 PDT</pubDate>
         <lastBuildDate>Mon, 26 Mar 2018 14:00:00 PDT</lastBuildDate>
         <generator>Custom</generator>
         <copyright>Copyright 2018, Foo bar Inc.</copyright>
