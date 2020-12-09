@@ -7,6 +7,7 @@ import 'package:webfeed/domain/rss_cloud.dart';
 import 'package:webfeed/domain/rss_image.dart';
 import 'package:webfeed/domain/rss_item.dart';
 import 'package:webfeed/domain/syndication/syndication.dart';
+import 'package:webfeed/util/datetime.dart';
 import 'package:webfeed/util/xml.dart';
 import 'package:xml/xml.dart';
 
@@ -22,7 +23,7 @@ class RssFeed {
   final List<RssCategory> categories;
   final List<String> skipDays;
   final List<int> skipHours;
-  final String lastBuildDate;
+  final DateTime lastBuildDate;
   final String language;
   final String generator;
   final String copyright;
@@ -97,7 +98,7 @@ class RssFeed {
               ?.map((e) => int.tryParse(e.text ?? '0'))
               ?.toList() ??
           [],
-      lastBuildDate: findFirstElement(channelElement, 'lastBuildDate')?.text,
+      lastBuildDate: parseDateTime(findFirstElement(channelElement, 'lastBuildDate')?.text),
       language: findFirstElement(channelElement, 'language')?.text,
       generator: findFirstElement(channelElement, 'generator')?.text,
       copyright: findFirstElement(channelElement, 'copyright')?.text,
