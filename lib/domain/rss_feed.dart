@@ -23,6 +23,7 @@ class RssFeed {
   final List<RssCategory> categories;
   final List<String> skipDays;
   final List<int> skipHours;
+  final DateTime pubDate;
   final DateTime lastBuildDate;
   final String language;
   final String generator;
@@ -47,6 +48,7 @@ class RssFeed {
     this.categories,
     this.skipDays,
     this.skipHours,
+    this.pubDate,
     this.lastBuildDate,
     this.language,
     this.generator,
@@ -98,6 +100,7 @@ class RssFeed {
               ?.map((e) => int.tryParse(e.text ?? '0'))
               ?.toList() ??
           [],
+      pubDate: parseDateTime(findFirstElement(channelElement, 'pubDate')?.text),
       lastBuildDate: parseDateTime(findFirstElement(channelElement, 'lastBuildDate')?.text),
       language: findFirstElement(channelElement, 'language')?.text,
       generator: findFirstElement(channelElement, 'generator')?.text,
