@@ -3,6 +3,7 @@ import 'package:webfeed/domain/itunes/itunes_episode_type.dart';
 import 'package:webfeed/domain/itunes/itunes_image.dart';
 import 'package:webfeed/domain/itunes/itunes_owner.dart';
 import 'package:webfeed/domain/itunes/itunes_type.dart';
+import 'package:webfeed/util/string.dart';
 import 'package:webfeed/util/xml.dart';
 import 'package:xml/xml.dart';
 
@@ -73,9 +74,9 @@ class Itunes {
       newFeedUrl: findFirstElement(element, 'itunes:new-feed-url')?.text,
       block: parseBoolLiteral(element, 'itunes:block'),
       complete: parseBoolLiteral(element, 'itunes:complete'),
-      episode: episodeStr == null ? null : int.parse(episodeStr),
-      season: seasonStr == null ? null : int.parse(seasonStr),
-      duration: durationStr == null ? null : _parseDuration(durationStr),
+      episode: isNullOrEmpty(episodeStr) ? null : int.parse(episodeStr),
+      season: isNullOrEmpty(seasonStr) ? null : int.parse(seasonStr),
+      duration: isNullOrEmpty(durationStr) ? null : _parseDuration(durationStr),
       episodeType:
           newItunesEpisodeType(findFirstElement(element, 'itunes:episodeType')),
     );
