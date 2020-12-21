@@ -1,5 +1,5 @@
 name: webfeed
-version: 0.6.1
+version: 0.6.0
 description: webfeed is a dart package for parsing RSS and Atom feeds. Media, DublinCore, iTunes, Syndication namespaces are also supported.
 homepage: https://github.com/witochandra/webfeed
 environment:
