@@ -2,9 +2,9 @@ import 'package:intl/intl.dart';
 
 const rfc822DatePattern = 'EEE, dd MMM yyyy HH:mm:ss Z';
 
-DateTime parseDateTime(dateString) {
+DateTime parseDateTime(String dateString) {
   if (dateString == null) return null;
-  return _parseRfc822DateTime(dateString) ?? _parseIso8601DateTime(dateString);
+  return _parseRfc822DateTime(dateString.trim()) ?? _parseIso8601DateTime(dateString.trim());
 }
 
 DateTime _parseRfc822DateTime(String dateString) {
@@ -18,7 +18,7 @@ DateTime _parseRfc822DateTime(String dateString) {
   }
 }
 
-DateTime _parseIso8601DateTime(dateString) {
+DateTime _parseIso8601DateTime(String dateString) {
   try {
     return DateTime.parse(dateString);
   } on FormatException {
