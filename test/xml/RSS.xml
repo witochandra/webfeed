@@ -58,10 +58,22 @@
                 laudantium
             </description>
             <category domain="auto">Ipsum</category>
-            <pubDate>Tue, 20 Mar 2018 10:00:00 PDT</pubDate>
+            <pubDate>Tue, 20 Mar 2018 10:00 PDT</pubDate>
             <author>bob@foo.bar.news</author>
             <source url="https://foo.bar.news/2?source">Lorem Ipsum</source>
             <comments>https://foo.bar.news/2/comments</comments>
+        </item>
+        <item>
+            <title>Lorem ipsum dolor sit amet, consetetur</title>
+            <link>https://foo.bar.news/3</link>
+            <guid>https://foo.bar.news/3?guid</guid>
+            <description>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
+            </description>
+            <category domain="auto">Ipsum</category>
+            <pubDate>Tue, 20 Mar 2018</pubDate>
+            <author>bob@foo.bar.news</author>
+            <source url="https://foo.bar.news/3?source">Lorem Ipsum</source>
+            <comments>https://foo.bar.news/3/comments</comments>
         </item>
     </channel>
 </rss>
