@@ -85,7 +85,7 @@ class Itunes {
     var hours = 0;
     var minutes = 0;
     var seconds = 0;
-    var parts = s.split(':');
+    var parts = s.split(s.contains(':') ? ':' : '.');
     if (parts.length > 2) {
       hours = int.parse(parts[parts.length - 3]);
     }
