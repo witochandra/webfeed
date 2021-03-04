@@ -4,7 +4,7 @@ description: webfeed is a dart package for parsing RSS and Atom feeds. Media & D
 author: Wito Chandra <wito.c.91@gmail.com>
 homepage: https://github.com/witochandra/webfeed
 environment:
-  sdk: ">=2.0.0 <3.0.0"
+  sdk: ">=2.6.0 <3.0.0"
 dependencies:
   xml: "^3.0.0"
 dev_dependencies:
