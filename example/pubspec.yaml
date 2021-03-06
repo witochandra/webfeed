@@ -1,0 +1,11 @@
+name: webfeed_example
+description: Demonstrates how to use the webfeed plugin
+publish_to: 'none'
+
+environment:
+  sdk: ">=2.7.0 <3.0.0"
+
+dependencies:
+  webfeed:
+    path: ../
+  http: ^0.13.0
