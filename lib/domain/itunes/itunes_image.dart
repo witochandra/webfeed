@@ -1,14 +1,17 @@
 import 'package:xml/xml.dart';
 
 class ItunesImage {
-  final String href;
+  final String? href;
 
   ItunesImage({this.href});
 
-  factory ItunesImage.parse(XmlElement element) {
+  static parse(XmlElement? element) {
+    ItunesImage? result;
     if (element == null) return null;
-    return ItunesImage(
+    result = ItunesImage(
       href: element.getAttribute('href')?.trim(),
     );
+
+    return result;
   }
 }

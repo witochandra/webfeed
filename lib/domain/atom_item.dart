@@ -8,20 +8,20 @@ import 'package:webfeed/util/xml.dart';
 import 'package:xml/xml.dart';
 
 class AtomItem {
-  final String id;
-  final String title;
-  final DateTime updated;
+  final String? id;
+  final String? title;
+  final DateTime? updated;
 
-  final List<AtomPerson> authors;
-  final List<AtomLink> links;
-  final List<AtomCategory> categories;
-  final List<AtomPerson> contributors;
-  final AtomSource source;
-  final String published;
-  final String content;
-  final String summary;
-  final String rights;
-  final Media media;
+  final List<AtomPerson>? authors;
+  final List<AtomLink>? links;
+  final List<AtomCategory>? categories;
+  final List<AtomPerson>? contributors;
+  final AtomSource? source;
+  final String? published;
+  final String? content;
+  final String? summary;
+  final String? rights;
+  final Media? media;
 
   AtomItem({
     this.id,

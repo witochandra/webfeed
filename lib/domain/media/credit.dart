@@ -1,9 +1,9 @@
 import 'package:xml/xml.dart';
 
 class Credit {
-  final String role;
-  final String scheme;
-  final String value;
+  final String? role;
+  final String? scheme;
+  final String? value;
 
   Credit({
     this.role,
