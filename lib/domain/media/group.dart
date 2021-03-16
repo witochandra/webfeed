@@ -10,14 +10,14 @@ import 'package:webfeed/util/xml.dart';
 import 'package:xml/xml.dart';
 
 class Group {
-  final Title? title;
-  final List<Content>? contents;
-  final List<Thumbnail>? thumbnails;
-  final Description? description;
-  final Community? community;
-  final List<Credit>? credits;
-  final Category? category;
-  final Rating? rating;
+  final Title title;
+  final List<Content> contents;
+  final List<Thumbnail> thumbnails;
+  final Description description;
+  final Community community;
+  final List<Credit> credits;
+  final Category category;
+  final Rating rating;
 
   Group({
     this.title,
