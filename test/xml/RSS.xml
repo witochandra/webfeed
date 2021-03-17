@@ -49,6 +49,8 @@
             <comments>https://foo.bar.news/1/comments</comments>
             <content:encoded><![CDATA[<img width="1000" height="690" src="https://test.com/image_link"/> Test content<br />]]></content:encoded>
             <enclosure url="http://www.scripting.com/mp3s/weatherReportSuite.mp3" length="12216320" type="audio/mpeg" />
+            <geo:lat>45.3</geo:lat>
+            <geo:long>-0.5</geo:long>
         </item>
         <item>
             <title>Section 1.10.32 of "de Finibus Bonorum et Malorum", written by Cicero in 45 BC</title>
@@ -62,6 +64,8 @@
             <author>bob@foo.bar.news</author>
             <source url="https://foo.bar.news/2?source">Lorem Ipsum</source>
             <comments>https://foo.bar.news/2/comments</comments>
+            <geo:lat>49.4</geo:lat>
+            <geo:long>9.5</geo:long>
         </item>
     </channel>
 </rss>
