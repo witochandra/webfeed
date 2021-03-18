@@ -87,6 +87,9 @@ void main() {
     expect(item.summary, 'This is summary 1');
     expect(item.content, 'This is content 1');
     expect(item.rights, 'This is rights 1');
+
+    expect(item.geo.lat, 45.3);
+    expect(item.geo.long, -0.5);
   });
   test('parse Atom-Media.xml', () {
     var xmlString = File('test/xml/Atom-Media.xml').readAsStringSync();

@@ -2,6 +2,7 @@ import 'package:webfeed/domain/atom_category.dart';
 import 'package:webfeed/domain/atom_link.dart';
 import 'package:webfeed/domain/atom_person.dart';
 import 'package:webfeed/domain/atom_source.dart';
+import 'package:webfeed/domain/geo/geo.dart';
 import 'package:webfeed/domain/media/media.dart';
 import 'package:webfeed/util/datetime.dart';
 import 'package:webfeed/util/xml.dart';
@@ -22,6 +23,7 @@ class AtomItem {
   final String summary;
   final String rights;
   final Media media;
+  final Geo geo;
 
   AtomItem({
     this.id,
@@ -37,6 +39,7 @@ class AtomItem {
     this.summary,
     this.rights,
     this.media,
+    this.geo,
   });
 
   factory AtomItem.parse(XmlElement element) {
@@ -64,6 +67,7 @@ class AtomItem {
       summary: findFirstElement(element, 'summary')?.text,
       rights: findFirstElement(element, 'rights')?.text,
       media: Media.parse(element),
+      geo: Geo.parse(element),
     );
   }
 }

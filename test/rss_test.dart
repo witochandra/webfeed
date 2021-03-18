@@ -89,6 +89,9 @@ void main() {
         '<img width="1000" height="690" src="https://test.com/image_link"/> Test content<br />');
     expect(
         feed.items.first.content.images.first, 'https://test.com/image_link');
+
+    expect(feed.items.first.geo.lat, 45.3);
+    expect(feed.items.first.geo.long, -0.5);
   });
   test('parse RSS-Media.xml', () {
     var xmlString = File('test/xml/RSS-Media.xml').readAsStringSync();

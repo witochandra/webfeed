@@ -1,4 +1,5 @@
 import 'package:webfeed/domain/dublin_core/dublin_core.dart';
+import 'package:webfeed/domain/geo/geo.dart';
 import 'package:webfeed/domain/itunes/itunes.dart';
 import 'package:webfeed/domain/media/media.dart';
 import 'package:webfeed/domain/rss_category.dart';
@@ -25,6 +26,7 @@ class RssItem {
   final RssEnclosure enclosure;
   final DublinCore dc;
   final Itunes itunes;
+  final Geo geo;
 
   RssItem({
     this.title,
@@ -41,6 +43,7 @@ class RssItem {
     this.enclosure,
     this.dc,
     this.itunes,
+    this.geo,
   });
 
   factory RssItem.parse(XmlElement element) {
@@ -62,6 +65,7 @@ class RssItem {
       enclosure: RssEnclosure.parse(findFirstElement(element, 'enclosure')),
       dc: DublinCore.parse(element),
       itunes: Itunes.parse(element),
+      geo: Geo.parse(element),
     );
   }
 }

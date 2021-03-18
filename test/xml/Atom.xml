@@ -72,6 +72,8 @@
         <summary type="text">This is summary 1</summary>
         <content>This is content 1</content>
         <rights>This is rights 1</rights>
+        <geo:lat>45.3</geo:lat>
+        <geo:long>-0.5</geo:long>
     </entry>
     <entry>
         <id>foo-bar-entry-id-2</id>
@@ -113,5 +115,7 @@
         <summary type="text">This is summary 2</summary>
         <content>This is content 2</content>
         <rights>This is rights 2</rights>
+        <geo:lat>43.3</geo:lat>
+        <geo:long>3.5</geo:long>
     </entry>
 </feed>
