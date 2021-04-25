@@ -11,29 +11,29 @@ import 'package:webfeed/util/xml.dart';
 import 'package:xml/xml.dart';
 
 class RssFeed {
-  final String title;
-  final String author;
-  final String description;
-  final String link;
-  final List<RssItem> items;
+  final String? title;
+  final String? author;
+  final String? description;
+  final String? link;
+  final List<RssItem>? items;
 
-  final RssImage image;
-  final RssCloud cloud;
-  final List<RssCategory> categories;
-  final List<String> skipDays;
-  final List<int> skipHours;
-  final String lastBuildDate;
-  final String language;
-  final String generator;
-  final String copyright;
-  final String docs;
-  final String managingEditor;
-  final String rating;
-  final String webMaster;
-  final int ttl;
-  final DublinCore dc;
-  final Itunes itunes;
-  final Syndication syndication;
+  final RssImage? image;
+  final RssCloud? cloud;
+  final List<RssCategory?>? categories;
+  final List<String>? skipDays;
+  final List<int?>? skipHours;
+  final String? lastBuildDate;
+  final String? language;
+  final String? generator;
+  final String? copyright;
+  final String? docs;
+  final String? managingEditor;
+  final String? rating;
+  final String? webMaster;
+  final int? ttl;
+  final DublinCore? dc;
+  final Itunes? itunes;
+  final Syndication? syndication;
 
   RssFeed({
     this.title,
@@ -76,7 +76,7 @@ class RssFeed {
       author: findFirstElement(channelElement, 'author')?.text,
       description: findFirstElement(channelElement, 'description')?.text,
       link: findFirstElement(channelElement, 'link')?.text,
-      items: (rss != null ? channelElement : rdf)
+      items: (rss != null ? channelElement : rdf)!
           .findElements('item')
           .map((e) => RssItem.parse(e))
           .toList(),
@@ -89,13 +89,13 @@ class RssFeed {
           .toList(),
       skipDays: findFirstElement(channelElement, 'skipDays')
               ?.findAllElements('day')
-              ?.map((e) => e.text)
-              ?.toList() ??
+              .map((e) => e.text)
+              .toList() ??
           [],
       skipHours: findFirstElement(channelElement, 'skipHours')
               ?.findAllElements('hour')
-              ?.map((e) => int.tryParse(e.text ?? '0'))
-              ?.toList() ??
+              .map((e) => int.tryParse(e.text))
+              .toList() ??
           [],
       lastBuildDate: findFirstElement(channelElement, 'lastBuildDate')?.text,
       language: findFirstElement(channelElement, 'language')?.text,

@@ -5,9 +5,9 @@ import 'package:xml/xml.dart';
 enum SyndicationUpdatePeriod { hourly, daily, weekly, monthly, yearly }
 
 class Syndication {
-  final SyndicationUpdatePeriod updatePeriod;
-  final int updateFrequency;
-  final DateTime updateBase;
+  final SyndicationUpdatePeriod? updatePeriod;
+  final int? updateFrequency;
+  final DateTime? updateBase;
 
   Syndication({
     this.updatePeriod,
@@ -15,10 +15,8 @@ class Syndication {
     this.updateBase,
   });
 
-  factory Syndication.parse(XmlElement element) {
-    if (element == null) {
-      return null;
-    }
+  static parse(XmlElement? element) {
+    if (element == null) return null;
     SyndicationUpdatePeriod updatePeriod;
     switch (findFirstElement(element, 'sy:updatePeriod')?.text) {
       case 'hourly':

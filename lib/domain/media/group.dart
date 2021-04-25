@@ -6,10 +6,10 @@ import 'package:webfeed/util/xml.dart';
 import 'package:xml/xml.dart';
 
 class Group {
-  final List<Content> contents;
-  final List<Credit> credits;
-  final Category category;
-  final Rating rating;
+  final List<Content>? contents;
+  final List<Credit>? credits;
+  final Category? category;
+  final Rating? rating;
 
   Group({
     this.contents,
@@ -18,10 +18,8 @@ class Group {
     this.rating,
   });
 
-  factory Group.parse(XmlElement element) {
-    if (element == null) {
-      return null;
-    }
+  static parse(XmlElement? element) {
+    if (element == null) return null;
     return Group(
       contents: element.findElements('media:content').map((e) {
         return Content.parse(e);

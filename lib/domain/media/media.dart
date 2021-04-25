@@ -23,31 +23,31 @@ import 'package:webfeed/util/xml.dart';
 import 'package:xml/xml.dart';
 
 class Media {
-  final Group group;
-  final List<Content> contents;
-  final List<Credit> credits;
-  final Category category;
-  final Rating rating;
-  final Title title;
-  final Description description;
-  final String keywords;
-  final List<Thumbnail> thumbnails;
-  final Hash hash;
-  final Player player;
-  final Copyright copyright;
-  final Text text;
-  final Restriction restriction;
-  final Community community;
-  final List<String> comments;
-  final Embed embed;
-  final List<String> responses;
-  final List<String> backLinks;
-  final Status status;
-  final List<Price> prices;
-  final License license;
-  final PeerLink peerLink;
-  final Rights rights;
-  final List<Scene> scenes;
+  final Group? group;
+  final List<Content>? contents;
+  final List<Credit>? credits;
+  final Category? category;
+  final Rating? rating;
+  final Title? title;
+  final Description? description;
+  final String? keywords;
+  final List<Thumbnail>? thumbnails;
+  final Hash? hash;
+  final Player? player;
+  final Copyright? copyright;
+  final Text? text;
+  final Restriction? restriction;
+  final Community? community;
+  final List<String>? comments;
+  final Embed? embed;
+  final List<String>? responses;
+  final List<String>? backLinks;
+  final Status? status;
+  final List<Price>? prices;
+  final License? license;
+  final PeerLink? peerLink;
+  final Rights? rights;
+  final List<Scene?>? scenes;
 
   Media({
     this.group,
@@ -124,24 +124,24 @@ class Media {
       ),
       comments: findFirstElement(element, 'media:comments')
               ?.findElements('media:comment')
-              ?.map((e) {
+              .map((e) {
             return e.text;
-          })?.toList() ??
+          }).toList() ??
           [],
       embed: Embed.parse(
         findFirstElement(element, 'media:embed'),
       ),
       responses: findFirstElement(element, 'media:responses')
               ?.findElements('media:response')
-              ?.map((e) {
+              .map((e) {
             return e.text;
-          })?.toList() ??
+          }).toList() ??
           [],
       backLinks: findFirstElement(element, 'media:backLinks')
               ?.findElements('media:backLink')
-              ?.map((e) {
+              .map((e) {
             return e.text;
-          })?.toList() ??
+          }).toList() ??
           [],
       status: Status.parse(
         findFirstElement(element, 'media:status'),
@@ -160,9 +160,9 @@ class Media {
       ),
       scenes: findFirstElement(element, 'media:scenes')
               ?.findElements('media:scene')
-              ?.map((e) {
+              .map((e) {
             return Scene.parse(e);
-          })?.toList() ??
+          }).toList() ??
           [],
     );
   }

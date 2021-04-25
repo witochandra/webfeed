@@ -7,23 +7,23 @@ import 'package:webfeed/util/xml.dart';
 import 'package:xml/xml.dart';
 
 class Itunes {
-  final String author;
-  final String summary;
-  final bool explicit;
-  final String title;
-  final String subtitle;
-  final ItunesOwner owner;
-  final List<String> keywords;
-  final ItunesImage image;
-  final List<ItunesCategory> categories;
-  final ItunesType type;
-  final String newFeedUrl;
-  final bool block;
-  final bool complete;
-  final int episode;
-  final int season;
-  final Duration duration;
-  final ItunesEpisodeType episodeType;
+  final String? author;
+  final String? summary;
+  final bool? explicit;
+  final String? title;
+  final String? subtitle;
+  final ItunesOwner? owner;
+  final List<String>? keywords;
+  final ItunesImage? image;
+  final List<ItunesCategory?>? categories;
+  final ItunesType? type;
+  final String? newFeedUrl;
+  final bool? block;
+  final bool? complete;
+  final int? episode;
+  final int? season;
+  final Duration? duration;
+  final ItunesEpisodeType? episodeType;
 
   Itunes({
     this.author,
@@ -45,7 +45,7 @@ class Itunes {
     this.episodeType,
   });
 
-  factory Itunes.parse(XmlElement element) {
+  static parse(XmlElement? element) {
     if (element == null) {
       return null;
     }
@@ -61,12 +61,12 @@ class Itunes {
       owner: ItunesOwner.parse(findFirstElement(element, 'itunes:owner')),
       keywords: findFirstElement(element, 'itunes:keywords')
               ?.text
-              ?.split(',')
-              ?.map((keyword) => keyword.trim())
-              ?.toList() ??
+              .split(',')
+              .map((keyword) => keyword.trim())
+              .toList() ??
           [],
       image: ItunesImage.parse(findFirstElement(element, 'itunes:image')),
-      categories: findElements(element, 'itunes:category')
+      categories: findElements(element, 'itunes:category')!
           .map((e) => ItunesCategory.parse(e))
           .toList(),
       type: newItunesType(findFirstElement(element, 'itunes:type')),

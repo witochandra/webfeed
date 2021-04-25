@@ -10,21 +10,21 @@ import 'package:webfeed/util/xml.dart';
 import 'package:xml/xml.dart';
 
 class RssItem {
-  final String title;
-  final String description;
-  final String link;
+  final String? title;
+  final String? description;
+  final String? link;
 
-  final List<RssCategory> categories;
-  final String guid;
-  final DateTime pubDate;
-  final String author;
-  final String comments;
-  final RssSource source;
-  final RssContent content;
-  final Media media;
-  final RssEnclosure enclosure;
-  final DublinCore dc;
-  final Itunes itunes;
+  final List<RssCategory?>? categories;
+  final String? guid;
+  final DateTime? pubDate;
+  final String? author;
+  final String? comments;
+  final RssSource? source;
+  final RssContent? content;
+  final Media? media;
+  final RssEnclosure? enclosure;
+  final DublinCore? dc;
+  final Itunes? itunes;
 
   RssItem({
     this.title,
