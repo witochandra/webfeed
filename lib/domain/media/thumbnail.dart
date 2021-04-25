@@ -1,10 +1,10 @@
 import 'package:xml/xml.dart';
 
 class Thumbnail {
-  final String url;
-  final String width;
-  final String height;
-  final String time;
+  final String? url;
+  final String? width;
+  final String? height;
+  final String? time;
 
   Thumbnail({
     this.url,

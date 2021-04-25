@@ -1,9 +1,9 @@
 import 'package:xml/xml.dart';
 
 class AtomCategory {
-  final String term;
-  final String scheme;
-  final String label;
+  final String? term;
+  final String? scheme;
+  final String? label;
 
   AtomCategory(this.term, this.scheme, this.label);
 

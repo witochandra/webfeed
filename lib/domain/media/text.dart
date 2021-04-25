@@ -1,11 +1,11 @@
 import 'package:xml/xml.dart';
 
 class Text {
-  final String type;
-  final String lang;
-  final String start;
-  final String end;
-  final String value;
+  final String? type;
+  final String? lang;
+  final String? start;
+  final String? end;
+  final String? value;
 
   Text({
     this.type,
@@ -16,9 +16,6 @@ class Text {
   });
 
   factory Text.parse(XmlElement element) {
-    if (element == null) {
-      return null;
-    }
     return Text(
       type: element.getAttribute('type'),
       lang: element.getAttribute('lang'),

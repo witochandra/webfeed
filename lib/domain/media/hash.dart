@@ -1,8 +1,8 @@
 import 'package:xml/xml.dart';
 
 class Hash {
-  final String algo;
-  final String value;
+  final String? algo;
+  final String? value;
 
   Hash({
     this.algo,
@@ -10,9 +10,6 @@ class Hash {
   });
 
   factory Hash.parse(XmlElement element) {
-    if (element == null) {
-      return null;
-    }
     return Hash(
       algo: element.getAttribute('algo'),
       value: element.text,

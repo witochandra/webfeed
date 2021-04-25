@@ -4,24 +4,24 @@ import 'package:webfeed/domain/atom_item.dart';
 import 'package:webfeed/domain/atom_link.dart';
 import 'package:webfeed/domain/atom_person.dart';
 import 'package:webfeed/util/datetime.dart';
-import 'package:webfeed/util/xml.dart';
+import 'package:webfeed/util/iterable.dart';
 import 'package:xml/xml.dart';
 
 class AtomFeed {
-  final String id;
-  final String title;
-  final DateTime updated;
-  final List<AtomItem> items;
+  final String? id;
+  final String? title;
+  final DateTime? updated;
+  final List<AtomItem>? items;
 
-  final List<AtomLink> links;
-  final List<AtomPerson> authors;
-  final List<AtomPerson> contributors;
-  final List<AtomCategory> categories;
-  final AtomGenerator generator;
-  final String icon;
-  final String logo;
-  final String rights;
-  final String subtitle;
+  final List<AtomLink>? links;
+  final List<AtomPerson>? authors;
+  final List<AtomPerson>? contributors;
+  final List<AtomCategory>? categories;
+  final AtomGenerator? generator;
+  final String? icon;
+  final String? logo;
+  final String? rights;
+  final String? subtitle;
 
   AtomFeed({
     this.id,
@@ -41,15 +41,16 @@ class AtomFeed {
 
   factory AtomFeed.parse(String xmlString) {
     var document = XmlDocument.parse(xmlString);
-    var feedElement = findFirstElement(document, 'feed');
+    var feedElement = document.findElements('feed').firstOrNull;
     if (feedElement == null) {
       throw ArgumentError('feed not found');
     }
 
     return AtomFeed(
-      id: findFirstElement(feedElement, 'id')?.text,
-      title: findFirstElement(feedElement, 'title')?.text,
-      updated: parseDateTime(findFirstElement(feedElement, 'updated')?.text),
+      id: feedElement.findElements('id').firstOrNull?.text,
+      title: feedElement.findElements('title').firstOrNull?.text,
+      updated:
+          parseDateTime(feedElement.findElements('updated').firstOrNull?.text),
       items: feedElement
           .findElements('entry')
           .map((e) => AtomItem.parse(e))
@@ -70,12 +71,14 @@ class AtomFeed {
           .findElements('category')
           .map((e) => AtomCategory.parse(e))
           .toList(),
-      generator:
-          AtomGenerator.parse(findFirstElement(feedElement, 'generator')),
-      icon: findFirstElement(feedElement, 'icon')?.text,
-      logo: findFirstElement(feedElement, 'logo')?.text,
-      rights: findFirstElement(feedElement, 'rights')?.text,
-      subtitle: findFirstElement(feedElement, 'subtitle')?.text,
+      generator: feedElement
+          .findElements('generator')
+          .map((e) => AtomGenerator.parse(e))
+          .firstOrNull,
+      icon: feedElement.findElements('icon').firstOrNull?.text,
+      logo: feedElement.findElements('logo').firstOrNull?.text,
+      rights: feedElement.findElements('rights').firstOrNull?.text,
+      subtitle: feedElement.findElements('subtitle').firstOrNull?.text,
     );
   }
 }

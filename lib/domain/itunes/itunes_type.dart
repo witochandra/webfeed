@@ -3,7 +3,7 @@ import 'package:xml/xml.dart';
 enum ItunesType { episodic, serial, unknown }
 
 ItunesType newItunesType(XmlElement element) {
-  switch (element?.text) {
+  switch (element.text) {
     case 'episodic':
       return ItunesType.episodic;
     case 'serial':
