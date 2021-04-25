@@ -6,7 +6,7 @@ import 'package:webfeed/domain/rss_content.dart';
 import 'package:webfeed/domain/rss_enclosure.dart';
 import 'package:webfeed/domain/rss_source.dart';
 import 'package:webfeed/util/datetime.dart';
-import 'package:webfeed/util/xml.dart';
+import 'package:webfeed/util/iterable.dart';
 import 'package:xml/xml.dart';
 
 class RssItem {
@@ -14,7 +14,7 @@ class RssItem {
   final String? description;
   final String? link;
 
-  final List<RssCategory?>? categories;
+  final List<RssCategory>? categories;
   final String? guid;
   final DateTime? pubDate;
   final String? author;
@@ -45,21 +45,30 @@ class RssItem {
 
   factory RssItem.parse(XmlElement element) {
     return RssItem(
-      title: findFirstElement(element, 'title')?.text,
-      description: findFirstElement(element, 'description')?.text,
-      link: findFirstElement(element, 'link')?.text,
+      title: element.findElements('title').firstOrNull?.text,
+      description: element.findElements('description').firstOrNull?.text,
+      link: element.findElements('link').firstOrNull?.text,
       categories: element
           .findElements('category')
           .map((e) => RssCategory.parse(e))
           .toList(),
-      guid: findFirstElement(element, 'guid')?.text,
-      pubDate: parseDateTime(findFirstElement(element, 'pubDate')?.text),
-      author: findFirstElement(element, 'author')?.text,
-      comments: findFirstElement(element, 'comments')?.text,
-      source: RssSource.parse(findFirstElement(element, 'source')),
-      content: RssContent.parse(findFirstElement(element, 'content:encoded')),
+      guid: element.findElements('guid').firstOrNull?.text,
+      pubDate: parseDateTime(element.findElements('pubDate').firstOrNull?.text),
+      author: element.findElements('author').firstOrNull?.text,
+      comments: element.findElements('comments').firstOrNull?.text,
+      source: element
+          .findElements('source')
+          .map((e) => RssSource.parse(e))
+          .firstOrNull,
+      content: element
+          .findElements('content:encoded')
+          .map((e) => RssContent.parse(e))
+          .firstOrNull,
       media: Media.parse(element),
-      enclosure: RssEnclosure.parse(findFirstElement(element, 'enclosure')),
+      enclosure: element
+          .findElements('enclosure')
+          .map((e) => RssEnclosure.parse(e))
+          .firstOrNull,
       dc: DublinCore.parse(element),
       itunes: Itunes.parse(element),
     );

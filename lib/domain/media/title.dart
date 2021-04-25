@@ -9,8 +9,7 @@ class Title {
     this.value,
   });
 
-  static parse(XmlElement? element) {
-    if (element == null) return null;
+  factory Title.parse(XmlElement element) {
     return Title(
       type: element.getAttribute('type'),
       value: element.text,

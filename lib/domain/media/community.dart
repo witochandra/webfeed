@@ -1,7 +1,7 @@
 import 'package:webfeed/domain/media/star_rating.dart';
 import 'package:webfeed/domain/media/statistics.dart';
 import 'package:webfeed/domain/media/tags.dart';
-import 'package:webfeed/util/xml.dart';
+import 'package:webfeed/util/iterable.dart';
 import 'package:xml/xml.dart';
 
 class Community {
@@ -15,18 +15,20 @@ class Community {
     this.tags,
   });
 
-  static parse(XmlElement? element) {
-    if (element == null) return null;
+  factory Community.parse(XmlElement element) {
     return Community(
-      starRating: StarRating.parse(
-        findFirstElement(element, 'media:starRating'),
-      ),
-      statistics: Statistics.parse(
-        findFirstElement(element, 'media:statistics'),
-      ),
-      tags: Tags.parse(
-        findFirstElement(element, 'media:tags'),
-      ),
+      starRating: element
+          .findElements('media:starRating')
+          .map((e) => StarRating.parse(e))
+          .firstOrNull,
+      statistics: element
+          .findElements('media:statistics')
+          .map((e) => Statistics.parse(e))
+          .firstOrNull,
+      tags: element
+          .findElements('media:tags')
+          .map((e) => Tags.parse(e))
+          .firstOrNull,
     );
   }
 }

@@ -12,18 +12,15 @@ final _imagesRegExp = RegExp(
 ///
 class RssContent {
   String value;
-  Iterable<String?> images;
+  Iterable<String> images;
 
   RssContent(this.value, this.images);
 
-  static parse(XmlElement? element) {
-    if(element == null) {
-      return null;
-    }
+  factory RssContent.parse(XmlElement element) {
     final dynamic? content = element.text;
-    final images = <String?>[];
+    final images = <String>[];
     _imagesRegExp.allMatches(content).forEach((match) {
-      images.add(match.group(1));
+      images.add(match.group(1)!);
     });
     return RssContent(content, images);
   }

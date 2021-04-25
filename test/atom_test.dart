@@ -185,9 +185,9 @@ void main() {
     expect(item.media!.embed!.width, 512);
     expect(item.media!.embed!.height, 323);
     expect(item.media!.embed!.params!.length, 5);
-    expect(item.media!.embed!.params!.first!.name, 'type');
-    expect(
-        item.media!.embed!.params!.first!.value, 'application/x-shockwave-flash');
+    expect(item.media!.embed!.params!.first.name, 'type');
+    expect(item.media!.embed!.params!.first.value,
+        'application/x-shockwave-flash');
 
     expect(item.media!.responses!.length, 2);
     expect(item.media!.responses!.first, 'http://www.response1.com');
@@ -203,8 +203,8 @@ void main() {
     expect(item.media!.prices!.length, 2);
     expect(item.media!.prices!.first.price, 19.99);
     expect(item.media!.prices!.first.type, 'rent');
-    expect(
-        item.media!.prices!.first.info, 'http://www.dummy.jp/package_info.html');
+    expect(item.media!.prices!.first.info,
+        'http://www.dummy.jp/package_info.html');
     expect(item.media!.prices!.first.currency, 'EUR');
 
     expect(item.media!.license!.type, 'text/html');
@@ -218,10 +218,10 @@ void main() {
     expect(item.media!.rights!.status, 'official');
 
     expect(item.media!.scenes!.length, 2);
-    expect(item.media!.scenes!.first!.title, 'sceneTitle1');
-    expect(item.media!.scenes!.first!.description, 'sceneDesc1');
-    expect(item.media!.scenes!.first!.startTime, '00:15');
-    expect(item.media!.scenes!.first!.endTime, '00:45');
+    expect(item.media!.scenes!.first.title, 'sceneTitle1');
+    expect(item.media!.scenes!.first.description, 'sceneDesc1');
+    expect(item.media!.scenes!.first.startTime, '00:15');
+    expect(item.media!.scenes!.first.endTime, '00:45');
   });
 
   test('parse Atom-Empty.xml', () {

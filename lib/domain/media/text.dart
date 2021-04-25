@@ -15,8 +15,7 @@ class Text {
     this.value,
   });
 
-  static parse(XmlElement? element) {
-    if (element == null) return null;
+  factory Text.parse(XmlElement element) {
     return Text(
       type: element.getAttribute('type'),
       lang: element.getAttribute('lang'),

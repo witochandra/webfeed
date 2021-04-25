@@ -9,8 +9,7 @@ class Rating {
     this.value,
   });
 
-  static parse(XmlElement? element) {
-    if (element == null) return null;
+  factory Rating.parse(XmlElement element) {
     return Rating(
       scheme: element.getAttribute('scheme'),
       value: element.text,

@@ -1,4 +1,4 @@
-import 'package:webfeed/util/xml.dart';
+import 'package:webfeed/util/iterable.dart';
 import 'package:xml/xml.dart';
 
 class ItunesOwner {
@@ -7,10 +7,10 @@ class ItunesOwner {
 
   ItunesOwner({this.name, this.email});
 
-  factory ItunesOwner.parse(XmlElement? element) {
+  factory ItunesOwner.parse(XmlElement element) {
     return ItunesOwner(
-      name: findFirstElement(element, 'itunes:name')?.text.trim(),
-      email: findFirstElement(element, 'itunes:email')?.text.trim(),
+      name: element.findElements('itunes:name').firstOrNull?.text.trim(),
+      email: element.findElements('itunes:email').firstOrNull?.text.trim(),
     );
   }
 }

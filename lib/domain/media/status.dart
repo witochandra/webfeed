@@ -9,8 +9,7 @@ class Status {
     this.reason,
   });
 
-  static parse(XmlElement? element) {
-    if (element == null) return null;
+  factory Status.parse(XmlElement element) {
     return Status(
       state: element.getAttribute('state'),
       reason: element.getAttribute('reason'),

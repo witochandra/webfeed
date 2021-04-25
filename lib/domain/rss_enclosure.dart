@@ -7,8 +7,7 @@ class RssEnclosure {
 
   RssEnclosure(this.url, this.type, this.length);
 
-  static parse(XmlElement? element) {
-    if (element == null) return null;
+  factory RssEnclosure.parse(XmlElement element) {
     var url = element.getAttribute('url');
     var type = element.getAttribute('type');
     var length = int.tryParse(element.getAttribute('length') ?? '0');

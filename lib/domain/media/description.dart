@@ -9,8 +9,7 @@ class Description {
     this.value,
   });
 
-  static parse(XmlElement? element) {
-    if (element == null) return null;
+  factory Description.parse(XmlElement element) {
     return Description(
       type: element.getAttribute('type'),
       value: element.text,

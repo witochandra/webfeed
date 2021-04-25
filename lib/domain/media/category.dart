@@ -11,8 +11,7 @@ class Category {
     this.value,
   });
 
-  static parse(XmlElement? element) {
-    if (element == null) return null;
+  factory Category.parse(XmlElement element) {
     return Category(
       scheme: element.getAttribute('scheme'),
       label: element.getAttribute('label'),

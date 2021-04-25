@@ -7,7 +7,7 @@ import 'package:webfeed/domain/rss_cloud.dart';
 import 'package:webfeed/domain/rss_image.dart';
 import 'package:webfeed/domain/rss_item.dart';
 import 'package:webfeed/domain/syndication/syndication.dart';
-import 'package:webfeed/util/xml.dart';
+import 'package:webfeed/util/iterable.dart';
 import 'package:xml/xml.dart';
 
 class RssFeed {
@@ -19,9 +19,9 @@ class RssFeed {
 
   final RssImage? image;
   final RssCloud? cloud;
-  final List<RssCategory?>? categories;
+  final List<RssCategory>? categories;
   final List<String>? skipDays;
-  final List<int?>? skipHours;
+  final List<int>? skipHours;
   final String? lastBuildDate;
   final String? language;
   final String? generator;
@@ -62,50 +62,62 @@ class RssFeed {
 
   factory RssFeed.parse(String xmlString) {
     var document = XmlDocument.parse(xmlString);
-    var rss = findFirstElement(document, 'rss');
-    var rdf = findFirstElement(document, 'rdf:RDF');
+    var rss = document.findElements('rss').firstOrNull;
+    var rdf = document.findElements('rdf:RDF').firstOrNull;
     if (rss == null && rdf == null) {
       throw ArgumentError('not a rss feed');
     }
-    var channelElement = findFirstElement(rss ?? rdf, 'channel');
+    var channelElement = (rss ?? rdf)!.findElements('channel').firstOrNull;
     if (channelElement == null) {
       throw ArgumentError('channel not found');
     }
     return RssFeed(
-      title: findFirstElement(channelElement, 'title')?.text,
-      author: findFirstElement(channelElement, 'author')?.text,
-      description: findFirstElement(channelElement, 'description')?.text,
-      link: findFirstElement(channelElement, 'link')?.text,
-      items: (rss != null ? channelElement : rdf)!
+      title: channelElement.findElements('title').firstOrNull?.text,
+      author: channelElement.findElements('author').firstOrNull?.text,
+      description: channelElement.findElements('description').firstOrNull?.text,
+      link: channelElement.findElements('link').firstOrNull?.text,
+      items: (rdf ?? channelElement)
           .findElements('item')
           .map((e) => RssItem.parse(e))
           .toList(),
-      image: RssImage.parse(
-          findFirstElement(rss != null ? channelElement : rdf, 'image')),
-      cloud: RssCloud.parse(findFirstElement(channelElement, 'cloud')),
+      image: (rdf ?? channelElement)
+          .findElements('image')
+          .map((e) => RssImage.parse(e))
+          .firstOrNull,
+      cloud: channelElement
+          .findElements('cloud')
+          .map((e) => RssCloud.parse(e))
+          .firstOrNull,
       categories: channelElement
           .findElements('category')
           .map((e) => RssCategory.parse(e))
           .toList(),
-      skipDays: findFirstElement(channelElement, 'skipDays')
+      skipDays: channelElement
+              .findElements('skipDays')
+              .firstOrNull
               ?.findAllElements('day')
               .map((e) => e.text)
               .toList() ??
           [],
-      skipHours: findFirstElement(channelElement, 'skipHours')
+      skipHours: channelElement
+              .findElements('skipHours')
+              .firstOrNull
               ?.findAllElements('hour')
-              .map((e) => int.tryParse(e.text))
+              .map((e) => int.tryParse(e.text) ?? 0)
               .toList() ??
           [],
-      lastBuildDate: findFirstElement(channelElement, 'lastBuildDate')?.text,
-      language: findFirstElement(channelElement, 'language')?.text,
-      generator: findFirstElement(channelElement, 'generator')?.text,
-      copyright: findFirstElement(channelElement, 'copyright')?.text,
-      docs: findFirstElement(channelElement, 'docs')?.text,
-      managingEditor: findFirstElement(channelElement, 'managingEditor')?.text,
-      rating: findFirstElement(channelElement, 'rating')?.text,
-      webMaster: findFirstElement(channelElement, 'webMaster')?.text,
-      ttl: int.tryParse(findFirstElement(channelElement, 'ttl')?.text ?? '0'),
+      lastBuildDate:
+          channelElement.findElements('lastBuildDate').firstOrNull?.text,
+      language: channelElement.findElements('language').firstOrNull?.text,
+      generator: channelElement.findElements('generator').firstOrNull?.text,
+      copyright: channelElement.findElements('copyright').firstOrNull?.text,
+      docs: channelElement.findElements('docs').firstOrNull?.text,
+      managingEditor:
+          channelElement.findElements('managingEditor').firstOrNull?.text,
+      rating: channelElement.findElements('rating').firstOrNull?.text,
+      webMaster: channelElement.findElements('webMaster').firstOrNull?.text,
+      ttl: int.tryParse(
+          channelElement.findElements('ttl').firstOrNull?.text ?? '0'),
       dc: DublinCore.parse(channelElement),
       itunes: Itunes.parse(channelElement),
       syndication: Syndication.parse(channelElement),

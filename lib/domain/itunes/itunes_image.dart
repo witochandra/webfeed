@@ -5,13 +5,9 @@ class ItunesImage {
 
   ItunesImage({this.href});
 
-  static parse(XmlElement? element) {
-    ItunesImage? result;
-    if (element == null) return null;
-    result = ItunesImage(
+  factory ItunesImage.parse(XmlElement element) {
+    return ItunesImage(
       href: element.getAttribute('href')?.trim(),
     );
-
-    return result;
   }
 }

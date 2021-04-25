@@ -6,8 +6,7 @@ class RssCategory {
 
   RssCategory(this.domain, this.value);
 
-  static RssCategory? parse(XmlElement? element) {
-    if (element == null) return null;
+  factory RssCategory.parse(XmlElement element) {
     var domain = element.getAttribute('domain');
     var value = element.text;
 

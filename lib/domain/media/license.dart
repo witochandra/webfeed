@@ -11,8 +11,7 @@ class License {
     this.value,
   });
 
-  static parse(XmlElement? element) {
-    if (element == null) return null;
+  factory License.parse(XmlElement element) {
     return License(
       type: element.getAttribute('type'),
       href: element.getAttribute('href'),
