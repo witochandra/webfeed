@@ -3,7 +3,6 @@ import 'package:webfeed/domain/itunes/itunes_episode_type.dart';
 import 'package:webfeed/domain/itunes/itunes_image.dart';
 import 'package:webfeed/domain/itunes/itunes_owner.dart';
 import 'package:webfeed/domain/itunes/itunes_type.dart';
-import 'package:webfeed/util/string.dart';
 import 'package:webfeed/util/iterable.dart';
 import 'package:webfeed/util/xml.dart';
 import 'package:xml/xml.dart';
@@ -48,10 +47,12 @@ class Itunes {
   });
 
   factory Itunes.parse(XmlElement element) {
-    final episodeStr = element.findElements('itunes:episode').firstOrNull?.text;
-    final seasonStr = element.findElements('itunes:season').firstOrNull?.text;
+    final episodeStr =
+        element.findElements('itunes:episode').firstOrNull?.text ?? '';
+    final seasonStr =
+        element.findElements('itunes:season').firstOrNull?.text ?? '';
     final durationStr =
-        element.findElements('itunes:duration').firstOrNull?.text;
+        element.findElements('itunes:duration').firstOrNull?.text ?? '';
     return Itunes(
       author: element.findElements('itunes:author').firstOrNull?.text,
       summary: element.findElements('itunes:summary').firstOrNull?.text,
@@ -85,9 +86,9 @@ class Itunes {
       newFeedUrl: element.findElements('itunes:new-feed-url').firstOrNull?.text,
       block: parseBoolLiteral(element, 'itunes:block'),
       complete: parseBoolLiteral(element, 'itunes:complete'),
-      episode: isNullOrEmpty(episodeStr) ? null : int.tryParse(episodeStr),
-      season: isNullOrEmpty(seasonStr) ? null : int.tryParse(seasonStr),
-      duration: isNullOrEmpty(durationStr) ? null : _parseDuration(durationStr),
+      episode: episodeStr.isNotEmpty ? int.tryParse(episodeStr) : null,
+      season: seasonStr.isNotEmpty ? int.tryParse(seasonStr) : null,
+      duration: durationStr.isNotEmpty ? _parseDuration(durationStr) : null,
       episodeType: element
           .findElements('itunes:episodeType')
           .map((e) => newItunesEpisodeType(e))

@@ -372,15 +372,16 @@ void main() {
   });
 
   test('parse RSS-Itunes_item_empty_field.xml with empty duration field', () {
-    var xmlString = File('test/xml/RSS-Itunes_item_empty_field.xml').readAsStringSync();
+    var xmlString =
+        File('test/xml/RSS-Itunes_item_empty_field.xml').readAsStringSync();
 
     var feed = RssFeed.parse(xmlString);
 
-    expect(feed.itunes.owner.name, 'Changelog Media');
-    var item = feed.items[0];
-    expect(item.itunes.episodeType, ItunesEpisodeType.full);
-    expect(item.itunes.duration, null);
-    expect(item.itunes.title, 'awesome title');
+    expect(feed.itunes?.owner?.name, 'Changelog Media');
+    var item = feed.items![0];
+    expect(item.itunes?.episodeType, ItunesEpisodeType.full);
+    expect(item.itunes?.duration, null);
+    expect(item.itunes?.title, 'awesome title');
   });
 
   test('parse RSS-RDF.xml', () {
