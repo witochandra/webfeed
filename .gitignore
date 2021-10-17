@@ -13,4 +13,5 @@ doc/api/
 
 .idea
 .dart_tool
-.vscode
+
+.vscode/
