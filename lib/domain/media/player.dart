@@ -1,10 +1,10 @@
 import 'package:xml/xml.dart';
 
 class Player {
-  final String url;
-  final int width;
-  final int height;
-  final String value;
+  final String? url;
+  final int? width;
+  final int? height;
+  final String? value;
 
   Player({
     this.url,
@@ -14,9 +14,6 @@ class Player {
   });
 
   factory Player.parse(XmlElement element) {
-    if (element == null) {
-      return null;
-    }
     return Player(
       url: element.getAttribute('url'),
       width: int.tryParse(element.getAttribute('width') ?? '0'),

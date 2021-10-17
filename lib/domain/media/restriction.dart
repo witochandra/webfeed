@@ -1,9 +1,9 @@
 import 'package:xml/xml.dart';
 
 class Restriction {
-  final String relationship;
-  final String type;
-  final String value;
+  final String? relationship;
+  final String? type;
+  final String? value;
 
   Restriction({
     this.relationship,
@@ -12,9 +12,6 @@ class Restriction {
   });
 
   factory Restriction.parse(XmlElement element) {
-    if (element == null) {
-      return null;
-    }
     return Restriction(
       relationship: element.getAttribute('relationship'),
       type: element.getAttribute('type'),

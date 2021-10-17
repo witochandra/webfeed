@@ -1,10 +1,10 @@
 import 'package:xml/xml.dart';
 
 class Price {
-  final double price;
-  final String type;
-  final String info;
-  final String currency;
+  final double? price;
+  final String? type;
+  final String? info;
+  final String? currency;
 
   Price({
     this.price,

@@ -1,8 +1,8 @@
 import 'package:xml/xml.dart';
 
 class Tags {
-  final String tags;
-  final int weight;
+  final String? tags;
+  final int? weight;
 
   Tags({
     this.tags,
@@ -10,9 +10,6 @@ class Tags {
   });
 
   factory Tags.parse(XmlElement element) {
-    if (element == null) {
-      return null;
-    }
     return Tags(
       tags: element.text,
       weight: int.tryParse(element.getAttribute('weight') ?? '1'),

@@ -1,8 +1,8 @@
 import 'package:xml/xml.dart';
 
 class Rating {
-  final String scheme;
-  final String value;
+  final String? scheme;
+  final String? value;
 
   Rating({
     this.scheme,
@@ -10,9 +10,6 @@ class Rating {
   });
 
   factory Rating.parse(XmlElement element) {
-    if (element == null) {
-      return null;
-    }
     return Rating(
       scheme: element.getAttribute('scheme'),
       value: element.text,

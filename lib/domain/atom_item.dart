@@ -4,24 +4,24 @@ import 'package:webfeed/domain/atom_person.dart';
 import 'package:webfeed/domain/atom_source.dart';
 import 'package:webfeed/domain/media/media.dart';
 import 'package:webfeed/util/datetime.dart';
-import 'package:webfeed/util/xml.dart';
+import 'package:webfeed/util/iterable.dart';
 import 'package:xml/xml.dart';
 
 class AtomItem {
-  final String id;
-  final String title;
-  final DateTime updated;
+  final String? id;
+  final String? title;
+  final DateTime? updated;
 
-  final List<AtomPerson> authors;
-  final List<AtomLink> links;
-  final List<AtomCategory> categories;
-  final List<AtomPerson> contributors;
-  final AtomSource source;
-  final String published;
-  final String content;
-  final String summary;
-  final String rights;
-  final Media media;
+  final List<AtomPerson>? authors;
+  final List<AtomLink>? links;
+  final List<AtomCategory>? categories;
+  final List<AtomPerson>? contributors;
+  final AtomSource? source;
+  final String? published;
+  final String? content;
+  final String? summary;
+  final String? rights;
+  final Media? media;
 
   AtomItem({
     this.id,
@@ -41,9 +41,9 @@ class AtomItem {
 
   factory AtomItem.parse(XmlElement element) {
     return AtomItem(
-      id: findFirstElement(element, 'id')?.text,
-      title: findFirstElement(element, 'title')?.text,
-      updated: parseDateTime(findFirstElement(element, 'updated')?.text),
+      id: element.findElements('id').firstOrNull?.text,
+      title: element.findElements('title').firstOrNull?.text,
+      updated: parseDateTime(element.findElements('updated').firstOrNull?.text),
       authors: element
           .findElements('author')
           .map((e) => AtomPerson.parse(e))
@@ -58,11 +58,14 @@ class AtomItem {
           .findElements('contributor')
           .map((e) => AtomPerson.parse(e))
           .toList(),
-      source: AtomSource.parse(findFirstElement(element, 'source')),
-      published: findFirstElement(element, 'published')?.text,
-      content: findFirstElement(element, 'content')?.text,
-      summary: findFirstElement(element, 'summary')?.text,
-      rights: findFirstElement(element, 'rights')?.text,
+      source: element
+          .findElements('source')
+          .map((e) => AtomSource.parse(e))
+          .firstOrNull,
+      published: element.findElements('published').firstOrNull?.text,
+      content: element.findElements('content').firstOrNull?.text,
+      summary: element.findElements('summary').firstOrNull?.text,
+      rights: element.findElements('rights').firstOrNull?.text,
       media: Media.parse(element),
     );
   }
