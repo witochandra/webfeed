@@ -1,0 +1,52 @@
+<rss xmlns:podcast="https://github.com/Podcastindex-org/podcast-namespace/blob/main/docs/1.0.md" version="2.0">
+  <channel>
+    <podcast:locked owner="email@example.com">yes</podcast:locked>
+    <podcast:funding url="https://www.example.com/donations">Support the show!</podcast:funding>
+    <podcast:person href="https://example.com/johnsmith/blog" img="http://example.com/images/johnsmith.jpg">John Smith</podcast:person>
+    <podcast:location geo="geo:30.2672,97.7431" osm="R113314">Austin, TX</podcast:location>
+    <podcast:trailer pubdate="Thu, 01 Apr 2021 08:00:00 EST" url="https://example.org/trailers/teaser" length="12345678" type="audio/mp3">Coming April 1st, 2021</podcast:trailer>
+    <podcast:license>cc-by-4.0</podcast:license>
+    <podcast:guid>917393e3-1b1e-5cef-ace4-edaa54e1f810</podcast:guid>
+    <podcast:value type="lightning" method="keysend" suggested="0.00000015000">
+      <podcast:valueRecipient
+          name="Alice (Podcaster)"
+          type="node"
+          address="02d5c1bf8b940dc9cadca86d1b0a3c37fbe39cee4c7e839e33bef9174531d27f52"
+          split="100"
+      />
+      <podcast:valueRecipient
+          name="Hosting Provider"
+          type="node"
+          address="03ae9f91a0cb8ff43840e3c322c4c61f019d8c1c3cea15a25cfc425ac605e61a4a"
+          split="5"
+          fee="true"
+      />
+    </podcast:value>
+    <podcast:medium>podcast</podcast:medium>
+    <podcast:images
+        srcset="https://example.com/images/ep1/pci_avatar-massive.jpg 1500w,
+                https://example.com/images/ep1/pci_avatar-middle.jpg 600w,
+                https://example.com/images/ep1/pci_avatar-small.jpg 300w,
+                https://example.com/images/ep1/pci_avatar-tiny.jpg 150w"
+    />
+    <item>
+      <podcast:transcript url="https://example.com/episode1/transcript.json" type="application/json" language="es" rel="captions" />
+      <podcast:chapters url="https://example.com/episode1/chapters.json" type="application/json+chapters" />
+      <podcast:soundbite startTime="1234.5" duration="42.25">Why the Podcast Namespace Matters</podcast:soundbite>
+      <podcast:license url="https://example.org/mypodcastlicense/full.pdf">my-podcast-license-v1</podcast:license>
+      <podcast:season name="Race for the Whitehouse 2020">3</podcast:season>
+      <podcast:episode display="Ch.3">204</podcast:episode>
+      <podcast:location geo="geo:33.51601,-86.81455" osm="R6930627">Birmingham Civil Rights Museum</podcast:location>
+      <podcast:alternateEnclosure type="video/mp4" length="7924786" bitrate="511276.52" height="720">
+        <podcast:source uri="https://example.com/file-720.mp4" />
+        <podcast:integrity type="sri" value="sha384-ExVqijgYHm15PqQqdXfW95x+Rs6C+d6E/ICxyQOeFevnxNLR/wtJNrNYTjIysUBo" />
+      </podcast:alternateEnclosure>
+    </item>
+    <podcast:liveItem status="live" start="2021-09-26T07:30:00.000-0000" end="2021-09-26T09:30:00.000-0000">
+      <title>Podcasting 2.0 Live Stream</title>
+      <guid>e32b4890-983b-4ce5-8b46-f2d6bc1d8819</guid>
+      <enclosure url="https://example.com/pc20/livestream?format=.mp3" type="audio/mpeg" length="312" />
+      <podcast:contentLink href="https://example.com/html/livestream">Listen Live!</podcast:contentLink>
+    </podcast:liveItem>
+  </channel>
+</rss>

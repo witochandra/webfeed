@@ -1,6 +1,7 @@
 import 'package:webfeed/domain/dublin_core/dublin_core.dart';
 import 'package:webfeed/domain/itunes/itunes.dart';
 import 'package:webfeed/domain/media/media.dart';
+import 'package:webfeed/domain/podcast/podcast_item.dart';
 import 'package:webfeed/domain/rss_category.dart';
 import 'package:webfeed/domain/rss_content.dart';
 import 'package:webfeed/domain/rss_enclosure.dart';
@@ -25,6 +26,7 @@ class RssItem {
   final RssEnclosure? enclosure;
   final DublinCore? dc;
   final Itunes? itunes;
+  final PodcastItem podcast;
 
   RssItem({
     this.title,
@@ -41,6 +43,7 @@ class RssItem {
     this.enclosure,
     this.dc,
     this.itunes,
+    required this.podcast,
   });
 
   factory RssItem.parse(XmlElement element) {
@@ -71,6 +74,7 @@ class RssItem {
           .firstOrNull,
       dc: DublinCore.parse(element),
       itunes: Itunes.parse(element),
+      podcast: PodcastItem.parse(element),
     );
   }
 }

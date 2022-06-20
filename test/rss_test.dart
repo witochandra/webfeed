@@ -4,6 +4,8 @@ import 'dart:io';
 import 'package:test/test.dart';
 import 'package:webfeed/domain/itunes/itunes_episode_type.dart';
 import 'package:webfeed/domain/itunes/itunes_type.dart';
+import 'package:webfeed/domain/podcast/podcast_live_item.dart';
+import 'package:webfeed/domain/podcast/podcast_medium.dart';
 import 'package:webfeed/domain/syndication/syndication.dart';
 import 'package:webfeed/webfeed.dart';
 
@@ -420,5 +422,138 @@ void main() {
     expect(feed.items!.first.description,
         'XML is placing increasingly heavy loads on the existing technical infrastructure of the Internet.');
     expect(feed.items!.first.link, 'http://c.moreover.com/click/here.pl?r123');
+  });
+
+  test('parse RSS-Podcast.xml', () {
+    var xmlString = File('test/xml/RSS-Podcast.xml').readAsStringSync();
+
+    var feed = RssFeed.parse(xmlString);
+
+    expect(feed.podcast.locked!.owner, 'email@example.com');
+    expect(feed.podcast.locked!.value, true);
+    expect(feed.podcast.funding!.url, 'https://www.example.com/donations');
+    expect(feed.podcast.funding!.value, 'Support the show!');
+    expect(feed.podcast.people.length, 1);
+    expect(
+        feed.podcast.people.first.href, 'https://example.com/johnsmith/blog');
+    expect(feed.podcast.people.first.img,
+        'http://example.com/images/johnsmith.jpg');
+    expect(feed.podcast.people.first.value, 'John Smith');
+    expect(feed.podcast.location!.geo, 'geo:30.2672,97.7431');
+    expect(feed.podcast.location!.osm, 'R113314');
+    expect(feed.podcast.location!.value, 'Austin, TX');
+    expect(feed.podcast.trailers.length, 1);
+    expect(
+        feed.podcast.trailers.first.pubdate, 'Thu, 01 Apr 2021 08:00:00 EST');
+    expect(
+        feed.podcast.trailers.first.url, 'https://example.org/trailers/teaser');
+    expect(feed.podcast.trailers.first.length, 12345678);
+    expect(feed.podcast.trailers.first.type, 'audio/mp3');
+    expect(feed.podcast.trailers.first.value, 'Coming April 1st, 2021');
+    expect(feed.podcast.license!.value, 'cc-by-4.0');
+    expect(feed.podcast.license!.url, null);
+    expect(feed.podcast.guid!.value, '917393e3-1b1e-5cef-ace4-edaa54e1f810');
+    expect(feed.podcast.value!.type, 'lightning');
+    expect(feed.podcast.value!.method, 'keysend');
+    expect(feed.podcast.value!.suggested, '0.00000015000');
+    expect(feed.podcast.value!.valueRecipients.length, 2);
+    expect(feed.podcast.value!.valueRecipients.first.name, 'Alice (Podcaster)');
+    expect(feed.podcast.value!.valueRecipients.first.type, 'node');
+    expect(feed.podcast.value!.valueRecipients.first.address,
+        '02d5c1bf8b940dc9cadca86d1b0a3c37fbe39cee4c7e839e33bef9174531d27f52');
+    expect(feed.podcast.value!.valueRecipients.first.split, 100);
+    expect(feed.podcast.value!.valueRecipients.first.fee, false);
+    expect(feed.podcast.value!.valueRecipients.last.name, 'Hosting Provider');
+    expect(feed.podcast.value!.valueRecipients.last.type, 'node');
+    expect(feed.podcast.value!.valueRecipients.last.address,
+        '03ae9f91a0cb8ff43840e3c322c4c61f019d8c1c3cea15a25cfc425ac605e61a4a');
+    expect(feed.podcast.value!.valueRecipients.last.split, 5);
+    expect(feed.podcast.value!.valueRecipients.last.fee, true);
+    expect(feed.podcast.medium!.value, MediumType.podcast);
+    expect(feed.podcast.images!.srcset.length, 4);
+    expect(feed.podcast.images!.srcset[0].url,
+        'https://example.com/images/ep1/pci_avatar-massive.jpg');
+    expect(feed.podcast.images!.srcset[0].width, 1500);
+    expect(feed.podcast.images!.srcset[1].url,
+        'https://example.com/images/ep1/pci_avatar-middle.jpg');
+    expect(feed.podcast.images!.srcset[1].width, 600);
+    expect(feed.podcast.images!.srcset[2].url,
+        'https://example.com/images/ep1/pci_avatar-small.jpg');
+    expect(feed.podcast.images!.srcset[2].width, 300);
+    expect(feed.podcast.images!.srcset[3].url,
+        'https://example.com/images/ep1/pci_avatar-tiny.jpg');
+    expect(feed.podcast.images!.srcset[3].width, 150);
+    expect(feed.items!.length, 1);
+    expect(feed.items!.first.podcast.transcript!.url,
+        'https://example.com/episode1/transcript.json');
+    expect(feed.items!.first.podcast.transcript!.type, 'application/json');
+    expect(feed.items!.first.podcast.transcript!.language, 'es');
+    expect(feed.items!.first.podcast.transcript!.rel, 'captions');
+    expect(feed.items!.first.podcast.chapters!.url,
+        'https://example.com/episode1/chapters.json');
+    expect(
+        feed.items!.first.podcast.chapters!.type, 'application/json+chapters');
+    expect(feed.items!.first.podcast.soundbites.length, 1);
+    expect(feed.items!.first.podcast.soundbites.first.startTime, 1234.5);
+    expect(feed.items!.first.podcast.soundbites.first.duration, 42.25);
+    expect(feed.items!.first.podcast.soundbites.first.value,
+        'Why the Podcast Namespace Matters');
+    expect(feed.items!.first.podcast.license!.url,
+        'https://example.org/mypodcastlicense/full.pdf');
+    expect(
+        feed.items!.first.podcast.season!.name, 'Race for the Whitehouse 2020');
+    expect(feed.items!.first.podcast.season!.value, 3);
+    expect(feed.items!.first.podcast.episode!.display, 'Ch.3');
+    expect(feed.items!.first.podcast.episode!.value, 204);
+    expect(feed.items!.first.podcast.location!.geo, 'geo:33.51601,-86.81455');
+    expect(feed.items!.first.podcast.location!.osm, 'R6930627');
+    expect(feed.items!.first.podcast.location!.value,
+        'Birmingham Civil Rights Museum');
+    expect(feed.items!.first.podcast.alternateEnclosures.length, 1);
+    expect(
+        feed.items!.first.podcast.alternateEnclosures.first.type, 'video/mp4');
+    expect(feed.items!.first.podcast.alternateEnclosures.first.length, 7924786);
+    expect(
+        feed.items!.first.podcast.alternateEnclosures.first.bitrate, 511276.52);
+    expect(feed.items!.first.podcast.alternateEnclosures.first.height, 720);
+    expect(
+        feed.items!.first.podcast.alternateEnclosures.first.sources.length, 1);
+    expect(
+        feed.items!.first.podcast.alternateEnclosures.first.sources.first.url,
+        'https://example.com/file-720.mp4');
+    expect(
+        feed.items!.first.podcast.alternateEnclosures.first.sources.first
+            .contentType,
+        null);
+    expect(
+        feed.items!.first.podcast.alternateEnclosures.first.integrities.first
+            .type,
+        'sri');
+    expect(
+        feed.items!.first.podcast.alternateEnclosures.first.integrities.first
+            .value,
+        'sha384-ExVqijgYHm15PqQqdXfW95x+Rs6C+d6E/ICxyQOeFevnxNLR/wtJNrNYTjIysUBo');
+    expect(
+        feed.items!.first.podcast.alternateEnclosures.first.integrities.length,
+        1);
+    expect(feed.podcast.liveItems.length, 1);
+    expect(feed.podcast.liveItems.first.status, LiveItemStatus.live);
+    expect(feed.podcast.liveItems.first.start,
+        DateTime.utc(2021, 9, 26, 7, 30, 0));
+    expect(
+        feed.podcast.liveItems.first.end, DateTime.utc(2021, 9, 26, 9, 30, 0));
+    expect(
+        feed.podcast.liveItems.first.item.title, 'Podcasting 2.0 Live Stream');
+    expect(feed.podcast.liveItems.first.item.guid,
+        'e32b4890-983b-4ce5-8b46-f2d6bc1d8819');
+    expect(feed.podcast.liveItems.first.item.enclosure!.url,
+        'https://example.com/pc20/livestream?format=.mp3');
+    expect(feed.podcast.liveItems.first.item.enclosure!.type, 'audio/mpeg');
+    expect(feed.podcast.liveItems.first.item.enclosure!.length, 312);
+    expect(feed.podcast.liveItems.first.item.podcast.contentLinks.length, 1);
+    expect(feed.podcast.liveItems.first.item.podcast.contentLinks.first.href,
+        'https://example.com/html/livestream');
+    expect(feed.podcast.liveItems.first.item.podcast.contentLinks.first.value,
+        'Listen Live!');
   });
 }
