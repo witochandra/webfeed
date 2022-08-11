@@ -1,3 +1,4 @@
+import 'package:webfeed/domain/custom_namespace/custom.dart';
 import 'package:webfeed/domain/dublin_core/dublin_core.dart';
 import 'package:webfeed/domain/itunes/itunes.dart';
 import 'package:webfeed/domain/media/media.dart';
@@ -25,6 +26,7 @@ class RssItem {
   final RssEnclosure? enclosure;
   final DublinCore? dc;
   final Itunes? itunes;
+  final CustomNamespace? customNamespace;
 
   RssItem({
     this.title,
@@ -41,6 +43,7 @@ class RssItem {
     this.enclosure,
     this.dc,
     this.itunes,
+    this.customNamespace,
   });
 
   factory RssItem.parse(XmlElement element) {
@@ -71,6 +74,7 @@ class RssItem {
           .firstOrNull,
       dc: DublinCore.parse(element),
       itunes: Itunes.parse(element),
+      customNamespace: CustomNamespace.parse(element),
     );
   }
 }
