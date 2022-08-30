@@ -14,9 +14,9 @@ DateTime? _parsePatternDateTime(String dateString, String pattern) {
   try {
     final num? length = dateString.length.clamp(0, pattern.length);
     final trimmedPattern = pattern.substring(
-        0,
-        length
-            as int?); //Some feeds use a shortened RFC 822 date, e.g. 'Tue, 04 Aug 2020'
+      0,
+      length as int?,
+    ); //Some feeds use a shortened RFC 822 date, e.g. 'Tue, 04 Aug 2020'
     final format = DateFormat(trimmedPattern, 'en_US');
     return format.parse(dateString);
   } on FormatException {
