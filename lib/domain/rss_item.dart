@@ -5,7 +5,7 @@ import 'package:webfeed/domain/rss_category.dart';
 import 'package:webfeed/domain/rss_content.dart';
 import 'package:webfeed/domain/rss_enclosure.dart';
 import 'package:webfeed/domain/rss_source.dart';
-import 'package:webfeed/util/datetime.dart';
+import 'package:webfeed/util/date_time.dart';
 import 'package:webfeed/util/iterable.dart';
 import 'package:xml/xml.dart';
 
