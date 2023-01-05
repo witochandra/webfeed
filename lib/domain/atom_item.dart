@@ -3,7 +3,7 @@ import 'package:webfeed/domain/atom_link.dart';
 import 'package:webfeed/domain/atom_person.dart';
 import 'package:webfeed/domain/atom_source.dart';
 import 'package:webfeed/domain/media/media.dart';
-import 'package:webfeed/util/datetime.dart';
+import 'package:webfeed/util/date_time.dart';
 import 'package:webfeed/util/iterable.dart';
 import 'package:xml/xml.dart';
 
