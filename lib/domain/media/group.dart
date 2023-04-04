@@ -1,8 +1,8 @@
-import 'package:webfeed/domain/media/category.dart';
-import 'package:webfeed/domain/media/content.dart';
-import 'package:webfeed/domain/media/credit.dart';
-import 'package:webfeed/domain/media/rating.dart';
-import 'package:webfeed/util/iterable.dart';
+import 'package:webfeed_revised/domain/media/category.dart';
+import 'package:webfeed_revised/domain/media/content.dart';
+import 'package:webfeed_revised/domain/media/credit.dart';
+import 'package:webfeed_revised/domain/media/rating.dart';
+import 'package:webfeed_revised/util/iterable.dart';
 import 'package:xml/xml.dart';
 
 class Group {

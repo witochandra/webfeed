@@ -1,6 +1,6 @@
 import 'dart:core';
 
-import 'package:webfeed/util/iterable.dart';
+import 'package:webfeed_revised/util/iterable.dart';
 import 'package:xml/xml.dart';
 
 Iterable<XmlElement>? findElements(

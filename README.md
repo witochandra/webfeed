@@ -24,7 +24,7 @@ webfeed: ^0.7.0
 
 Import the package into your dart code using:
 ```
-import 'package:webfeed/webfeed.dart';
+import 'package:webfeed_revised/webfeed.dart';
 ```
 
 ### Example

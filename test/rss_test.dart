@@ -2,10 +2,10 @@ import 'dart:core';
 import 'dart:io';
 
 import 'package:test/test.dart';
-import 'package:webfeed/domain/itunes/itunes_episode_type.dart';
-import 'package:webfeed/domain/itunes/itunes_type.dart';
-import 'package:webfeed/domain/syndication/syndication.dart';
-import 'package:webfeed/webfeed.dart';
+import 'package:webfeed_revised/domain/itunes/itunes_episode_type.dart';
+import 'package:webfeed_revised/domain/itunes/itunes_type.dart';
+import 'package:webfeed_revised/domain/syndication/syndication.dart';
+import 'package:webfeed_revised/webfeed.dart';
 
 void main() {
   test('parse Invalid.xml', () {

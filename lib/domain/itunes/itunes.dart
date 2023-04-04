@@ -1,10 +1,10 @@
-import 'package:webfeed/domain/itunes/itunes_category.dart';
-import 'package:webfeed/domain/itunes/itunes_episode_type.dart';
-import 'package:webfeed/domain/itunes/itunes_image.dart';
-import 'package:webfeed/domain/itunes/itunes_owner.dart';
-import 'package:webfeed/domain/itunes/itunes_type.dart';
-import 'package:webfeed/util/iterable.dart';
-import 'package:webfeed/util/xml.dart';
+import 'package:webfeed_revised/domain/itunes/itunes_category.dart';
+import 'package:webfeed_revised/domain/itunes/itunes_episode_type.dart';
+import 'package:webfeed_revised/domain/itunes/itunes_image.dart';
+import 'package:webfeed_revised/domain/itunes/itunes_owner.dart';
+import 'package:webfeed_revised/domain/itunes/itunes_type.dart';
+import 'package:webfeed_revised/util/iterable.dart';
+import 'package:webfeed_revised/util/xml.dart';
 import 'package:xml/xml.dart';
 
 class Itunes {
