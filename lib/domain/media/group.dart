@@ -2,6 +2,7 @@ import 'package:webfeed/domain/media/category.dart';
 import 'package:webfeed/domain/media/content.dart';
 import 'package:webfeed/domain/media/credit.dart';
 import 'package:webfeed/domain/media/rating.dart';
+import 'package:webfeed/domain/media/thumbnail.dart';
 import 'package:webfeed/util/iterable.dart';
 import 'package:xml/xml.dart';
 
@@ -10,12 +11,14 @@ class Group {
   final List<Credit>? credits;
   final Category? category;
   final Rating? rating;
+  final Thumbnail? thumbnail;
 
   Group({
     this.contents,
     this.credits,
     this.category,
     this.rating,
+    this.thumbnail,
   });
 
   factory Group.parse(XmlElement element) {
@@ -35,6 +38,10 @@ class Group {
       rating: element
           .findElements('media:rating')
           .map((e) => Rating.parse(e))
+          .firstOrNull,
+      thumbnail: element
+          .findElements('media:thumbnail')
+          .map((e) => Thumbnail.parse(e))
           .firstOrNull,
     );
   }
