@@ -13,7 +13,7 @@ const timeZoneAbbreviations = {
   'PDT': -7 * 60,
 };
 
-/// Test this online at https://regex101.com/r/mem3xt/1
+/// Test this regexp online at https://regex101.com/r/mem3xt/1
 final offsetRegExp = RegExp(r'^(?<sign>[\+\-]?)(?<hours>\d{2})\:?(?<minutes>\d{2})$');
 
 
