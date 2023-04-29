@@ -1,0 +1,35 @@
+<feed xmlns:yt="http://www.youtube.com/xml/schemas/2015" xmlns:media="http://search.yahoo.com/mrss/" xmlns="http://www.w3.org/2005/Atom">
+	<link rel="self" href="http://www.youtube.com/feeds/videos.xml?channel_id=UCl4takhOQtiyprismCPsa2Q"/>
+	<id>yt:channel:</id>
+	<yt:channelId/>
+	<title>Swan Bitcoin</title>
+	<link rel="alternate" href="https://www.youtube.com/channel/UCl4takhOQtiyprismCPsa2Q"/>
+	<author>
+	<name>Swan Bitcoin</name>
+	<uri>https://www.youtube.com/channel/UCl4takhOQtiyprismCPsa2Q</uri>
+	</author>
+	<published>2020-04-26T16:35:43+00:00</published>
+	<entry>
+		<id>yt:video:SD6exDEZe3A</id>
+		<yt:videoId>SD6exDEZe3A</yt:videoId>
+		<yt:channelId>UCl4takhOQtiyprismCPsa2Q</yt:channelId>
+		<title>Saifedean Ammous: How Bitcoin ENDS Inflation</title>
+		<link rel="alternate" href="https://www.youtube.com/watch?v=SD6exDEZe3A"/>
+		<author>
+		<name>Swan Bitcoin</name>
+		<uri>https://www.youtube.com/channel/UCl4takhOQtiyprismCPsa2Q</uri>
+		</author>
+		<published>2023-04-29T16:21:00+00:00</published>
+		<updated>2023-04-29T16:21:00+00:00</updated>
+		<media:group>
+			<media:title>Saifedean Ammous: How Bitcoin ENDS Inflation</media:title>
+			<media:content url="https://www.youtube.com/v/SD6exDEZe3A?version=3" type="application/x-shockwave-flash" width="640" height="390"/>
+			<media:thumbnail url="https://i4.ytimg.com/vi/SD6exDEZe3A/hqdefault.jpg" width="480" height="360"/>
+			<media:description>Connect with Swan on social media: Twitter: https://twitter.com/SwanBitcoin​​​Instagram: https://instagram.com/SwanBitcoin Telegram: https://t.me/swansignal​​​LinkedIn: https://www.linkedin.com/company/swanbitcoin Swan Bitcoin is the best way to accumulate Bitcoin with automatic recurring buys and instant buys from $10 to $10 million. Get started in just 5 minutes. Your first $10 purchase is on us: https://swanbitcoin.com/yt Download the all new Swan app! iOS: https://apps.apple.com/us/app/swan-bitcoin/id1576287352 Android: https://play.google.com/store/apps/details?id=com.swanbitcoin.android&pli=1 Join us for Pacific Bitcoin Festival 2023! Purchase your tickets now before prices go up: https://www.pacificbitcoin.com/?utm_medium=social&utm_source=youtube&utm_campaign=youtube_description Are you a high net worth individual or do you represent corporation that might be interested in learning more about Bitcoin? Swan Private guides corporations and high net worth individuals toward building generational wealth with Bitcoin. Find out more at: https://www.swanbitcoin.com/private/?utm_medium=social&utm_source=youtube&utm_campaign=youtube_post Check out the best place for Bitcoin education, Swan Bitcoin’s “Bitcoin Canon”. Compiling all of the greatest articles, news sources, videos and more from your favorite bitcoiners! https://swanbitcoin.com/cannon?utm_medium=social&utm_source=youtube&utm_campaign=youtube_description Get paid to recruit new Bitcoiners: https://swanbitcoin.com/enlist?utm_medium=social&utm_source=twitter&utm_campaign=social_selling #Bitcoin #SwanBitcoin</media:description>
+			<media:community>
+				<media:starRating count="117" average="5.00" min="1" max="5"/>
+				<media:statistics views="1078"/>
+			</media:community>
+		</media:group>
+	</entry>
+</feed>
