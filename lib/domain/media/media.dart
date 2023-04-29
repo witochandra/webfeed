@@ -19,8 +19,8 @@ import 'package:webfeed/domain/media/status.dart';
 import 'package:webfeed/domain/media/text.dart';
 import 'package:webfeed/domain/media/thumbnail.dart';
 import 'package:webfeed/domain/media/title.dart';
-import 'package:webfeed/util/xml.dart';
 import 'package:webfeed/util/iterable.dart';
+import 'package:webfeed/util/xml.dart';
 import 'package:xml/xml.dart';
 
 class Media {
