@@ -257,4 +257,31 @@ void main() {
     expect(item.content, null);
     expect(item.rights, null);
   });
+
+
+  test('parse Atom-YouTube.xml media group', () {
+    var xmlString = File('test/xml/Atom-YouTube.xml').readAsStringSync();
+
+    var feed = AtomFeed.parse(xmlString);
+
+    expect(feed.items!.length, 1);
+    var item = feed.items!.first;
+
+    var mediaGroup = item.media?.group;
+    expect(mediaGroup, isNotNull);
+
+    var thumbnail = mediaGroup?.thumbnail;
+    expect(thumbnail, isNotNull);
+    expect(thumbnail?.url, 'https://i4.ytimg.com/vi/SD6exDEZe3A/hqdefault.jpg');
+
+    var title = mediaGroup?.title;
+    expect(title, isNotNull);
+    expect(title?.value, 'Saifedean Ammous: How Bitcoin ENDS Inflation');
+
+    var description = mediaGroup?.description;
+    expect(description, isNotNull);
+    expect(description?.value, isNotNull);
+
+  });
+
 }
