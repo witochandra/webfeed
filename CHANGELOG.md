@@ -1,38 +1,23 @@
-# Changelog
+# Changelogs
 
-## [0.7.0](https://pub.dartlang.org/packages/webfeed/versions/0.7.0)
-- Null safety migration [#50](https://github.com/witochandra/webfeed/pull/50)
-- Parse duration if not empty [#39](https://github.com/witochandra/webfeed/pull/39)
+## 1.1.0
 
-## [0.6.0](https://pub.dartlang.org/packages/webfeed/versions/0.6.0)
-- Refactor util/xml.dart
-- Support RDF feed
-- Support Syndication namespace
+- Support for Flutter 3.22
 
-## [0.5.2](https://pub.dartlang.org/packages/webfeed/versions/0.5.2)
-- Lower the xml package version constraints
+## 1.0.1
 
-## [0.5.1](https://pub.dartlang.org/packages/webfeed/versions/0.5.1)
-- Support iTunes namespace [#19](https://github.com/witochandra/webfeed/pull/19)
-- Parse date strings into DateTime [#22](https://github.com/witochandra/webfeed/pull/22)
-- Add created & modified into dublin core namespace [#27](https://github.com/witochandra/webfeed/pull/27)
-- Upgrade xml package [#28](https://github.com/witochandra/webfeed/issues/28) 
-- Fix linting warnings
+- Dependencies upgrade
+- Dart SDK upgrade, requires SDK >= 3.0.0
 
-## [0.4.2](https://pub.dartlang.org/packages/webfeed/versions/0.4.2)
-### Fixed
-- Bad import in `rss_content.dart` & `rss_source.dart`
+## 1.0.0
 
-## [0.4.1](https://pub.dartlang.org/packages/webfeed/versions/0.4.1)
-### Added
-- Support `author` in RssFeed
+- Change in package name to "webfeed_plus" from "webfeed"
+- This package is forked from [webfeed](https://github.com/witochandra/webfeed)
 
-## [0.4.0](https://pub.dartlang.org/packages/webfeed/versions/0.4.0)
-### Added
-- Support for dublin core namespace
-- Support enclosure in rss item
-- Set minimum dart version into 2
+## 0.7.1
 
-## [0.3.0](https://pub.dartlang.org/packages/webfeed/versions/0.3.0)
-### Added
-- Support for image namespace
+- Dependency upgrade
+
+## 0.7.0 - 0.3.0
+
+- Please refer [webfeed](https://pub.dev/packages/webfeed/changelog)

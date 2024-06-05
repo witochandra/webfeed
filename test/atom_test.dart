@@ -2,7 +2,7 @@ import 'dart:core';
 import 'dart:io';
 
 import 'package:test/test.dart';
-import 'package:webfeed/webfeed.dart';
+import 'package:webfeed_plus/webfeed_plus.dart';
 
 void main() {
   test('parse Invalid.xml', () {
@@ -11,7 +11,9 @@ void main() {
     try {
       AtomFeed.parse(xmlString);
       fail('Should throw Argument Error');
-    } on ArgumentError {}
+    } on ArgumentError {
+      fail('Argument Error');
+    }
   });
 
   test('parse Atom.xml', () {

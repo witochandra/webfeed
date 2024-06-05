@@ -1,6 +1,6 @@
 import 'dart:core';
 
-import 'package:webfeed/util/iterable.dart';
+import 'package:webfeed_plus/util/iterable.dart';
 import 'package:xml/xml.dart';
 
 Iterable<XmlElement>? findElements(
@@ -21,7 +21,7 @@ Iterable<XmlElement>? findElements(
 }
 
 bool parseBoolLiteral(XmlElement element, String tagName) {
-  var v = element.findElements(tagName).firstOrNull?.text.toLowerCase().trim();
+  var v = element.findElements(tagName).firstOrNull?.innerText.toLowerCase().trim();
   if (v == null) return false;
   return ['yes', 'true'].contains(v);
 }

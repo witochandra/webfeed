@@ -1,5 +1,0 @@
-language: dart
-dart:
-  - dev
-dart_task:
-  - test: --platform vm --reporter expanded

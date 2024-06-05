@@ -1,5 +1,5 @@
-import 'package:webfeed/util/datetime.dart';
-import 'package:webfeed/util/iterable.dart';
+import 'package:webfeed_plus/util/datetime.dart';
+import 'package:webfeed_plus/util/iterable.dart';
 import 'package:xml/xml.dart';
 
 enum SyndicationUpdatePeriod { hourly, daily, weekly, monthly, yearly }
@@ -17,7 +17,7 @@ class Syndication {
 
   factory Syndication.parse(XmlElement element) {
     SyndicationUpdatePeriod updatePeriod;
-    switch (element.findElements('sy:updatePeriod').firstOrNull?.text) {
+    switch (element.findElements('sy:updatePeriod').firstOrNull?.innerText) {
       case 'hourly':
         updatePeriod = SyndicationUpdatePeriod.hourly;
         break;
@@ -39,10 +39,8 @@ class Syndication {
     }
     return Syndication(
       updatePeriod: updatePeriod,
-      updateFrequency: int.tryParse(
-          element.findElements('sy:updateFrequency').firstOrNull?.text ?? '1'),
-      updateBase: parseDateTime(
-          element.findElements('sy:updateBase').firstOrNull?.text),
+      updateFrequency: int.tryParse(element.findElements('sy:updateFrequency').firstOrNull?.innerText ?? '1'),
+      updateBase: parseDateTime(element.findElements('sy:updateBase').firstOrNull?.innerText),
     );
   }
 }

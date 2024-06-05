@@ -1,4 +1,4 @@
-import 'package:webfeed/domain/media/param.dart';
+import 'package:webfeed_plus/domain/media/param.dart';
 import 'package:xml/xml.dart';
 
 class Embed {

@@ -1,10 +1,10 @@
-import 'package:webfeed/domain/atom_category.dart';
-import 'package:webfeed/domain/atom_generator.dart';
-import 'package:webfeed/domain/atom_item.dart';
-import 'package:webfeed/domain/atom_link.dart';
-import 'package:webfeed/domain/atom_person.dart';
-import 'package:webfeed/util/datetime.dart';
-import 'package:webfeed/util/iterable.dart';
+import 'package:webfeed_plus/domain/atom_category.dart';
+import 'package:webfeed_plus/domain/atom_generator.dart';
+import 'package:webfeed_plus/domain/atom_item.dart';
+import 'package:webfeed_plus/domain/atom_link.dart';
+import 'package:webfeed_plus/domain/atom_person.dart';
+import 'package:webfeed_plus/util/datetime.dart';
+import 'package:webfeed_plus/util/iterable.dart';
 import 'package:xml/xml.dart';
 
 class AtomFeed {
@@ -47,38 +47,19 @@ class AtomFeed {
     }
 
     return AtomFeed(
-      id: feedElement.findElements('id').firstOrNull?.text,
-      title: feedElement.findElements('title').firstOrNull?.text,
-      updated:
-          parseDateTime(feedElement.findElements('updated').firstOrNull?.text),
-      items: feedElement
-          .findElements('entry')
-          .map((e) => AtomItem.parse(e))
-          .toList(),
-      links: feedElement
-          .findElements('link')
-          .map((e) => AtomLink.parse(e))
-          .toList(),
-      authors: feedElement
-          .findElements('author')
-          .map((e) => AtomPerson.parse(e))
-          .toList(),
-      contributors: feedElement
-          .findElements('contributor')
-          .map((e) => AtomPerson.parse(e))
-          .toList(),
-      categories: feedElement
-          .findElements('category')
-          .map((e) => AtomCategory.parse(e))
-          .toList(),
-      generator: feedElement
-          .findElements('generator')
-          .map((e) => AtomGenerator.parse(e))
-          .firstOrNull,
-      icon: feedElement.findElements('icon').firstOrNull?.text,
-      logo: feedElement.findElements('logo').firstOrNull?.text,
-      rights: feedElement.findElements('rights').firstOrNull?.text,
-      subtitle: feedElement.findElements('subtitle').firstOrNull?.text,
+      id: feedElement.findElements('id').firstOrNull?.innerText,
+      title: feedElement.findElements('title').firstOrNull?.innerText,
+      updated: parseDateTime(feedElement.findElements('updated').firstOrNull?.innerText),
+      items: feedElement.findElements('entry').map((e) => AtomItem.parse(e)).toList(),
+      links: feedElement.findElements('link').map((e) => AtomLink.parse(e)).toList(),
+      authors: feedElement.findElements('author').map((e) => AtomPerson.parse(e)).toList(),
+      contributors: feedElement.findElements('contributor').map((e) => AtomPerson.parse(e)).toList(),
+      categories: feedElement.findElements('category').map((e) => AtomCategory.parse(e)).toList(),
+      generator: feedElement.findElements('generator').map((e) => AtomGenerator.parse(e)).firstOrNull,
+      icon: feedElement.findElements('icon').firstOrNull?.innerText,
+      logo: feedElement.findElements('logo').firstOrNull?.innerText,
+      rights: feedElement.findElements('rights').firstOrNull?.innerText,
+      subtitle: feedElement.findElements('subtitle').firstOrNull?.innerText,
     );
   }
 }

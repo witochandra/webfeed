@@ -1,13 +1,13 @@
 import 'dart:core';
 
-import 'package:webfeed/domain/dublin_core/dublin_core.dart';
-import 'package:webfeed/domain/itunes/itunes.dart';
-import 'package:webfeed/domain/rss_category.dart';
-import 'package:webfeed/domain/rss_cloud.dart';
-import 'package:webfeed/domain/rss_image.dart';
-import 'package:webfeed/domain/rss_item.dart';
-import 'package:webfeed/domain/syndication/syndication.dart';
-import 'package:webfeed/util/iterable.dart';
+import 'package:webfeed_plus/domain/dublin_core/dublin_core.dart';
+import 'package:webfeed_plus/domain/itunes/itunes.dart';
+import 'package:webfeed_plus/domain/rss_category.dart';
+import 'package:webfeed_plus/domain/rss_cloud.dart';
+import 'package:webfeed_plus/domain/rss_image.dart';
+import 'package:webfeed_plus/domain/rss_item.dart';
+import 'package:webfeed_plus/domain/syndication/syndication.dart';
+import 'package:webfeed_plus/util/iterable.dart';
 import 'package:xml/xml.dart';
 
 class RssFeed {
@@ -72,52 +72,32 @@ class RssFeed {
       throw ArgumentError('channel not found');
     }
     return RssFeed(
-      title: channelElement.findElements('title').firstOrNull?.text,
-      author: channelElement.findElements('author').firstOrNull?.text,
-      description: channelElement.findElements('description').firstOrNull?.text,
-      link: channelElement.findElements('link').firstOrNull?.text,
-      items: (rdf ?? channelElement)
-          .findElements('item')
-          .map((e) => RssItem.parse(e))
-          .toList(),
-      image: (rdf ?? channelElement)
-          .findElements('image')
-          .map((e) => RssImage.parse(e))
-          .firstOrNull,
-      cloud: channelElement
-          .findElements('cloud')
-          .map((e) => RssCloud.parse(e))
-          .firstOrNull,
-      categories: channelElement
-          .findElements('category')
-          .map((e) => RssCategory.parse(e))
-          .toList(),
-      skipDays: channelElement
-              .findElements('skipDays')
-              .firstOrNull
-              ?.findAllElements('day')
-              .map((e) => e.text)
-              .toList() ??
-          [],
+      title: channelElement.findElements('title').firstOrNull?.innerText,
+      author: channelElement.findElements('author').firstOrNull?.innerText,
+      description: channelElement.findElements('description').firstOrNull?.innerText,
+      link: channelElement.findElements('link').firstOrNull?.innerText,
+      items: (rdf ?? channelElement).findElements('item').map((e) => RssItem.parse(e)).toList(),
+      image: (rdf ?? channelElement).findElements('image').map((e) => RssImage.parse(e)).firstOrNull,
+      cloud: channelElement.findElements('cloud').map((e) => RssCloud.parse(e)).firstOrNull,
+      categories: channelElement.findElements('category').map((e) => RssCategory.parse(e)).toList(),
+      skipDays:
+          channelElement.findElements('skipDays').firstOrNull?.findAllElements('day').map((e) => e.innerText).toList() ?? [],
       skipHours: channelElement
               .findElements('skipHours')
               .firstOrNull
               ?.findAllElements('hour')
-              .map((e) => int.tryParse(e.text) ?? 0)
+              .map((e) => int.tryParse(e.value ?? '') ?? 0)
               .toList() ??
           [],
-      lastBuildDate:
-          channelElement.findElements('lastBuildDate').firstOrNull?.text,
-      language: channelElement.findElements('language').firstOrNull?.text,
-      generator: channelElement.findElements('generator').firstOrNull?.text,
-      copyright: channelElement.findElements('copyright').firstOrNull?.text,
-      docs: channelElement.findElements('docs').firstOrNull?.text,
-      managingEditor:
-          channelElement.findElements('managingEditor').firstOrNull?.text,
-      rating: channelElement.findElements('rating').firstOrNull?.text,
-      webMaster: channelElement.findElements('webMaster').firstOrNull?.text,
-      ttl: int.tryParse(
-          channelElement.findElements('ttl').firstOrNull?.text ?? '0'),
+      lastBuildDate: channelElement.findElements('lastBuildDate').firstOrNull?.innerText,
+      language: channelElement.findElements('language').firstOrNull?.innerText,
+      generator: channelElement.findElements('generator').firstOrNull?.innerText,
+      copyright: channelElement.findElements('copyright').firstOrNull?.innerText,
+      docs: channelElement.findElements('docs').firstOrNull?.innerText,
+      managingEditor: channelElement.findElements('managingEditor').firstOrNull?.innerText,
+      rating: channelElement.findElements('rating').firstOrNull?.innerText,
+      webMaster: channelElement.findElements('webMaster').firstOrNull?.innerText,
+      ttl: int.tryParse(channelElement.findElements('ttl').firstOrNull?.innerText ?? '0'),
       dc: DublinCore.parse(channelElement),
       itunes: Itunes.parse(channelElement),
       syndication: Syndication.parse(channelElement),
